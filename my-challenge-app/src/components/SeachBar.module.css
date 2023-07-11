@@ -7,6 +7,10 @@
   margin: 0;
   padding: 0 0.94rem;
   box-sizing: border-box;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.875rem;
+  letter-spacing: 0.0125rem;
+  
 }
 
 .input:focus{

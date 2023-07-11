@@ -1,9 +1,21 @@
-import classes from './SeachBar.module.css'
+import { ChangeEvent, useState } from 'react';
 import LabelInput from './LabelInput';
-import { useState } from 'react';
+import classes from './SeachBar.module.css'
 
 const SearchBar = () => {
+  const [value, setValue ] = useState ('')
   const [isActive, setIsActice] = useState(false)
+
+  const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const newValue = e.target.value;
+    if(newValue === ''){
+      setIsActice(false)
+    } else {
+      setIsActice(true)
+    }
+    setValue(newValue);
+  };
+
   return (
     <>
       <div className={classes.wrapper}>
@@ -11,8 +23,8 @@ const SearchBar = () => {
           id='input' 
           className={classes.input}
           type="text" 
-          onFocus={() =>setIsActice(true)}
-          onBlur={() =>setIsActice(false)}
+          value={value}
+          onChange={handleOnChange}
         />
         {!isActive && <LabelInput htmlFor='input' />}
       </div>
