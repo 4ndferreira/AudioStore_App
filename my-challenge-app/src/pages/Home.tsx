@@ -1,3 +1,4 @@
+import Categories from "../components/Categories"
 import SearchBar from "../components/SearchBar"
 import classes from './Home.module.css'
 
@@ -9,6 +10,7 @@ const Home = () => {
         <h3>What are you looking for today?</h3>
       </section>
       <SearchBar />
+      <Categories/>
     </>
   )
 }

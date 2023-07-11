@@ -1,0 +1,58 @@
+.radioInput {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.radioInput + .radioLabel {
+  display: block;
+  width: fit-content;
+  padding: 0 0.9375rem;
+  margin: 0;
+
+  color: var(--colorGreyDark1);
+  font-size: 0.875rem;
+  line-height: 1.5625rem;
+  letter-spacing: 0.0125rem;
+
+  
+}
+
+.radioInput:checked + .radioLabel {
+  border-radius: 0.78125rem;
+  color: white;
+  background-color: var(--colorsPrimary);
+}
+
+/* .radioWrapper {
+  display: block;
+  width: fit-content;
+  padding: 0 0.9375rem;
+  margin: 0;
+
+  color: var(--colorGreyDark1);
+  font-size: 0.875rem;
+  line-height: 1.5625rem;
+  letter-spacing: 0.0125rem;
+} */
+/* 
+.radioWrapperSelected {
+  display: block;
+  background-color: var(--colorsPrimary);
+  border-radius: 0.78125rem;
+  width: fit-content;
+
+  padding: 0 0.9375rem;
+  margin: 0;
+
+  color: white;
+  font-size: 0.875rem;
+  line-height: 1.5625rem;
+  letter-spacing: 0.0125rem;
+}
+
+.radioInput {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+} */
