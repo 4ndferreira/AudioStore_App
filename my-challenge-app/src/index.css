@@ -3,6 +3,10 @@
   line-height: 1.5;
   font-weight: 400;
 
+  --colorsDefault: #000000;
+  --colorsPrimary: #0ACF83;
+  --colorsGrey: #BABABA;
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -18,7 +22,6 @@ a {
 body {
   margin: 0;
   display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
@@ -26,4 +29,22 @@ body {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 2rem;
+  letter-spacing: 0.0125rem;
+  margin: 0;
+}
+
+h4 {
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.25rem;
+  letter-spacing: 0.0125rem;
+  margin: 0;
 }

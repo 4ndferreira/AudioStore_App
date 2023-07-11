@@ -1,6 +1,15 @@
+import SearchBar from "../components/SearchBar"
+import classes from './Home.module.css'
+
 const Home = () => {
   return (
-    <div>Home</div>
+    <>
+      <section className={classes.container}>
+        <h4>Hi, Name</h4>
+        <h3>What are you looking for today?</h3>
+      </section>
+      <SearchBar />
+    </>
   )
 }
 
