@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
+import Auth from './pages/Auth'
 import Home from './pages/Home'
 import Search from './pages/Search'
 import Products from './pages/Products'
@@ -13,6 +14,10 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
+      <Route 
+          path='/SignIn' 
+          element={<Auth />} 
+        />
         <Route 
           path='/' 
           element={<Home />} 
