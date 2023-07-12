@@ -5,12 +5,20 @@ import classes from './Home.module.css'
 const Home = () => {
   return (
     <>
-      <section className={classes.container}>
-        <h4>Hi, User</h4>
-        <h3>What are you looking for today?</h3>
-      </section>
+      <h3 className={classes.welcomeText}>
+        <small className={classes.welcomeTextSmall}>
+          Hi, User
+        </small>
+        What are you looking for today?
+      </h3>
       <SearchBar />
-      <Categories/>
+      <div className={classes.showcase}>
+        <Categories/>
+        <div>
+          <h4>Featured Products</h4>
+          <a href="">See All</a>
+        </div>
+      </div>
     </>
   )
 }
