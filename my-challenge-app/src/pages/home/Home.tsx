@@ -1,8 +1,20 @@
+import { ChangeEvent, useState } from "react"
 import Categories from "../../components/categories/Categories"
-import SearchBar from "../../components/searchBar/SearchBar"
+import Input from "../../components/input/Input"
+import SearchIcon from "../../components/labelInput/SearchIcon"
+
 import classes from './Home.module.css'
 
 const Home = () => {
+  const [value, setValue ] = useState ('')
+
+  const handleOnInput = (
+    e: ChangeEvent<HTMLInputElement>
+  ) => {
+    const newValue = e.target.value;
+    setValue(newValue);
+  };
+
   return (
     <>
       <h3 className={classes.welcomeText}>
@@ -11,7 +23,16 @@ const Home = () => {
         </small>
         What are you looking for today?
       </h3>
-      <SearchBar />
+      <p className={classes.wrapper}>
+        <Input 
+          id={'searchBar'} 
+          type={'text'}      
+          name={'Search headphone'}
+          element={<SearchIcon />}
+          value={value}
+          onInput={handleOnInput} 
+        />
+      </p>
       <div className={classes.showcase}>
         <Categories/>
         <div>

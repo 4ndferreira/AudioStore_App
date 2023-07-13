@@ -7,7 +7,13 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
 } from "firebase/auth";
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
+
+import EmailIcon from '../../components/labelInput/EmailIcon';
+import LockIcon from '../../components/labelInput/LockIcon';
+import Input from '../../components/input/Input';
+
+import classes from './Auth.module.css'
 
 const firebaseConfig = {
   apiKey: process.env.API_KEY,
@@ -84,20 +90,40 @@ const Auth = () => {
     <div>
       <h1>Audio</h1>
       <p>It's modular and designed to last</p>
-      <input
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <input
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
+      <p className={classes.wrapper}>
+        <Input 
+          id={'email'}
+          type={'email'} 
+          name={'Email'}
+          element={<EmailIcon />}
+          value={email}
+          onInput={(e: ChangeEvent<HTMLInputElement>) => 
+            setEmail(e.target.value)
+          }      
+        />
+      </p>
+      <p className={classes.wrapper}>
+        <Input 
+          id={'password'} 
+          type={'password'}
+          name={'Password'}
+          element={<LockIcon />} 
+          value={password} 
+          onInput={(e: ChangeEvent<HTMLInputElement>) => 
+            setPassword(e.target.value)
+          }      
+        />
+      </p>
       {!newUser && <p>Forgot Password</p>}
-      <button onClick={handleLogin}>{newUser ? 'Sign Up' : 'Sign In'}</button>
-      <button onClick={handleLoginWithFacebook}>Facebook</button>
-      <button onClick={handleLoginWithGoogle}>Google</button>
+      <button onClick={handleLogin}>
+        {newUser ? 'Sign Up' : 'Sign In'}
+      </button>
+      <button onClick={handleLoginWithFacebook}>
+        Facebook
+      </button>
+      <button onClick={handleLoginWithGoogle}>
+        Google
+      </button>
       {newUser ? (
         <p>
           If you have an account? 

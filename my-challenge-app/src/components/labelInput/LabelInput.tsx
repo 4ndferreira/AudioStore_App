@@ -1,34 +1,18 @@
-import classes from './LabelInput.module.css'
+import classes from "./LabelInput.module.css";
 
-const LabelInput = (props: { htmlFor: string }) => {
+const LabelInput = (props: {
+  htmlFor: string;
+  element: JSX.Element;
+  name: string;
+}) => {
   return (
-    <label {...props} className={classes.label}>
-      <svg 
-        width="20" 
-        height="20" 
-        fill="none" 
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path d="M9.16667 16.3333C12.8486 16.3333 15.8333 13.3486 15.8333 9.66667C15.8333 5.98477 12.8486 3 9.16667 3C5.48478 3 2.50001 5.98477 2.50001 9.66667C2.50001 13.3486 5.48478 16.3333 9.16667 16.3333Z" 
-          stroke="#BABABA" 
-          strokeWidth="1.5" 
-          strokeLinecap="round" 
-          strokeLinejoin="round" 
-        />
-        <path 
-          d="M17.5 18L13.875 14.375" 
-          stroke="#BABABA" 
-          strokeWidth="1.5" 
-          strokeLinecap="round" 
-          strokeLinejoin="round" 
-        />
-      </svg>
-      <p className={classes.labelText}>Search headphone</p>
+    <label className={classes.label} {...props}>
+      {props.element}
+      <p className={classes.labelText}>
+        {props.name}
+      </p>
     </label>
-  )
-}
+  );
+};
 
-export default LabelInput
-
-
-
+export default LabelInput;

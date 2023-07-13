@@ -12,6 +12,12 @@
   line-height: 1.25rem;
 }
 
+.wrapper {
+  position: relative;
+  height: 2.8125rem;
+  margin: 1.56rem 0;
+}
+
 .showcase {
   position: absolute;
   left: 0;
