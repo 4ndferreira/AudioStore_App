@@ -7,7 +7,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
 } from "firebase/auth";
-import { ChangeEvent, MouseEvent, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 
 import EmailIcon from '../../components/labelInput/EmailIcon';
 import LockIcon from '../../components/labelInput/LockIcon';
@@ -92,10 +92,16 @@ const Auth = () => {
     }
 
   return (
-    <div className={classes.background}>
-      <h1>Audio</h1>
-      <p>It's modular and designed to last</p>
-      <form>
+    <div className={classes.container}>
+      <picture className={classes.picture}>
+        <source type='image/webp' srcSet='/public/img/image10.webp' />
+        <source type='image/jpeg' srcSet='/public/img/image10.jpg' />
+        <img src='/public/img/image10.png' alt='' />
+      </picture>
+      <h1 className={classes.titleWrapper}>Audio
+        <small>It's modular and designed to last</small>
+      </h1>
+      <form className={classes.form}>
         <div className={classes.wrapper}>
           <Input 
             id={'email'}
@@ -120,7 +126,7 @@ const Auth = () => {
             }      
           />
         </div>
-        {!newUser && <p>Forgot Password</p>}
+        {!newUser && <p className={classes.text}>Forgot Password</p>}
         <Button 
           type={'submit'} 
           onClick={handleLogin} 
@@ -149,16 +155,16 @@ const Auth = () => {
         </button> */}
     </form>
       {newUser ? (
-        <p>
+        <p className={classes.textFooter}>
           If you have an account? 
           <a href="#" onClick={handleUser}>
             Sign In here
           </a>
         </p>
       ) : (
-        <p>
+        <p className={classes.textFooter}>
           Didn’t have any account? 
-          <a href="#" onClick={handleUser}>
+          <a  href="#" onClick={handleUser}>
             Sign Up here
           </a>
         </p>
