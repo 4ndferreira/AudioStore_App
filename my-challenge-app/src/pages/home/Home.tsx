@@ -1,5 +1,6 @@
 import { ChangeEvent, useState } from "react"
 import Categories from "../../components/categories/Categories"
+import Banner from "../../components/banner/Banner"
 import Input from "../../components/input/Input"
 import SearchIcon from "../../components/labelInput/SearchIcon"
 
@@ -35,6 +36,7 @@ const Home = () => {
       </div>
       <div className={classes.showcase}>
         <Categories/>
+        <Banner title={'Headphone'} />
         <div>
           <h4>Featured Products</h4>
           <a href="">See All</a>

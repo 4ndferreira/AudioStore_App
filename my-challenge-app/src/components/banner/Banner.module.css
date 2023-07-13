@@ -1,0 +1,42 @@
+.bannerContainer {
+  display: flex;
+  width: 20.375rem;
+  height: 11.54rem;
+  padding: 1.25rem 1.5rem;
+  align-items: center;
+  box-sizing: border-box;
+
+  border-radius: 0.625rem;
+  background: var(--colorWhite);
+}
+
+.bannerContainer img {
+  height: 100%;
+}
+
+.bannerText {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+}
+
+.bannerText h3 {
+  font-family: Montserrat;
+}
+
+.bannerLink {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--colorsPrimary);
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.0125rem;
+}
+
+.bannerLink p {
+  margin: 0;
+}
