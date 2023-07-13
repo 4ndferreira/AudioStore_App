@@ -1,6 +1,16 @@
+.background {
+  background-color: darkslategrey;
+}
 
 .wrapper {
   position: relative;
   height: 3.125rem;
   margin: 1.56rem 0;
+  background-color: white;
+  border-radius: 0.625rem;
+}
+
+.wrapperButtons {
+  display: flex;
+  gap: 0.94rem
 }

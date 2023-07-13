@@ -7,7 +7,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
 } from "firebase/auth";
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, MouseEvent, useState } from 'react';
 
 import EmailIcon from '../../components/labelInput/EmailIcon';
 import LockIcon from '../../components/labelInput/LockIcon';
@@ -15,6 +15,9 @@ import Input from '../../components/input/Input';
 import Button from '../../components/button/Button';
 
 import classes from './Auth.module.css'
+import LoginButtonWithProvider from '../../components/loginButtonWithProvider/LoginButtonWithProvider';
+import FacebookIcon from '../../components/loginButtonWithProvider/FacebookIcon';
+import GoogleIcon from '../../components/loginButtonWithProvider/GoogleIcon';
 
 const firebaseConfig = {
   apiKey: process.env.API_KEY,
@@ -89,7 +92,7 @@ const Auth = () => {
     }
 
   return (
-    <div>
+    <div className={classes.background}>
       <h1>Audio</h1>
       <p>It's modular and designed to last</p>
       <form>
@@ -123,16 +126,28 @@ const Auth = () => {
           onClick={handleLogin} 
           name={newUser ? 'Sign Up' : 'Sign In'}
         />
-        <button type='submit' onClick={handleLogin}>
+        {/* <button type='submit' onClick={handleLogin}>
           {newUser ? 'Sign Up' : 'Sign In'}
-        </button>
-        <button type='button' onClick={handleLoginWithFacebook}>
+        </button> */}
+        <div className={classes.wrapperButtons}>
+          <LoginButtonWithProvider 
+            type={'button'} 
+            onClick={handleLoginWithFacebook} 
+            icon={<FacebookIcon />} 
+          />
+          <LoginButtonWithProvider 
+            type={'button'} 
+            onClick={handleLoginWithGoogle} 
+            icon={<GoogleIcon />} 
+          />
+        </div>
+        {/* <button type='button' onClick={handleLoginWithFacebook}>
           Facebook
         </button>
         <button type='button' onClick={handleLoginWithGoogle}>
           Google
-        </button>
-      </form>
+        </button> */}
+    </form>
       {newUser ? (
         <p>
           If you have an account? 
