@@ -1,6 +1,6 @@
 import { ChangeEvent, useState } from 'react';
 import LabelInput from '../labelInput/LabelInput';
-import classes from './SeachBar.module.css'
+import classes from './SearchBar.module.css'
 
 const SearchBar = () => {
   const [value, setValue ] = useState ('')
