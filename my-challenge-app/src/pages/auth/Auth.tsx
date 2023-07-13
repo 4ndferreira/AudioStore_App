@@ -12,6 +12,7 @@ import { ChangeEvent, useState } from 'react';
 import EmailIcon from '../../components/labelInput/EmailIcon';
 import LockIcon from '../../components/labelInput/LockIcon';
 import Input from '../../components/input/Input';
+import Button from '../../components/button/Button';
 
 import classes from './Auth.module.css'
 
@@ -35,7 +36,7 @@ const Auth = () => {
 
   const auth = getAuth(app);
 
-  const handleUser = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+  const handleUser = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     setNewUser(!newUser);
   };
@@ -70,6 +71,7 @@ const Auth = () => {
       const credential = GoogleAuthProvider.credentialFromError(error);
     });
   }
+  
     const handleLoginWithFacebook = () => {
       const provider = new FacebookAuthProvider();
       signInWithPopup(auth, provider)
@@ -90,40 +92,47 @@ const Auth = () => {
     <div>
       <h1>Audio</h1>
       <p>It's modular and designed to last</p>
-      <p className={classes.wrapper}>
-        <Input 
-          id={'email'}
-          type={'email'} 
-          name={'Email'}
-          element={<EmailIcon />}
-          value={email}
-          onInput={(e: ChangeEvent<HTMLInputElement>) => 
-            setEmail(e.target.value)
-          }      
+      <form>
+        <div className={classes.wrapper}>
+          <Input 
+            id={'email'}
+            type={'email'} 
+            name={'Email'}
+            element={<EmailIcon />}
+            value={email}
+            onInput={(e: ChangeEvent<HTMLInputElement>) => 
+              setEmail(e.target.value)
+            }      
+          />
+        </div>
+        <div className={classes.wrapper}>
+          <Input 
+            id={'password'} 
+            type={'password'}
+            name={'Password'}
+            element={<LockIcon />} 
+            value={password} 
+            onInput={(e: ChangeEvent<HTMLInputElement>) => 
+              setPassword(e.target.value)
+            }      
+          />
+        </div>
+        {!newUser && <p>Forgot Password</p>}
+        <Button 
+          type={'submit'} 
+          onClick={handleLogin} 
+          name={newUser ? 'Sign Up' : 'Sign In'}
         />
-      </p>
-      <p className={classes.wrapper}>
-        <Input 
-          id={'password'} 
-          type={'password'}
-          name={'Password'}
-          element={<LockIcon />} 
-          value={password} 
-          onInput={(e: ChangeEvent<HTMLInputElement>) => 
-            setPassword(e.target.value)
-          }      
-        />
-      </p>
-      {!newUser && <p>Forgot Password</p>}
-      <button onClick={handleLogin}>
-        {newUser ? 'Sign Up' : 'Sign In'}
-      </button>
-      <button onClick={handleLoginWithFacebook}>
-        Facebook
-      </button>
-      <button onClick={handleLoginWithGoogle}>
-        Google
-      </button>
+        <button type='submit' onClick={handleLogin}>
+          {newUser ? 'Sign Up' : 'Sign In'}
+        </button>
+        <button type='button' onClick={handleLoginWithFacebook}>
+          Facebook
+        </button>
+        <button type='button' onClick={handleLoginWithGoogle}>
+          Google
+        </button>
+      </form>
       {newUser ? (
         <p>
           If you have an account? 

@@ -1,0 +1,16 @@
+.button{display: flex;
+  width: 20.375rem;
+  height: 3.125rem;
+  justify-content: center;
+  align-items: center;
+
+  border: none;
+  border-radius: 0.625rem;
+  background: var(--colorsPrimary);
+  color: white;
+
+  font-family: DM Sans;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.0125rem;
+}
