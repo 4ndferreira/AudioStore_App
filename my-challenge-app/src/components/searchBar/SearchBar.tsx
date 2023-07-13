@@ -1,5 +1,5 @@
 import { ChangeEvent, useState } from 'react';
-import LabelInput from './LabelInput';
+import LabelInput from '../labelInput/LabelInput';
 import classes from './SeachBar.module.css'
 
 const SearchBar = () => {

@@ -19,14 +19,15 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const providerGoogle = new GoogleAuthProvider();
-const providerFacebook = new FacebookAuthProvider();
+
+
 
 const Auth = () => {
-  const auth = getAuth(app);
   const [newUser, setNewUser] = useState(false)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+
+  const auth = getAuth(app);
 
   const handleUser = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     e.preventDefault();
@@ -41,57 +42,44 @@ const Auth = () => {
     handleEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log(user)
       })
       .catch((error) => {
         const errorCode = error.code;
-        console.log(errorCode)
         const errorMessage = error.message;
-        console.log(errorMessage)
     });
   }
 
   const handleLoginWithGoogle = () => {
-    signInWithPopup(auth, providerGoogle)
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider)
     .then((result) => {
       const user = result.user;
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential?.accessToken;
-      console.log(token)
-      console.log(user)
-    }).catch((error: FirebaseError) => {
-      // Handle Errors here.
+    })
+    .catch((error: FirebaseError) => {
       const errorCode = error.code;
-      console.log(errorCode)
       const errorMessage = error.message;
-      console.log(errorMessage)
       const email = error.customData?.email;
-      console.log(email)
       const credential = GoogleAuthProvider.credentialFromError(error);
-      console.log(credential)
     });
   }
     const handleLoginWithFacebook = () => {
-      signInWithPopup(auth, providerFacebook)
+      const provider = new FacebookAuthProvider();
+      signInWithPopup(auth, provider)
       .then((result) => {
         const user = result.user;
-        console.log(user)
         const credential = FacebookAuthProvider.credentialFromResult(result);
         const accessToken = credential?.accessToken;
-        console.log(accessToken)
       })
       .catch((error: FirebaseError) => {
         const errorCode = error.code;
-        console.log(errorCode)
         const errorMessage = error.message;
-        console.log(errorMessage)
         const email = error.customData?.email;
-        console.log(email)
         const credential = FacebookAuthProvider.credentialFromError(error);
-        console.log(credential)
       });
     }
-  console.log(newUser)
+
   return (
     <div>
       <h1>Audio</h1>
@@ -106,6 +94,7 @@ const Auth = () => {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
+      {!newUser && <p>Forgot Password</p>}
       <button onClick={handleLogin}>{newUser ? 'Sign Up' : 'Sign In'}</button>
       <button onClick={handleLoginWithFacebook}>Facebook</button>
       <button onClick={handleLoginWithGoogle}>Google</button>

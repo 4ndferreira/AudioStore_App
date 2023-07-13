@@ -1,5 +1,5 @@
-import Categories from "../components/Categories"
-import SearchBar from "../components/SearchBar"
+import Categories from "../components/categories/Categories"
+import SearchBar from "../components/searchBar/SearchBar"
 import classes from './Home.module.css'
 
 const Home = () => {

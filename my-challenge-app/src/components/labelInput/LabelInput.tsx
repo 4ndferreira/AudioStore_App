@@ -1,7 +1,5 @@
 import classes from './LabelInput.module.css'
 
-
-
 const LabelInput = (props: { htmlFor: string }) => {
   return (
     <label {...props} className={classes.label}>

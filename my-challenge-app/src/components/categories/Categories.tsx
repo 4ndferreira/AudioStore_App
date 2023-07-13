@@ -1,7 +1,7 @@
 
-import { Splide, SplideSlide } from '../../node_modules/@splidejs/react-splide'
-import '../../node_modules/@splidejs/react-splide/dist/css/splide.min.css'
-import CategoryLabel from './CategoryLabel '
+import { Splide, SplideSlide } from '../../../node_modules/@splidejs/react-splide'
+import '../../../node_modules/@splidejs/react-splide/dist/css/splide.min.css'
+import CategoryLabel from '../categoryLabel/CategoryLabel '
 import classes from './Categories.module.css'
 
 const Categories = () => {
