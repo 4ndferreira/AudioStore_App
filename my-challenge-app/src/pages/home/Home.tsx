@@ -23,7 +23,7 @@ const Home = () => {
         </small>
         What are you looking for today?
       </h3>
-      <p className={classes.wrapper}>
+      <div className={classes.wrapper}>
         <Input 
           id={'searchBar'} 
           type={'text'}      
@@ -32,7 +32,7 @@ const Home = () => {
           value={value}
           onInput={handleOnInput} 
         />
-      </p>
+      </div>
       <div className={classes.showcase}>
         <Categories/>
         <div>
