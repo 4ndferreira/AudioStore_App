@@ -1,10 +1,10 @@
 import { ChangeEvent, useState } from "react";
-import NavBar from "../components/navBar/NavBar";
-import Review from "../components/review/Review";
-import SearchItem from "../components/searchItem/SearchItem"
-import SortBy from "../components/sortBy/SortBy";
-import Input from "../components/input/Input";
-import SearchIcon from "../components/labelInput/SearchIcon";
+import NavBar from "../../components/navBar/NavBar";
+import Review from "../../components/review/Review";
+import SearchItem from "../../components/searchItem/SearchItem"
+import SortBy from "../../components/sortBy/SortBy";
+import Input from "../../components/input/Input";
+import SearchIcon from "../../components/labelInput/SearchIcon";
 import classes from "./Search.module.css"
 
 const Search = () => {

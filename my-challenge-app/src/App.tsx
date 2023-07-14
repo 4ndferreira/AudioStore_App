@@ -3,7 +3,7 @@ import axios from 'axios'
 
 import Auth from './pages/auth/Auth'
 import Home from './pages/home/Home'
-import Search from './pages/Search'
+import Search from './pages/search/Search'
 import Products from './pages/products/Products'
 import Product from './pages/product/Product'
 import ShoppingCart from './pages/shoppingCart/ShoppingCart'
