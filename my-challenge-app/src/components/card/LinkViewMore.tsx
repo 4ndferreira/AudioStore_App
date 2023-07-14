@@ -1,15 +1,16 @@
 import IconStarFilled from "./IconStarFilled";
 import IconMoreVertical from "./IconMoreVertical"
 
-import classes from './LinkViewMore.module.css'
-
 const LinkViewMore = () => {
   return (
-    <div className={classes.container}>
-      <IconStarFilled/>
-      <p>Reviews</p>
+    <>
+      <div>
+        <IconStarFilled />
+        <p>4.6</p>
+        <p>Reviews</p>
+      </div>
       <IconMoreVertical />
-    </div>
+    </>
   );
 }
 

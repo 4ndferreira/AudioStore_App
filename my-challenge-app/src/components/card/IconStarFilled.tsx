@@ -13,9 +13,9 @@ const IconStarFilled = () => {
           d="M7.99998 1.33333L10.06 5.50666L14.6666 6.18L11.3333 9.42666L12.12 14.0133L7.99998 11.8467L3.87998 14.0133L4.66665 9.42666L1.33331 6.18L5.93998 5.50666L7.99998 1.33333Z"
           fill="#FFC120"
           stroke="#FFC120"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </g>
     </svg>
