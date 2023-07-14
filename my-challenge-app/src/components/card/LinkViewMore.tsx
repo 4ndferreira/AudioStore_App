@@ -1,5 +1,5 @@
 import IconStarFilled from "./IconStarFilled";
-import IconMoreVertical from "./IconMoreVertical"
+import IconMoreVertical from "./IconMoreVertical";
 
 const LinkViewMore = () => {
   return (
@@ -12,6 +12,6 @@ const LinkViewMore = () => {
       <IconMoreVertical />
     </>
   );
-}
+};
 
-export default LinkViewMore
+export default LinkViewMore;

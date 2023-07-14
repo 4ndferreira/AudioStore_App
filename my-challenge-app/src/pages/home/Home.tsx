@@ -44,7 +44,7 @@ const Home = () => {
           <h4>Featured Products</h4>
           <a href="">See All</a>
         </div>
-        <Card />
+        <Card showReview={false} />
       </div>
     </>
   )
