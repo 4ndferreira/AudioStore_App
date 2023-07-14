@@ -1,4 +1,5 @@
 .wrapper {
   display:flex;
+  height: 1rem;
   gap: 0.31rem
 }
