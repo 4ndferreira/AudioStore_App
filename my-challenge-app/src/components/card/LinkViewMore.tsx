@@ -1,4 +1,4 @@
-import IconStarFilled from "./IconStarFilled";
+import IconStarFilled from "../starRating/IconStarFilled";
 import IconMoreVertical from "./IconMoreVertical";
 
 const LinkViewMore = () => {
