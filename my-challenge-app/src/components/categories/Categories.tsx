@@ -1,7 +1,7 @@
 
 import { Splide, SplideSlide } from '../../../node_modules/@splidejs/react-splide'
 import '../../../node_modules/@splidejs/react-splide/dist/css/splide.min.css'
-import CategoryLabel from '../categoryLabel/CategoryLabel '
+import SelectorLabel from '../selectorLabel/SelectorLabel '
 import classes from './Categories.module.css'
 
 const Categories = () => {
@@ -36,10 +36,13 @@ const Categories = () => {
         }}>
         {categories.map((label) => (   
           <SplideSlide key={label.id}>
-            <CategoryLabel 
-              id={label.id} 
-              name={label.label}
-            />
+            <div className={classes.card}>
+              <SelectorLabel 
+                id={label.id}
+                name={label.label} 
+                group={'category'}            
+              />
+            </div>
           </SplideSlide>
         ))}
       </Splide>
