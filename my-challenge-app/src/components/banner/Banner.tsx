@@ -14,7 +14,7 @@ const Banner = (props: { title: string }) => {
           <ArrowRight />
         </div>
       </div>
-      <img src="/public/img/image5.png" alt="" />
+      <img src="/img/image5.png" alt="" />
     </div>
   );
 }

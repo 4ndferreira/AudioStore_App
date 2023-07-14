@@ -1,6 +1,7 @@
 import { ChangeEvent, useState } from "react"
 import Categories from "../../components/categories/Categories"
 import Banner from "../../components/banner/Banner"
+import Card from "../../components/card/Card"
 import Input from "../../components/input/Input"
 import SearchIcon from "../../components/labelInput/SearchIcon"
 
@@ -18,12 +19,14 @@ const Home = () => {
 
   return (
     <>
-      <h3 className={classes.welcomeText}>
-        <small className={classes.welcomeTextSmall}>
-          Hi, User
-        </small>
-        What are you looking for today?
-      </h3>
+      <div className={classes.container}>
+        <h3 className={classes.welcomeText}>
+          <small className={classes.welcomeTextSmall}>
+            Hi, User
+          </small>
+          What are you looking for today?
+        </h3>
+      </div>
       <div className={classes.wrapper}>
         <Input 
           id={'searchBar'} 
@@ -37,10 +40,11 @@ const Home = () => {
       <div className={classes.showcase}>
         <Categories/>
         <Banner title={'Headphone'} />
-        <div>
+        <div className={classes.showcaseText}>
           <h4>Featured Products</h4>
           <a href="">See All</a>
         </div>
+        <Card />
       </div>
     </>
   )

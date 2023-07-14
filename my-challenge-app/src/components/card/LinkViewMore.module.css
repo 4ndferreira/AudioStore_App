@@ -1,0 +1,9 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container p {
+  flex-grow: 1;
+}
