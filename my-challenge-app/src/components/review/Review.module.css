@@ -21,4 +21,7 @@
 .wrapper p {
   margin: 0;
   padding-left: 3.31rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  letter-spacing: 0.0125rem;
 }
