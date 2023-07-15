@@ -4,13 +4,6 @@
   flex-wrap: wrap;
   width: 20rem;
   gap: 2.12rem;
-
-  text-align: center;
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.25rem;
-  letter-spacing: 0.0125rem;
 }
 
 .container input {
