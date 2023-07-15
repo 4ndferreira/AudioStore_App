@@ -11,7 +11,7 @@ const Products = () => {
   }
   
   return (
-    <div className={classes.container}>
+    <>
       <NavBar />
       <h2 className={classes.title}>
         <p className={classes.titleSmall}>
@@ -21,12 +21,14 @@ const Products = () => {
           See all Products
         </p>
       </h2>
-      <Button 
-        type="button" 
-        name={<IconSliders />} 
-        onClick={activeFilter} 
-      />
-    </div>
+      <div className={classes.wrapper}>
+        <Button 
+          type="button" 
+          name={<IconSliders />} 
+          onClick={activeFilter} 
+        />
+      </div>
+    </>
   );
 }
 

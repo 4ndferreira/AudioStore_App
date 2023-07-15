@@ -21,7 +21,7 @@ const App = () => {
     <BrowserRouter>
       <Routes>
       <Route 
-          path='/SignIn' 
+          path='/signin' 
           element={<Auth />} 
         />
         <Route 
@@ -29,19 +29,19 @@ const App = () => {
           element={<Home />} 
         />
         <Route 
-          path='/Search' 
+          path='/search' 
           element={<Search />} 
         />
         <Route 
-          path='/Products' 
+          path='/products' 
           element={<Products />} 
         />
         <Route 
-          path='/Products/:id' 
+          path='/products/:id' 
           element={<Product />} 
         />
         <Route 
-          path='/Cart' 
+          path='/cart' 
           element={<ShoppingCart />} 
         />
       </Routes>
