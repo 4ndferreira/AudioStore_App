@@ -5,6 +5,7 @@ import SearchItem from "../../components/searchItem/SearchItem"
 import SortBy from "../../components/sortBy/SortBy";
 import Input from "../../components/input/Input";
 import SearchIcon from "../../components/labelInput/SearchIcon";
+import Counter from "../../components/counter/Counter";
 import classes from "./Search.module.css"
 
 const Search = () => {
@@ -32,6 +33,7 @@ const Search = () => {
       <SearchItem />
       <SortBy />
       <Review />
+      <Counter />
     </div>
   );
 }

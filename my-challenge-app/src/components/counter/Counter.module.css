@@ -1,0 +1,19 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 7.1875rem;
+}
+
+.button {
+  display: flex;
+  width: 1.875rem;
+  height: 1.875rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+
+  border-radius: 0.625rem;
+  border: 1px solid var(--colorsGrey);
+  background: var(--colorWhite);
+}
