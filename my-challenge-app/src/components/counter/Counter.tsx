@@ -17,23 +17,29 @@ const Count = () => {
   return (
     <div className={classes.wrapper}>
       <div className={classes.counter}>
-        <p
+        <button
           className={classes.button} 
+          type='button'
           onClick={handleDecrease}
         >
           <IconMinus />
-        </p>
+        </button>
         <p>{count}</p>
-        <p
+        <button
           className={classes.button}
+          type='button'
           onClick={handleIncrease}
         > 
           <IconPlus />
-        </p>
+        </button>
       </div>
-        <p onClick={() => setCount(0)}>
+        <button 
+          className={classes.buttonDelete}
+          type='button'
+          onClick={() => setCount(0)}
+        >
           <IconTrash />
-        </p>
+        </button>
     </div>
   );
 }
