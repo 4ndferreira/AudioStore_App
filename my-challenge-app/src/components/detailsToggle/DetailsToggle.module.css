@@ -1,0 +1,37 @@
+.container {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  width: 20rem;
+  gap: 2.12rem;
+
+  text-align: center;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.25rem;
+  letter-spacing: 0.0125rem;
+}
+
+.container input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.container input + label {
+  display: flex;
+  justify-content: center;
+  width: fit-content;
+  padding-bottom: 0.913rem;
+  margin: 0;
+
+  font-size: 1rem;
+  line-height: 1.25rem;
+  letter-spacing: 0.0125rem;
+}
+
+.container input:checked + label {
+  background: linear-gradient(to bottom, transparent 90%,  var(--colorsPrimary) 90%) 50% no-repeat;
+  background-size: 34%;
+}
