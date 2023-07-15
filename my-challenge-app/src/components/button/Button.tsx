@@ -4,7 +4,7 @@ import classes from './Button.module.css'
 const Button = (props: {
   type: 'button' | 'submit';
   onClick: MouseEventHandler<HTMLButtonElement>;
-  name: string
+  name: string | JSX.Element
 }) => {
   return (
     <button 
