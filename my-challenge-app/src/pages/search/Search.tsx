@@ -30,10 +30,11 @@ const Search = () => {
           onInput={handleOnInput} 
         />
       </div>
-      <SearchItem />
+      <SearchItem 
+        isShoppingCart={false} 
+      />
       <SortBy />
       <Review />
-      <Counter />
     </div>
   );
 }
