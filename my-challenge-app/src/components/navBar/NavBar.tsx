@@ -6,7 +6,8 @@ import classes from './NavBar.module.css'
 
 const NavBar = (props: {
   link: To,
-  link2: To 
+  link2: To, 
+  title: string
 }) => {
   const isShoppingCart = false;
   return (
@@ -14,7 +15,7 @@ const NavBar = (props: {
       <NavLink to={props.link}>
         <ChevronLeft />
       </NavLink>
-      <p className={classes.navTitle}>Search</p>
+      <p className={classes.navTitle}>{props.title}</p>
       <NavLink to={props.link2}>
         {isShoppingCart ? 
         <IconTrash /> :
