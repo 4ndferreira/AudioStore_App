@@ -10,7 +10,7 @@ const IconSliders = () => {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <g id="Icon / sliders" clip-path="url(#clip0_1334_163)">
+        <g id="Icon / sliders" clipPath="url(#clip0_1334_163)">
           <path
             id="Vector"
             d="M3.83337 18V12.1667"

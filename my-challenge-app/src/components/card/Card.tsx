@@ -1,13 +1,17 @@
 import LinkViewMore from './LinkViewMore'
 import classes from './Card.module.css'
 
-const Card = (props: { showReview: boolean }) => {
+const Card = (props: {
+  name: string,
+  price: string,
+  showReview: boolean 
+}) => {
   return (
     <div className={classes.cardContainer}>
       <img src="/img/image5.png" alt="" />
       <div>
-        <h4>TMA-2 HD Wireless</h4>
-        <p className={classes.cardContainerText}>USD 350</p>
+        <h4>{props.name}</h4>
+        <p className={classes.cardContainerText}>{props.price}</p>
       </div>
       {props.showReview && 
       <div className={classes.cardReview}>
