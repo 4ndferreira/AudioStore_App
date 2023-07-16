@@ -5,3 +5,22 @@
   margin: 1.56rem auto;
   padding: 0 1.5rem;
 }
+
+.text {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  letter-spacing: 0.0125rem;
+  max-width: 20.375rem;
+  margin: 1.25rem auto;
+  padding: 0 1.5rem;
+}
+
+.listItems {
+  display: flex;
+  flex-direction: column;
+  gap: 1.56rem;
+  max-width: 20.375rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}

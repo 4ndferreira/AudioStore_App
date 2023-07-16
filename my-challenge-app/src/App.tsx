@@ -13,30 +13,30 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-      <Route 
-          path='/signin' 
-          element={<Auth />} 
-        />
-        <Route 
-          path='/' 
-          element={<Home />} 
-        />
-        <Route 
-          path='/search' 
-          element={<Search />} 
-        />
-        <Route 
-          path='/products' 
-          element={<Products />} 
-        />
-        <Route 
-          path='/products/:id' 
-          element={<Product />} 
-        />
-        <Route 
-          path='/cart' 
-          element={<ShoppingCart />} 
-        />
+          <Route 
+              path='/signin' 
+              element={<Auth />} 
+            />
+            <Route 
+              path='/' 
+              element={<Home />} 
+            />
+            <Route 
+              path='/search' 
+              element={<Search />} 
+            />
+            <Route 
+              path='/products' 
+              element={<Products />} 
+            />
+            <Route 
+              path='/products/:id' 
+              element={<Product />} 
+            />
+            <Route 
+              path='/cart' 
+              element={<ShoppingCart />} 
+            />
       </Routes>
     </BrowserRouter>
   )

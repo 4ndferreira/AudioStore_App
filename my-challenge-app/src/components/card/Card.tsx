@@ -4,6 +4,7 @@ import classes from './Card.module.css'
 const Card = (props: {
   name: string,
   price: string,
+  rating: string,
   showReview: boolean 
 }) => {
   return (
@@ -11,11 +12,13 @@ const Card = (props: {
       <img src="/img/image5.png" alt="" />
       <div>
         <h4>{props.name}</h4>
-        <p className={classes.cardContainerText}>{props.price}</p>
+        <p className={classes.cardContainerText}>
+          USD {props.price.replace('$','')}
+        </p>
       </div>
       {props.showReview && 
       <div className={classes.cardReview}>
-        <LinkViewMore />
+        <LinkViewMore rating={props.rating} />
       </div>}
     </div>
   )

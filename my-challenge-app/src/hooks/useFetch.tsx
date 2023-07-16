@@ -3,8 +3,9 @@ import { useEffect, useState } from "react";
 
 export interface Data {
   price: string; 
-  id: number,
-  name: string 
+  id: number;
+  name: string; 
+  rating: string
 }
 
 export const useFetch = (url: string) => {

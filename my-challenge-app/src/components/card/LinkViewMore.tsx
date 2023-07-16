@@ -1,12 +1,12 @@
 import IconStarFilled from "../starRating/IconStarFilled";
 import IconMoreVertical from "./IconMoreVertical";
 
-const LinkViewMore = () => {
+const LinkViewMore = (props: { rating: string }) => {
   return (
     <>
       <div>
         <IconStarFilled />
-        <p>4.6</p>
+        <p>{props.rating}</p>
         <p>Reviews</p>
       </div>
       <IconMoreVertical />

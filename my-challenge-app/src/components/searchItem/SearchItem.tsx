@@ -2,28 +2,33 @@ import LinkViewMore from '../card/LinkViewMore';
 import Counter from '../counter/Counter';
 import classes from './SearchItem.module.css'
 
-const SearchItem = (props: {isShoppingCart: boolean}) => {
+const SearchItem = (props: {
+  name: string;
+  price: string;
+  rating: string;
+  isShoppingCart: boolean
+}) => {
   return (
-    <div className={classes.container}>
+    <li className={classes.container}>
       <div className={classes.itemImageContainer}>
         <img src="/img/image5.png" alt="" />
       </div>
       <div className={classes.itemTextContainer}>
-        <h4>TMA-2 Comfort Wireless</h4>
+        <h4>{props.name}</h4>
         <ul>
-          <li>USD 270</li>
+          <li>USD {props.price.replace('$','')}</li>
           {props.isShoppingCart ? (
             <li>
               <Counter />
             </li>
           ) : (
             <li className={classes.itemReview}>
-              <LinkViewMore />
+              <LinkViewMore rating={props.rating} />
             </li>
           )}
         </ul>
       </div>
-    </div>
+    </li>
   );
 }
 

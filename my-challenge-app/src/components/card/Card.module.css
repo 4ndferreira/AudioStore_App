@@ -16,6 +16,7 @@
 }
 
 .cardContainer h4 {
+  height: 3.375rem;
   font-size: 0.875rem;
   font-weight: 400;
   line-height: normal;

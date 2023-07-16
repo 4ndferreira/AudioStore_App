@@ -1,14 +1,21 @@
 import { ChangeEvent, useState } from "react";
+//Components
 import NavBar from "../../components/navBar/NavBar";
-import Review from "../../components/review/Review";
 import SearchItem from "../../components/searchItem/SearchItem"
-import SortBy from "../../components/sortBy/SortBy";
 import Input from "../../components/input/Input";
 import SearchIcon from "../../components/labelInput/SearchIcon";
+//Hook
+import { useFetch } from "../../hooks/useFetch";
+//CSS
 import classes from "./Search.module.css"
 
 const Search = () => {
   const [value, setValue ] = useState ('')
+  const { data } = useFetch('https://run.mocky.io/v3/534d1f3e-406e-4564-a506-7e2718fdb0bc');
+
+  const filteredData = data?.filter((item) => 
+    item.name.toLowerCase().includes(value.toLowerCase())
+  );
 
   const handleOnInput = (
     e: ChangeEvent<HTMLInputElement>
@@ -16,24 +23,61 @@ const Search = () => {
     const newValue = e.target.value;
     setValue(newValue);
   };
+
   return (
     <div>
-      <NavBar />
+      <NavBar link="/" link2="/cart" />
       <div className={classes.wrapper}>
-        <Input 
-          id={'searchBar'} 
-          type={'text'}      
-          name={'Search headphone'}
+        <Input
+          id={"searchBar"}
+          type={"text"}
+          name={"Search headphone"}
           element={<SearchIcon />}
           value={value}
-          onInput={handleOnInput} 
+          onInput={handleOnInput}
         />
       </div>
-      <SearchItem 
-        isShoppingCart={false} 
-      />
-      <SortBy />
-      <Review />
+      {value && (
+        <ul className={classes.listItems}>
+          {filteredData && 
+          filteredData.length > 0 ? (
+            filteredData.map((item) => (
+              <SearchItem
+                key={item.id}
+                name={item.name}
+                price={item.price}
+                rating={item.rating}
+                isShoppingCart={false}
+              />
+            ))
+          ) : (
+            <p className={classes.text}>
+              No Products Found!
+            </p>
+          )}
+        </ul>
+      )}
+      <h2 className={classes.text}>Popular Product</h2>
+      <ul className={classes.listItems}>
+        <SearchItem
+          name={"TMA-2 Comfort Wireless"}
+          price={"USD 270"}
+          rating={"4.6"}
+          isShoppingCart={false}
+        />
+        <SearchItem
+          name={"TMA-2 DJ"}
+          price={"USD 270"}
+          rating={"4.6"}
+          isShoppingCart={false}
+        />
+        <SearchItem
+          name={"TMA-2 Move Wireless"}
+          price={"USD 270"}
+          rating={"4.6"}
+          isShoppingCart={false}
+        />
+      </ul>
     </div>
   );
 }
