@@ -17,6 +17,14 @@ const Home = () => {
   const [ value, setValue ] = useState('')
   const { data, loading, error } = useFetch('https://run.mocky.io/v3/534d1f3e-406e-4564-a506-7e2718fdb0bc');
 
+  const [ filterSelected, setFilterSelected] = useState ('')
+
+  const handleSelectChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target
+    setFilterSelected(value)
+    console.log(value)
+  }
+
   const handleOnInput = (
     e: ChangeEvent<HTMLInputElement>
   ) => {
@@ -47,7 +55,10 @@ const Home = () => {
         </div>
       </NavLink>
       <section className={classes.showcase}>
-        <Categories/>
+        <Categories 
+          filterSelected={filterSelected} 
+          onChange={handleSelectChange}
+        />
         <Splide options={{
           autoWidth: true, 
           arrows: false, 

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { ChangeEventHandler } from 'react'
 
 interface Label {
   id: string,
@@ -6,27 +6,29 @@ interface Label {
   group: string
 }
 
-const SelectorLabel: React.FC<Label> = ({ id, name, group }) => {
-  const [isSelected, setIsSelected] = useState('')
-
-  const handleCheck = () => {
-    setIsSelected(name)
-  }
+const SelectorLabel = (props: {
+  id: string; 
+  checked: boolean;
+  name: string; 
+  group: string; 
+  onChange: ChangeEventHandler<HTMLInputElement>; 
+}) => {
 
   return (
     <>
       <input 
         type='radio'
-        id={id}
-        name={group}
-        value={isSelected}
-        radioGroup ={group}
-        onChange={handleCheck}
+        id={props.id}
+        name={props.group}
+        value={props.name}
+        checked={props.checked}
+        radioGroup ={props.group}
+        onChange={props.onChange}
       />
       <label 
-        htmlFor={id} 
+        htmlFor={props.id} 
       >
-        {name}
+        {props.name}
       </label>
     </>
   )
