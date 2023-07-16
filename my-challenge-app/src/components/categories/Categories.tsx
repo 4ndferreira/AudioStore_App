@@ -32,6 +32,10 @@ const Categories = (props: {
     { 
       id: 'cable', 
       label: 'Cable' 
+    }, 
+    { 
+      id: 'headset', 
+      label: 'Headset' 
     },
   ]
 

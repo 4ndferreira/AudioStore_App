@@ -14,7 +14,6 @@ import '../../../node_modules/@splidejs/react-splide/dist/css/splide.min.css'
 import classes from './Home.module.css'
 
 const Home = () => {
-  const [ value, setValue ] = useState('')
   const { data, loading, error } = useFetch('https://run.mocky.io/v3/534d1f3e-406e-4564-a506-7e2718fdb0bc');
 
   const [ filterSelected, setFilterSelected] = useState ('')
@@ -22,15 +21,11 @@ const Home = () => {
   const handleSelectChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target
     setFilterSelected(value)
-    console.log(value)
   }
 
-  const handleOnInput = (
-    e: ChangeEvent<HTMLInputElement>
-  ) => {
-    const newValue = e.target.value;
-    setValue(newValue);
-  };
+  const filteredData = data?.filter((item) => 
+    item.category.includes(filterSelected)
+  );
 
   return (
     <>
@@ -49,8 +44,8 @@ const Home = () => {
             type={'text'}
             name={'Search headphone'}
             element={<SearchIcon />}
-            value={value}
-            onInput={handleOnInput}       
+            value={''}
+            onInput={undefined}       
           />
         </div>
       </NavLink>
@@ -65,7 +60,7 @@ const Home = () => {
           pagination: false, 
           gap:'0.94rem',
         }}>
-          {data && data.map((item) => (
+          {filteredData && filteredData.map((item) => (
             <SplideSlide key={item.id}>
               <Banner 
                 key={item.id} 
@@ -86,7 +81,7 @@ const Home = () => {
           pagination: false, 
           gap:'0.94rem',
         }}>
-          {data && data.map((item) => (
+          {filteredData && filteredData.map((item) => (
             <SplideSlide key={item.id}>
               <Card 
                 key={item.id}

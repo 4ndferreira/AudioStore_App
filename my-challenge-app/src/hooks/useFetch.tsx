@@ -5,6 +5,7 @@ export interface Data {
   price: string; 
   id: number;
   name: string; 
+  category: string;
   rating: string
 }
 
