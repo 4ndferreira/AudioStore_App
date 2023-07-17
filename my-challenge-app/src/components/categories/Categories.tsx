@@ -1,5 +1,5 @@
 
-import { ChangeEvent, ChangeEventHandler, useState } from 'react'
+import { ChangeEventHandler } from 'react'
 import { Splide, SplideSlide } from '../../../node_modules/@splidejs/react-splide'
 import '../../../node_modules/@splidejs/react-splide/dist/css/splide.min.css'
 import SelectorLabel from '../selectorLabel/SelectorLabel'

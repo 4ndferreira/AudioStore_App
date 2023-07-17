@@ -84,11 +84,12 @@ const Home = () => {
           {filteredData && filteredData.map((item) => (
             <SplideSlide key={item.id}>
               <Card 
+                id={item.id}
                 key={item.id}
                 name={item.name}
                 price={item.price}
                 rating={item.rating}
-                showReview={false} 
+                showReview={false}              
               />
             </SplideSlide>
           ))} 

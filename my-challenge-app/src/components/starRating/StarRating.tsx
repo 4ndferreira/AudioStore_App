@@ -2,8 +2,8 @@ import IconStarFilled from "./IconStarFilled";
 import IconStarOutlined from "./IconStarOutlined";
 import classes from './StarRating.module.css'
 
-const StarRating = () => {
-  const rating = 3;
+const StarRating = (props: { rating: number; }) => {
+  const rating = props.rating;
   return (
     <div className={classes.wrapper}>
       {[...Array(5)].map((star, index) => {

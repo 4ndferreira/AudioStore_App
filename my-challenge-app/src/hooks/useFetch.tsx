@@ -3,11 +3,19 @@ import { useEffect, useState } from "react";
 
 export interface Data {
   rating: number;
-  name: string; 
   price: string; 
+  name: string; 
+  description: string;
   category: string;
   created_at: string;
-  reviews: number[];
+  reviews: [
+    {
+      id: number;
+      user: string,
+      description: string,
+      rating: number,
+    }
+  ];
   id: number;
 }
 

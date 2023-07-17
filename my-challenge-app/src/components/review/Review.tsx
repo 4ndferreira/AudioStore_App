@@ -1,21 +1,26 @@
 import StarRating from '../starRating/StarRating'
 import classes from './Review.module.css'
 
-const Review = () => {
+const Review = (props: {
+  user: string; 
+  description: string 
+  rating: number;
+}) => {
   return (
-    <div className={classes.wrapper}>
+    <li className={classes.wrapper}>
       <div className={classes.userInfo}>
         <img src='/public/img/ellipse10.png' alt='' />
         <div className={classes.userInfoText}>
-          <h4>Madelina</h4>
-          <StarRating />
+          <h4>{props.user}</h4>
+          <StarRating 
+            rating={props.rating} 
+          />
         </div>
       </div>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
+        {props.description}
       </p>
-    </div>
+    </li>
   );
 }
 

@@ -102,6 +102,7 @@ const Products = () => {
         {sortedData
           ? sortedData.map((item) => (
               <Card
+                id={item.id}
                 key={item.id}
                 name={item.name}
                 price={item.price}
@@ -112,6 +113,7 @@ const Products = () => {
           : data &&
             data.map((item) => (
               <Card
+                id={item.id}
                 key={item.id}
                 name={item.name}
                 price={item.price}
