@@ -1,6 +1,6 @@
 //Hook
 import { ChangeEvent, useState } from 'react'
-import { useFetch } from '../../hooks/useFetch'
+import { Data, useFetch } from '../../hooks/useFetch'
 //Components
 import Button from '../../components/button/Button'
 import NavBar from '../../components/navBar/NavBar'
@@ -21,9 +21,15 @@ const Products = () => {
   const [open, setOpen] = useState(false) 
   const [ filterCategory, setFilterCategory] = useState ('')
   const [ selectSortBy, setSelectSortBy] = useState ('')
-
+  const [ sortedData, setSortedData] = useState<Data[] | undefined> (undefined)
+  
   const openFilter = () => {
-    setOpen(true)
+    setOpen(!open)
+  }
+
+  const handleCloseFilter = (e: { preventDefault: () => void }) => {
+    e.preventDefault()
+    setOpen(false)
   }
 
   const handleSelectCategory = (e: ChangeEvent<HTMLInputElement>) => {
@@ -38,78 +44,113 @@ const Products = () => {
   }
   console.log(selectSortBy)
 
-  const filteredData = data?.filter((item) => 
-    item.category.includes(filterCategory)
-  );
-
-  const handleFilters = () => {
-    selectSortBy === 'Review' && data?.sort((a,b)=>b.rating - a.rating)
-    console.log(data)
-  } 
   
+  const handleSortBy = (e: { preventDefault: () => void }) => {
+    e.preventDefault()
+    const filteredData = data?.filter((item) => 
+      item.category.includes(filterCategory)
+    );
+    
+    selectSortBy === 'Popularity' &&
+    filteredData?.sort((a, b) => b.reviews.length - a.reviews.length);
+
+    selectSortBy === 'Newest' &&
+    filteredData?.sort(
+        (a, b) =>
+          new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+      );
+
+    selectSortBy === 'Oldest' &&
+    filteredData?.sort(
+        (a, b) =>
+          new Date(a.created_at).getTime() - new Date(b.created_at).getTime()
+      );
+
+    selectSortBy === 'High Price' &&
+    filteredData?.sort(
+        (a, b) =>
+          parseFloat(b.price.replace("$", "")) -
+          parseFloat(a.price.replace("$", ""))
+      );
+
+    selectSortBy === 'Low Price' &&
+    filteredData?.sort(
+        (a, b) =>
+          parseFloat(a.price.replace("$", "")) -
+          parseFloat(b.price.replace("$", ""))
+      );
+
+    selectSortBy === 'Review' && filteredData?.sort((a, b) => b.rating - a.rating);
+    
+    setSortedData(filteredData)
+    setOpen(!open)
+  }
+  
+  console.log(sortedData)
+
   return (
     <>
-      <NavBar 
-        link='/'
-        link2='/card' 
-        title={''}      
-      />
+      <NavBar link="/" link2="/card" title={""} />
       <h2 className={classes.title}>
-        <p className={classes.titleSmall}>
-          Featured products
-        </p>
-        <p className={classes.titleBig}>
-          See all Products
-        </p>
+        <p className={classes.titleSmall}>Featured products</p>
+        <p className={classes.titleBig}>See all Products</p>
       </h2>
       <div className={classes.wrapper}>
-        <Button 
-          type="button" 
-          name={<IconSliders />} 
-          onClick={openFilter} 
-        />
+        <Button type="button" name={<IconSliders />} onClick={openFilter} />
       </div>
       <section className={classes.showcase}>
-        {filteredData && filteredData.map((item) => (
-          <Card 
-            key={item.id}
-            name={item.name}
-            price={item.price}
-            rating={item.rating}
-            showReview={true} 
-          />
-        ))} 
+        {sortedData
+          ? sortedData.map((item) => (
+              <Card
+                key={item.id}
+                name={item.name}
+                price={item.price}
+                rating={item.rating}
+                showReview={true}
+              />
+            ))
+          : data &&
+            data.map((item) => (
+              <Card
+                key={item.id}
+                name={item.name}
+                price={item.price}
+                rating={item.rating}
+                showReview={true}
+              />
+            ))}
       </section>
       <BottomSheet open={open}>
-        <div className={classes.filterContainer}>
+        <form className={classes.filterContainer}>
           <div className={classes.filterTitle}>
             <h2>Filter</h2>
-            <button className={classes.closeButton}
-              onClick={() => setOpen(false)}
+            <button
+              className={classes.closeButton}
+              onClick={handleCloseFilter}
             >
               <IconClose />
             </button>
           </div>
           <div>
             <h4>Category</h4>
-            <Categories 
-              filterSelected={filterCategory} 
-              onChange={handleSelectCategory} 
+            <Categories
+              filterSelected={filterCategory}
+              onChange={handleSelectCategory}
             />
           </div>
           <div>
             <h4>Sort By</h4>
-            <SortBy 
-              filterSelected={selectSortBy} 
-              onChange={handleSelectSortBy} 
+            <SortBy
+              filterSelected={selectSortBy}
+              onChange={handleSelectSortBy}
             />
           </div>
-          <Button 
-            type={'button'} 
-            onClick={handleFilters} 
-            name={'Apply Filter'} 
+          <Button
+            type={"submit"}
+            onClick={handleSortBy}
+            name={"Apply Filter"}
           />
-        </div>
+        </form>
       </BottomSheet>
     </>
   );

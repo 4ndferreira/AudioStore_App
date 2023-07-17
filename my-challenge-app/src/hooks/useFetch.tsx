@@ -2,15 +2,17 @@ import axios, { AxiosResponse } from "axios";
 import { useEffect, useState } from "react";
 
 export interface Data {
-  price: string; 
-  id: number;
+  rating: number;
   name: string; 
+  price: string; 
   category: string;
-  rating: number
+  created_at: string;
+  reviews: number[];
+  id: number;
 }
 
 export const useFetch = (url: string) => {
-  const [data, setData] = useState<Data[] | null>(null);
+  const [data, setData] = useState<Data[] | undefined>(undefined);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [isMounted, setIsMounted] = useState(true);
