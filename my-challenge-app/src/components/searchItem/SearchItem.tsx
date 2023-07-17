@@ -5,7 +5,7 @@ import classes from './SearchItem.module.css'
 const SearchItem = (props: {
   name: string;
   price: string;
-  rating: string;
+  rating: number;
   isShoppingCart: boolean
 }) => {
   return (

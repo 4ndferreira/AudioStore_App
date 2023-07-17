@@ -6,7 +6,7 @@ export interface Data {
   id: number;
   name: string; 
   category: string;
-  rating: string
+  rating: number
 }
 
 export const useFetch = (url: string) => {

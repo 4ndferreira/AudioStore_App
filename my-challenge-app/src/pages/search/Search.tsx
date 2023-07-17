@@ -26,7 +26,11 @@ const Search = () => {
 
   return (
     <div>
-      <NavBar link="/" link2="/cart" />
+      <NavBar 
+        link='/'
+        link2='/cart '
+        title={'Search'} 
+      />
       <div className={classes.wrapper}>
         <Input
           id={"searchBar"}
@@ -62,19 +66,19 @@ const Search = () => {
         <SearchItem
           name={"TMA-2 Comfort Wireless"}
           price={"USD 270"}
-          rating={"4.6"}
+          rating={4.6}
           isShoppingCart={false}
         />
         <SearchItem
           name={"TMA-2 DJ"}
           price={"USD 270"}
-          rating={"4.6"}
+          rating={4.6}
           isShoppingCart={false}
         />
         <SearchItem
           name={"TMA-2 Move Wireless"}
           price={"USD 270"}
-          rating={"4.6"}
+          rating={4.6}
           isShoppingCart={false}
         />
       </ul>

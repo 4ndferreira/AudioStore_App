@@ -4,7 +4,7 @@ import classes from './Card.module.css'
 const Card = (props: {
   name: string,
   price: string,
-  rating: string,
+  rating: number,
   showReview: boolean 
 }) => {
   return (

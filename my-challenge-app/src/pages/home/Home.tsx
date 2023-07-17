@@ -16,15 +16,15 @@ import classes from './Home.module.css'
 const Home = () => {
   const { data, loading, error } = useFetch('https://run.mocky.io/v3/534d1f3e-406e-4564-a506-7e2718fdb0bc');
 
-  const [ filterSelected, setFilterSelected] = useState ('')
+  const [ filterCategory, setFilterCategory] = useState ('')
 
   const handleSelectChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target
-    setFilterSelected(value)
+    setFilterCategory(value)
   }
 
   const filteredData = data?.filter((item) => 
-    item.category.includes(filterSelected)
+    item.category.includes(filterCategory)
   );
 
   return (
@@ -51,7 +51,7 @@ const Home = () => {
       </NavLink>
       <section className={classes.showcase}>
         <Categories 
-          filterSelected={filterSelected} 
+          filterSelected={filterCategory} 
           onChange={handleSelectChange}
         />
         <Splide options={{

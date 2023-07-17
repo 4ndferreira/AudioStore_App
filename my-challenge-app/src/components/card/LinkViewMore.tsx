@@ -1,7 +1,7 @@
 import IconStarFilled from "../starRating/IconStarFilled";
 import IconMoreVertical from "./IconMoreVertical";
 
-const LinkViewMore = (props: { rating: string }) => {
+const LinkViewMore = (props: { rating: number }) => {
   return (
     <>
       <div>

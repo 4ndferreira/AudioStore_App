@@ -35,3 +35,47 @@
   letter-spacing: 0.0125rem;
   margin: 0;
 }
+
+.showcase {
+  background-color: var(--colorGreyLight1);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  
+  min-height: 37.659rem;
+  border-radius: 1.875rem 1.875rem 0rem 0rem;
+  box-sizing: border-box;
+  margin-top: 2.31rem;
+  padding: 1.5rem;
+  gap: 0.94rem;
+}
+
+.filterContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  gap: 2.19rem;
+}
+
+.filterContainer h2 {
+  font-family: Montserrat;
+  letter-spacing: 0.0125rem;
+  margin: 0;
+}
+
+.filterContainer h4 {
+  margin-bottom: 0.62rem
+}
+
+.filterTitle{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.closeButton {
+  display: flex;
+  align-items: center;
+  border: none;
+  background-color: transparent;
+}
