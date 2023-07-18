@@ -30,6 +30,7 @@ const Search = () => {
         link='/'
         link2='/cart '
         title={'Search'} 
+        isShoppingCart={false}      
       />
       <div className={classes.wrapper}>
         <Input

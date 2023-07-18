@@ -1,5 +1,5 @@
 //Hooks
-import { ChangeEvent, MouseEventHandler, useState } from "react";
+import { ChangeEvent, MouseEventHandler, useContext, useState } from "react";
 import { useFetch } from "../../hooks/useFetch";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { Splide, SplideSlide } from '../../../node_modules/@splidejs/react-splide'
@@ -8,6 +8,7 @@ import NavBar from "../../components/navBar/NavBar";
 import DetailsToggle from "../../components/detailsToggle/DetailsToggle";
 import Review from "../../components/review/Review";
 import Card from "../../components/card/Card";
+import { CardContext } from "../../components/CartProvider";
 //CSS
 import classes from './Product.module.css'
 import '../../../node_modules/@splidejs/react-splide/dist/css/splide.min.css'
@@ -16,7 +17,11 @@ import Button from "../../components/button/Button";
 const Product = () => {
   const { data, loading, error } = useFetch('https://run.mocky.io/v3/534d1f3e-406e-4564-a506-7e2718fdb0bc');
   const [ detailsToggle, setDetailsToggle] = useState ('Overview')
+
   const { id } = useParams();
+
+  const { addToCart } = useContext(CardContext)
+
   const navigate = useNavigate();
 
   if(loading) {
@@ -33,7 +38,8 @@ const Product = () => {
   }
 
   const handleClick = () => {
-    throw new Error("Function not implemented.");
+    addToCart(item)
+    navigate('/cart');
   } 
 
   if(!item) {
@@ -43,9 +49,10 @@ const Product = () => {
   if(item) return (
     <div>
       <NavBar 
-        link="/" 
-        link2="/cart" 
+        link="/"
+        link2="/cart"
         title={""} 
+        isShoppingCart={false}      
       />
       <div className={classes.textWrapper}>
         <p className={classes.textPrice}>USD {item.price.replace("$", "")}</p>
