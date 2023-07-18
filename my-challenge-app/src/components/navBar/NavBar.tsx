@@ -8,8 +8,9 @@ const NavBar = (props: {
   link: To,
   link2: To, 
   title: string
+  isShoppingCart: boolean
 }) => {
-  const isShoppingCart = false;
+  const isShoppingCart = props.isShoppingCart;
   return (
     <nav className={classes.wrapper}>
       <NavLink to={props.link}>

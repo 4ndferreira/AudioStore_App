@@ -1,0 +1,11 @@
+.wrapperButton p {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  font-size: 0.875rem;
+}
+
+.wrapperButton button{
+  padding: 0 1.88rem;
+}
