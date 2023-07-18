@@ -38,7 +38,10 @@ const Count = () => {
           type='button'
           onClick={() => setCount(0)}
         >
-          <IconTrash />
+          <IconTrash 
+            iconWidth={'20'} 
+            iconHeight={'20'} 
+          />
         </button>
     </div>
   );

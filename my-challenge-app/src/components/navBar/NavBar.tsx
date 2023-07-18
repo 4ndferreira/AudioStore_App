@@ -19,7 +19,10 @@ const NavBar = (props: {
       <p className={classes.navTitle}>{props.title}</p>
       <NavLink to={props.link2}>
         {isShoppingCart ? 
-        <IconTrash /> :
+        <IconTrash 
+          iconWidth={'24'} 
+          iconHeight={'24'} 
+        /> :
         <IconShoppingCart />}
       </NavLink>
     </nav>
