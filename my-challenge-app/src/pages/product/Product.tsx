@@ -1,5 +1,5 @@
 //Hooks
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, MouseEventHandler, useState } from "react";
 import { useFetch } from "../../hooks/useFetch";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { Splide, SplideSlide } from '../../../node_modules/@splidejs/react-splide'
@@ -11,6 +11,7 @@ import Card from "../../components/card/Card";
 //CSS
 import classes from './Product.module.css'
 import '../../../node_modules/@splidejs/react-splide/dist/css/splide.min.css'
+import Button from "../../components/button/Button";
 
 const Product = () => {
   const { data, loading, error } = useFetch('https://run.mocky.io/v3/534d1f3e-406e-4564-a506-7e2718fdb0bc');
@@ -30,6 +31,10 @@ const Product = () => {
     const { value } = e.target
     setDetailsToggle(value)
   }
+
+  const handleClick = () => {
+    throw new Error("Function not implemented.");
+  } 
 
   if(!item) {
     return <p>No product found</p>
@@ -69,36 +74,47 @@ const Product = () => {
                 />
             ))}
           </ul>
-          <div>
-            <h4>Another Product</h4>
-            <NavLink to="/products">See All</NavLink>
-          </div>
-          <Splide
-            options={{
-              autoWidth: true,
-              arrows: false,
-              pagination: false,
-              gap: "0.94rem",
-            }}
-          >
-            {data &&
-              data.map((item) => (
-                <SplideSlide key={item.id}>
-                  <Card
-                    id={item.id}
-                    key={item.id}
-                    name={item.name}
-                    price={item.price}
-                    rating={item.rating}
-                    showReview={false}
-                  />
-                </SplideSlide>
-              ))}
-          </Splide>
+          <section className={classes.sectionBackground}>
+            <div className={classes.textLink}>
+              <h4 >Another Product</h4>
+              <NavLink to="/products">See All</NavLink>
+            </div>
+            <Splide
+              options={{
+                autoWidth: true,
+                arrows: false,
+                pagination: false,
+                gap: "0.94rem",
+              }}
+            >
+              {data &&
+                data.map((item) => (
+                  <SplideSlide key={item.id}>
+                    <Card
+                      id={item.id}
+                      key={item.id}
+                      name={item.name}
+                      price={item.price}
+                      rating={item.rating}
+                      showReview={false}
+                    />
+                  </SplideSlide>
+                ))}
+            </Splide>
+          </section>
         </>
       ) : (
-        <p>{item.description}</p>
+        <p className={classes.textDescription}>
+          {item.description}
+        </p>
       )}
+      <div className={classes.wrapperButton}>
+        <Button 
+          type={"button"} 
+          onClick={handleClick} 
+          name={"Add To Cart"} 
+        />
+      </div>
     </div>
   );
 }
