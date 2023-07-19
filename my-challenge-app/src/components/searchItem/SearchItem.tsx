@@ -3,6 +3,8 @@ import Counter from '../counter/Counter';
 import classes from './SearchItem.module.css'
 
 const SearchItem = (props: {
+  itemId: number;
+  count: number;
   name: string;
   price: string;
   rating: number;
@@ -19,7 +21,10 @@ const SearchItem = (props: {
           <li>USD {props.price.replace('$','')}</li>
           {props.isShoppingCart ? (
             <li>
-              <Counter />
+              <Counter 
+                count={props.count} 
+                itemId={props.itemId}           
+              />
             </li>
           ) : (
             <li className={classes.itemReview}>
