@@ -90,7 +90,13 @@ const Products = () => {
 
   return (
     <>
-      <NavBar link="/" link2="/card" title={""} />
+      <NavBar 
+        link="/"
+        link2="/cart"
+        title={""}
+        isShoppingCart={false} 
+        onClick={undefined}      
+      />
       <h2 className={classes.title}>
         <p className={classes.titleSmall}>Featured products</p>
         <p className={classes.titleBig}>See all Products</p>

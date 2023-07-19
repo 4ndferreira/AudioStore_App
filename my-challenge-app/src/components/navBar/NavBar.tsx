@@ -1,3 +1,4 @@
+import { MouseEventHandler } from 'react'
 import { NavLink, To } from 'react-router-dom'
 import ChevronLeft from './ChevronLeft'
 import IconTrash from './IconTrash'
@@ -7,6 +8,7 @@ import classes from './NavBar.module.css'
 const NavBar = (props: {
   link: To,
   link2: To, 
+  onClick: MouseEventHandler<HTMLAnchorElement> | undefined
   title: string
   isShoppingCart: boolean
 }) => {
@@ -17,7 +19,10 @@ const NavBar = (props: {
         <ChevronLeft />
       </NavLink>
       <p className={classes.navTitle}>{props.title}</p>
-      <NavLink to={props.link2}>
+      <NavLink 
+        to={props.link2} 
+        onClick={props.onClick}
+      >
         {isShoppingCart ? 
         <IconTrash 
           iconWidth={'24'} 
