@@ -1,13 +1,13 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-
+//Components
 import Auth from './pages/auth/Auth'
 import Home from './pages/home/Home'
 import Search from './pages/search/Search'
 import Products from './pages/products/Products'
 import Product from './pages/product/Product'
 import ShoppingCart from './pages/shoppingCart/ShoppingCart'
-import CartProvider from './components/CartProvider'
-
+import CartProvider from './components/store/CartProvider'
+//CSS
 import './App.css'
 
 const App = () => {

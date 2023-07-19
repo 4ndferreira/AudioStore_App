@@ -1,17 +1,31 @@
-import { useState } from "react";
+//Hooks
+import { useContext, useRef } from "react";
+//Components
 import IconMinus from "./IconMinus";
 import IconPlus from "./IconPlus";
 import IconTrash from "../navBar/IconTrash";
+import { CartContext } from "../store/CartContext";
+//CSS
 import classes from './Counter.module.css'
 
-const Count = () => {
-  const [count, setCount] = useState(1)
+const Count = (props: {
+  itemId: number;
+  count: number; 
+}) => {
+  const { increaseCartItem, decreaseCartItem, removeFromCart } = useContext(CartContext)
+  const counterRef = useRef(props.count)
 
   const handleIncrease = () => {
-    setCount(count => count + 1)
+    increaseCartItem(props.itemId)
+    counterRef.current = (props.count + 1)
   }
   const handleDecrease = () => {
-    count > 1 && setCount(count => count - 1)
+    decreaseCartItem(props.itemId)
+    counterRef.current = (props.count - 1)
+  }
+
+  const handleDelete = () => {
+    removeFromCart(props.itemId)
   }
 
   return (
@@ -24,7 +38,7 @@ const Count = () => {
         >
           <IconMinus />
         </button>
-        <p>{count}</p>
+        <p>{counterRef.current}</p>
         <button
           className={classes.button}
           type='button'
@@ -36,7 +50,7 @@ const Count = () => {
         <button 
           className={classes.buttonDelete}
           type='button'
-          onClick={() => setCount(0)}
+          onClick={handleDelete}
         >
           <IconTrash 
             iconWidth={'20'} 
@@ -48,3 +62,7 @@ const Count = () => {
 }
 
 export default Count
+
+
+
+

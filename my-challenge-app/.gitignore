@@ -24,3 +24,5 @@ dist-ssr
 *.sw?
 
 .env
+
+store_v2

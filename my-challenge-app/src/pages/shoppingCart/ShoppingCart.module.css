@@ -1,3 +1,9 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}
 .wrapperButton p {
   display: flex;
   justify-content: space-between;
@@ -8,4 +14,39 @@
 
 .wrapperButton button{
   padding: 0 1.88rem;
+  margin-bottom: 1.88rem;
+}
+
+.cartItemsList {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 0 1.5rem;
+  margin: 2.06rem auto;
+  gap: 2.19rem;
+  flex-grow: 1;
+}
+
+.wrapperText {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 20.375rem;
+  padding: 0 1.5rem;
+  margin: 0 auto;
+}
+
+.textTotal {
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.25rem;
+  letter-spacing: 0.0125rem;
+}
+
+.textPrice {
+  text-align: right;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.25rem;
+  letter-spacing: 0.0125rem;
 }

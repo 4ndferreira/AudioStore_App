@@ -1,5 +1,5 @@
 //Hooks
-import { ChangeEvent, MouseEventHandler, useContext, useState } from "react";
+import { ChangeEvent, useContext, useState } from "react";
 import { useFetch } from "../../hooks/useFetch";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { Splide, SplideSlide } from '../../../node_modules/@splidejs/react-splide'
@@ -8,19 +8,19 @@ import NavBar from "../../components/navBar/NavBar";
 import DetailsToggle from "../../components/detailsToggle/DetailsToggle";
 import Review from "../../components/review/Review";
 import Card from "../../components/card/Card";
-import { CardContext } from "../../components/CartProvider";
+import Button from "../../components/button/Button";
+import { CartContext } from "../../components/store/CartContext";
 //CSS
 import classes from './Product.module.css'
 import '../../../node_modules/@splidejs/react-splide/dist/css/splide.min.css'
-import Button from "../../components/button/Button";
 
 const Product = () => {
-  const { data, loading, error } = useFetch('https://run.mocky.io/v3/534d1f3e-406e-4564-a506-7e2718fdb0bc');
+  const { data, loading } = useFetch('https://run.mocky.io/v3/534d1f3e-406e-4564-a506-7e2718fdb0bc');
   const [ detailsToggle, setDetailsToggle] = useState ('Overview')
 
   const { id } = useParams();
 
-  const { addToCart } = useContext(CardContext)
+  const { addToCart } = useContext(CartContext)
 
   const navigate = useNavigate();
 
@@ -38,7 +38,7 @@ const Product = () => {
   }
 
   const handleClick = () => {
-    addToCart(item)
+    item && addToCart(item)
     navigate('/cart');
   } 
 
@@ -51,8 +51,9 @@ const Product = () => {
       <NavBar 
         link="/"
         link2="/cart"
-        title={""} 
-        isShoppingCart={false}      
+        title={""}
+        isShoppingCart={false} 
+        onClick={undefined}      
       />
       <div className={classes.textWrapper}>
         <p className={classes.textPrice}>USD {item.price.replace("$", "")}</p>
