@@ -9,7 +9,7 @@ import DetailsToggle from "../../components/detailsToggle/DetailsToggle";
 import Review from "../../components/review/Review";
 import Card from "../../components/card/Card";
 import Button from "../../components/button/Button";
-import { CartContext } from "../../components/store/CartContext";
+import { CartContext } from "../../store/CartContext";
 //CSS
 import classes from './Product.module.css'
 import '../../../node_modules/@splidejs/react-splide/dist/css/splide.min.css'

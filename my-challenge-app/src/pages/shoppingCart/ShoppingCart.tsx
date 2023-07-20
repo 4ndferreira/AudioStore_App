@@ -3,7 +3,7 @@ import Button from "../../components/button/Button";
 import ProceedtoCheckout from "../../components/button/ProceedtoCheckout";
 import NavBar from "../../components/navBar/NavBar";
 import SearchItem from "../../components/searchItem/SearchItem";
-import { CartContext } from "../../components/store/CartContext";
+import { CartContext } from "../../store/CartContext";
 //CSS
 import classes from "./ShoppingCart.module.css";
 
