@@ -8,8 +8,6 @@
 .itemImageContainer {
   display: flex;
   justify-content: center;
-  align-content: center;
-  width: 4.6875rem;
   height: 4.6875rem;
   padding: 0.625rem;
 
