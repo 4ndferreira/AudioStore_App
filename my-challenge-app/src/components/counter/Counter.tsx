@@ -4,7 +4,7 @@ import { useContext, useRef } from "react";
 import IconMinus from "./IconMinus";
 import IconPlus from "./IconPlus";
 import IconTrash from "../navBar/IconTrash";
-import { CartContext } from "../store/CartContext";
+import { CartContext } from "../../store/CartContext";
 //CSS
 import classes from './Counter.module.css'
 
@@ -18,10 +18,14 @@ const Count = (props: {
   const handleIncrease = () => {
     increaseCartItem(props.itemId)
     counterRef.current = (props.count + 1)
-  }
+}
   const handleDecrease = () => {
-    decreaseCartItem(props.itemId)
-    counterRef.current = (props.count - 1)
+    if (counterRef.current > 1){
+      decreaseCartItem(props.itemId)
+      counterRef.current = (props.count - 1)
+    }else{
+      removeFromCart(props.itemId)
+    }
   }
 
   const handleDelete = () => {
