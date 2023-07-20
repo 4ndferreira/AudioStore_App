@@ -1,0 +1,74 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  color: var(--colorWhite);
+}
+
+.titleWrapper {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  flex-grow: 1;
+  margin: 9rem 0 0 0;
+}
+
+.titleWrapper small{
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  letter-spacing: 0.0125rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.56rem
+}
+
+.wrapper {
+  position: relative;
+  height: 3.125rem;
+  width: 100%;
+  background-color: var(--colorWhite);
+  border-radius: 0.625rem;
+}
+
+.wrapperButtons {
+  display: flex;
+  gap: 0.94rem;
+  margin-top: 1.06rem;
+  margin-bottom: 1.5rem;
+}
+
+.text {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+.textFooter {
+  margin-top: 0;
+  margin-bottom: 6rem;
+}
+
+.textFooter a {
+  color: var(--colorsPrimary);
+  text-decoration-line: underline;
+}
+
+.picture {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
