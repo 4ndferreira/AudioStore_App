@@ -1,10 +1,11 @@
 import { ChangeEvent, useEffect, useState } from "react"
-import { NavLink } from "react-router-dom"
+import { NavLink, useNavigate } from "react-router-dom"
 import { Splide, SplideSlide } from '../../../node_modules/@splidejs/react-splide'
-import { onAuthStateChanged } from "firebase/auth"
+import { onAuthStateChanged, signOut } from "firebase/auth"
 //Hook
 import { useFetch } from "../../hooks/useFetch"
 // Components
+import Header from "../../components/header/Header"
 import Categories from "../../components/categories/Categories"
 import Banner from "../../components/banner/Banner"
 import Card from "../../components/card/Card"
@@ -17,20 +18,19 @@ import '../../../node_modules/@splidejs/react-splide/dist/css/splide.min.css'
 import classes from './Home.module.css'
 
 const Home = () => {
-  const { data, loading, error } = useFetch('https://run.mocky.io/v3/534d1f3e-406e-4564-a506-7e2718fdb0bc');
-
+  const { data, loading } = useFetch('https://run.mocky.io/v3/534d1f3e-406e-4564-a506-7e2718fdb0bc');
   const [ filterCategory, setFilterCategory] = useState ('')
+  const navigate = useNavigate()
 
-  useEffect(()=>{
-    onAuthStateChanged(auth, (user)=>{
-      if(user) {
-        const uid = user.uid;
-        console.log('uid', uid)
-      }else{
-        console.log('user is logged out')
-      }
-    })
-  })
+  const handleSignOut = () => {
+    signOut(auth).then(() => {
+      console.log('Sign-out successful.')
+      navigate('/')
+    }).catch((error) => {
+      const errorCode = error.code;
+      console.log(errorCode)
+    });
+  }
 
   const handleSelectChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target
@@ -48,6 +48,10 @@ const Home = () => {
   return (
     <>
       <div className={classes.container}>
+        <Header 
+          image={auth.currentUser?.photoURL} 
+          onClick={handleSignOut}        
+        />
         <h3 className={classes.welcomeText}>
           <small className={classes.welcomeTextSmall}>
             Hi, {auth.currentUser?.displayName

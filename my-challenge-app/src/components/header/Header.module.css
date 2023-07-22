@@ -1,0 +1,56 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 20.375rem;
+  position: absolute;
+  top: 0;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 2.9475rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.logo h2 {
+  margin: 0;
+}
+
+.userImg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.1875rem;
+  height: 2.1875rem;
+}
+
+.userImg img {
+  max-width: 100%;
+  object-fit: contain;
+  border-radius: 50%
+}
+
+.menuLogout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 0.45rem;
+  border-top: 1px solid var(--colorsGrey);
+  padding-top: 6px;
+}
+
+.menuLogout p {
+  color: var(--colorsGrey);
+  margin: 0;
+}
