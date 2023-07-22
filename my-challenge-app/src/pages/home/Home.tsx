@@ -1,7 +1,7 @@
-import { ChangeEvent, useEffect, useState } from "react"
+import { ChangeEvent, useState } from "react"
 import { NavLink, useNavigate } from "react-router-dom"
 import { Splide, SplideSlide } from '../../../node_modules/@splidejs/react-splide'
-import { onAuthStateChanged, signOut } from "firebase/auth"
+import { signOut } from "firebase/auth"
 //Hook
 import { useFetch } from "../../hooks/useFetch"
 // Components

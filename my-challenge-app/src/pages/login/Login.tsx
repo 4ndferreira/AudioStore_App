@@ -5,6 +5,9 @@ import {
   FacebookAuthProvider,
   GoogleAuthProvider,
   signInWithPopup,
+  sendPasswordResetEmail,
+  setPersistence,
+  browserSessionPersistence,
 } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
 import { auth } from "../../firebase/Config";
@@ -26,9 +29,14 @@ const Login = () => {
   const [newUser, setNewUser] = useState(false)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [forgotPassword, setForgotPassword] = useState(false)
   const [errorCode, setErrorCode] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
   const navigate = useNavigate();
+
+  async () => {
+    await setPersistence(auth, browserSessionPersistence);
+  };
 
   const handleUser = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -100,29 +108,40 @@ const Login = () => {
     });
   }
   
-    const handleLoginWithFacebook = async (e: { preventDefault: () => void; }) => {
-      e.preventDefault()
-      const provider = new FacebookAuthProvider();
-      await signInWithPopup(auth, provider)
-      .then((result) => {
-        const user = result.user;
-        console.log(user)
-        const credential = FacebookAuthProvider.credentialFromResult(result);
-        const accessToken = credential?.accessToken;
-        navigate("/")
-        console.log(accessToken)
+  const handleLoginWithFacebook = async (e: { preventDefault: () => void; }) => {
+    e.preventDefault()
+    const provider = new FacebookAuthProvider();
+    await signInWithPopup(auth, provider)
+    .then((result) => {
+      const user = result.user;
+      console.log(user)
+      const credential = FacebookAuthProvider.credentialFromResult(result);
+      const accessToken = credential?.accessToken;
+      navigate("/")
+      console.log(accessToken)
+    })
+    .catch((error: FirebaseError) => {
+      const errorCode = error.code;
+      console.log(errorCode)
+      const errorMessage = error.message;
+      console.log(errorMessage)
+      const email = error.customData?.email;
+      console.log(email)
+      const credential = FacebookAuthProvider.credentialFromError(error);
+      console.log(credential)
+    });
+  }
+  const handlePasswordReset = (e: { preventDefault: () => void; }) => {
+    e.preventDefault()
+    sendPasswordResetEmail(auth, email)
+      .then(() => {
+        console.log('Password reset email sent!')
       })
-      .catch((error: FirebaseError) => {
+      .catch((error) => {
         const errorCode = error.code;
-        console.log(errorCode)
         const errorMessage = error.message;
-        console.log(errorMessage)
-        const email = error.customData?.email;
-        console.log(email)
-        const credential = FacebookAuthProvider.credentialFromError(error);
-        console.log(credential)
-      });
-    }
+      })
+  }
 
   return (
     <div className={classes.container}>
@@ -155,6 +174,7 @@ const Login = () => {
               errorMessage}
           </p>
         </div>
+        {(newUser || !forgotPassword) &&
         <div
           className={
             errorCode 
@@ -177,12 +197,17 @@ const Login = () => {
               errorCode === "auth/wrong-password") &&
               errorMessage}
           </p>
-        </div>
-        {!newUser && <p className={classes.text}>Forgot Password</p>}
+        </div>}
+        {!newUser && 
+        <p className={classes.text} 
+          onClick={()=>setForgotPassword(!forgotPassword)}
+        >
+          Forgot Password
+        </p>}
         <Button
           type={"submit"}
-          onClick={handleLogin}
-          name={newUser ? "Sign Up" : "Sign In"}
+          onClick={!forgotPassword ? handleLogin : handlePasswordReset}
+          name={newUser ? "Sign Up" : (!forgotPassword ? "Sign In" : "Send Email")}
         />
         <div className={classes.wrapperButtons}>
           <LoginButtonWithProvider
