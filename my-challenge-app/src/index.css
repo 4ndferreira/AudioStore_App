@@ -10,6 +10,14 @@
   --colorGreyLight1: #F6F6F6;
   --colorWhite: #FFFF;
 
+  --rsbs-backdrop-bg: rgba(0, 0, 0, 0.6);
+  --rsbs-bg: #fff;
+  --rsbs-handle-bg: hsla(0, 0%, 0%, 0.14);
+  --rsbs-max-w: auto;
+  --rsbs-ml: env(safe-area-inset-left);
+  --rsbs-mr: env(safe-area-inset-right);
+  --rsbs-overlay-rounded: 1.88rem;
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -49,4 +57,9 @@ h4 {
   line-height: 1.25rem;
   letter-spacing: 0.0125rem;
   margin: 0;
+}
+
+div {
+  --rsbs-overlay-rounded: 1.88rem;
+  --rsbs-max-w: 100vw;
 }

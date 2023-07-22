@@ -3,6 +3,8 @@
   flex-direction: column;
   justify-content: space-between;
   height: 100vh;
+  grid-column: 3 / 4;
+  grid-row: 1 / 5;
 }
 .wrapperButton p {
   display: flex;
@@ -21,8 +23,8 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding: 0 1.5rem;
-  margin: 2.06rem auto;
+  padding: 0;
+  margin: 2.06rem 0;
   gap: 2.19rem;
   flex-grow: 1;
 }
@@ -31,9 +33,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 20.375rem;
-  padding: 0 1.5rem;
-  margin: 0 auto;
+  width: 100%;
 }
 
 .textTotal {

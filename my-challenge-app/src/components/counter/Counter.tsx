@@ -57,8 +57,9 @@ const Count = (props: {
           onClick={handleDelete}
         >
           <IconTrash 
-            iconWidth={'20'} 
+            iconWidth={'20'}
             iconHeight={'20'} 
+            color={"#7F7F7F"}          
           />
         </button>
     </div>

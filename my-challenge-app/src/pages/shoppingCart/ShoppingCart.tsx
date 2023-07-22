@@ -36,7 +36,7 @@ const ShoppingCart = () => {
             rating={0}
             isShoppingCart={true}
             count={item.count}
-            itemId={item.id}
+            itemId={item.id}         
           />
         ))}
       </ul>

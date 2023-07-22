@@ -25,8 +25,9 @@ const NavBar = (props: {
       >
         {isShoppingCart ? 
         <IconTrash 
-          iconWidth={'24'} 
+          iconWidth={'24'}
           iconHeight={'24'} 
+          color={'#000000'}        
         /> :
         <IconShoppingCart />}
       </NavLink>

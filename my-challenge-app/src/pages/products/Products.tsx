@@ -10,13 +10,13 @@ import Categories from '../../components/categories/Categories'
 import SortBy from '../../components/sortBy/SortBy'
 import IconClose from '../../components/navBar/IconClose'
 import { BottomSheet } from 'react-spring-bottom-sheet-updated'
-
+import Loader from '../../components/loader/Loader'
 //CSS
 import classes from './Products.module.css'
-import '../../../node_modules/react-spring-bottom-sheet-updated/dist/style.css'
+import './style.css'
 
 const Products = () => {
-  const { data, loading, error } = useFetch('https://run.mocky.io/v3/534d1f3e-406e-4564-a506-7e2718fdb0bc');
+  const { data, loading } = useFetch('https://run.mocky.io/v3/534d1f3e-406e-4564-a506-7e2718fdb0bc');
   
   const [open, setOpen] = useState(false) 
   const [ filterCategory, setFilterCategory] = useState ('')
@@ -85,48 +85,55 @@ const Products = () => {
     setSortedData(filteredData)
     setOpen(!open)
   }
-  
-  console.log(sortedData)
+
+  if (loading) {
+    return <Loader />;
+  }
+
 
   return (
     <>
-      <NavBar 
-        link="/"
-        link2="/cart"
-        title={""}
-        isShoppingCart={false} 
-        onClick={undefined}      
-      />
-      <h2 className={classes.title}>
-        <p className={classes.titleSmall}>Featured products</p>
-        <p className={classes.titleBig}>See all Products</p>
-      </h2>
+      <div className={classes.gridTop}>
+        <NavBar 
+          link="/"
+          link2="/cart"
+          title={""}
+          isShoppingCart={false} 
+          onClick={undefined}      
+        />
+        <h2 className={classes.title}>
+          <p className={classes.titleSmall}>Featured products</p>
+          <p className={classes.titleBig}>See all Products</p>
+        </h2>
+      </div>
       <div className={classes.wrapper}>
         <Button type="button" name={<IconSliders />} onClick={openFilter} />
       </div>
       <section className={classes.showcase}>
-        {sortedData
-          ? sortedData.map((item) => (
-              <Card
-                id={item.id}
-                key={item.id}
-                name={item.name}
-                price={item.price}
-                rating={item.rating}
-                showReview={true}
-              />
-            ))
-          : data &&
-            data.map((item) => (
-              <Card
-                id={item.id}
-                key={item.id}
-                name={item.name}
-                price={item.price}
-                rating={item.rating}
-                showReview={true}
-              />
-            ))}
+        <div className={classes.itemsContainer}>
+          {sortedData
+            ? sortedData.map((item) => (
+                <Card
+                  id={item.id}
+                  key={item.id}
+                  name={item.name}
+                  price={item.price}
+                  rating={item.rating}
+                  showReview={true}
+                />
+              ))
+            : data &&
+              data.map((item) => (
+                <Card
+                  id={item.id}
+                  key={item.id}
+                  name={item.name}
+                  price={item.price}
+                  rating={item.rating}
+                  showReview={true}
+                />
+              ))}
+        </div>
       </section>
       <BottomSheet open={open}>
         <form className={classes.filterContainer}>

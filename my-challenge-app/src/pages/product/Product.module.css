@@ -3,9 +3,8 @@
   flex-direction: column;
   justify-content: center;
   gap: 0.38rem;
-  width: 20.4375rem;
-  padding: 1.12rem 1.5rem;
-  margin: 0 auto;
+  width: 100%;
+  padding: 1.12rem 0;
 }
 
 .textPrice {
@@ -27,27 +26,26 @@
 .imageWrapper {
   display: flex;
   flex-direction: column;
-  width: 17.8125rem;
+  width: 100%;
+  box-sizing: border-box;
   padding: 3.27394rem 1.1875rem 3.33238rem 1.1875rem;
-  margin: 1.5rem auto;
+  margin: 1.5rem 0;
 
   border-radius: 0.625rem;
   background: var(--colorGreyLight1);
 }
 
 .textTitleReviews {
-  width: 20.4375rem;
-  padding: 0 1.5rem;
-  margin: 0 auto;
+  width: 100%;
 }
 
 .listReviews {
   display: flex;
   flex-direction: column;
   gap: 1.06rem;
-  width: 20.4375rem;
-  padding: 2.81rem 1.5rem 3.75rem 1.5rem;
-  margin: 0 auto;
+  width: 100%;
+  padding: 2.81rem 0 3.75rem 0;
+  margin: 0;
 }
 
 .textDescription {
@@ -55,14 +53,15 @@
   line-height: 1.375rem;
   min-height: 19.625rem;
   letter-spacing: 0.0125rem;
-  padding: 1.5rem;
-  margin: 0 auto;
+  margin: 0;
+  grid-column: 3 / 4;
+  grid-row: 2 / 3;
 }
 
 .textLink {
   display: flex;
   justify-content: space-between;
-  padding: 0 1.5rem 1.25rem 0;
+  width: 100%;
 }
 
 .textLink a {
@@ -73,14 +72,48 @@
   letter-spacing: 0.0125rem;
 }
 
+.gridTop {
+  grid-column: 3 / 4;
+  grid-row: 1 / 2;
+}
+
+.gridMiddle {
+  grid-column: 3 / 4;
+  grid-row: 2 / 3;
+}
+
+
 .sectionBackground {
-  width: 100%;
   background: var(--colorGreyLight1);
-  padding: 1.75rem 0 2.38rem 1.5rem;
-  box-sizing: border-box;
+  width: 100%;
+  height: fit-content;
+  grid-column: 1 / 6;
+  grid-row: 3 / 4;
+}
+
+.anotherProduct {
+  display: flex;
+  flex-direction: column;
+  width: 20.375rem;
+  padding: 1.75rem 1.5rem 2.37rem 1.5rem;
+  margin: 0 auto;
+  gap: 1.25rem
+}
+
+.wrapperCarousel {
+  position: relative;
+  height: 16.058rem;
+}
+
+.wrapperCarousel .splide {
+  position: absolute;
 }
 
 .wrapperButton {
+  display: flex;
+  align-items: flex-end;
   padding-top: 2.69rem;
   padding-bottom: 1.88rem;
+  grid-column: 3 / 4;
+  grid-row: 4 / 5;
 }

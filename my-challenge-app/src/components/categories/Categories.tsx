@@ -9,12 +9,6 @@ const Categories = (props: {
   filterSelected: string; 
   onChange: ChangeEventHandler<HTMLInputElement> 
 }) => {
-  // const [ filterSelected, setFilterSelected] = useState ('')
-
-  // const handleSelectChange = (e: ChangeEvent<HTMLInputElement>) => {
-  //   const { value } = e.target
-  //   setFilterSelected(value)
-  // }
 
   const categories = [
     { 
@@ -41,9 +35,10 @@ const Categories = (props: {
 
 
   return (
-    <div className={classes.wrapper}>
+    <div className={classes.carouselCategories}>
       <Splide 
         options={{
+          width: '100%',
           autoWidth: true,
           arrows: false, 
           pagination: false,

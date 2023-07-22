@@ -10,121 +10,123 @@ import Review from "../../components/review/Review";
 import Card from "../../components/card/Card";
 import Button from "../../components/button/Button";
 import { CartContext } from "../../store/CartContext";
+import Loader from "../../components/loader/Loader";
 //CSS
 import classes from './Product.module.css'
 import '../../../node_modules/@splidejs/react-splide/dist/css/splide.min.css'
 
 const Product = () => {
-  const { data, loading } = useFetch('https://run.mocky.io/v3/534d1f3e-406e-4564-a506-7e2718fdb0bc');
-  const [ detailsToggle, setDetailsToggle] = useState ('Overview')
+  const { data, loading } = useFetch(
+    "https://run.mocky.io/v3/534d1f3e-406e-4564-a506-7e2718fdb0bc"
+  );
+  const [detailsToggle, setDetailsToggle] = useState("Overview");
 
   const { id } = useParams();
 
-  const { addToCart } = useContext(CartContext)
+  const { addToCart } = useContext(CartContext);
 
   const navigate = useNavigate();
 
-  if(loading) {
-    return <p>Loading...</p>
+  if (loading) {
+    return <Loader />;
   }
-  
+
   const item = data?.find((item) => id && item.id === parseInt(id));
 
-  const handleSelectChange = (
-    e: ChangeEvent<HTMLInputElement>
-  ) => {
-    const { value } = e.target
-    setDetailsToggle(value)
-  }
+  const handleSelectChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    setDetailsToggle(value);
+  };
 
   const handleClick = () => {
-    item && addToCart(item)
-    navigate('/cart');
-  } 
+    item && addToCart(item);
+    navigate("/cart");
+  };
 
-  if(!item) {
-    return <p>No product found</p>
+  if (!item) {
+    return <p>No product found</p>;
   }
 
-  if(item) return (
-    <div>
-      <NavBar 
-        link="/"
-        link2="/cart"
-        title={""}
-        isShoppingCart={false} 
-        onClick={undefined}      
-      />
-      <div className={classes.textWrapper}>
-        <p className={classes.textPrice}>USD {item.price.replace("$", "")}</p>
-        <h2 className={classes.textTitle}>{item.name.toUpperCase()}</h2>
-      </div>
-      <DetailsToggle 
-        selected={detailsToggle} 
-        onChange={handleSelectChange} 
-      />
-      {detailsToggle === "Overview" ? (
-        <>
-          <div className={classes.imageWrapper}>
-            <img src="/public/img/image6.png" alt="" />
+  if (item)
+    return (
+      <>
+        <div className={classes.gridTop}>
+          <NavBar
+            link="/"
+            link2="/cart"
+            title={""}
+            isShoppingCart={false}
+            onClick={undefined}
+          />
+          <div className={classes.textWrapper}>
+            <p className={classes.textPrice}>USD {item.price.replace("$", "")}</p>
+            <h2 className={classes.textTitle}>{item.name.toUpperCase()}</h2>
           </div>
-          <h4 className={classes.textTitleReviews}>
-            Reviews ({item.reviews.length})
-          </h4>
-          <ul className={classes.listReviews}>
-            {item &&
-              item.reviews.map((review) => (
-                <Review
-                  key={review.id}
-                  user={review.user}
-                  description={review.description}
-                  rating={review.rating}
-                />
-            ))}
-          </ul>
-          <section className={classes.sectionBackground}>
-            <div className={classes.textLink}>
-              <h4 >Another Product</h4>
-              <NavLink to="/products">See All</NavLink>
-            </div>
-            <Splide
-              options={{
-                autoWidth: true,
-                arrows: false,
-                pagination: false,
-                gap: "0.94rem",
-              }}
-            >
-              {data &&
-                data.map((item) => (
-                  <SplideSlide key={item.id}>
-                    <Card
-                      id={item.id}
-                      key={item.id}
-                      name={item.name}
-                      price={item.price}
-                      rating={item.rating}
-                      showReview={false}
+          <DetailsToggle selected={detailsToggle} onChange={handleSelectChange} />
+        </div>
+        {detailsToggle === "Overview" ? (
+          <>
+            <div className={classes.gridMiddle}>
+              <div className={classes.imageWrapper}>
+                <img src="/img/image6.png" alt="" />
+              </div>
+              <h4 className={classes.textTitleReviews}>
+                Reviews ({item.reviews.length})
+              </h4>
+              <ul className={classes.listReviews}>
+                {item &&
+                  item.reviews.map((review) => (
+                    <Review
+                      key={review.id}
+                      user={review.user}
+                      description={review.description}
+                      rating={review.rating}
                     />
-                  </SplideSlide>
-                ))}
-            </Splide>
-          </section>
-        </>
-      ) : (
-        <p className={classes.textDescription}>
-          {item.description}
-        </p>
-      )}
-      <div className={classes.wrapperButton}>
-        <Button 
-          type={"button"} 
-          onClick={handleClick} 
-          name={"Add To Cart"} 
-        />
-      </div>
-    </div>
-  );
+                  ))}
+              </ul>
+            </div>
+            <section className={classes.sectionBackground}>
+              <div className={classes.anotherProduct}>
+                <div className={classes.textLink}>
+                  <h4>Another Product</h4>
+                  <NavLink to="/products">See All</NavLink>
+                </div>
+                <div className={classes.wrapperCarousel}>
+                  <Splide
+                    options={{
+                      width: '100vw',
+                      autoWidth: true,
+                      arrows: false,
+                      pagination: false,
+                      gap: "0.94rem",
+                    }}
+                  >
+                    {data &&
+                      data.map((item) => (
+                        <SplideSlide key={item.id}>
+                          <Card
+                            id={item.id}
+                            key={item.id}
+                            name={item.name}
+                            price={item.price}
+                            rating={item.rating}
+                            showReview={false}
+                          />
+                        </SplideSlide>
+                      ))}
+                  </Splide>
+                </div>
+              </div>
+            </section>
+          </>
+        ) : (
+          <p className={classes.textDescription}>{item.description}</p>
+        )}
+        <div className={classes.wrapperButton}>
+          <Button type={"button"} onClick={handleClick} name={"Add To Cart"} />
+        </div>
+      </>
+    );
 }
 
 export default Product
