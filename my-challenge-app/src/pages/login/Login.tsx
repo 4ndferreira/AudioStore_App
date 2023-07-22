@@ -21,20 +21,19 @@ import Button from '../../components/button/Button';
 import LoginButtonWithProvider from '../../components/loginButtonWithProvider/LoginButtonWithProvider';
 //CSS
 import classes from './Login.module.css'
-import axios from 'axios';
 
 const Login = () => {
   const [newUser, setNewUser] = useState(false)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [errorCode, setErrorCode] = useState('')
+  const [errorMessage, setErrorMessage] = useState('')
   const navigate = useNavigate();
 
   const handleUser = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     setNewUser(!newUser);
   };
-
-  console.log(auth.currentUser)
 
   const handleLogin = async (e: { preventDefault: () => void; }) => {
     e.preventDefault()
@@ -50,7 +49,28 @@ const Login = () => {
         console.log(user)
       })
       .catch((error) => {
-        const errorCode = error.code;
+        const errorCode: string = error.code;
+        console.log(errorCode)
+        setErrorCode(errorCode)
+        switch (errorCode) {
+          case 'auth/user-not-found':
+            setErrorMessage('User not found!');
+            break;
+          case 'auth/invalid-email':
+            setErrorMessage('Invalid email');
+            break;
+          case 'auth/email-already-in-use':
+            setErrorMessage('Email already in use!');
+            break;
+          case 'auth/wrong-password':
+            setErrorMessage('Wrong password!');
+            break;
+          case 'auth/weak-password':
+            setErrorMessage('Password should be at least 6 characters!');
+            break;
+          default:
+            setErrorMessage('An error occurred!');
+        }
         const errorMessage = error.message;
         console.log(errorMessage)
     });
@@ -106,73 +126,97 @@ const Login = () => {
 
   return (
     <div className={classes.container}>
-      <picture className={classes.picture}>
-        <source type='image/webp' srcSet='/public/img/image10.webp' />
-        <source type='image/jpeg' srcSet='/public/img/image10.jpg' />
-        <img src='/public/img/image10.png' alt='' />
-      </picture>
-      <h1 className={classes.titleWrapper}>Audio
+      <h1 className={classes.titleWrapper}>
+        Audio
         <small>It's modular and designed to last</small>
       </h1>
       <form className={classes.form}>
-        <div className={classes.wrapper}>
-          <Input 
-            id={'email'}
-            type={'email'} 
-            name={'Email'}
+        <div
+          className={
+            errorCode 
+            ? `${classes.wrapper} ${classes.error}` 
+            : classes.wrapper
+          }
+        >
+          <Input
+            id={"email"}
+            type={"email"}
+            name={"Email"}
             element={<EmailIcon />}
             value={email}
-            onInput={(e: ChangeEvent<HTMLInputElement>) => 
+            onInput={(e: ChangeEvent<HTMLInputElement>) =>
               setEmail(e.target.value)
-            }      
+            }
           />
+          <p className={classes.errorText}>
+            {(errorCode === "auth/user-not-found" ||
+              errorCode === "auth/invalid-email" ||
+              errorCode === "auth/email-already-in-use") &&
+              errorMessage}
+          </p>
         </div>
-        <div className={classes.wrapper}>
-          <Input 
-            id={'password'} 
-            type={'password'}
-            name={'Password'}
-            element={<LockIcon />} 
-            value={password} 
-            onInput={(e: ChangeEvent<HTMLInputElement>) => 
+        <div
+          className={
+            errorCode 
+            ? `${classes.wrapper} ${classes.error}` 
+            : classes.wrapper
+          }
+        >
+          <Input
+            id={"password"}
+            type={"password"}
+            name={"Password"}
+            element={<LockIcon />}
+            value={password}
+            onInput={(e: ChangeEvent<HTMLInputElement>) =>
               setPassword(e.target.value)
-            }      
+            }
           />
+          <p className={classes.errorText}>
+            {(errorCode === "auth/weak-password" ||
+              errorCode === "auth/wrong-password") &&
+              errorMessage}
+          </p>
         </div>
         {!newUser && <p className={classes.text}>Forgot Password</p>}
-        <Button 
-          type={'submit'} 
-          onClick={handleLogin} 
-          name={newUser ? 'Sign Up' : 'Sign In'}
+        <Button
+          type={"submit"}
+          onClick={handleLogin}
+          name={newUser ? "Sign Up" : "Sign In"}
         />
         <div className={classes.wrapperButtons}>
-          <LoginButtonWithProvider 
-            type={'button'} 
-            onClick={handleLoginWithFacebook} 
-            icon={<FacebookIcon />} 
+          <LoginButtonWithProvider
+            type={"button"}
+            onClick={handleLoginWithFacebook}
+            icon={<FacebookIcon />}
           />
-          <LoginButtonWithProvider 
-            type={'button'} 
-            onClick={handleLoginWithGoogle} 
-            icon={<GoogleIcon />} 
+          <LoginButtonWithProvider
+            type={"button"}
+            onClick={handleLoginWithGoogle}
+            icon={<GoogleIcon />}
           />
         </div>
-    </form>
-      {newUser ? (
-        <p className={classes.textFooter}>
-          If you have an account? 
-          <a href="#" onClick={handleUser}>
-            Sign In here
-          </a>
-        </p>
-      ) : (
-        <p className={classes.textFooter}>
-          Didn’t have any account? 
-          <a  href="#" onClick={handleUser}>
-            Sign Up here
-          </a>
-        </p>
-      )}
+        {newUser ? (
+          <p className={classes.textFooter}>
+            If you have an account?
+            <a href="#" onClick={handleUser}>
+              Sign In here
+            </a>
+          </p>
+        ) : (
+          <p className={classes.textFooter}>
+            Didn’t have any account?
+            <a href="#" onClick={handleUser}>
+              Sign Up here
+            </a>
+          </p>
+        )}
+      </form>
+      <picture className={classes.picture}>
+        <source type="image/webp" srcSet="/img/image10.webp" />
+        <source type="image/jpeg" srcSet="/img/image10.jpg" />
+        <img src="/img/image10.jpeg" alt="" />
+      </picture>
     </div>
   );
 }
