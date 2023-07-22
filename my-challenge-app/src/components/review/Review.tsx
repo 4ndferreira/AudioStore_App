@@ -1,4 +1,5 @@
 import StarRating from '../starRating/StarRating'
+import IconUser from './IconUser';
 import classes from './Review.module.css'
 
 const Review = (props: {
@@ -9,7 +10,7 @@ const Review = (props: {
   return (
     <li className={classes.wrapper}>
       <div className={classes.userInfo}>
-        <img src='/public/img/ellipse10.png' alt='' />
+        <IconUser />
         <div className={classes.userInfoText}>
           <h4>{props.user}</h4>
           <StarRating 
