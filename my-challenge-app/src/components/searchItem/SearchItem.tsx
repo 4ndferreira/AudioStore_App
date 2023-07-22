@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import LinkViewMore from '../card/LinkViewMore';
 import Counter from '../counter/Counter';
 import classes from './SearchItem.module.css'
@@ -27,9 +28,14 @@ const SearchItem = (props: {
               />
             </li>
           ) : (
-            <li className={classes.itemReview}>
-              <LinkViewMore rating={props.rating} />
-            </li>
+            <NavLink 
+              to={`/products/${props.itemId}`} 
+              className={classes.link}
+            >
+              <li className={classes.itemReview}>
+                <LinkViewMore rating={props.rating} />
+              </li>
+            </NavLink>
           )}
         </ul>
       </div>
