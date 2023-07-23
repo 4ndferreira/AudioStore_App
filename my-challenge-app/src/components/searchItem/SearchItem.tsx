@@ -13,11 +13,19 @@ const SearchItem = (props: {
 }) => {
   return (
     <li className={classes.container}>
-      <div className={classes.itemImageContainer}>
+      <NavLink 
+        to={`/products/${props.itemId}`} 
+        className={classes.itemImageContainer}
+      >
         <img src="/img/image5.png" alt="" />
-      </div>
+      </NavLink>
       <div className={classes.itemTextContainer}>
-        <h4>{props.name}</h4>
+        <NavLink 
+          to={`/products/${props.itemId}`} 
+          className={classes.link}
+        >
+          <h4>{props.name}</h4>
+        </NavLink>
         <ul>
           <li>USD {props.price.replace('$','')}</li>
           {props.isShoppingCart ? (
@@ -28,14 +36,9 @@ const SearchItem = (props: {
               />
             </li>
           ) : (
-            <NavLink 
-              to={`/products/${props.itemId}`} 
-              className={classes.link}
-            >
-              <li className={classes.itemReview}>
-                <LinkViewMore rating={props.rating} />
-              </li>
-            </NavLink>
+            <li className={classes.itemReview}>
+              <LinkViewMore rating={props.rating} />
+            </li>
           )}
         </ul>
       </div>
