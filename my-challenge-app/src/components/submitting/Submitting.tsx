@@ -1,4 +1,4 @@
-import classes from './Sending.module.css'
+import classes from './Submitting.module.css'
 
 const Sending = () => {
   return (
