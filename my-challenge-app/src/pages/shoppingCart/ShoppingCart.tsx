@@ -34,11 +34,11 @@ const ShoppingCart = () => {
   return (
     <div className={classes.container}>
       <NavBar
-        link={"/"}
+        link={"/products"}
         link2={""}
         title={"Shopping Cart"}
-        isShoppingCart={true}
         onClick={handleDelete}
+        isShoppingCart={true}
       />
       <ul className={classes.cartItemsList}>
         {cartItems.map((item) => (
