@@ -26,6 +26,7 @@ import LoginButtonWithProvider from '../../components/loginButtonWithProvider/Lo
 import Loader from '../../components/loader/Loader';
 //CSS
 import classes from './Login.module.css'
+import Sending from '../../components/sending/Sending';
 
 const Login = () => {
   const [newUser, setNewUser] = useState(false)
@@ -35,6 +36,7 @@ const Login = () => {
   const [errorCode, setErrorCode] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
   const [updating, setUpdating] = useState(true)
+  const [submitting, setSubmitting] = useState(false)
   const navigate = useNavigate();
 
   useEffect(()=>{
@@ -60,6 +62,7 @@ const Login = () => {
 
   const handleLogin = async (e: { preventDefault: () => void; }) => {
     e.preventDefault()
+    setSubmitting(true)
     const handleEmailAndPassword = (
       (newUser)
       ? createUserWithEmailAndPassword
@@ -68,8 +71,11 @@ const Login = () => {
     await handleEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        navigate("/")
         console.log(user)
+        navigate("/")
+        setSubmitting(false)
+        setEmail('')
+        setPassword('')
       })
       .catch((error) => {
         const errorCode: string = error.code;
@@ -96,6 +102,7 @@ const Login = () => {
         }
         const errorMessage = error.message;
         console.log(errorMessage)
+        setSubmitting(false)
     });
   }
 
@@ -148,13 +155,17 @@ const Login = () => {
   }
   const handlePasswordReset = (e: { preventDefault: () => void; }) => {
     e.preventDefault()
+    setSubmitting(true)
     sendPasswordResetEmail(auth, email)
       .then(() => {
         console.log('Password reset email sent!')
+        setSubmitting(false)
+        setEmail('')
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
+        setSubmitting(false)
       })
   }
 
@@ -171,9 +182,7 @@ const Login = () => {
       <form className={classes.form}>
         <div
           className={
-            errorCode 
-            ? `${classes.wrapper} ${classes.error}` 
-            : classes.wrapper
+            errorCode ? `${classes.wrapper} ${classes.error}` : classes.wrapper
           }
         >
           <Input
@@ -187,47 +196,56 @@ const Login = () => {
             }
           />
           <p className={classes.errorText}>
-            {(errorCode === "auth/user-not-found" ||
-              errorCode === "auth/invalid-email" ||
-              errorCode === "auth/email-already-in-use") &&
+            {!forgotPassword &&
+              (errorCode === "auth/user-not-found" ||
+                errorCode === "auth/invalid-email" ||
+                errorCode === "auth/email-already-in-use") &&
               errorMessage}
           </p>
         </div>
-        {(newUser || !forgotPassword) &&
-        <div
-          className={
-            errorCode 
-            ? `${classes.wrapper} ${classes.error}` 
-            : classes.wrapper
-          }
-        >
-          <Input
-            id={"password"}
-            type={"password"}
-            name={"Password"}
-            element={<LockIcon />}
-            value={password}
-            onInput={(e: ChangeEvent<HTMLInputElement>) =>
-              setPassword(e.target.value)
+        {(newUser || !forgotPassword) && (
+          <div
+            className={
+              errorCode
+                ? `${classes.wrapper} ${classes.error}`
+                : classes.wrapper
+            }
+          >
+            <Input
+              id={"password"}
+              type={"password"}
+              name={"Password"}
+              element={<LockIcon />}
+              value={password}
+              onInput={(e: ChangeEvent<HTMLInputElement>) =>
+                setPassword(e.target.value)
+              }
+            />
+            <p className={classes.errorText}>
+              {(errorCode === "auth/weak-password" ||
+                errorCode === "auth/wrong-password") &&
+                errorMessage}
+            </p>
+          </div>
+        )}
+        {!newUser && !forgotPassword && (
+          <p
+            className={classes.text}
+            onClick={() => setForgotPassword(!forgotPassword)}
+          >
+            Forgot Password
+          </p>
+        )}
+        <div className={classes.wrapperSendButton}>
+          <Button
+            type={"submit"}
+            onClick={!forgotPassword ? handleLogin : handlePasswordReset}
+            name={
+              newUser ? "Sign Up" : !forgotPassword ? "Sign In" : "Send Email"
             }
           />
-          <p className={classes.errorText}>
-            {(errorCode === "auth/weak-password" ||
-              errorCode === "auth/wrong-password") &&
-              errorMessage}
-          </p>
-        </div>}
-        {!newUser && !forgotPassword && 
-        <p className={classes.text} 
-          onClick={()=>setForgotPassword(!forgotPassword)}
-        >
-          Forgot Password
-        </p>}
-        <Button
-          type={"submit"}
-          onClick={!forgotPassword ? handleLogin : handlePasswordReset}
-          name={newUser ? "Sign Up" : (!forgotPassword ? "Sign In" : "Send Email")}
-        />
+          {submitting && <Sending />}
+        </div>
         <div className={classes.wrapperButtons}>
           <LoginButtonWithProvider
             type={"button"}
@@ -258,8 +276,8 @@ const Login = () => {
       </form>
       <picture className={classes.picture}>
         <source type="image/webp" srcSet="/img/image10.webp" />
-        <source type="image/jpeg" srcSet="/img/image10.jpg" />
-        <img src="/img/image10.jpeg" alt="" />
+        <source type="image/png" srcSet="/img/image10.png" />
+        <img src="/img/image10.png" alt="" />
       </picture>
     </div>
   );

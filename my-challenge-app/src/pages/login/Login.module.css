@@ -40,6 +40,11 @@
   border-radius: 0.625rem;
 }
 
+.wrapperSendButton {
+  width: 100%;
+  position: relative;
+}
+
 .wrapperButtons {
   display: flex;
   gap: 0.94rem;
