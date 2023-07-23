@@ -1,8 +1,8 @@
-const IconAlert = () => {
+const IconAlert = (props: { width: string; height: string }) => {
   return (
     <svg
-      width="48"
-      height="48"
+      width={props.width}
+      height={props.height}
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -35,6 +35,6 @@ const IconAlert = () => {
       </g>
     </svg>
   );
-}
+};
 
-export default IconAlert
+export default IconAlert;

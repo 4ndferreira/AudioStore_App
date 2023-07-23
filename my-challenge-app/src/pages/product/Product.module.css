@@ -117,3 +117,29 @@
   grid-column: 3 / 4;
   grid-row: 4 / 5;
 }
+
+.notFoundMessage {
+  grid-column: 3 /4;
+  grid-row: 2 /4;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.notFoundText {
+  font-family: Montserrat;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  letter-spacing: 0.0125rem;
+}
+
+.notFoundLink {
+  color: var(--colorsPrimary);
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.0125rem;
+}
+

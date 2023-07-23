@@ -11,6 +11,7 @@ import Card from "../../components/card/Card";
 import Button from "../../components/button/Button";
 import { CartContext } from "../../store/CartContext";
 import Loader from "../../components/loader/Loader";
+import IconAlert from "../../components/iconAlert/IconAlert";
 //CSS
 import classes from './Product.module.css'
 import '../../../node_modules/@splidejs/react-splide/dist/css/splide.min.css'
@@ -44,7 +45,15 @@ const Product = () => {
   };
 
   if (!item) {
-    return <p>No product found</p>;
+    return (
+      <div className={classes.notFoundMessage}>
+        <IconAlert width={"96"} height={"96"} />
+        <h1 className={classes.notFoundText}>No Product Found!</h1>
+        <NavLink to={"/"} className={classes.notFoundLink}>
+          Go Back
+        </NavLink>
+      </div>
+    );
   }
 
   if (item)

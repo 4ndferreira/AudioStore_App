@@ -26,7 +26,7 @@ import LoginButtonWithProvider from '../../components/loginButtonWithProvider/Lo
 import Loader from '../../components/loader/Loader';
 //CSS
 import classes from './Login.module.css'
-import Sending from '../../components/sending/Sending';
+import Sending from '../../components/submitting/Submitting';
 
 const Login = () => {
   const [newUser, setNewUser] = useState(false)
