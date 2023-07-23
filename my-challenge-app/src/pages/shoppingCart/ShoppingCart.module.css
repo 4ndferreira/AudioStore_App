@@ -50,3 +50,27 @@
   line-height: 1.25rem;
   letter-spacing: 0.0125rem;
 }
+
+.alertCart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.alertCart p {
+  color: var(--colorGreyDark1);
+  font-family: Montserrat;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  letter-spacing: 0.0125rem;
+}
+
+.alertCart a {
+  color: var(--colorsPrimary);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.0125rem;
+}

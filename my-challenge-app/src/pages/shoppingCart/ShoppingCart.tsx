@@ -7,8 +7,10 @@ import Button from "../../components/button/Button";
 import ProceedtoCheckout from "../../components/button/ProceedtoCheckout";
 import NavBar from "../../components/navBar/NavBar";
 import SearchItem from "../../components/searchItem/SearchItem";
+import IconShoppingBag from "../../components/iconShoppingBag/IconShoppingBag";
 //CSS
 import classes from "./ShoppingCart.module.css";
+import { NavLink } from "react-router-dom";
 
 const ShoppingCart = () => {
   const { cartItems, clearCart, getCartTotal } = useContext(CartContext);
@@ -30,7 +32,7 @@ const ShoppingCart = () => {
     clearCart()
   };
 
-  console.log(cartItems)
+  console.log(cartItems.length)
   return (
     <div className={classes.container}>
       <NavBar
@@ -41,25 +43,29 @@ const ShoppingCart = () => {
         isShoppingCart={true}
       />
       <ul className={classes.cartItemsList}>
-        {cartItems.map((item) => (
-          <SearchItem
-            key={item.id}
-            name={item.name}
-            price={item.price}
-            rating={0}
-            isShoppingCart={true}
-            count={item.count}
-            itemId={item.id}         
-          />
-        ))}
+        {cartItems.length !== 0 ? (
+          cartItems.map((item) => (
+            <SearchItem
+              key={item.id}
+              name={item.name}
+              price={item.price}
+              rating={0}
+              isShoppingCart={true}
+              count={item.count}
+              itemId={item.id}
+            />
+          ))
+        ) : (
+          <li className={classes.alertCart}>
+            <IconShoppingBag />
+            <p>Your Cart is Empty</p>
+            <NavLink to={"/products"}>Shop Now</NavLink>
+          </li>
+        )}
       </ul>
       <span className={classes.wrapperText}>
-        <p className={classes.textTotal}>
-          Total {cartItems.length} Items
-        </p> 
-        <p className={classes.textPrice}>
-          USD {getCartTotal()}
-        </p>
+        <p className={classes.textTotal}>Total {cartItems.length} Items</p>
+        <p className={classes.textPrice}>USD {getCartTotal()}</p>
       </span>
       <div className={classes.wrapperButton}>
         <Button
