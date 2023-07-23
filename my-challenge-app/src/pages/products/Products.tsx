@@ -90,7 +90,6 @@ const Products = () => {
     return <Loader />;
   }
 
-
   return (
     <>
       <div className={classes.gridTop}>

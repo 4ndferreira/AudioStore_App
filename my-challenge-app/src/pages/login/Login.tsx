@@ -1,3 +1,8 @@
+//React
+import { ChangeEvent, useEffect, useState } from 'react';
+//React Router Dom
+import { useNavigate } from 'react-router-dom';
+//Firebase
 import { FirebaseError } from 'firebase/app';
 import {
   signInWithEmailAndPassword,
@@ -6,13 +11,9 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   sendPasswordResetEmail,
-  setPersistence,
-  browserSessionPersistence,
+  onAuthStateChanged,
 } from "firebase/auth";
-import { useNavigate } from 'react-router-dom';
 import { auth } from "../../firebase/Config";
-//Hooks
-import { ChangeEvent, useState } from 'react';
 //Icons
 import EmailIcon from '../../components/labelInput/EmailIcon';
 import LockIcon from '../../components/labelInput/LockIcon';
@@ -22,6 +23,7 @@ import GoogleIcon from '../../components/loginButtonWithProvider/GoogleIcon';
 import Input from '../../components/input/Input';
 import Button from '../../components/button/Button';
 import LoginButtonWithProvider from '../../components/loginButtonWithProvider/LoginButtonWithProvider';
+import Loader from '../../components/loader/Loader';
 //CSS
 import classes from './Login.module.css'
 
@@ -32,15 +34,28 @@ const Login = () => {
   const [forgotPassword, setForgotPassword] = useState(false)
   const [errorCode, setErrorCode] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
+  const [updating, setUpdating] = useState(true)
   const navigate = useNavigate();
 
-  async () => {
-    await setPersistence(auth, browserSessionPersistence);
-  };
+  useEffect(()=>{
+    const unsubscribe = onAuthStateChanged(auth, (user)=>{
+      if(user) {
+        const uid = user.uid;
+        navigate("/")
+        setUpdating(false)
+        console.log('uid', uid)
+      }else{
+        console.log('user is logged out')
+        setUpdating(false)
+      }
+    })
+    return () => unsubscribe();
+  }, [navigate])
 
   const handleUser = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     setNewUser(!newUser);
+    setForgotPassword(false)
   };
 
   const handleLogin = async (e: { preventDefault: () => void; }) => {
@@ -143,6 +158,10 @@ const Login = () => {
       })
   }
 
+  if(updating) {
+    return <Loader />
+  }
+
   return (
     <div className={classes.container}>
       <h1 className={classes.titleWrapper}>
@@ -198,7 +217,7 @@ const Login = () => {
               errorMessage}
           </p>
         </div>}
-        {!newUser && 
+        {!newUser && !forgotPassword && 
         <p className={classes.text} 
           onClick={()=>setForgotPassword(!forgotPassword)}
         >

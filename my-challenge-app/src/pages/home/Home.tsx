@@ -25,7 +25,7 @@ const Home = () => {
   const handleSignOut = () => {
     signOut(auth).then(() => {
       console.log('Sign-out successful.')
-      navigate('/')
+      navigate('/signin')
     }).catch((error) => {
       const errorCode = error.code;
       console.log(errorCode)
