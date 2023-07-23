@@ -1,16 +1,29 @@
+//Hooks
 import { useContext } from "react";
+//Context
+import { CartContext } from "../../store/CartContext";
+//Components
 import Button from "../../components/button/Button";
 import ProceedtoCheckout from "../../components/button/ProceedtoCheckout";
 import NavBar from "../../components/navBar/NavBar";
 import SearchItem from "../../components/searchItem/SearchItem";
-import { CartContext } from "../../store/CartContext";
 //CSS
 import classes from "./ShoppingCart.module.css";
 
 const ShoppingCart = () => {
   const { cartItems, clearCart, getCartTotal } = useContext(CartContext);
+
   const handleClick = () => {
-    throw new Error("Function not implemented.");
+    const currentPurchaseOrdersJson = localStorage.getItem("purchaseOrders");
+    let currentPurchaseOrders = currentPurchaseOrdersJson
+      ? JSON.parse(currentPurchaseOrdersJson)
+      : [];
+    currentPurchaseOrders = [cartItems, ...currentPurchaseOrders];
+    localStorage.setItem(
+      "purchaseOrders",
+      JSON.stringify(currentPurchaseOrders)
+    );
+    clearCart();
   };
 
   const handleDelete = () => {
