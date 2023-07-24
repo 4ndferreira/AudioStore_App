@@ -1,8 +1,14 @@
-import { MouseEventHandler } from 'react'
+//React
+import { MouseEventHandler, useContext } from 'react'
+//React Router Dom
 import { NavLink, To } from 'react-router-dom'
+//Context
+import { CartContext } from '../../store/CartContext'
+//Components
 import ChevronLeft from './ChevronLeft'
 import IconTrash from './IconTrash'
 import IconShoppingCart from './IconShoppingCart'
+//CSS
 import classes from './NavBar.module.css'
 
 const NavBar = (props: {
@@ -12,6 +18,7 @@ const NavBar = (props: {
   title: string
   isShoppingCart: boolean
 }) => {
+  const { cartItems } = useContext(CartContext);
   const isShoppingCart = props.isShoppingCart;
   return (
     <nav className={classes.wrapper}>
@@ -29,7 +36,13 @@ const NavBar = (props: {
           iconHeight={'24'} 
           color={'#000000'}        
         /> :
-        <IconShoppingCart />}
+        <div className={classes.iconCart}>
+          <IconShoppingCart />
+          {cartItems.length > 0 && 
+          <div className={classes.cartControl}>
+            <p>{cartItems.length}</p>
+          </div>}
+        </div>}
       </NavLink>
     </nav>
   );

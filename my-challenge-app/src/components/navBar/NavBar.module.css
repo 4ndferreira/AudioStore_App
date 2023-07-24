@@ -16,3 +16,27 @@
   display: flex;
   align-items: center;
 }
+
+.iconCart {
+  position: relative;
+}
+
+.cartControl {
+  background-color: var(--colorsPrimary);
+  position: absolute;
+  top: -25%;
+  right: -35%;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cartControl p {
+  font-size: 0.75rem;
+  line-height: normal;
+  color: white;
+  margin: 0;
+}
