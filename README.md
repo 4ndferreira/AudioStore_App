@@ -1,5 +1,7 @@
 # PB-Compass-Challenge-III
 
+Final Challenge for the Compass UOL Scholarship Program
+
 ## Instructions for the Challenge:
 
 ![Captura de Tela (4)](https://github.com/4ndferreira/PB-Compass-Challenge-III/assets/97910606/9cfc55af-4517-4128-892c-50f434ae69a9)
@@ -50,7 +52,6 @@ Comments:
 
 - Download the repository via the zip file or from the terminal using git clone;
 - Access the project directory through your terminal;
-- Run `yarn init -y` to initialize yarn within the project.
-- Run the `yarn add` command to install the dependencies.
+- Run the `yarn install` command to install the dependencies.
 - Run the `yarn dev` command to start the project
 - Open your browser and run http://localhost:5173/
