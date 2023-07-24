@@ -36,6 +36,7 @@ const Login = () => {
   const [errorCode, setErrorCode] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
   const [updating, setUpdating] = useState(true)
+  const [submitted, setSubmitted] = useState('')
   const [submitting, setSubmitting] = useState(false)
   const navigate = useNavigate();
 
@@ -160,10 +161,25 @@ const Login = () => {
       .then(() => {
         console.log('Password reset email sent!')
         setSubmitting(false)
+        setSubmitted('We have e-mailed your password reset link')
+        setForgotPassword(false)
         setEmail('')
+        setErrorCode('')
       })
       .catch((error) => {
-        const errorCode = error.code;
+        const errorCode: string = error.code;
+        console.log(errorCode)
+        setErrorCode(errorCode)
+        switch (errorCode) {
+          case 'auth/user-not-found':
+            setErrorMessage('User not found!');
+            break;
+          case 'auth/invalid-email':
+            setErrorMessage('Invalid email');
+            break;
+          default:
+            setErrorMessage('An error occurred!');
+        }
         const errorMessage = error.message;
         setSubmitting(false)
       })
@@ -179,6 +195,7 @@ const Login = () => {
         Audio
         <small>It's modular and designed to last</small>
       </h1>
+      <p className={classes.resetPasswordText}>{submitted}</p>
       <form className={classes.form}>
         <div
           className={
@@ -191,15 +208,16 @@ const Login = () => {
             name={"Email"}
             element={<EmailIcon />}
             value={email}
-            onInput={(e: ChangeEvent<HTMLInputElement>) =>
+            onInput={(e: ChangeEvent<HTMLInputElement>) => {
               setEmail(e.target.value)
+              setSubmitted('')
+            }
             }
           />
           <p className={classes.errorText}>
-            {!forgotPassword &&
-              (errorCode === "auth/user-not-found" ||
-                errorCode === "auth/invalid-email" ||
-                errorCode === "auth/email-already-in-use") &&
+            {(errorCode === "auth/user-not-found" ||
+              errorCode === "auth/invalid-email" ||
+              errorCode === "auth/email-already-in-use") &&
               errorMessage}
           </p>
         </div>
@@ -231,7 +249,10 @@ const Login = () => {
         {!newUser && !forgotPassword && (
           <p
             className={classes.text}
-            onClick={() => setForgotPassword(!forgotPassword)}
+            onClick={() => {
+              setForgotPassword(!forgotPassword); 
+              setErrorCode('')
+            }}
           >
             Forgot Password
           </p>
