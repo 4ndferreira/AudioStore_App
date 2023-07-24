@@ -1,48 +1,53 @@
+import { Suspense, lazy } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 //Components
-import Login from './pages/login/Login'
-import Home from './pages/home/Home'
-import Search from './pages/search/Search'
-import Products from './pages/products/Products'
-import Product from './pages/product/Product'
-import ShoppingCart from './pages/shoppingCart/ShoppingCart'
+import Loader from './components/loader/Loader'
 import CartProvider from './store/CartProvider'
 import PrivateWrapper from './layouts/PrivateWrapper'
 //CSS
 import './App.css'
 
+const Login = lazy(() => import('./pages/login/Login'))
+const Home = lazy(() => import('./pages/home/Home'))
+const Search = lazy(() => import('./pages/search/Search'))
+const Products = lazy(() => import('./pages/products/Products'))
+const Product = lazy(() => import('./pages/product/Product'))
+const ShoppingCart = lazy(() => import('./pages/shoppingCart/ShoppingCart'))
+
 const App = () => {
   return (
     <BrowserRouter>
       <CartProvider>
-        <Routes>
-          <Route 
-            path='/signin' 
-            element={<Login />} 
-          />
-          <Route element={<PrivateWrapper />}>
+        <Suspense fallback={<Loader />}>
+          <Routes>
             <Route 
-              path='/'
-              element={<Home />} 
+              path='/signin' 
+              element={<Login />} 
             />
-            <Route 
-              path='/search' 
-              element={<Search />} 
-            />
-            <Route 
-              path='/products' 
-              element={<Products />} 
-            />
-            <Route 
-              path='/products/:id' 
-              element={<Product />} 
-            />
-            <Route 
-              path='/cart' 
-              element={<ShoppingCart />} 
-            />
-          </Route>
-        </Routes>
+            <Route element={<PrivateWrapper />}>
+              <Route 
+                path='/'
+                element={<Home />} 
+              />
+              <Route 
+                path='/search' 
+                element={<Search />} 
+              />
+              <Route 
+                path='/products' 
+                element={<Products />} 
+              />
+              <Route 
+                path='/products/:id' 
+                element={<Product />} 
+              />
+              <Route 
+                path='/cart' 
+                element={<ShoppingCart />} 
+              />
+            </Route>
+          </Routes>
+        </Suspense>
       </CartProvider>
     </BrowserRouter>
   )
