@@ -1,6 +1,6 @@
 # PB-Compass-Challenge-III
 
-##Instructions for the Challenge
+## Instructions for the Challenge:
 
 ![Captura de Tela (4)](https://github.com/4ndferreira/PB-Compass-Challenge-III/assets/97910606/9cfc55af-4517-4128-892c-50f434ae69a9)
 UI (https://www.figma.com/file/MgpXAAjgKFfbw2V7ZDmiQn/Challenge-03---Week-12?type=design&node-id=4%3A1&mode=design&t=exbcXTvkbp26juDy-1)
@@ -46,7 +46,7 @@ Comments:
 - You can use whatever way you want to initialize your project;
 - You can use Next.js
 
-##How to run the project:
+## How to run the project:
 
 - Download the repository via the zip file or from the terminal using git clone;
 - Access the project directory through your terminal;
