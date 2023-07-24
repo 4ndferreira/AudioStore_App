@@ -6,7 +6,7 @@ import NavBar from "../../components/navBar/NavBar";
 import SearchItem from "../../components/searchItem/SearchItem"
 import Input from "../../components/input/Input";
 import SearchIcon from "../../components/labelInput/SearchIcon";
-import IconAlert from "../../components/iconAlert/IconAlert";
+import IconShoppingBag from "../../components/iconShoppingBag/IconShoppingBag";
 //CSS
 import classes from "./Search.module.css"
 
@@ -62,7 +62,11 @@ const Search = () => {
               ))
             ) : (
               <div className={classes.textAlert}>
-                <IconAlert width={"48"} height={"48"} />
+                <IconShoppingBag 
+                  width={"72"} 
+                  height={"72"} 
+                  color={"#BABABA"}
+                />
                 <p className={classes.text}>
                   Sorry, No Products Found
                 </p>

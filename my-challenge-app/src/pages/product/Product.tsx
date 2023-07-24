@@ -48,9 +48,9 @@ const Product = () => {
     return (
       <div className={classes.notFoundMessage}>
         <IconAlert width={"96"} height={"96"} />
-        <h1 className={classes.notFoundText}>No Product Found!</h1>
+        <h1 className={classes.notFoundText}>404 - Page Not Found</h1>
         <NavLink to={"/"} className={classes.notFoundLink}>
-          Go Back
+          Get me out of here!
         </NavLink>
       </div>
     );
