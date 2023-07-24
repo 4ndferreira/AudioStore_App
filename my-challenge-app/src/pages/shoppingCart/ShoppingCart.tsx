@@ -57,7 +57,11 @@ const ShoppingCart = () => {
           ))
         ) : (
           <li className={classes.alertCart}>
-            <IconShoppingBag />
+            <IconShoppingBag 
+              width={"96"} 
+              height={"96"} 
+              color={"#0ACF83"} 
+            />
             <p>Your Cart is Empty</p>
             <NavLink to={"/products"}>Shop Now</NavLink>
           </li>
