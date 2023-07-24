@@ -13,6 +13,7 @@ import Input from "../../components/input/Input"
 import SearchIcon from "../../components/labelInput/SearchIcon"
 import { auth } from "../../firebase/Config" 
 import Loader from "../../components/loader/Loader"
+import IconShoppingBag from "../../components/iconShoppingBag/IconShoppingBag"
 // CSS
 import '../../../node_modules/@splidejs/react-splide/dist/css/splide.min.css'
 import classes from './Home.module.css'
@@ -48,13 +49,11 @@ const Home = () => {
   return (
     <>
       <div className={classes.container}>
-        <Header 
-          image={auth.currentUser?.photoURL} 
-          onClick={handleSignOut}        
-        />
+        <Header image={auth.currentUser?.photoURL} onClick={handleSignOut} />
         <h3 className={classes.welcomeText}>
           <small className={classes.welcomeTextSmall}>
-            Hi, {auth.currentUser?.displayName
+            Hi,{" "}
+            {auth.currentUser?.displayName
               ? auth.currentUser?.displayName.split(" ")[0]
               : auth.currentUser?.email?.split("@")[0]}
           </small>
@@ -82,15 +81,15 @@ const Home = () => {
           <div className={classes.carouselBanner}>
             <Splide
               options={{
-                width: '100vw',
+                width: "100vw",
                 autoWidth: true,
                 arrows: false,
                 pagination: false,
                 gap: "0.94rem",
               }}
             >
-              {filteredData &&
-                filteredData.map((item) => (
+              {filteredData?.length !== 0 ? (
+                filteredData?.map((item) => (
                   <SplideSlide key={item.id}>
                     <Banner 
                       key={item.id} 
@@ -98,7 +97,17 @@ const Home = () => {
                       id={item.id} 
                     />
                   </SplideSlide>
-                ))}
+                ))
+              ) : (
+                <li className={classes.noReturn}>
+                  <h2>Ops! No products found in this category.</h2>
+                  <IconShoppingBag 
+                    width={"96"}
+                    height={"96"} 
+                    color={"#BABABA"}                  
+                  />
+                </li>
+              )}
             </Splide>
           </div>
           <div className={classes.showcaseText}>
@@ -108,15 +117,15 @@ const Home = () => {
           <div className={classes.carouselFeat}>
             <Splide
               options={{
-                width: '100vw',
+                width: "100vw",
                 autoWidth: true,
                 arrows: false,
                 pagination: false,
                 gap: "0.94rem",
               }}
             >
-              {filteredData &&
-                filteredData.map((item) => (
+              {filteredData?.length !== 0 ? (
+                filteredData?.map((item) => (
                   <SplideSlide key={item.id}>
                     <Card
                       id={item.id}
@@ -127,7 +136,17 @@ const Home = () => {
                       showReview={false}
                     />
                   </SplideSlide>
-                ))}
+                ))
+              ) : (
+                <li className={classes.noReturn}>
+                  <h2>Ops! No products found in this category.</h2>
+                  <IconShoppingBag 
+                    width={"96"}
+                    height={"96"} 
+                    color={"#BABABA"}                  
+                  />
+                </li>
+              )}
             </Splide>
           </div>
         </div>

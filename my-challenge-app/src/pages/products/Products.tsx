@@ -2,15 +2,16 @@
 import { ChangeEvent, useState } from 'react'
 import { Data, useFetch } from '../../hooks/useFetch'
 //Components
+import { BottomSheet } from 'react-spring-bottom-sheet-updated'
 import Button from '../../components/button/Button'
 import NavBar from '../../components/navBar/NavBar'
-import IconSliders from '../../components/button/IconSliders'
 import Card from '../../components/card/Card'
 import Categories from '../../components/categories/Categories'
 import SortBy from '../../components/sortBy/SortBy'
-import IconClose from '../../components/navBar/IconClose'
-import { BottomSheet } from 'react-spring-bottom-sheet-updated'
 import Loader from '../../components/loader/Loader'
+import IconSliders from '../../components/button/IconSliders'
+import IconClose from '../../components/navBar/IconClose'
+import IconShoppingBag from '../../components/iconShoppingBag/IconShoppingBag'
 //CSS
 import classes from './Products.module.css'
 import './style.css'
@@ -93,12 +94,12 @@ const Products = () => {
   return (
     <>
       <div className={classes.gridTop}>
-        <NavBar 
+        <NavBar
           link="/"
           link2="/cart"
           title={""}
-          isShoppingCart={false} 
-          onClick={undefined}      
+          isShoppingCart={false}
+          onClick={undefined}
         />
         <h2 className={classes.title}>
           <p className={classes.titleSmall}>Featured products</p>
@@ -110,8 +111,9 @@ const Products = () => {
       </div>
       <section className={classes.showcase}>
         <div className={classes.itemsContainer}>
-          {sortedData
-            ? sortedData.map((item) => (
+          {sortedData ? (
+            sortedData.length !== 0 ? (
+              sortedData.map((item) => (
                 <Card
                   id={item.id}
                   key={item.id}
@@ -121,27 +123,35 @@ const Products = () => {
                   showReview={true}
                 />
               ))
-            : data &&
-              data.map((item) => (
-                <Card
-                  id={item.id}
-                  key={item.id}
-                  name={item.name}
-                  price={item.price}
-                  rating={item.rating}
-                  showReview={true}
+            ) : (
+              <li className={classes.noReturn}>
+                <IconShoppingBag 
+                  width={"96"}
+                  height={"96"} 
+                  color={"#BABABA"}                  
                 />
-              ))}
+                <h2>Ops!<br /> No products found in this category.</h2>
+              </li>
+            )
+          ) : (
+            data?.map((item) => (
+              <Card
+                id={item.id}
+                key={item.id}
+                name={item.name}
+                price={item.price}
+                rating={item.rating}
+                showReview={true}
+              />
+            ))
+          )}
         </div>
       </section>
       <BottomSheet open={open}>
         <form className={classes.filterContainer}>
           <div className={classes.filterTitle}>
             <h2>Filter</h2>
-            <button
-              className={classes.closeButton}
-              onClick={handleCloseFilter}
-            >
+            <button className={classes.closeButton} onClick={handleCloseFilter}>
               <IconClose />
             </button>
           </div>
