@@ -2,7 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: process.env.API_KEY,
+  apiKey: 'AIzaSyALLm5_xhg6mXldbQtnJud2bnLM7ARCdpM',
   authDomain: "my-project-pb-challenge.firebaseapp.com",
   projectId: "my-project-pb-challenge",
   storageBucket: "my-project-pb-challenge.appspot.com",

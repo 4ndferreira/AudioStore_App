@@ -1,7 +1,12 @@
+//React
 import { ChangeEvent, useState } from "react"
+//React Router Dom
 import { NavLink, useNavigate } from "react-router-dom"
+//Splide
 import { Splide, SplideSlide } from '../../../node_modules/@splidejs/react-splide'
+//Firebase
 import { signOut } from "firebase/auth"
+import { auth } from "../../firebase/Config" 
 //Hook
 import { useFetch } from "../../hooks/useFetch"
 // Components
@@ -11,7 +16,6 @@ import Banner from "../../components/banner/Banner"
 import Card from "../../components/card/Card"
 import Input from "../../components/input/Input"
 import SearchIcon from "../../components/labelInput/SearchIcon"
-import { auth } from "../../firebase/Config" 
 import Loader from "../../components/loader/Loader"
 import IconShoppingBag from "../../components/iconShoppingBag/IconShoppingBag"
 // CSS

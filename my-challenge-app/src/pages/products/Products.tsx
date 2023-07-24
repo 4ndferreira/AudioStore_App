@@ -1,8 +1,10 @@
-//Hook
+//React
 import { ChangeEvent, useState } from 'react'
+//Hook
 import { Data, useFetch } from '../../hooks/useFetch'
-//Components
+//React Spring Bottom Sheet
 import { BottomSheet } from 'react-spring-bottom-sheet-updated'
+//Components
 import Button from '../../components/button/Button'
 import NavBar from '../../components/navBar/NavBar'
 import Card from '../../components/card/Card'

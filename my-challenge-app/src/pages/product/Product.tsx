@@ -1,7 +1,10 @@
-//Hooks
+//React
 import { ChangeEvent, useContext, useState } from "react";
-import { useFetch } from "../../hooks/useFetch";
+//React Router Dom
 import { NavLink, useNavigate, useParams } from "react-router-dom";
+//Hooks
+import { useFetch } from "../../hooks/useFetch";
+//Splide
 import { Splide, SplideSlide } from '../../../node_modules/@splidejs/react-splide'
 //Components
 import NavBar from "../../components/navBar/NavBar";

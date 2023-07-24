@@ -1,5 +1,7 @@
-//Hooks
+//React
 import { useContext } from "react";
+//React Router Dom
+import { NavLink } from "react-router-dom";
 //Context
 import { CartContext } from "../../store/CartContext";
 //Components
@@ -10,7 +12,6 @@ import SearchItem from "../../components/searchItem/SearchItem";
 import IconShoppingBag from "../../components/iconShoppingBag/IconShoppingBag";
 //CSS
 import classes from "./ShoppingCart.module.css";
-import { NavLink } from "react-router-dom";
 
 const ShoppingCart = () => {
   const { cartItems, clearCart, getCartTotal } = useContext(CartContext);
