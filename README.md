@@ -50,7 +50,7 @@ Comments:
 
 - Download the repository via the zip file or from the terminal using git clone;
 - Access the project directory through your terminal;
-- Run yarn init -y to initialize yarn within the project.
-- Run the yarn add command to install the dependencies.
-- Run the yarn dev command to start the project
+- Run `yarn init -y` to initialize yarn within the project.
+- Run the `yarn add` command to install the dependencies.
+- Run the `yarn dev` command to start the project
 - Open your browser and run http://localhost:5173/
