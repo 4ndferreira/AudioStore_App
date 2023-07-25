@@ -1,7 +1,11 @@
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+//Components
 import LinkViewMore from '../card/LinkViewMore';
 import Counter from '../counter/Counter';
+//CSS
 import classes from './SearchItem.module.css'
+//Image
+import Image from '../../../public/img/image5.png'
 
 const SearchItem = (props: {
   itemId: number;
@@ -13,19 +17,19 @@ const SearchItem = (props: {
 }) => {
   return (
     <li className={classes.container}>
-      <NavLink 
+      <Link 
         to={`/products/${props.itemId}`} 
         className={classes.itemImageContainer}
       >
-        <img src="/img/image5.png" alt="" />
-      </NavLink>
+        <img src={Image} alt="" />
+      </Link>
       <div className={classes.itemTextContainer}>
-        <NavLink 
+        <Link 
           to={`/products/${props.itemId}`} 
           className={classes.link}
         >
           <h4>{props.name}</h4>
-        </NavLink>
+        </Link>
         <ul>
           <li>USD {props.price.replace('$','')}</li>
           {props.isShoppingCart ? (

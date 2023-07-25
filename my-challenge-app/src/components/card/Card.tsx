@@ -1,6 +1,11 @@
+//React Router DOM
+import { Link } from 'react-router-dom'
+//Component
 import LinkViewMore from './LinkViewMore'
+//Image
+import Image from '../../../public/img/image5.png'
+//CSS
 import classes from './Card.module.css'
-import { NavLink } from 'react-router-dom'
 
 const Card = (props: {
   id: number,
@@ -10,12 +15,12 @@ const Card = (props: {
   showReview: boolean 
 }) => {
   return (
-    <NavLink 
+    <Link 
       to={`/products/${props.id}`} 
       className={classes.link}
     >
       <div className={classes.cardContainer}>
-        <img src="/img/image5.png" alt="" />
+        <img src={Image} alt="" />
         <div>
           <h4>{props.name}</h4>
           <p className={classes.cardContainerText}>
@@ -27,7 +32,7 @@ const Card = (props: {
           <LinkViewMore rating={props.rating} />
         </div>}
       </div>
-    </NavLink>
+    </Link>
   )
 }
 

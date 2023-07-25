@@ -81,7 +81,7 @@ const Search = () => {
         <ul className={classes.listItems}>
           <SearchItem
             name={"TMA-2 Comfort Wireless"}
-            price={"USD 270"}
+            price={"270"}
             rating={4.6}
             isShoppingCart={false} 
             itemId={999} 
@@ -89,7 +89,7 @@ const Search = () => {
           />
           <SearchItem
             name={"TMA-2 DJ"}
-            price={"USD 270"}
+            price={"270"}
             rating={4.6}
             isShoppingCart={false} 
             itemId={999} 
@@ -97,7 +97,7 @@ const Search = () => {
           />
           <SearchItem
             name={"TMA-2 Move Wireless"}
-            price={"USD 270"}
+            price={"270"}
             rating={4.6}
             isShoppingCart={false} 
             itemId={999} 

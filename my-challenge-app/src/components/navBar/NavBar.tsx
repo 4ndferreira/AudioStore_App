@@ -1,7 +1,7 @@
 //React
 import { MouseEventHandler, useContext } from 'react'
 //React Router Dom
-import { NavLink, To } from 'react-router-dom'
+import { Link, To } from 'react-router-dom'
 //Context
 import { CartContext } from '../../store/CartContext'
 //Components
@@ -22,11 +22,11 @@ const NavBar = (props: {
   const isShoppingCart = props.isShoppingCart;
   return (
     <nav className={classes.wrapper}>
-      <NavLink to={props.link}>
+      <Link to={props.link}>
         <ChevronLeft />
-      </NavLink>
+      </Link>
       <p className={classes.navTitle}>{props.title}</p>
-      <NavLink 
+      <Link 
         to={props.link2} 
         onClick={props.onClick}
       >
@@ -43,7 +43,7 @@ const NavBar = (props: {
             <p>{cartItems.length}</p>
           </div>}
         </div>}
-      </NavLink>
+      </Link>
     </nav>
   );
 }

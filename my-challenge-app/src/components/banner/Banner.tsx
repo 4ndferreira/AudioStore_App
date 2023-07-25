@@ -1,6 +1,9 @@
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import ArrowRight from './ArrowRight';
+//CSS
 import classes from './Banner.module.css'
+//Image
+import Image from '../../../public/img/image5.png'
 
 const Banner = (props: {
   id: number; 
@@ -12,15 +15,15 @@ const Banner = (props: {
         <h3>
           {props.title}
         </h3>
-        <NavLink 
+        <Link 
           to={`/products/${props.id}`} 
           className={classes.bannerLink}
         >
           <p>Shop now</p>
           <ArrowRight />
-        </NavLink>
+        </Link>
       </div>
-      <img src="/img/image5.png" alt="" />
+      <img src={Image} alt="" />
     </div>
   );
 }

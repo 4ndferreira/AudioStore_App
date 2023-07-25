@@ -1,7 +1,7 @@
 //React
 import { useContext } from "react";
 //React Router Dom
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 //Context
 import { CartContext } from "../../store/CartContext";
 //Components
@@ -64,7 +64,7 @@ const ShoppingCart = () => {
               color={"#0ACF83"} 
             />
             <p>Your Cart is Empty</p>
-            <NavLink to={"/products"}>Shop Now</NavLink>
+            <Link to={"/products"}>Shop Now</Link>
           </li>
         )}
       </ul>

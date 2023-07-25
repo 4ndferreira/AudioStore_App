@@ -1,7 +1,7 @@
 //React
 import { ChangeEvent, useState } from "react"
 //React Router Dom
-import { NavLink, useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 //Splide
 import { Splide, SplideSlide } from '../../../node_modules/@splidejs/react-splide'
 //Firebase
@@ -64,7 +64,7 @@ const Home = () => {
           What are you looking for today?
         </h3>
       </div>
-      <NavLink to="/search" className={classes.linkSearch}>
+      <Link to="/search" className={classes.linkSearch}>
         <div className={classes.wrapper}>
           <Input
             id={"searchBar"}
@@ -75,7 +75,7 @@ const Home = () => {
             onInput={undefined}
           />
         </div>
-      </NavLink>
+      </Link>
       <section className={classes.showcase}>
         <div className={classes.showcaseContainer}>
           <Categories
@@ -116,7 +116,7 @@ const Home = () => {
           </div>
           <div className={classes.showcaseText}>
             <h4>Featured Products</h4>
-            <NavLink to="/products">See All</NavLink>
+            <Link to="/products">See All</Link>
           </div>
           <div className={classes.carouselFeat}>
             <Splide

@@ -1,7 +1,7 @@
 //React
 import { ChangeEvent, useContext, useState } from "react";
 //React Router Dom
-import { NavLink, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 //Hooks
 import { useFetch } from "../../hooks/useFetch";
 //Splide
@@ -15,6 +15,8 @@ import Button from "../../components/button/Button";
 import { CartContext } from "../../store/CartContext";
 import Loader from "../../components/loader/Loader";
 import IconAlert from "../../components/iconAlert/IconAlert";
+//Image
+import Image from '../../../public/img/image6.png'
 //CSS
 import classes from './Product.module.css'
 import '../../../node_modules/@splidejs/react-splide/dist/css/splide.min.css'
@@ -52,9 +54,9 @@ const Product = () => {
       <div className={classes.notFoundMessage}>
         <IconAlert width={"96"} height={"96"} />
         <h1 className={classes.notFoundText}>404 - Page Not Found</h1>
-        <NavLink to={"/"} className={classes.notFoundLink}>
+        <Link to={"/"} className={classes.notFoundLink}>
           Get me out of here!
-        </NavLink>
+        </Link>
       </div>
     );
   }
@@ -80,7 +82,7 @@ const Product = () => {
           <>
             <div className={classes.gridMiddle}>
               <div className={classes.imageWrapper}>
-                <img src="/img/image6.png" alt="" />
+                <img src={Image} alt="" />
               </div>
               <h4 className={classes.textTitleReviews}>
                 Reviews ({item.reviews.length})
@@ -101,7 +103,7 @@ const Product = () => {
               <div className={classes.anotherProduct}>
                 <div className={classes.textLink}>
                   <h4>Another Product</h4>
-                  <NavLink to="/products">See All</NavLink>
+                  <Link to="/products">See All</Link>
                 </div>
                 <div className={classes.wrapperCarousel}>
                   <Splide
@@ -135,7 +137,11 @@ const Product = () => {
           <p className={classes.textDescription}>{item.description}</p>
         )}
         <div className={classes.wrapperButton}>
-          <Button type={"button"} onClick={handleClick} name={"Add To Cart"} />
+          <Button 
+            type={"button"}
+            name={"Add To Cart"} 
+            onClick={handleClick} 
+          />
         </div>
       </>
     );
