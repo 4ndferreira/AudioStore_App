@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEventHandler } from 'react';
+import { ChangeEvent, FocusEventHandler, FormEventHandler } from 'react';
 import classes from './Input.module.css'
 
 const Input = (props: {
@@ -8,6 +8,7 @@ const Input = (props: {
   name: string; 
   value: string
   onInput: FormEventHandler<HTMLInputElement> | undefined;
+  onFocus: FocusEventHandler<HTMLInputElement> | undefined;
 }) => {
 
   const handleOnChange = (
@@ -25,6 +26,7 @@ const Input = (props: {
         value={props.value}
         onChange={handleOnChange}
         onInput={props.onInput}
+        onFocus={props.onFocus}
         placeholder={props.name}
       />
       <label 
