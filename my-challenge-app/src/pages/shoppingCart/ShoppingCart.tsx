@@ -2,6 +2,9 @@
 import { useContext } from "react";
 //React Router Dom
 import { Link } from "react-router-dom";
+//Firebase
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "../../firebase/Config";
 //Context
 import { CartContext } from "../../store/CartContext";
 //Components
@@ -14,18 +17,27 @@ import IconShoppingBag from "../../components/iconShoppingBag/IconShoppingBag";
 import classes from "./ShoppingCart.module.css";
 
 const ShoppingCart = () => {
-  const { cartItems, clearCart, getCartTotal } = useContext(CartContext);
-
-  const handleClick = () => {
-    const currentPurchaseOrdersJson = localStorage.getItem("purchaseOrders");
-    let currentPurchaseOrders = currentPurchaseOrdersJson
-      ? JSON.parse(currentPurchaseOrdersJson)
-      : [];
-    currentPurchaseOrders = [cartItems, ...currentPurchaseOrders];
-    localStorage.setItem(
-      "purchaseOrders",
-      JSON.stringify(currentPurchaseOrders)
-    );
+  const { cartItems, clearCart, getCartTotal, cartItemCount } = useContext(CartContext);
+  
+  const handleClick = async (e: { preventDefault: () => void; }) => {
+    e.preventDefault();
+    const orderItems = cartItems.map((item) => ({
+      id: item.id,
+      name: item.name,
+      price: item.price.replace("$", ""),
+      quantities: item.count,
+    }));
+    const order = {
+      items: orderItems,
+      totalItems: cartItemCount,
+      totalPrice: getCartTotal(),
+    };
+    try {
+      const docRef = await addDoc(collection(db, "orders"), { order });
+      console.log("Document written with ID: ", docRef.id);
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
     clearCart();
   };
 
@@ -33,7 +45,6 @@ const ShoppingCart = () => {
     clearCart()
   };
 
-  console.log(cartItems.length)
   return (
     <div className={classes.container}>
       <NavBar
@@ -69,7 +80,7 @@ const ShoppingCart = () => {
         )}
       </ul>
       <span className={classes.wrapperText}>
-        <p className={classes.textTotal}>Total {cartItems.length} Items</p>
+        <p className={classes.textTotal}>Total {cartItemCount} Items</p>
         <p className={classes.textPrice}>USD {getCartTotal()}</p>
       </span>
       <div className={classes.wrapperButton}>

@@ -18,7 +18,7 @@ const NavBar = (props: {
   title: string
   isShoppingCart: boolean
 }) => {
-  const { cartItems } = useContext(CartContext);
+  const { cartItemCount } = useContext(CartContext);
   const isShoppingCart = props.isShoppingCart;
   return (
     <nav className={classes.wrapper}>
@@ -38,9 +38,9 @@ const NavBar = (props: {
         /> :
         <div className={classes.iconCart}>
           <IconShoppingCart />
-          {cartItems.length > 0 && 
+          {cartItemCount > 0 && 
           <div className={classes.cartControl}>
-            <p>{cartItems.length}</p>
+            <p>{cartItemCount}</p>
           </div>}
         </div>}
       </Link>
