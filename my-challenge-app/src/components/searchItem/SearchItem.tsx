@@ -1,3 +1,4 @@
+//React Router DOM
 import { Link } from 'react-router-dom';
 //Components
 import LinkViewMore from '../card/LinkViewMore';
@@ -5,7 +6,7 @@ import Counter from '../counter/Counter';
 //CSS
 import classes from './SearchItem.module.css'
 //Image
-import Image from '../../../public/img/image5.png'
+import Image from '/img/image5.png'
 
 const SearchItem = (props: {
   itemId: number;
@@ -21,7 +22,7 @@ const SearchItem = (props: {
         to={`/products/${props.itemId}`} 
         className={classes.itemImageContainer}
       >
-        <img src={Image} alt="" />
+        <img src={Image} alt="" height={"80px"} width={"68.81px"} loading="lazy" />
       </Link>
       <div className={classes.itemTextContainer}>
         <Link 

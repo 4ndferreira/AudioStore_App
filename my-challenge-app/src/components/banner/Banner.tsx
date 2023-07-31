@@ -3,7 +3,7 @@ import ArrowRight from './ArrowRight';
 //CSS
 import classes from './Banner.module.css'
 //Image
-import Image from '../../../public/img/image5.png'
+import Image from '/img/image5.png'
 
 const Banner = (props: {
   id: number; 
@@ -23,7 +23,7 @@ const Banner = (props: {
           <ArrowRight />
         </Link>
       </div>
-      <img src={Image} alt="" />
+      <img src={Image} alt="" height={"144.63px"} width={"124.41px"} />
     </div>
   );
 }

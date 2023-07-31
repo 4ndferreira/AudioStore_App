@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 //Component
 import LinkViewMore from './LinkViewMore'
 //Image
-import Image from '../../../public/img/image5.png'
+import Image from '/img/image5.png'
 //CSS
 import classes from './Card.module.css'
 
@@ -20,8 +20,15 @@ const Card = (props: {
       className={classes.link}
     >
       <div className={classes.cardContainer}>
-        <img src={Image} alt="" />
-        <div>
+        <div className={classes.cardImage}>
+          <img 
+            src={Image} 
+            alt="" 
+            height={"100%"} 
+            loading="lazy" 
+          />
+        </div>
+        <div className={classes.cardText}>
           <h4>{props.name}</h4>
           <p className={classes.cardContainerText}>
             USD {props.price.replace('$','')}
