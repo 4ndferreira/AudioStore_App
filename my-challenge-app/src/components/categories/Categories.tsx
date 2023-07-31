@@ -1,15 +1,18 @@
 
+//React
 import { ChangeEventHandler } from 'react'
+//Splide
 import { Splide, SplideSlide } from '../../../node_modules/@splidejs/react-splide'
-import '../../../node_modules/@splidejs/react-splide/dist/css/splide.min.css'
+//Components
 import SelectorLabel from '../selectorLabel/SelectorLabel'
+//CSS
 import classes from './Categories.module.css'
+import '../../../node_modules/@splidejs/react-splide/dist/css/splide.min.css'
 
 const Categories = (props: { 
   filterSelected: string; 
   onChange: ChangeEventHandler<HTMLInputElement> 
 }) => {
-
   const categories = [
     { 
       id: 'headphone', 
@@ -35,7 +38,7 @@ const Categories = (props: {
 
 
   return (
-    <div className={classes.carouselCategories}>
+    <>
       <Splide 
         options={{
           width: '100%',
@@ -58,7 +61,7 @@ const Categories = (props: {
           </SplideSlide>
         ))}
       </Splide>
-    </div>
+    </>
   )
 }
 
