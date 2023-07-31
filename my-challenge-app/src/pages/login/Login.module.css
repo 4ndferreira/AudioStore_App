@@ -53,11 +53,18 @@
 }
 
 .text {
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.25rem;
+  letter-spacing: 0.0125rem;
   margin-top: 0;
   margin-bottom: 0.75rem;
 }
 
 .textFooter {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  letter-spacing: 0.0125rem;
   margin: 0;
 }
 
@@ -84,7 +91,8 @@
 
 .errorText {
   font-size: 0.875rem;
-  color: red;
+  font-weight: 600;
+  color: rgb(255, 115, 0);
   width: 100%;
   text-align: center;
   margin: 0;

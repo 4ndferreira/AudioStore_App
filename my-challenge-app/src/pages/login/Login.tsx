@@ -12,6 +12,7 @@ import {
   signInWithPopup,
   sendPasswordResetEmail,
   onAuthStateChanged,
+  AuthProvider,
 } from "firebase/auth";
 import { auth } from "../../firebase/Config";
 //Icons
@@ -23,45 +24,47 @@ import GoogleIcon from '../../components/loginButtonWithProvider/GoogleIcon';
 import Input from '../../components/input/Input';
 import Button from '../../components/button/Button';
 import LoginButtonWithProvider from '../../components/loginButtonWithProvider/LoginButtonWithProvider';
-import Loader from '../../components/loader/Loader';
+import Sending from '../../components/submitting/Submitting';
 //CSS
 import classes from './Login.module.css'
-import Sending from '../../components/submitting/Submitting';
 
 const Login = () => {
-  const [newUser, setNewUser] = useState(false)
+  //State of inputs
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  //Control login screen to be displayed
+  const [newUser, setNewUser] = useState(false)
   const [forgotPassword, setForgotPassword] = useState(false)
+  //Error warning display
   const [errorCode, setErrorCode] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
-  const [updating, setUpdating] = useState(true)
-  const [submitted, setSubmitted] = useState('')
+  //Show sending bar
   const [submitting, setSubmitting] = useState(false)
+  //Password reset
+  const [submitted, setSubmitted] = useState('')
+  
   const navigate = useNavigate();
-
+  //Authentication state observer
   useEffect(()=>{
     const unsubscribe = onAuthStateChanged(auth, (user)=>{
       if(user) {
         const uid = user.uid;
         navigate("/")
-        setUpdating(false)
         console.log('uid', uid)
       }else{
         console.log('user is logged out')
-        setUpdating(false)
       }
     })
     return () => unsubscribe();
   }, [navigate])
-
+  //Control login screen to be displayed
   const handleUser = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     setNewUser(!newUser);
     setForgotPassword(false)
   };
-
-  const handleLogin = async (e: { preventDefault: () => void; }) => {
+  //Login with Email
+  const handleLoginWithEmail = async (e: { preventDefault: () => void; }) => {
     e.preventDefault()
     setSubmitting(true)
     const handleEmailAndPassword = (
@@ -71,17 +74,16 @@ const Login = () => {
     )
     await handleEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        const user = userCredential.user;
-        console.log(user)
-        navigate("/")
+        console.log(userCredential.user)
         setSubmitting(false)
         setEmail('')
         setPassword('')
       })
-      .catch((error) => {
-        const errorCode: string = error.code;
-        console.log(errorCode)
-        setErrorCode(errorCode)
+      .catch((error: {
+        code: string;
+        message: string; 
+      }) => {
+        setErrorCode(error.code)
         switch (errorCode) {
           case 'auth/user-not-found':
             setErrorMessage('User not found!');
@@ -101,59 +103,32 @@ const Login = () => {
           default:
             setErrorMessage('An error occurred!');
         }
-        const errorMessage = error.message;
-        console.log(errorMessage)
+        console.error(error.message);
         setSubmitting(false)
     });
   }
-
-  const handleLoginWithGoogle = async (e: { preventDefault: () => void; }) => {
-    e.preventDefault()
-    const provider = new GoogleAuthProvider();
+  //Login with Provider
+  const Google = new GoogleAuthProvider();
+  const Facebook = new FacebookAuthProvider();
+  const handleLoginWithProvider = async (provider: AuthProvider) => {
     await signInWithPopup(auth, provider)
-    .then((result) => {
-      const user = result.user;
-      console.log(user)
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      const token = credential?.accessToken;
-      navigate("/")
-      console.log(token)
-    })
-    .catch((error: FirebaseError) => {
-      const errorCode = error.code;
-      console.log(errorCode)
-      const errorMessage = error.message;
-      console.log(errorMessage)
-      const email = error.customData?.email;
-      console.log(email)
-      const credential = GoogleAuthProvider.credentialFromError(error);
-      console.log(credential)
-    });
-  }
-  
-  const handleLoginWithFacebook = async (e: { preventDefault: () => void; }) => {
-    e.preventDefault()
-    const provider = new FacebookAuthProvider();
-    await signInWithPopup(auth, provider)
-    .then((result) => {
-      const user = result.user;
-      console.log(user)
-      const credential = FacebookAuthProvider.credentialFromResult(result);
-      const accessToken = credential?.accessToken;
-      navigate("/")
-      console.log(accessToken)
-    })
-    .catch((error: FirebaseError) => {
-      const errorCode = error.code;
-      console.log(errorCode)
-      const errorMessage = error.message;
-      console.log(errorMessage)
-      const email = error.customData?.email;
-      console.log(email)
-      const credential = FacebookAuthProvider.credentialFromError(error);
-      console.log(credential)
-    });
-  }
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((error: FirebaseError) => {
+        console.error(error.code);
+        console.error(error.message);
+      });
+  };
+  const googleLoginHandler = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    void handleLoginWithProvider(Google);
+  };
+  const facebookLoginHandler = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    void handleLoginWithProvider(Facebook);
+  };
+  //Reset password
   const handlePasswordReset = (e: { preventDefault: () => void; }) => {
     e.preventDefault()
     setSubmitting(true)
@@ -166,10 +141,11 @@ const Login = () => {
         setEmail('')
         setErrorCode('')
       })
-      .catch((error) => {
-        const errorCode: string = error.code;
-        console.log(errorCode)
-        setErrorCode(errorCode)
+      .catch((error: {
+        code: string;
+        message: string; 
+      }) => {
+        setErrorCode(error.code)
         switch (errorCode) {
           case 'auth/user-not-found':
             setErrorMessage('User not found!');
@@ -180,17 +156,18 @@ const Login = () => {
           default:
             setErrorMessage('An error occurred!');
         }
-        const errorMessage = error.message;
+        console.error(error.message)
         setSubmitting(false)
       })
   }
 
-  if(updating) {
-    return <Loader />
-  }
-
   return (
     <div className={classes.container}>
+      <picture className={classes.picture}>
+        <source type="image/webp" srcSet="/img/image10.webp" />
+        <source type="image/png" srcSet="/img/image10.png" />
+        <img src="/img/image10.png" alt="" />
+      </picture>
       <h1 className={classes.titleWrapper}>
         Audio
         <small>It's modular and designed to last</small>
@@ -199,7 +176,9 @@ const Login = () => {
       <form className={classes.form}>
         <div
           className={
-            errorCode ? `${classes.wrapper} ${classes.error}` : classes.wrapper
+            errorCode 
+              ? `${classes.wrapper} ${classes.error}` 
+              : classes.wrapper
           }
         >
           <Input
@@ -209,10 +188,10 @@ const Login = () => {
             element={<EmailIcon />}
             value={email}
             onInput={(e: ChangeEvent<HTMLInputElement>) => {
-              setEmail(e.target.value)
-              setSubmitted('')
-            }
-            }
+              setEmail(e.target.value);
+              setSubmitted("");
+            }}
+            onFocus={()=>setErrorCode("")}
           />
           <p className={classes.errorText}>
             {(errorCode === "auth/user-not-found" ||
@@ -238,6 +217,7 @@ const Login = () => {
               onInput={(e: ChangeEvent<HTMLInputElement>) =>
                 setPassword(e.target.value)
               }
+              onFocus={()=>setErrorCode("")}
             />
             <p className={classes.errorText}>
               {(errorCode === "auth/weak-password" ||
@@ -250,8 +230,8 @@ const Login = () => {
           <p
             className={classes.text}
             onClick={() => {
-              setForgotPassword(!forgotPassword); 
-              setErrorCode('')
+              setForgotPassword(!forgotPassword);
+              setErrorCode("");
             }}
           >
             Forgot Password
@@ -260,7 +240,9 @@ const Login = () => {
         <div className={classes.wrapperSendButton}>
           <Button
             type={"submit"}
-            onClick={!forgotPassword ? handleLogin : handlePasswordReset}
+            onClick={
+              !forgotPassword ? handleLoginWithEmail : handlePasswordReset
+            }
             name={
               newUser ? "Sign Up" : !forgotPassword ? "Sign In" : "Send Email"
             }
@@ -270,12 +252,12 @@ const Login = () => {
         <div className={classes.wrapperButtons}>
           <LoginButtonWithProvider
             type={"button"}
-            onClick={handleLoginWithFacebook}
+            onClick={facebookLoginHandler}
             icon={<FacebookIcon />}
           />
           <LoginButtonWithProvider
             type={"button"}
-            onClick={handleLoginWithGoogle}
+            onClick={googleLoginHandler}
             icon={<GoogleIcon />}
           />
         </div>
@@ -295,11 +277,6 @@ const Login = () => {
           </p>
         )}
       </form>
-      <picture className={classes.picture}>
-        <source type="image/webp" srcSet="/img/image10.webp" />
-        <source type="image/png" srcSet="/img/image10.png" />
-        <img src="/img/image10.png" alt="" />
-      </picture>
     </div>
   );
 }
