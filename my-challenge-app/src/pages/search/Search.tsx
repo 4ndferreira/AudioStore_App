@@ -27,85 +27,82 @@ const Search = () => {
   };
 
   return (
-    <>
-      <div className={classes.headerContainer}>
-        <NavBar 
-          link='/'
-          link2='/cart '
-          title={'Search'}
-          isShoppingCart={false} 
-          onClick={undefined}      
+    <div className={classes.container}>
+      <NavBar 
+        link='/'
+        link2='/cart '
+        title={'Search'}
+        isShoppingCart={false} 
+        onClick={undefined}      
+      />
+      <div className={classes.wrapper}>
+        <Input
+          id={"searchBar"}
+          type={"text"}
+          name={"Search headphone"}
+          element={<SearchIcon />}
+          value={value}
+          onInput={handleOnInput} 
+          onFocus={undefined}        
         />
-        <div className={classes.wrapper}>
-          <Input
-            id={"searchBar"}
-            type={"text"}
-            name={"Search headphone"}
-            element={<SearchIcon />}
-            value={value}
-            onInput={handleOnInput}
-          />
-        </div>
-        {value && (
-          <ul className={classes.listItems}>
-            {filteredData && 
-            filteredData.length > 0 ? (
-              filteredData.map((item) => (
-                <SearchItem
-                  key={item.id}
-                  name={item.name}
-                  price={item.price}
-                  rating={item.rating}
-                  isShoppingCart={false} 
-                  itemId={item.id} 
-                  count={0}              
-                />
-              ))
-            ) : (
-              <div className={classes.textAlert}>
-                <IconShoppingBag 
-                  width={"72"} 
-                  height={"72"} 
-                  color={"#BABABA"}
-                />
-                <p className={classes.text}>
-                  Sorry, No Products Found
-                </p>
-              </div>
-            )}
-          </ul>
-        )}
       </div>
-      <div className={classes.bodyContainer}>
-        <h2 className={classes.text}>Popular Product</h2>
+      {value && (
         <ul className={classes.listItems}>
-          <SearchItem
-            name={"TMA-2 Comfort Wireless"}
-            price={"270"}
-            rating={4.6}
-            isShoppingCart={false} 
-            itemId={999} 
-            count={0}        
-          />
-          <SearchItem
-            name={"TMA-2 DJ"}
-            price={"270"}
-            rating={4.6}
-            isShoppingCart={false} 
-            itemId={999} 
-            count={0}        
-          />
-          <SearchItem
-            name={"TMA-2 Move Wireless"}
-            price={"270"}
-            rating={4.6}
-            isShoppingCart={false} 
-            itemId={999} 
-            count={0}        
-          />
+          {filteredData && 
+          filteredData.length > 0 ? (
+            filteredData.map((item) => (
+              <SearchItem
+                key={item.id}
+                name={item.name}
+                price={item.price}
+                rating={item.rating}
+                isShoppingCart={false} 
+                itemId={item.id} 
+                count={0}              
+              />
+            ))
+          ) : (
+            <div className={classes.textAlert}>
+              <IconShoppingBag 
+                width={"72"} 
+                height={"72"} 
+                color={"#BABABA"}
+              />
+              <p className={classes.text}>
+                Sorry, No Products Found
+              </p>
+            </div>
+          )}
         </ul>
-      </div>
-    </>
+      )}
+      <h2 className={classes.text}>Popular Product</h2>
+      <ul className={classes.listItems}>
+        <SearchItem
+          name={"TMA-2 Comfort Wireless"}
+          price={"270"}
+          rating={4.6}
+          isShoppingCart={false} 
+          itemId={999} 
+          count={0}        
+        />
+        <SearchItem
+          name={"TMA-2 DJ"}
+          price={"270"}
+          rating={4.6}
+          isShoppingCart={false} 
+          itemId={999} 
+          count={0}        
+        />
+        <SearchItem
+          name={"TMA-2 Move Wireless"}
+          price={"270"}
+          rating={4.6}
+          isShoppingCart={false} 
+          itemId={999} 
+          count={0}        
+        />
+      </ul>
+    </div>
   );
 }
 

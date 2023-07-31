@@ -1,19 +1,15 @@
-.headerContainer {
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100vh;
   grid-column: 3 / 4;
-  grid-row: 1 /2;
-}
-
-.bodyContainer {
-  grid-column: 3 / 4;
-  grid-row: 2 span 2;
+  grid-row: 1 / 5;
 }
 
 .wrapper {
   position: relative;
-  height: 2.8125rem;
+  min-height: 2.8125rem;
   width: 100%;
   margin: 1.56rem 0;
 }
