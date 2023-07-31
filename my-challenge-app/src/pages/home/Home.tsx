@@ -16,8 +16,9 @@ import Banner from "../../components/banner/Banner"
 import Card from "../../components/card/Card"
 import Input from "../../components/input/Input"
 import SearchIcon from "../../components/labelInput/SearchIcon"
-import Loader from "../../components/loader/Loader"
 import IconShoppingBag from "../../components/iconShoppingBag/IconShoppingBag"
+import CardSkeleton from "../../components/cardSkeleton/CardSkeleton"
+import BannerSkeleton from "../../components/bannerSkeleton/BannerSkeleton"
 // CSS
 import '../../../node_modules/@splidejs/react-splide/dist/css/splide.min.css'
 import classes from './Home.module.css'
@@ -46,10 +47,6 @@ const Home = () => {
     item.category.includes(filterCategory)
   );
 
-  if(loading){
-    return <Loader />
-  }
-
   return (
     <>
       <div className={classes.container}>
@@ -72,7 +69,8 @@ const Home = () => {
             name={"Search headphone"}
             element={<SearchIcon />}
             value={""}
-            onInput={undefined}
+            onInput={undefined} 
+            onFocus={undefined}          
           />
         </div>
       </Link>
@@ -82,10 +80,12 @@ const Home = () => {
             filterSelected={filterCategory}
             onChange={handleSelectChange}
           />
-          <div className={classes.carouselBanner}>
+          {loading ? (
+            <BannerSkeleton />
+          ) : (
             <Splide
               options={{
-                width: "100vw",
+                width: "100%",
                 autoWidth: true,
                 arrows: false,
                 pagination: false,
@@ -93,35 +93,42 @@ const Home = () => {
               }}
             >
               {filteredData?.length !== 0 ? (
-                filteredData?.map((item) => (
-                  <SplideSlide key={item.id}>
-                    <Banner 
-                      key={item.id} 
-                      title={item.name} 
-                      id={item.id} 
-                    />
-                  </SplideSlide>
-                ))
+                filteredData?.map(
+                  (item, index) =>
+                    index < 6 && (
+                      <SplideSlide key={item.id}>
+                        <Banner
+                          key={item.id}
+                          title={item.name}
+                          id={item.id}
+                        />
+                      </SplideSlide>
+                    )
+                )
               ) : (
                 <li className={classes.noReturn}>
                   <h2>Ops! No products found in this category.</h2>
-                  <IconShoppingBag 
+                  <IconShoppingBag
                     width={"96"}
-                    height={"96"} 
-                    color={"#BABABA"}                  
+                    height={"96"}
+                    color={"#BABABA"}
                   />
                 </li>
               )}
             </Splide>
-          </div>
+          )}
           <div className={classes.showcaseText}>
             <h4>Featured Products</h4>
             <Link to="/products">See All</Link>
           </div>
-          <div className={classes.carouselFeat}>
+          {loading ? (
+            <div className={classes.containerSkeleton}>
+              <CardSkeleton cards={2} />
+            </div>
+          ) : (
             <Splide
               options={{
-                width: "100vw",
+                width: "100%",
                 autoWidth: true,
                 arrows: false,
                 pagination: false,
@@ -129,30 +136,33 @@ const Home = () => {
               }}
             >
               {filteredData?.length !== 0 ? (
-                filteredData?.map((item) => (
-                  <SplideSlide key={item.id}>
-                    <Card
-                      id={item.id}
-                      key={item.id}
-                      name={item.name}
-                      price={item.price}
-                      rating={item.rating}
-                      showReview={false}
-                    />
-                  </SplideSlide>
-                ))
+                filteredData?.map(
+                  (item, index) =>
+                    index < 8 && (
+                      <SplideSlide key={item.id}>
+                        <Card
+                          id={item.id}
+                          key={item.id}
+                          name={item.name}
+                          price={item.price}
+                          rating={item.rating}
+                          showReview={false}
+                        />
+                      </SplideSlide>
+                    )
+                )
               ) : (
                 <li className={classes.noReturn}>
                   <h2>Ops! No products found in this category.</h2>
-                  <IconShoppingBag 
+                  <IconShoppingBag
                     width={"96"}
-                    height={"96"} 
-                    color={"#BABABA"}                  
+                    height={"96"}
+                    color={"#BABABA"}
                   />
                 </li>
               )}
             </Splide>
-          </div>
+          )}
         </div>
       </section>
     </>

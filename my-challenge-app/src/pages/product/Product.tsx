@@ -1,11 +1,13 @@
 //React
-import { ChangeEvent, useContext, useState } from "react";
+import { ChangeEvent, Suspense, lazy, useContext, useState } from "react";
 //React Router Dom
 import { Link, useNavigate, useParams } from "react-router-dom";
 //Hooks
 import { useFetch } from "../../hooks/useFetch";
 //Splide
 import { Splide, SplideSlide } from '../../../node_modules/@splidejs/react-splide'
+//React loading Skeleton
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 //Components
 import NavBar from "../../components/navBar/NavBar";
 import DetailsToggle from "../../components/detailsToggle/DetailsToggle";
@@ -13,13 +15,16 @@ import Review from "../../components/review/Review";
 import Card from "../../components/card/Card";
 import Button from "../../components/button/Button";
 import { CartContext } from "../../store/CartContext";
-import Loader from "../../components/loader/Loader";
-import IconAlert from "../../components/iconAlert/IconAlert";
+import ReviewSkeleton from "../../components/reviewSkeleton/ReviewSkeleton";
+const NotFound = lazy(()=> import('../notFound/NotFound'))
 //Image
-import Image from '../../../public/img/image6.png'
+import Image from '/img/image6.png'
 //CSS
 import classes from './Product.module.css'
 import '../../../node_modules/@splidejs/react-splide/dist/css/splide.min.css'
+import 'react-loading-skeleton/dist/skeleton.css'
+import CardSkeleton from "../../components/cardSkeleton/CardSkeleton";
+import Loader from "../../components/loader/Loader";
 
 const Product = () => {
   const { data, loading } = useFetch(
@@ -33,10 +38,6 @@ const Product = () => {
 
   const navigate = useNavigate();
 
-  if (loading) {
-    return <Loader />;
-  }
-
   const item = data?.find((item) => id && item.id === parseInt(id));
 
   const handleSelectChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -49,74 +50,104 @@ const Product = () => {
     navigate("/cart");
   };
 
-  if (!item) {
-    return (
-      <div className={classes.notFoundMessage}>
-        <IconAlert width={"96"} height={"96"} />
-        <h1 className={classes.notFoundText}>404 - Page Not Found</h1>
-        <Link to={"/"} className={classes.notFoundLink}>
-          Get me out of here!
-        </Link>
-      </div>
-    );
+  if(!data) {
+    return <Loader />
   }
 
-  if (item)
+  if(!loading && !item) {
     return (
-      <>
-        <div className={classes.gridTop}>
-          <NavBar
-            link="/"
-            link2="/cart"
-            title={""}
-            isShoppingCart={false}
-            onClick={undefined}
-          />
-          <div className={classes.textWrapper}>
-            <p className={classes.textPrice}>USD {item.price.replace("$", "")}</p>
-            <h2 className={classes.textTitle}>{item.name.toUpperCase()}</h2>
-          </div>
-          <DetailsToggle selected={detailsToggle} onChange={handleSelectChange} />
-        </div>
-        {detailsToggle === "Overview" ? (
-          <>
-            <div className={classes.gridMiddle}>
-              <div className={classes.imageWrapper}>
-                <img src={Image} alt="" />
-              </div>
-              <h4 className={classes.textTitleReviews}>
-                Reviews ({item.reviews.length})
-              </h4>
-              <ul className={classes.listReviews}>
-                {item &&
-                  item.reviews.map((review) => (
-                    <Review
-                      key={review.id}
-                      user={review.user}
-                      description={review.description}
-                      rating={review.rating}
-                    />
-                  ))}
-              </ul>
+      <Suspense fallback={<Loader />}>
+        <NotFound />
+      </Suspense>
+    )
+  }
+
+  return (
+    <>
+      <div className={classes.gridTop}>
+        <NavBar
+          link="/"
+          link2="/cart"
+          title={""}
+          isShoppingCart={false}
+          onClick={undefined}
+        />
+        {loading ? (
+          <SkeletonTheme
+            baseColor="#eeeded"
+            highlightColor="rgba(255, 255, 255, 0.5)"
+          >
+            <div className={classes.textWrapperSkeleton}>
+              <Skeleton className={classes.textPriceSkeleton} />
+              <Skeleton count={2} className={classes.textTitleSkeleton} />
             </div>
-            <section className={classes.sectionBackground}>
-              <div className={classes.anotherProduct}>
-                <div className={classes.textLink}>
-                  <h4>Another Product</h4>
-                  <Link to="/products">See All</Link>
+          </SkeletonTheme>
+        ) : (
+          <div className={classes.textWrapper}>
+            <p className={classes.textPrice}>
+              USD {item?.price.replace("$", "")}
+            </p>
+            <h2 className={classes.textTitle}>{item?.name.toUpperCase()}</h2>
+          </div>
+        )}
+        <DetailsToggle selected={detailsToggle} onChange={handleSelectChange} />
+      </div>
+      {detailsToggle === "Overview" ? (
+        <>
+          <div className={classes.gridMiddle}>
+            {loading ? (
+              <SkeletonTheme
+                baseColor="#eeeded"
+                highlightColor="rgba(255, 255, 255, 0.5)"
+              >
+                <Skeleton className={classes.imageSkeleton} />
+              </SkeletonTheme>
+            ) : (
+              <div className={classes.imageWrapper}>
+                <img src={Image} alt="" placeholder="" height={"333.47px"} />
+              </div>
+            )}
+            <h4 className={classes.textTitleReviews}>
+              Reviews ({item ? item.reviews.length : 0})
+            </h4>
+            <ul className={classes.listReviews}>
+              {loading ? (
+                <ReviewSkeleton cards={2} />
+              ) : (
+                item?.reviews.map((review) => (
+                  <Review
+                    key={review.id}
+                    user={review.user}
+                    description={review.description}
+                    rating={review.rating}
+                  />
+                ))
+              )}
+            </ul>
+          </div>
+          <section className={classes.sectionBackground}>
+            <div className={classes.anotherProduct}>
+              <div className={classes.textLink}>
+                <h4>Another Product</h4>
+                <Link to="/products">See All</Link>
+              </div>
+              {loading ? (
+                <div className={classes.containerSkeleton}>
+                  <CardSkeleton cards={2} />
                 </div>
-                <div className={classes.wrapperCarousel}>
-                  <Splide
-                    options={{
-                      width: '100vw',
-                      autoWidth: true,
-                      arrows: false,
-                      pagination: false,
-                      gap: "0.94rem",
-                    }}
-                  >
-                    {data &&
-                      data.map((item) => (
+              ) : (
+                <Splide
+                  options={{
+                    width: "100vw",
+                    autoWidth: true,
+                    arrows: false,
+                    pagination: false,
+                    gap: "0.94rem",
+                  }}
+                >
+                  {data?.map(
+                    (item, index) =>
+                      index < 8 && (
                         <SplideSlide key={item.id}>
                           <Card
                             id={item.id}
@@ -127,24 +158,21 @@ const Product = () => {
                             showReview={false}
                           />
                         </SplideSlide>
-                      ))}
-                  </Splide>
-                </div>
-              </div>
-            </section>
-          </>
-        ) : (
-          <p className={classes.textDescription}>{item.description}</p>
-        )}
-        <div className={classes.wrapperButton}>
-          <Button 
-            type={"button"}
-            name={"Add To Cart"} 
-            onClick={handleClick} 
-          />
-        </div>
-      </>
-    );
+                      )
+                  )}
+                </Splide>
+              )}
+            </div>
+          </section>
+        </>
+      ) : (
+        <p className={classes.textDescription}>{item?.description}</p>
+      )}
+      <div className={classes.wrapperButton}>
+        <Button type={"button"} name={"Add To Cart"} onClick={handleClick} />
+      </div>
+    </>
+  );
 }
 
 export default Product

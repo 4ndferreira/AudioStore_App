@@ -10,21 +10,21 @@ import NavBar from '../../components/navBar/NavBar'
 import Card from '../../components/card/Card'
 import Categories from '../../components/categories/Categories'
 import SortBy from '../../components/sortBy/SortBy'
-import Loader from '../../components/loader/Loader'
 import IconSliders from '../../components/button/IconSliders'
 import IconClose from '../../components/navBar/IconClose'
 import IconShoppingBag from '../../components/iconShoppingBag/IconShoppingBag'
+import CardSkeleton from '../../components/cardSkeleton/CardSkeleton'
 //CSS
 import classes from './Products.module.css'
 import './style.css'
 
-const Products = () => {
-  const { data, loading } = useFetch('https://run.mocky.io/v3/534d1f3e-406e-4564-a506-7e2718fdb0bc');
-  
+const Products = () => { 
   const [open, setOpen] = useState(false) 
   const [ filterCategory, setFilterCategory] = useState ('')
   const [ selectSortBy, setSelectSortBy] = useState ('')
   const [ sortedData, setSortedData] = useState<Data[] | undefined> (undefined)
+
+  const { data, loading } = useFetch('https://run.mocky.io/v3/534d1f3e-406e-4564-a506-7e2718fdb0bc');
   
   const openFilter = () => {
     setOpen(!open)
@@ -39,14 +39,11 @@ const Products = () => {
     const { value } = e.target
     setFilterCategory(value)
   }
-  console.log(filterCategory)
 
   const handleSelectSortBy = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target
     setSelectSortBy(value)
   }
-  console.log(selectSortBy)
-
   
   const handleSortBy = (e: { preventDefault: () => void }) => {
     e.preventDefault()
@@ -89,10 +86,6 @@ const Products = () => {
     setOpen(!open)
   }
 
-  if (loading) {
-    return <Loader />;
-  }
-
   return (
     <>
       <div className={classes.gridTop}>
@@ -113,7 +106,9 @@ const Products = () => {
       </div>
       <section className={classes.showcase}>
         <div className={classes.itemsContainer}>
-          {sortedData ? (
+          {loading ? (
+            <CardSkeleton cards={6} />
+          ) : sortedData ? (
             sortedData.length !== 0 ? (
               sortedData.map((item) => (
                 <Card
@@ -127,12 +122,11 @@ const Products = () => {
               ))
             ) : (
               <li className={classes.noReturn}>
-                <IconShoppingBag 
-                  width={"96"}
-                  height={"96"} 
-                  color={"#BABABA"}                  
-                />
-                <h2>Ops!<br /> No products found in this category.</h2>
+                <IconShoppingBag width={"96"} height={"96"} color={"#BABABA"} />
+                <h2>
+                  Ops!
+                  <br /> No products found in this category.
+                </h2>
               </li>
             )
           ) : (
