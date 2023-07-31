@@ -1,7 +1,10 @@
 import { ReactNode, createContext } from "react";
 import { Data } from "../hooks/useFetch";
 
-export interface Item extends Data {
+export interface Item {
+  id: number,
+  name: string,
+  price: string,
   count: number;
 }
 
@@ -13,6 +16,7 @@ interface CartContextValue {
   removeFromCart: (itemId: number) => void;
   clearCart: () => void;
   getCartTotal: () => ReactNode;
+  cartItemCount: number
 }
 
 export const CartContext = createContext<CartContextValue>({
@@ -34,5 +38,6 @@ export const CartContext = createContext<CartContextValue>({
   },
   getCartTotal: () => {
     throw new Error("Function not implemented.");
-  }
+  },
+  cartItemCount: 0
 });

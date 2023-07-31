@@ -19,7 +19,12 @@ const CartProvider = (props: { children: ReactNode }) => {
       })
       setCartItems(updateItems);
     } else {
-      const newItem = {...item, count: 1};
+      const newItem = {
+        id: item.id,
+        name: item.name,
+        price: item.price,
+        count: 1,
+      };
       setCartItems([...cartItems, newItem]);
     }
   }
@@ -63,12 +68,14 @@ const CartProvider = (props: { children: ReactNode }) => {
   }, [cartItems]);
 
   useEffect(()=>{
-    const cartItems = localStorage.getItem('cartItems');
-    if (cartItems) {
-      const parsedCartItems: Item[] = JSON.parse(cartItems) 
+    const stringCartItems = localStorage.getItem('cartItems');
+    if (stringCartItems) {
+      const parsedCartItems: Item[] = JSON.parse(stringCartItems) 
       setCartItems(parsedCartItems);
     }
   }, []);
+
+  const cartItemCount = cartItems.reduce((acc, item) => (acc += item.count), 0);
 
   const cartContext = {
     cartItems,
@@ -77,7 +84,8 @@ const CartProvider = (props: { children: ReactNode }) => {
     decreaseCartItem,
     removeFromCart,
     clearCart,
-    getCartTotal
+    getCartTotal,
+    cartItemCount
   };
 
   return (
