@@ -1,0 +1,42 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 9.6875rem;
+  height: 13.3125rem;
+  padding: 0.9375rem 0.625rem;
+  border-radius: 0.9375rem;
+  background: var(--colorWhite);
+  box-sizing: border-box;
+}
+.imageWrapper{
+  display: flex;
+}
+
+.containterImageSkeleton{
+  display: flex;
+  height: 125px
+}
+
+.imageSkeleton{
+  width: 8.438rem;
+}
+
+.titleSkeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.containterTextSkeleton {
+  display: flex;
+  height: 1rem;
+}
+
+.textSkeleton {
+  width: 8.438rem;
+}
+
+.textPriceSkeleton {
+  width: 4.219rem;
+}

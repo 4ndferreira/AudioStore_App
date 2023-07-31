@@ -1,0 +1,24 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 20.5625rem;
+  gap: 0.94rem;
+}
+
+.userInfo {
+  display: flex;
+  gap: .81rem
+}
+
+.userInfoText {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.wrapper p {
+  margin: 0;
+  padding-left: 3.31rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
