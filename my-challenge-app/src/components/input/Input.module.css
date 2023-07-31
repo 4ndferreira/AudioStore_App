@@ -13,12 +13,12 @@
   
 }
 
-.input:focus{
+.input:focus {
   outline: none;
   border: 1px solid var(--colorsPrimary);
 }
 
-.input::placeholder{
+.input::placeholder {
   color: var(--colorsGrey);
 }
 
