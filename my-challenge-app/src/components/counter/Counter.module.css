@@ -28,11 +28,11 @@
 
   border-radius: 0.625rem;
   border: 1px solid var(--colorsGrey);
-  background: var(--colorWhite);
+  background: var(--colorsWhite);
 }
 
 .buttonDelete {
   display: flex;
   border: none;
-  background: var(--colorWhite);
+  background: var(--colorsWhite);
 }

@@ -6,7 +6,7 @@
   height: 13.3125rem;
   padding: 0.9375rem 0.625rem;
   border-radius: 0.9375rem;
-  background: var(--colorWhite);
+  background: var(--colorsWhite);
   box-sizing: border-box;
 }
 .imageWrapper{

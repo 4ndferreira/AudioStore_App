@@ -14,7 +14,7 @@
 .wrapper button {
   color: var(--colorsDefault);
   border: 1px solid var(--colorsGrey);
-  background-color: var(--colorWhite);
+  background-color: var(--colorsWhite);
   font-size: 0.875rem;
   font-weight: 400;
 }
@@ -43,7 +43,7 @@
 }
 
 .showcase {
-  background-color: var(--colorGreyLight1);
+  background-color: var(--colorsGreyLight1);
   display: flex;
   justify-content: center;
   height: fit-content;

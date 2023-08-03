@@ -16,7 +16,7 @@
   box-sizing: border-box;
   width: 0;
   height: 4.8px;
-  background: var(--colorWhite);
+  background: var(--colorsWhite);
   position: absolute;
   top: 0;
   left: 0;

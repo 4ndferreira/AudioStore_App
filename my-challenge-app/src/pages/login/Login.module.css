@@ -5,7 +5,7 @@
   align-items: center;
   height: 47.3775rem;
   padding: 6.62rem 0 4.94rem 0;
-  color: var(--colorWhite);
+  color: var(--colorsWhite);
 
   grid-column: 2 / 3;
   grid-row: 1 / 5;
@@ -36,7 +36,7 @@
   position: relative;
   height: 3.125rem;
   width: 100%;
-  background-color: var(--colorWhite);
+  background-color: var(--colorsWhite);
   border-radius: 0.625rem;
 }
 

@@ -7,7 +7,7 @@
   box-sizing: border-box;
 
   border-radius: 0.625rem;
-  background: var(--colorWhite);
+  background: var(--colorsWhite);
 }
 
 .bannerContainer img {
