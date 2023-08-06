@@ -3,8 +3,10 @@ import { useContext } from "react";
 //React Router Dom
 import { Link } from "react-router-dom";
 //Firebase
-import { addDoc, collection } from "firebase/firestore";
-import { db } from "../../firebase/Config";
+import { arrayUnion, doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
+import { auth, db } from "../../firebase/Config";
+//UUID
+import { v4 as uuidv4 } from 'uuid'
 //Context
 import { CartContext } from "../../store/CartContext";
 //Components
@@ -14,10 +16,11 @@ import NavBar from "../../components/navBar/NavBar";
 import SearchItem from "../../components/searchItem/SearchItem";
 import IconShoppingBag from "../../components/iconShoppingBag/IconShoppingBag";
 //CSS
-import classes from "./ShoppingCart.module.css";
+import classes from './ShoppingCart.module.css'
 
 const ShoppingCart = () => {
   const { cartItems, clearCart, getCartTotal, cartItemCount } = useContext(CartContext);
+  const userID = auth.currentUser?.uid;
   
   const handleClick = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
@@ -28,17 +31,28 @@ const ShoppingCart = () => {
       quantities: item.count,
     }));
     const order = {
-      items: orderItems,
+      id: uuidv4() ,
+      date: new Date().toISOString(), 
       totalItems: cartItemCount,
       totalPrice: getCartTotal(),
+      items: orderItems
     };
-    try {
-      const docRef = await addDoc(collection(db, "orders"), { order });
-      console.log("Document written with ID: ", docRef.id);
-    } catch (e) {
-      console.error("Error adding document: ", e);
+    if(userID) {
+      const docRef = doc(db, "users", userID);
+      const docSnap = await getDoc(docRef)
+        if (docSnap.exists()) {
+          return updateDoc(docRef, { orders: arrayUnion(order) });
+        } else {
+          return setDoc(docRef, { orders: [order] });
+        }
     }
     clearCart();
+    // try {
+    //   const docRef = await addDoc(collection(db, "orders"), { order });
+    //   console.log("Document written with ID: ", docRef.id);
+    // } catch (e) {
+    //   console.error("Error adding document: ", e);
+    // }
   };
 
   const handleDelete = () => {
