@@ -1,12 +1,14 @@
-import { Suspense, lazy } from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+//React
+import { Suspense, lazy, useEffect } from 'react'
+//React Router DOM
+import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom'
 //Components
 import Loader from './components/loader/Loader'
 import CartProvider from './store/CartProvider'
 import PrivateWrapper from './layouts/PrivateWrapper'
 //CSS
 import './App.css'
-
+//Lazy Components
 const Login = lazy(() => import('./pages/login/Login'))
 const Home = lazy(() => import('./pages/home/Home'))
 const Search = lazy(() => import('./pages/search/Search'))
@@ -15,11 +17,20 @@ const Product = lazy(() => import('./pages/product/Product'))
 const ShoppingCart = lazy(() => import('./pages/shoppingCart/ShoppingCart'))
 const NotFound = lazy(()=> import('./pages/notFound/NotFound'))
 
+export const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [pathname]);
+  return null;
+};
+
 const App = () => {
   return (
     <BrowserRouter>
       <CartProvider>
         <Suspense fallback={<Loader />}>
+          <ScrollToTop />
           <Routes>
             <Route 
               path='/signin' 
