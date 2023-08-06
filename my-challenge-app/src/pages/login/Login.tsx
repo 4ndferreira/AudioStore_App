@@ -84,7 +84,7 @@ const Login = () => {
         message: string; 
       }) => {
         setErrorCode(error.code)
-        switch (errorCode) {
+        switch (error.code) {
           case 'auth/user-not-found':
             setErrorMessage('User not found!');
             break;
@@ -146,7 +146,7 @@ const Login = () => {
         message: string; 
       }) => {
         setErrorCode(error.code)
-        switch (errorCode) {
+        switch (error.code) {
           case 'auth/user-not-found':
             setErrorMessage('User not found!');
             break;
