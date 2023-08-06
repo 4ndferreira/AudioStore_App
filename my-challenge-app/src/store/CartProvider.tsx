@@ -1,11 +1,23 @@
+//React
 import { ReactNode, useEffect, useState } from "react";
+//Firebase
+import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth, db } from "../firebase/Config";
+//Context
 import { CartContext, Item } from "./CartContext";
+//UseFetch
 import { Data } from "../hooks/useFetch";
 
 const CartProvider = (props: { children: ReactNode }) => {
-  const cartLocalStorage = localStorage.getItem('cartItems');
-  const parsedCartItems: Item[] = cartLocalStorage ? JSON.parse(cartLocalStorage) : []
-  const [cartItems, setCartItems] = useState<Item[]>(parsedCartItems);
+  const [userID, setUserID] = useState<string | undefined>(undefined);
+  const [cartItems, setCartItems] = useState<Item[]>([]);
+
+  useEffect(()=>{
+    onAuthStateChanged(auth, (user)=>{
+      user && setUserID(user.uid)
+    })
+  }, [])
 
   const addToCart = (item: Data) => {
     const existingItem = cartItems.find((cartItem) => cartItem.id === item.id);
@@ -62,18 +74,37 @@ const CartProvider = (props: { children: ReactNode }) => {
     );
     return total.toFixed(2);
   };
-
+  
   useEffect(()=>{
-    localStorage.setItem('cartItems', JSON.stringify(cartItems));
-  }, [cartItems]);
-
-  useEffect(()=>{
-    const stringCartItems = localStorage.getItem('cartItems');
-    if (stringCartItems) {
-      const parsedCartItems: Item[] = JSON.parse(stringCartItems) 
-      setCartItems(parsedCartItems);
+    const setFireStoreCart = async () => {
+      if(userID) {
+        const docRef = doc(db, "users", userID);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          return updateDoc(docRef, { cart: [...cartItems] });
+        } else {
+          return setDoc(docRef, { cart: [...cartItems] });
+        }
+      }
     }
-  }, []);
+    void setFireStoreCart();
+  }, [cartItems, userID]);
+
+  useEffect(()=>{
+    const getFireStoreCart = async () => {
+      if(userID) {
+        const docRef = doc(db, "users", userID);
+        const docSnap = await getDoc(docRef)
+        if (docSnap.exists()) {
+          const cartFirestore: Item[] = docSnap.data().cart
+          setCartItems(cartFirestore)
+        } else {
+          setCartItems([])
+        }
+      }
+    }
+    void getFireStoreCart();
+  }, [userID]);
 
   const cartItemCount = cartItems.reduce((acc, item) => (acc += item.count), 0);
 
