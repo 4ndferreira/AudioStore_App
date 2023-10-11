@@ -4,7 +4,7 @@ Final Challenge for the Compass UOL Scholarship Program
 
 ## Instructions for the Challenge:
 
-![Captura de Tela (4)](https://github.com/4ndferreira/PB-Compass-Challenge-III/assets/97910606/9cfc55af-4517-4128-892c-50f434ae69a9)
+![Modelo Figma](https://github.com/4ndferreira/PB-Compass-Challenge-III/blob/main/Figma.png)
 UI (https://www.figma.com/file/MgpXAAjgKFfbw2V7ZDmiQn/Challenge-03---Week-12?type=design&node-id=4%3A1&mode=design&t=exbcXTvkbp26juDy-1)
 
 You’ll need to recreate the page mentioned above, staying loyal to its original design using React.
