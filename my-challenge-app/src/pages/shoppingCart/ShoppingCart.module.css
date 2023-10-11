@@ -6,6 +6,12 @@
   grid-column: 2 / 3;
   grid-row: 1 / 5;
 }
+
+.wrapperButton {
+  width: 20.375rem;
+  margin: auto;
+}
+
 .wrapperButton p {
   display: flex;
   justify-content: space-between;
@@ -33,7 +39,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  width: 20.375rem;
+  margin: 0 auto;
 }
 
 .textTotal {

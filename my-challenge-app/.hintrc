@@ -1,0 +1,14 @@
+{
+  "extends": [
+    "development"
+  ],
+  "hints": {
+    "typescript-config/is-valid": "off",
+    "axe/structure": "off"
+  },
+  "browserslist": [
+    "defaults",
+    "not ie 11",
+    "not samsung <= 22"
+  ]
+}

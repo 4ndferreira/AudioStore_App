@@ -60,18 +60,16 @@ const Home = () => {
           What are you looking for today?
         </h3>
       </div>
-      <Link to="/search" className={classes.linkSearch}>
-        <div className={classes.wrapper}>
-          <Input
-            id={"searchBar"}
-            type={"text"}
-            name={"Search headphone"}
-            element={<SearchIcon />}
-            value={""}
-            onInput={undefined} 
-            onFocus={undefined}          
-          />
-        </div>
+      <Link to="/search" className={classes.wrapper}>
+        <Input
+          id={"searchBar"}
+          type={"text"}
+          name={"Search headphone"}
+          element={<SearchIcon />}
+          value={""}
+          onInput={undefined} 
+          onFocus={undefined}          
+        />
       </Link>
       <section className={classes.showcase}>
         <div className={classes.showcaseContainer}>

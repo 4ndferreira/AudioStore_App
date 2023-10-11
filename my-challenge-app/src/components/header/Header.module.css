@@ -1,11 +1,7 @@
 .wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 20.375rem;
   position: absolute;
   top: 0;
+  width: 100%;
 }
 
 .container {
@@ -43,8 +39,6 @@
 .menuLogout {
   display: flex;
   justify-content: center;
-  align-items: center;
-  width: 100%;
   gap: 0.45rem;
   border-top: 1px solid var(--colorsGrey);
   padding-top: 6px;

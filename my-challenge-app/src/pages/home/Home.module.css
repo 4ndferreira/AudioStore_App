@@ -1,19 +1,13 @@
 .container {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  align-items: flex-start;
+  position: relative;
+  width: 20.375rem;
   padding-top: 5rem;
-  grid-column: 2 /3;
-  grid-row: 1 /2;
+  margin: 0 auto;
 }
 
 .welcomeText {
   display: flex;
-  max-width: 20.375rem;
   flex-direction: column;
-  align-items: flex-start;
-  margin: 0 auto;
   gap: 0.3125rem;
 }
 
@@ -23,16 +17,13 @@
   line-height: 1.25rem;
 }
 
-.linkSearch {
-  grid-column: 2 / 3;
-  grid-row: 2 / 3;
-}
-
 .wrapper {
+  display: flex;
   position: relative;
-  height: 2.8125rem;
-  max-width: 20.375rem;
-  margin: 1.56rem auto;
+  min-height: 2.8125rem;
+  width: 20.375rem;
+  margin: 0 auto;
+  padding: 1.56rem 0;
 }
 
 .showcase {
@@ -41,8 +32,7 @@
   min-height: 31.5rem;
   padding: 2rem 0 1.5rem 0;
   overflow: hidden;
-  grid-column: 1 / 4 ;
-  grid-row: 3 / 5;
+  flex-grow: 1;
 }
 
 .showcaseContainer {
