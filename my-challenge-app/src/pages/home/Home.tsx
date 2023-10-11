@@ -33,8 +33,7 @@ const Home = () => {
       console.log('Sign-out successful.')
       navigate('/signin')
     }).catch((error) => {
-      const errorCode = error.code;
-      console.log(errorCode)
+      console.error(error.code)
     });
   }
 

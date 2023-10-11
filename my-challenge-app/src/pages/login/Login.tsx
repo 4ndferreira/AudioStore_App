@@ -45,18 +45,14 @@ const Login = () => {
   
   const navigate = useNavigate();
   //Authentication state observer
-  useEffect(()=>{
-    const unsubscribe = onAuthStateChanged(auth, (user)=>{
-      if(user) {
-        const uid = user.uid;
-        navigate("/")
-        console.log('uid', uid)
-      }else{
-        console.log('user is logged out')
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        navigate("/");
       }
-    })
+    });
     return () => unsubscribe();
-  }, [navigate])
+  }, [navigate]);
   //Control login screen to be displayed
   const handleUser = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();

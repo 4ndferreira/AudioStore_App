@@ -92,7 +92,7 @@
 .errorText {
   font-size: 0.875rem;
   font-weight: 600;
-  color: rgb(255, 115, 0);
+  color: red;
   width: 100%;
   text-align: center;
   margin: 0;

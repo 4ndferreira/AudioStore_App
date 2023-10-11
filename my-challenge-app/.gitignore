@@ -26,3 +26,5 @@ dist-ssr
 .env
 
 dir_Ignored
+
+src/layouts/Page.tsx
