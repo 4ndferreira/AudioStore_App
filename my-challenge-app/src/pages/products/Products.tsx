@@ -88,7 +88,7 @@ const Products = () => {
 
   return (
     <>
-      <div className={classes.gridTop}>
+      <div className={classes.containerTop}>
         <NavBar
           link="/"
           link2="/cart"

@@ -18,6 +18,7 @@
 }
 
 .iconCart {
+  display: inherit;
   position: relative;
 }
 

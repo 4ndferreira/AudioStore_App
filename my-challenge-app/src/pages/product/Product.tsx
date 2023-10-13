@@ -64,7 +64,7 @@ const Product = () => {
 
   return (
     <>
-      <div className={classes.gridTop}>
+      <div className={classes.containerHeader}>
         <NavBar
           link="/"
           link2="/cart"
@@ -93,8 +93,8 @@ const Product = () => {
         <DetailsToggle selected={detailsToggle} onChange={handleSelectChange} />
       </div>
       {detailsToggle === "Overview" ? (
-        <>
-          <div className={classes.gridMiddle}>
+        <div>
+          <section className={classes.productOverview}>
             {loading ? (
               <SkeletonTheme
                 baseColor="#eeeded"
@@ -124,7 +124,7 @@ const Product = () => {
                 ))
               )}
             </ul>
-          </div>
+          </section>
           <section className={classes.sectionBackground}>
             <div className={classes.anotherProduct}>
               <div className={classes.textLink}>
@@ -164,12 +164,14 @@ const Product = () => {
               )}
             </div>
           </section>
-        </>
+        </div>
       ) : (
         <p className={classes.textDescription}>{item?.description}</p>
       )}
-      <div className={classes.wrapperButton}>
-        <Button type={"button"} name={"Add To Cart"} onClick={handleClick} />
+      <div className={classes.positionButton}>
+        <div className={classes.wrapperButton}>
+          <Button type={"button"} name={"Add To Cart"} onClick={handleClick} />
+        </div>
       </div>
     </>
   );

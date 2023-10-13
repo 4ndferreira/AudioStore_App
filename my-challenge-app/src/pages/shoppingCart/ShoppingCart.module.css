@@ -3,13 +3,8 @@
   flex-direction: column;
   justify-content: space-between;
   height: 100vh;
-  grid-column: 2 / 3;
-  grid-row: 1 / 5;
-}
-
-.wrapperButton {
   width: 20.375rem;
-  margin: auto;
+  margin: 0 auto;
 }
 
 .wrapperButton p {
