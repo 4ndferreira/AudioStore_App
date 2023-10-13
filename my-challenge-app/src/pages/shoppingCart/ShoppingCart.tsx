@@ -17,6 +17,7 @@ import SearchItem from "../../components/searchItem/SearchItem";
 import IconShoppingBag from "../../components/iconShoppingBag/IconShoppingBag";
 //CSS
 import classes from './ShoppingCart.module.css'
+import DeletionDialogBox from "../../components/deletionDialogBox/DeletionDialogBox";
 
 const ShoppingCart = () => {
   const { cartItems, clearCart, getCartTotal, cartItemCount } = useContext(CartContext);
@@ -67,6 +68,10 @@ const ShoppingCart = () => {
         title={"Shopping Cart"}
         onClick={handleDelete}
         isShoppingCart={true}
+      />
+      <DeletionDialogBox 
+        onClose={() => {throw new Error("Function not implemented.")}} 
+        isOpen={true} 
       />
       <ul className={classes.cartItemsList}>
         {cartItems.length !== 0 ? (
