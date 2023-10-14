@@ -22,6 +22,11 @@
   margin: 0;
 }
 
+.iconMenu {
+  display: flex;
+  z-index: 100;
+}
+
 .userImg {
   display: flex;
   justify-content: center;

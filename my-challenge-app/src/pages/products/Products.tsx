@@ -150,7 +150,7 @@ const Products = () => {
           <div className={classes.filterTitle}>
             <h2>Filter</h2>
             <button className={classes.closeButton} onClick={handleCloseFilter}>
-              <IconClose />
+              <IconClose color={'black'} />
             </button>
           </div>
           <div>

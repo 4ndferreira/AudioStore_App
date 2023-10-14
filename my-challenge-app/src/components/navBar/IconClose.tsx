@@ -1,4 +1,4 @@
-const IconClose = () => {
+const IconClose = (props: { color: string; }) => {
   return (
     <svg
       width="24"
@@ -11,7 +11,7 @@ const IconClose = () => {
         <path
           id="Vector"
           d="M18 6L6 18"
-          stroke="black"
+          stroke={props.color}
           strokeWidth="1.5"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -19,7 +19,7 @@ const IconClose = () => {
         <path
           id="Vector_2"
           d="M6 6L18 18"
-          stroke="black"
+          stroke={props.color}
           strokeWidth="1.5"
           strokeLinecap="round"
           strokeLinejoin="round"

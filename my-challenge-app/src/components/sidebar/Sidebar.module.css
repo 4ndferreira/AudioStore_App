@@ -1,0 +1,81 @@
+.page {
+  position: relative;
+}
+
+.pageOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: hsl(0 0% 0% / 50%);
+  z-index: 50
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-top: 5rem;
+  padding-left: 2.8rem;
+  height: 100vh;
+  background-color: white;
+  z-index: 99;
+  box-shadow: hsl(0 0% 0% / 10%) 0 0 0.5rem 0.25rem;
+}
+
+.closeMenu {
+  height: 2.9475rem;
+}
+
+.menuLink {
+  display: flex;
+  gap: 0.9rem;
+  /* border-top: 1px solid var(--colorsGrey); */
+  padding: 0.625rem 0;
+}
+
+.menuLink span {
+  color: var(--colorsDefault);
+  margin: 0;
+}
+
+.buttonLogout {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  border: none;
+  padding: 0.625rem 0;
+  background: transparent;
+}
+
+.buttonLogout  span {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.iconCart {
+  display: inherit;
+  position: relative;
+}
+
+.cartControl {
+  background-color: var(--colorsPrimary);
+  position: absolute;
+  top: -25%;
+  right: -35%;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cartControl p {
+  font-size: 0.75rem;
+  line-height: normal;
+  color: white;
+  margin: 0;
+}

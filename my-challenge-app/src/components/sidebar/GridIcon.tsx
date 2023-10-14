@@ -1,4 +1,4 @@
-const IconLogout = () => {
+const GridIcon = () => {
   return (
     <svg
       width="24"
@@ -7,10 +7,10 @@ const IconLogout = () => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g id="Icon / log-out">
+      <g id="Icon / grid">
         <path
           id="Vector"
-          d="M9 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H9"
+          d="M10 3H3V10H10V3Z"
           stroke="black"
           strokeWidth="1.5"
           strokeLinecap="round"
@@ -18,7 +18,7 @@ const IconLogout = () => {
         />
         <path
           id="Vector_2"
-          d="M16 17L21 12L16 7"
+          d="M21 3H14V10H21V3Z"
           stroke="black"
           strokeWidth="1.5"
           strokeLinecap="round"
@@ -26,7 +26,15 @@ const IconLogout = () => {
         />
         <path
           id="Vector_3"
-          d="M21 12H9"
+          d="M21 14H14V21H21V14Z"
+          stroke="black"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          id="Vector_4"
+          d="M10 14H3V21H10V14Z"
           stroke="black"
           strokeWidth="1.5"
           strokeLinecap="round"
@@ -35,6 +43,6 @@ const IconLogout = () => {
       </g>
     </svg>
   );
-}
+};
 
-export default IconLogout
+export default GridIcon;

@@ -6,7 +6,7 @@ import { CartContext } from "../../store/CartContext";
 //Components
 import Button from "../button/Button";
 import { CheckIcon } from "./CheckIcon";
-import { CloseIcon } from "./CloseIcon";
+import IconClose from "../navBar/IconClose";
 //CSS
 import classes from "./DeletionDialogBox.module.css"
 
@@ -39,7 +39,7 @@ const DeletionDialogBox = (props: {
           type={"button"} 
           onClick={() => {props.onClose()}} 
         >
-          <CloseIcon />
+          <IconClose color={"white"} />
           No
         </Button>
       </p>
