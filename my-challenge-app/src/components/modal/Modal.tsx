@@ -1,4 +1,6 @@
+//Hooks
 import { useEffect, useRef, useState } from "react"
+//CSS
 import classes from "./Modal.module.css"
 
 const Modal = (props: {
@@ -9,21 +11,17 @@ const Modal = (props: {
   const [ isModalOpen, setIsModalOpen ] = useState(props.isOpen);
   const modalRef = useRef<HTMLDialogElement | null>(null)
 
-  useEffect(() => {setIsModalOpen(props.isOpen)}, [props.isOpen]);
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLDialogElement>) => {
+    e.key === "Escape" && handleCloseModal();
+  };
 
   const handleCloseModal = () => {
     props.onClose && props.onClose();
     setIsModalOpen(false)
   };
-  
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLDialogElement>) => {
-    e.key === "Escape" && handleCloseModal();
-  };
 
-  useEffect(() => {
-    setIsModalOpen(props.isOpen)
-  }, [props.isOpen]);
-  
+  useEffect(() => {setIsModalOpen(props.isOpen)}, [props.isOpen]);
+
   useEffect(() => {
     const modalElement = modalRef.current;
     modalElement && (isModalOpen ? modalElement.showModal() : modalElement.close());

@@ -10,9 +10,11 @@ import classes from './Counter.module.css'
 
 const Count = (props: {
   itemId: number;
-  count: number; 
+  count: number;
+  showModal: () => void;
+  onItemDelete(itemId: number): void;
 }) => {
-  const { increaseCartItem, decreaseCartItem, removeFromCart } = useContext(CartContext)
+  const { increaseCartItem, decreaseCartItem, removeFromCart, cartItemCount } = useContext(CartContext)
   const counterRef = useRef(props.count)
 
   const handleIncrease = () => {
@@ -24,7 +26,8 @@ const Count = (props: {
       decreaseCartItem(props.itemId)
       counterRef.current = (props.count - 1)
     }else{
-      removeFromCart(props.itemId)
+      props.showModal()
+      props.onItemDelete(props.itemId);
     }
   }
 
@@ -67,7 +70,3 @@ const Count = (props: {
 }
 
 export default Count
-
-
-
-

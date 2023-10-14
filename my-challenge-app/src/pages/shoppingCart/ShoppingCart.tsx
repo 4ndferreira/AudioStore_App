@@ -1,5 +1,5 @@
 //React
-import { useContext } from "react";
+import { SetStateAction, useContext, useState } from "react";
 //React Router Dom
 import { Link } from "react-router-dom";
 //Firebase
@@ -21,6 +21,8 @@ import DeletionDialogBox from "../../components/deletionDialogBox/DeletionDialog
 
 const ShoppingCart = () => {
   const { cartItems, clearCart, getCartTotal, cartItemCount } = useContext(CartContext);
+  const [ isOpen, setIsOpen ] = useState(false)
+  const [selectedItemId, setSelectedItemId] = useState<number | null>(null);
   const userID = auth.currentUser?.uid;
   
   const handleClick = async (e: { preventDefault: () => void; }) => {
@@ -48,17 +50,13 @@ const ShoppingCart = () => {
         }
     }
     clearCart();
-    // try {
-    //   const docRef = await addDoc(collection(db, "orders"), { order });
-    //   console.log("Document written with ID: ", docRef.id);
-    // } catch (e) {
-    //   console.error("Error adding document: ", e);
-    // }
   };
 
-  const handleDelete = () => {
-    clearCart()
-  };
+  const handleItemDelete = (itemId: number) => {
+    setSelectedItemId(itemId);
+  }
+
+  console.log(isOpen)
 
   return (
     <div className={classes.container}>
@@ -66,13 +64,15 @@ const ShoppingCart = () => {
         link={"/products"}
         link2={""}
         title={"Shopping Cart"}
-        onClick={handleDelete}
+        onClick={() => clearCart()}
         isShoppingCart={true}
       />
+      {isOpen && 
       <DeletionDialogBox 
-        onClose={() => {throw new Error("Function not implemented.")}} 
-        isOpen={true} 
-      />
+        isOpen={isOpen}
+        itemId={selectedItemId} 
+        onClose={() => setIsOpen(false)}       
+      />}
       <ul className={classes.cartItemsList}>
         {cartItems.length !== 0 ? (
           cartItems.map((item) => (
@@ -82,8 +82,10 @@ const ShoppingCart = () => {
               price={item.price}
               rating={0}
               isShoppingCart={true}
-              count={item.count}
               itemId={item.id}
+              count={item.count}            
+              showModal={() => setIsOpen(true)}
+              onItemDelete={handleItemDelete} 
             />
           ))
         ) : (

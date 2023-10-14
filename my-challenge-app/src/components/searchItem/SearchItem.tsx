@@ -15,6 +15,8 @@ const SearchItem = (props: {
   price: string;
   rating: number;
   isShoppingCart: boolean
+  showModal: () => void;
+  onItemDelete: (itemId: number) => void;
 }) => {
   return (
     <li className={classes.container}>
@@ -36,8 +38,10 @@ const SearchItem = (props: {
           {props.isShoppingCart ? (
             <li>
               <Counter 
-                count={props.count} 
-                itemId={props.itemId}           
+                itemId={props.itemId}
+                showModal={props.showModal}
+                onItemDelete={props.onItemDelete} 
+                count={props.count}              
               />
             </li>
           ) : (
