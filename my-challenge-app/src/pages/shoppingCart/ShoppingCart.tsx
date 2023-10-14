@@ -108,8 +108,9 @@ const ShoppingCart = () => {
         <Button
           type={"button"}
           onClick={handleClick}
-          name={<ProceedtoCheckout />}
-        />
+        >
+          <ProceedtoCheckout />
+        </Button>
       </div>
     </div>
   );

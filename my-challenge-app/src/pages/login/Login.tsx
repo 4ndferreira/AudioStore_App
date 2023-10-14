@@ -239,10 +239,9 @@ const Login = () => {
             onClick={
               !forgotPassword ? handleLoginWithEmail : handlePasswordReset
             }
-            name={
-              newUser ? "Sign Up" : !forgotPassword ? "Sign In" : "Send Email"
-            }
-          />
+          >
+            {newUser ? "Sign Up" : !forgotPassword ? "Sign In" : "Send Email"}
+          </Button>
           {submitting && <Sending />}
         </div>
         <div className={classes.wrapperButtons}>

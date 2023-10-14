@@ -102,7 +102,9 @@ const Products = () => {
         </h2>
       </div>
       <div className={classes.wrapper}>
-        <Button type="button" name={<IconSliders />} onClick={openFilter} />
+        <Button type="button" onClick={openFilter}>
+          <IconSliders />
+        </Button>
       </div>
       <section className={classes.showcase}>
         <div className={classes.itemsContainer}>
@@ -168,8 +170,9 @@ const Products = () => {
           <Button
             type={"submit"}
             onClick={handleSortBy}
-            name={"Apply Filter"}
-          />
+          >
+            Apply Filter
+          </Button>
         </form>
       </BottomSheet>
     </>

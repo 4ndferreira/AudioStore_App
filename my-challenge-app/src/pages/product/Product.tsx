@@ -170,7 +170,7 @@ const Product = () => {
       )}
       <div className={classes.positionButton}>
         <div className={classes.wrapperButton}>
-          <Button type={"button"} name={"Add To Cart"} onClick={handleClick} />
+          <Button type={"button"} onClick={handleClick}>Add To Cart</Button>
         </div>
       </div>
     </>

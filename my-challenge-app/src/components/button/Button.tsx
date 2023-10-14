@@ -4,7 +4,7 @@ import classes from './Button.module.css'
 const Button = (props: {
   type: 'button' | 'submit';
   onClick: MouseEventHandler<HTMLButtonElement>;
-  name: string | JSX.Element
+  children: string | React.ReactNode
 }) => {
   return (
     <button 
@@ -12,7 +12,7 @@ const Button = (props: {
       type={props.type} 
       onClick={props.onClick}
     >
-      {props.name}
+      {props.children}
     </button>
   );
 };

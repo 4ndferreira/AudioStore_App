@@ -29,13 +29,15 @@ const DeletionDialogBox = (props: {
             }
             props.onClose();
           }}
-          name={"Yes"} 
-        />
+        >
+          Yes
+        </Button>
         <Button 
           type={"button"} 
           onClick={() => {props.onClose()}} 
-          name={"No"} 
-        />
+        >
+          No
+        </Button>
       </p>
     </Modal>
   );
