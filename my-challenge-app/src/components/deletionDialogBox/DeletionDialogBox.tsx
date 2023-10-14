@@ -5,6 +5,8 @@ import { useContext } from "react";
 import { CartContext } from "../../store/CartContext";
 //Components
 import Button from "../button/Button";
+import { CheckIcon } from "../CheckIcon";
+import { CloseIcon } from "../CloseIcon";
 //CSS
 import classes from "./DeletionDialogBox.module.css"
 
@@ -30,12 +32,14 @@ const DeletionDialogBox = (props: {
             props.onClose();
           }}
         >
+          <CheckIcon />
           Yes
         </Button>
         <Button 
           type={"button"} 
           onClick={() => {props.onClose()}} 
         >
+          <CloseIcon />
           No
         </Button>
       </p>
