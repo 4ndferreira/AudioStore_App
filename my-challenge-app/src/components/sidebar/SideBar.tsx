@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { MouseEventHandler, useContext } from "react";
 import { CartContext } from "../../store/CartContext";
 //Router
 import { NavLink } from "react-router-dom";
@@ -10,7 +10,7 @@ import GridIcon from "./GridIcon";
 import classes from "./Sidebar.module.css";
 import { motion } from "framer-motion";
 
-const SideBar = () => {
+const SideBar = (props: { onClick: MouseEventHandler<HTMLButtonElement> }) => {
   const { cartItemCount } = useContext(CartContext);
   return (
     <div className={classes.page}>
@@ -33,7 +33,7 @@ const SideBar = () => {
           </span>
           <span>Cart</span>
         </NavLink>
-        <button className={classes.buttonLogout}>
+        <button className={classes.buttonLogout} onClick={props.onClick}>
           <IconLogout />
           <span>Logout</span>
         </button>

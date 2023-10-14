@@ -1,5 +1,5 @@
 //Hooks
-import { MouseEventHandler, useState } from "react";
+import { MouseEvent, MouseEventHandler, useState } from "react";
 //Components
 import IconUser from "../review/IconUser";
 import IconLogo from "./IconLogo";
@@ -11,7 +11,7 @@ import IconClose from "../navBar/IconClose";
 
 const Header = (props: {
   image: string | null | undefined;
-  onClick: MouseEventHandler<HTMLDivElement> | undefined;
+  onClick: MouseEventHandler<HTMLButtonElement>;
 }) => {
   const [showMenu, setShowMenu] = useState(false);
 
@@ -32,7 +32,7 @@ const Header = (props: {
           {props.image ? <img src={props.image} alt="" /> : <IconUser />}
         </div>
       </div>
-      {showMenu && <SideBar />}
+      {showMenu && <SideBar onClick={props.onClick} />}
     </header>
   );
 };
