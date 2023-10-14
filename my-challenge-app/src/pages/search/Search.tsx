@@ -56,9 +56,11 @@ const Search = () => {
                 name={item.name}
                 price={item.price}
                 rating={item.rating}
-                isShoppingCart={false} 
-                itemId={item.id} 
-                count={0}              
+                isShoppingCart={false}
+                itemId={item.id}
+                count={0} 
+                showModal={() => null} 
+                onItemDelete={() => null}
               />
             ))
           ) : (
@@ -83,7 +85,9 @@ const Search = () => {
           rating={4.6}
           isShoppingCart={false} 
           itemId={999} 
-          count={0}        
+          count={0}
+          showModal={() => null} 
+          onItemDelete={() => null}        
         />
         <SearchItem
           name={"TMA-2 DJ"}
@@ -91,7 +95,9 @@ const Search = () => {
           rating={4.6}
           isShoppingCart={false} 
           itemId={999} 
-          count={0}        
+          count={0}
+          showModal={() => null} 
+          onItemDelete={() => null}        
         />
         <SearchItem
           name={"TMA-2 Move Wireless"}
@@ -99,7 +105,9 @@ const Search = () => {
           rating={4.6}
           isShoppingCart={false} 
           itemId={999} 
-          count={0}        
+          count={0}
+          showModal={() => null} 
+          onItemDelete={() => null}        
         />
       </ul>
     </div>
