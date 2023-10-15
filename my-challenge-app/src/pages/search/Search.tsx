@@ -40,7 +40,7 @@ const Search = () => {
           id={"searchBar"}
           type={"text"}
           name={"Search headphone"}
-          element={<SearchIcon />}
+          element={<SearchIcon size={"20"} color={"#BABABA"} />}
           value={value}
           onInput={handleOnInput} 
           onFocus={undefined}        
