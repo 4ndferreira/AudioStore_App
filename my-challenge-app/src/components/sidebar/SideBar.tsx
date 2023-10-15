@@ -1,4 +1,4 @@
-import { MouseEventHandler, useContext } from "react";
+import { MouseEventHandler, MutableRefObject, Ref, useContext } from "react";
 import { CartContext } from "../../store/CartContext";
 //Router
 import { NavLink } from "react-router-dom";
@@ -11,7 +11,10 @@ import classes from "./Sidebar.module.css";
 import { motion } from "framer-motion";
 import SearchIcon from "../labelInput/SearchIcon";
 
-const SideBar = (props: { onClick: MouseEventHandler<HTMLButtonElement> }) => {
+const SideBar = (props: {
+  menuRef: Ref<HTMLDivElement>;
+  onClick: MouseEventHandler<HTMLButtonElement> 
+}) => {
   const { cartItemCount } = useContext(CartContext);
   return (
     <div className={classes.page}>
@@ -68,6 +71,7 @@ const SideBar = (props: { onClick: MouseEventHandler<HTMLButtonElement> }) => {
         animate={{ opacity: 1, transition: { duration: 0.3 } }}
         exit={{ opacity: 0 }}
         className={classes.pageOverlay}
+        ref={props.menuRef}
       ></motion.div>
     </div>
   );
