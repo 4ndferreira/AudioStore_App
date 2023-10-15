@@ -1,5 +1,5 @@
 //Hooks
-import { MouseEvent, MouseEventHandler, useState } from "react";
+import { MouseEventHandler, useEffect, useState } from "react";
 //Components
 import IconUser from "../review/IconUser";
 import IconLogo from "./IconLogo";
@@ -14,6 +14,12 @@ const Header = (props: {
   onClick: MouseEventHandler<HTMLButtonElement>;
 }) => {
   const [showMenu, setShowMenu] = useState(false);
+
+  useEffect(() => {
+    showMenu
+      ? (document.body.style.overflow = "hidden")
+      : (document.body.style.overflow = "");
+  }, [showMenu]);
 
   return (
     <header className={classes.wrapper}>
