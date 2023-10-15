@@ -13,26 +13,38 @@
 }
 
 .sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  height: 100vh;
+  padding: 5rem 0 2.5rem 0;
+  box-sizing: border-box;
+
   position: fixed;
   top: 0;
   left: 0;
-  padding-top: 5rem;
-  padding-left: 2.8rem;
-  height: 100vh;
-  background-color: white;
+  bottom: 0;
   z-index: 99;
-  box-shadow: hsl(0 0% 0% / 10%) 0 0 0.5rem 0.25rem;
+
+  background-color: white;
+  box-shadow: hsl(0 0% 0% / 10%) 0 0 0.5rem 0.25rem
 }
 
 .closeMenu {
   height: 2.9475rem;
 }
 
+.menuList {
+  list-style: none;
+  padding: 0;
+}
+
 .menuLink {
   display: flex;
   gap: 0.9rem;
   /* border-top: 1px solid var(--colorsGrey); */
-  padding: 0.625rem 0;
+  padding: 1rem 0 0.625rem 2.8rem;
 }
 
 .menuLink span {
@@ -45,7 +57,7 @@
   align-items: center;
   gap: 0.9rem;
   border: none;
-  padding: 0.625rem 0;
+  padding: 1rem 0 0.625rem 2.8rem;
   background: transparent;
 }
 
