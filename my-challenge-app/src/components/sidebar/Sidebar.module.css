@@ -28,7 +28,7 @@
   bottom: 0;
   z-index: 99;
 
-  background-color: white;
+  background-color: var(--colorsWhite);
   box-shadow: hsl(0 0% 0% / 10%) 0 0 0.5rem 0.25rem
 }
 
@@ -48,6 +48,10 @@
   padding: 1rem 0 0.625rem 2.8rem;
 }
 
+.menuLink:active {
+  background: var(--colorsGreyLight1);
+}
+
 .menuLink span {
   color: var(--colorsDefault);
   margin: 0;
@@ -60,6 +64,10 @@
   border: none;
   padding: 1rem 0 0.625rem 2.8rem;
   background: transparent;
+}
+
+.buttonLogout:active {
+  background: var(--colorsGreyLight1);
 }
 
 .buttonLogout  span {
@@ -89,6 +97,6 @@
 .cartControl p {
   font-size: 0.75rem;
   line-height: normal;
-  color: white;
+  color: var(--colorsWhite);
   margin: 0;
 }
