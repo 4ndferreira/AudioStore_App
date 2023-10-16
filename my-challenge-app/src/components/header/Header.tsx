@@ -8,6 +8,7 @@ import IconMenu from "./IconMenu";
 import classes from "./Header.module.css";
 import SideBar from "../sidebar/SideBar";
 import IconClose from "../navBar/IconClose";
+import { AnimatePresence } from "framer-motion";
 
 const Header = (props: {
   image: string | null | undefined;
@@ -54,7 +55,9 @@ const Header = (props: {
           {props.image ? <img src={props.image} alt="" /> : <IconUser />}
         </div>
       </div>
-      {showMenu && <SideBar onClick={props.onClick} menuRef={menuRef} />}
+      <AnimatePresence>
+        {showMenu && <SideBar onClick={props.onClick} menuRef={menuRef} />}
+      </AnimatePresence>
     </header>
   );
 };

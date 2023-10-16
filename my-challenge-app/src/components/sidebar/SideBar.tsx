@@ -1,4 +1,4 @@
-import { MouseEventHandler, MutableRefObject, Ref, useContext } from "react";
+import { MouseEventHandler, Ref, useContext } from "react";
 import { CartContext } from "../../store/CartContext";
 //Router
 import { NavLink } from "react-router-dom";
@@ -11,6 +11,21 @@ import classes from "./Sidebar.module.css";
 import { motion } from "framer-motion";
 import SearchIcon from "../labelInput/SearchIcon";
 
+const menuVariants = {
+  open: {
+    x: 0,
+    transition: {
+      type: "tween"
+    }
+  },
+  closed: {
+    x: "-70vw",
+    transition: {
+      type: "tween"
+    }
+  }
+};
+
 const SideBar = (props: {
   menuRef: Ref<HTMLDivElement>;
   onClick: MouseEventHandler<HTMLButtonElement> 
@@ -19,13 +34,14 @@ const SideBar = (props: {
   return (
     <div className={classes.page}>
       <motion.nav
-        initial={{ width: 0 }}
-        animate={{ width: "70%", transition: { duration: 0.3 } }}
-        exit={{ x: 0 }}
+        variants={menuVariants}
+        initial="closed"
+        animate="open"
+        exit="closed"
         className={classes.sidebar}
       >
         <ul className={classes.menuList}>
-        <li>
+          <li>
             <NavLink 
               className={classes.menuLink} 
               to={"/products"}
@@ -68,11 +84,11 @@ const SideBar = (props: {
       </motion.nav>
       <motion.div
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1, transition: { duration: 0.3 } }}
+        animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         className={classes.pageOverlay}
         ref={props.menuRef}
-      ></motion.div>
+      />
     </div>
   );
 };
