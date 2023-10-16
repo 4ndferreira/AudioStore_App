@@ -1,14 +1,15 @@
 //Hooks
 import { MouseEventHandler, useEffect, useRef, useState } from "react";
+//Framer motion
+import { AnimatePresence } from "framer-motion";
 //Components
 import IconUser from "../review/IconUser";
 import IconLogo from "./IconLogo";
 import IconMenu from "./IconMenu";
+import IconClose from "../navBar/IconClose";
+import SideBar from "../sidebar/SideBar";
 //CSS
 import classes from "./Header.module.css";
-import SideBar from "../sidebar/SideBar";
-import IconClose from "../navBar/IconClose";
-import { AnimatePresence } from "framer-motion";
 
 const Header = (props: {
   image: string | null | undefined;
@@ -20,22 +21,21 @@ const Header = (props: {
   useEffect(() => {
     showMenu
       ? (document.body.style.overflow = "hidden")
-      : (document.body.style.overflow = "");
+      : (document.body.style.overflow = "auto");
   }, [showMenu]);
 
   useEffect(()=>{
-    const closeSidebarHandler = (e: MouseEvent) => {
-      if (showMenu && menuRef.current && menuRef.current.contains(e.target as Node)) {
+    const closeMenuHandler = (e: MouseEvent) => {
+      if (menuRef.current?.contains(e.target as Node)) {
         setShowMenu(false)
       }
     };
 
-    document.addEventListener("click", closeSidebarHandler);
+    document.addEventListener("click", closeMenuHandler);
 
     return () => {
-      document.removeEventListener("click", closeSidebarHandler);
+      document.removeEventListener("click", closeMenuHandler);
     }
-
   },[showMenu]);
 
   return (
@@ -56,7 +56,7 @@ const Header = (props: {
         </div>
       </div>
       <AnimatePresence>
-        {showMenu && <SideBar onClick={props.onClick} menuRef={menuRef} />}
+        {showMenu && <SideBar onClick={props.onClick} menuRef={menuRef}/> }
       </AnimatePresence>
     </header>
   );

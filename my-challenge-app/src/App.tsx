@@ -25,12 +25,21 @@ export const ScrollToTop = () => {
   return null;
 };
 
+export const ChangeOverFlow = () => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    document.body.style.overflow = "auto";
+  }, [pathname]);
+  return null;
+};
+
 const App = () => {
   return (
     <BrowserRouter>
       <CartProvider>
         <Suspense fallback={<Loader />}>
           <ScrollToTop />
+          <ChangeOverFlow />
           <Routes>
             <Route 
               path='/signin' 

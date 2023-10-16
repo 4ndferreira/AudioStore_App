@@ -1,4 +1,8 @@
+//React
 import { MouseEventHandler, Ref, useContext } from "react";
+//Framer motion
+import { motion } from "framer-motion";
+//Context
 import { CartContext } from "../../store/CartContext";
 //Router
 import { NavLink } from "react-router-dom";
@@ -6,10 +10,9 @@ import { NavLink } from "react-router-dom";
 import IconLogout from "../header/IconLogout";
 import IconShoppingCart from "../navBar/IconShoppingCart";
 import GridIcon from "./GridIcon";
+import SearchIcon from "../labelInput/SearchIcon";
 //CSS
 import classes from "./Sidebar.module.css";
-import { motion } from "framer-motion";
-import SearchIcon from "../labelInput/SearchIcon";
 
 const menuVariants = {
   open: {
