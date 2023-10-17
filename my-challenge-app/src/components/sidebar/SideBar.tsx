@@ -47,7 +47,7 @@ const SideBar = (props: {
           <li>
             <NavLink 
               className={classes.menuLink} 
-              to={"/products"}
+              to={"/search"}
             >
               <SearchIcon size={"25"} color={"black"} />
               <span>Search</span>

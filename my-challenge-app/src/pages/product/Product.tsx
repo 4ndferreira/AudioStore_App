@@ -16,6 +16,7 @@ import Card from "../../components/card/Card";
 import Button from "../../components/button/Button";
 import { CartContext } from "../../store/CartContext";
 import ReviewSkeleton from "../../components/reviewSkeleton/ReviewSkeleton";
+import Page from "../../layouts/Page";
 const NotFound = lazy(()=> import('../notFound/NotFound'))
 //Image
 import Image from '/img/image6.png'
@@ -56,9 +57,11 @@ const Product = () => {
 
   if(!loading && !item) {
     return (
-      <Suspense fallback={<Loader />}>
-        <NotFound />
-      </Suspense>
+      <Page>
+        <Suspense fallback={<Loader />}>
+          <NotFound />
+        </Suspense>
+      </Page>
     )
   }
 

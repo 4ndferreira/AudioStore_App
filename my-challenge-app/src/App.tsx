@@ -1,13 +1,14 @@
 //React
 import { Suspense, lazy, useEffect } from 'react'
 //React Router DOM
-import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom'
+import { BrowserRouter, Route, useLocation } from 'react-router-dom'
 //Components
 import Loader from './components/loader/Loader'
 import CartProvider from './store/CartProvider'
 import PrivateWrapper from './layouts/PrivateWrapper'
 //CSS
 import './App.css'
+import AnimatedRoutes from './layouts/AnimatedRoutes'
 //Lazy Components
 const Login = lazy(() => import('./pages/login/Login'))
 const Home = lazy(() => import('./pages/home/Home'))
@@ -40,7 +41,7 @@ const App = () => {
         <Suspense fallback={<Loader />}>
           <ScrollToTop />
           <ChangeOverFlow />
-          <Routes>
+          <AnimatedRoutes>
             <Route 
               path='/signin' 
               element={<Login />} 
@@ -73,7 +74,7 @@ const App = () => {
                 element={<NotFound />} 
               />
             </Route>
-          </Routes>
+          </AnimatedRoutes>
         </Suspense>
       </CartProvider>
     </BrowserRouter>

@@ -14,6 +14,7 @@ import IconSliders from '../../components/button/IconSliders'
 import IconClose from '../../components/navBar/IconClose'
 import IconShoppingBag from '../../components/iconShoppingBag/IconShoppingBag'
 import CardSkeleton from '../../components/cardSkeleton/CardSkeleton'
+import Page from '../../layouts/Page'
 //CSS
 import classes from './Products.module.css'
 import './style.css'
@@ -87,7 +88,7 @@ const Products = () => {
   }
 
   return (
-    <>
+    <Page>
       <div className={classes.containerTop}>
         <NavBar
           link="/"
@@ -175,7 +176,7 @@ const Products = () => {
           </Button>
         </form>
       </BottomSheet>
-    </>
+    </Page>
   );
 }
 

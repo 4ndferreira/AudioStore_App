@@ -1,7 +1,7 @@
 //React
 import { MouseEventHandler, useContext } from 'react'
 //React Router Dom
-import { Link, To } from 'react-router-dom'
+import { Link, To, useNavigate } from 'react-router-dom'
 //Context
 import { CartContext } from '../../store/CartContext'
 //Components
@@ -20,11 +20,17 @@ const NavBar = (props: {
 }) => {
   const { cartItemCount } = useContext(CartContext);
   const isShoppingCart = props.isShoppingCart;
+  const navigate = useNavigate()
+
+  const GoToHome = () => {
+    navigate(props.link, {state: {isPush: true}})
+  };
+
   return (
     <nav className={classes.wrapper}>
-      <Link to={props.link}>
+      <button className={classes.buttonGoBack} onClick={GoToHome}>
         <ChevronLeft />
-      </Link>
+      </button>
       <p className={classes.navTitle}>{props.title}</p>
       <Link 
         to={props.link2} 

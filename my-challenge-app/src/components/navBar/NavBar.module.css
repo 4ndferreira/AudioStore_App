@@ -41,3 +41,13 @@
   color: white;
   margin: 0;
 }
+
+.buttonGoBack {
+  display: flex;
+  align-items: center;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+}

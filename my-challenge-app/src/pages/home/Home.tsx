@@ -19,6 +19,7 @@ import SearchIcon from "../../components/labelInput/SearchIcon"
 import IconShoppingBag from "../../components/iconShoppingBag/IconShoppingBag"
 import CardSkeleton from "../../components/cardSkeleton/CardSkeleton"
 import BannerSkeleton from "../../components/bannerSkeleton/BannerSkeleton"
+import Page from "../../layouts/Page"
 // CSS
 import '../../../node_modules/@splidejs/react-splide/dist/css/splide.min.css'
 import classes from './Home.module.css'
@@ -47,7 +48,7 @@ const Home = () => {
   );
 
   return (
-    <>
+    <Page>
       <div className={classes.container}>
         <Header image={auth.currentUser?.photoURL} onClick={handleSignOut} />
         <h3 className={classes.welcomeText}>
@@ -162,7 +163,7 @@ const Home = () => {
           )}
         </div>
       </section>
-    </>
+    </Page>
   );
 }
 

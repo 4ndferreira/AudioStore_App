@@ -15,6 +15,7 @@ import ProceedtoCheckout from "../../components/button/ProceedtoCheckout";
 import NavBar from "../../components/navBar/NavBar";
 import SearchItem from "../../components/searchItem/SearchItem";
 import IconShoppingBag from "../../components/iconShoppingBag/IconShoppingBag";
+import Page from "../../layouts/Page";
 //CSS
 import classes from './ShoppingCart.module.css'
 import DeletionDialogBox from "../../components/deletionDialogBox/DeletionDialogBox";
@@ -59,60 +60,62 @@ const ShoppingCart = () => {
   console.log(isOpen)
 
   return (
-    <div className={classes.container}>
-      <NavBar
-        link={"/products"}
-        link2={""}
-        title={"Shopping Cart"}
-        onClick={() => clearCart()}
-        isShoppingCart={true}
-      />
-      {isOpen && 
-      <DeletionDialogBox 
-        isOpen={isOpen}
-        itemId={selectedItemId} 
-        onClose={() => setIsOpen(false)}       
-      />}
-      <ul className={classes.cartItemsList}>
-        {cartItems.length !== 0 ? (
-          cartItems.map((item) => (
-            <SearchItem
-              key={item.id}
-              name={item.name}
-              price={item.price}
-              rating={0}
-              isShoppingCart={true}
-              itemId={item.id}
-              count={item.count}            
-              showModal={() => setIsOpen(true)}
-              onItemDelete={handleItemDelete} 
-            />
-          ))
-        ) : (
-          <li className={classes.alertCart}>
-            <IconShoppingBag 
-              width={"96"} 
-              height={"96"} 
-              color={"#0ACF83"} 
-            />
-            <p>Your Cart is Empty</p>
-            <Link to={"/products"}>Shop Now</Link>
-          </li>
-        )}
-      </ul>
-      <span className={classes.wrapperText}>
-        <p className={classes.textTotal}>Total {cartItemCount} Items</p>
-        <p className={classes.textPrice}>USD {getCartTotal()}</p>
-      </span>
-      <div className={classes.wrapperButton}>
-        <Button
-          type={"button"}
-          onClick={handleClick}
-        >
-          <ProceedtoCheckout />
-        </Button>
+    <Page>
+      <div className={classes.container}>
+        <NavBar
+          link={"/products"}
+          link2={""}
+          title={"Shopping Cart"}
+          onClick={() => clearCart()}
+          isShoppingCart={true}
+        />
+        {isOpen && 
+        <DeletionDialogBox 
+          isOpen={isOpen}
+          itemId={selectedItemId} 
+          onClose={() => setIsOpen(false)}       
+        />}
+        <ul className={classes.cartItemsList}>
+          {cartItems.length !== 0 ? (
+            cartItems.map((item) => (
+              <SearchItem
+                key={item.id}
+                name={item.name}
+                price={item.price}
+                rating={0}
+                isShoppingCart={true}
+                itemId={item.id}
+                count={item.count}            
+                showModal={() => setIsOpen(true)}
+                onItemDelete={handleItemDelete} 
+              />
+            ))
+          ) : (
+            <li className={classes.alertCart}>
+              <IconShoppingBag 
+                width={"96"} 
+                height={"96"} 
+                color={"#0ACF83"} 
+              />
+              <p>Your Cart is Empty</p>
+              <Link to={"/products"}>Shop Now</Link>
+            </li>
+          )}
+        </ul>
+        <span className={classes.wrapperText}>
+          <p className={classes.textTotal}>Total {cartItemCount} Items</p>
+          <p className={classes.textPrice}>USD {getCartTotal()}</p>
+        </span>
+        <div className={classes.wrapperButton}>
+          <Button
+            type={"button"}
+            onClick={handleClick}
+          >
+            <ProceedtoCheckout />
+          </Button>
+        </div>
       </div>
-    </div>
+    </Page>
   );
 };
 
