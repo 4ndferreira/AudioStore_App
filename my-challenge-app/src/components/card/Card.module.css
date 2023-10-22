@@ -33,12 +33,15 @@
 }
 
 .cardContainer h4 {
-  display: -webkit-box;
+  /* display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
-  overflow: hidden;
+  overflow: hidden; */
+  display: flex;
+  align-items: end;
   font-size: 0.875rem;
   line-height: normal;
+  height: 2.25rem;
 }
 
 .cardText {
