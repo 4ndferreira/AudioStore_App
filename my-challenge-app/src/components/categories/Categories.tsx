@@ -2,7 +2,7 @@
 //React
 import { ChangeEventHandler } from 'react'
 //Splide
-import { Splide, SplideSlide } from '../../../node_modules/@splidejs/react-splide'
+import { Splide, SplideSlide, SplideTrack } from '../../../node_modules/@splidejs/react-splide'
 //Components
 import SelectorLabel from '../selectorLabel/SelectorLabel'
 //CSS
@@ -40,6 +40,7 @@ const Categories = (props: {
   return (
     <>
       <Splide 
+        hasTrack={ false }
         options={{
           width: '100%',
           autoWidth: true,
@@ -47,19 +48,21 @@ const Categories = (props: {
           pagination: false,
           gap: '0.69rem',
         }}>
-        {categories.map((label) => (   
-          <SplideSlide key={label.id}>
-            <div className={classes.card}>
-              <SelectorLabel 
-                id={label.id}
-                name={label.label}
-                group={'category'} 
-                checked={props.filterSelected === label.label} 
-                onChange={props.onChange}              
-              />
-            </div>
-          </SplideSlide>
-        ))}
+        <SplideTrack style={{ overflow: "visible" }}>
+          {categories.map((label) => (   
+            <SplideSlide key={label.id}>
+              <div className={classes.card}>
+                <SelectorLabel 
+                  id={label.id}
+                  name={label.label}
+                  group={'category'} 
+                  checked={props.filterSelected === label.label} 
+                  onChange={props.onChange}              
+                />
+              </div>
+            </SplideSlide>
+          ))}
+        </SplideTrack>
       </Splide>
     </>
   )

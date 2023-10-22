@@ -5,7 +5,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 //Hooks
 import { useFetch } from "../../hooks/useFetch";
 //Splide
-import { Splide, SplideSlide } from '../../../node_modules/@splidejs/react-splide'
+import { Splide, SplideSlide, SplideTrack } from '../../../node_modules/@splidejs/react-splide'
 //React loading Skeleton
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 //Components
@@ -131,6 +131,7 @@ const Product = () => {
                 </div>
               ) : (
                 <Splide
+                  hasTrack={ false }
                   options={{
                     width: "100vw",
                     autoWidth: true,
@@ -139,21 +140,23 @@ const Product = () => {
                     gap: "0.94rem",
                   }}
                 >
-                  {data?.map(
-                    (item, index) =>
-                      index < 8 && (
-                        <SplideSlide key={item.id}>
-                          <Card
-                            id={item.id}
-                            key={item.id}
-                            name={item.name}
-                            price={item.price}
-                            rating={item.rating}
-                            showReview={false}
-                          />
-                        </SplideSlide>
-                      )
-                  )}
+                  <SplideTrack className={classes.splideTrack}>
+                    {data?.map(
+                      (item, index) =>
+                        index < 8 && (
+                          <SplideSlide key={item.id}>
+                            <Card
+                              id={item.id}
+                              key={item.id}
+                              name={item.name}
+                              price={item.price}
+                              rating={item.rating}
+                              showReview={false}
+                            />
+                          </SplideSlide>
+                        )
+                    )}
+                  </SplideTrack>
                 </Splide>
               )}
             </div>

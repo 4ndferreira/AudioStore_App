@@ -3,10 +3,10 @@ import { ChangeEvent, useState } from "react"
 //React Router Dom
 import { Link, useNavigate } from "react-router-dom"
 //Splide
-import { Splide, SplideSlide } from '../../../node_modules/@splidejs/react-splide'
+import { Splide, SplideSlide, SplideTrack } from '../../../node_modules/@splidejs/react-splide'
 //Firebase
 import { signOut } from "firebase/auth"
-import { auth } from "../../firebase/Config" 
+import { auth } from "../../firebase/Config"
 //Hook
 import { useFetch } from "../../hooks/useFetch"
 // Components
@@ -19,7 +19,6 @@ import SearchIcon from "../../components/labelInput/SearchIcon"
 import IconShoppingBag from "../../components/iconShoppingBag/IconShoppingBag"
 import CardSkeleton from "../../components/cardSkeleton/CardSkeleton"
 import BannerSkeleton from "../../components/bannerSkeleton/BannerSkeleton"
-import Page from "../../layouts/Page"
 // CSS
 import '../../../node_modules/@splidejs/react-splide/dist/css/splide.min.css'
 import classes from './Home.module.css'
@@ -27,7 +26,7 @@ import classes from './Home.module.css'
 const Home = () => {
   // const { data, loading } = useFetch('https://run.mocky.io/v3/534d1f3e-406e-4564-a506-7e2718fdb0bc');
   const { data, loading } = useFetch('http://localhost:3000/products');
-  const [ filterCategory, setFilterCategory] = useState ('')
+  const [filterCategory, setFilterCategory] = useState('')
   const navigate = useNavigate()
 
   const handleSignOut = () => {
@@ -44,7 +43,7 @@ const Home = () => {
     setFilterCategory(value)
   }
 
-  const filteredData = data?.filter((item) => 
+  const filteredData = data?.filter((item) =>
     item.category.includes(filterCategory)
   );
 
@@ -52,7 +51,10 @@ const Home = () => {
     <>
       <div className={classes.container}>
         <div className={classes.headerContainer}>
-          <Header image={auth.currentUser?.photoURL} onClick={handleSignOut} />
+          <Header 
+            image={auth.currentUser?.photoURL} 
+            onClick={handleSignOut} 
+          />
           <h3 className={classes.welcomeText}>
             <small className={classes.welcomeTextSmall}>
               Hi,{" "}
@@ -70,8 +72,8 @@ const Home = () => {
             name={"Search headphone"}
             element={<SearchIcon size={"20"} color={"#BABABA"} />}
             value={""}
-            onInput={undefined} 
-            onFocus={undefined}          
+            onInput={undefined}
+            onFocus={undefined}
           />
         </Link>
         <section className={classes.showcase}>
@@ -84,37 +86,40 @@ const Home = () => {
               <BannerSkeleton />
             ) : (
               <Splide
+                hasTrack={false}
                 options={{
                   width: "100%",
                   autoWidth: true,
                   arrows: false,
                   pagination: false,
-                  gap: "0.94rem",
+                  gap: "0.94rem"
                 }}
               >
-                {filteredData?.length !== 0 ? (
-                  filteredData?.map(
-                    (item, index) =>
-                      index < 6 && (
-                        <SplideSlide key={item.id}>
-                          <Banner
-                            key={item.id}
-                            title={item.name}
-                            id={item.id}
-                          />
-                        </SplideSlide>
-                      )
-                  )
-                ) : (
-                  <li className={classes.noReturn}>
-                    <h2>Ops! No products found in this category.</h2>
-                    <IconShoppingBag
-                      width={"96"}
-                      height={"96"}
-                      color={"#BABABA"}
-                    />
-                  </li>
-                )}
+                <SplideTrack className={classes.splideTrack}>
+                  {filteredData?.length !== 0 ? (
+                    filteredData?.map(
+                      (item, index) =>
+                        index < 6 && (
+                          <SplideSlide key={item.id}>
+                            <Banner
+                              key={item.id}
+                              title={item.name}
+                              id={item.id}
+                            />
+                          </SplideSlide>
+                        )
+                    )
+                  ) : (
+                    <li className={classes.noReturn}>
+                      <h2>Ops! No products found in this category.</h2>
+                      <IconShoppingBag
+                        width={"96"}
+                        height={"96"}
+                        color={"#BABABA"}
+                      />
+                    </li>
+                  )}
+                </SplideTrack>
               </Splide>
             )}
             <div className={classes.showcaseText}>
@@ -127,6 +132,7 @@ const Home = () => {
               </div>
             ) : (
               <Splide
+                hasTrack={false}
                 options={{
                   width: "100%",
                   autoWidth: true,
@@ -135,32 +141,34 @@ const Home = () => {
                   gap: "0.94rem",
                 }}
               >
-                {filteredData?.length !== 0 ? (
-                  filteredData?.map(
-                    (item, index) =>
-                      index < 8 && (
-                        <SplideSlide key={item.id}>
-                          <Card
-                            id={item.id}
-                            key={item.id}
-                            name={item.name}
-                            price={item.price}
-                            rating={item.rating}
-                            showReview={false}
-                          />
-                        </SplideSlide>
-                      )
-                  )
-                ) : (
-                  <li className={classes.noReturn}>
-                    <h2>Ops! No products found in this category.</h2>
-                    <IconShoppingBag
-                      width={"96"}
-                      height={"96"}
-                      color={"#BABABA"}
-                    />
-                  </li>
-                )}
+                <SplideTrack className={classes.splideTrack}>
+                  {filteredData?.length !== 0 ? (
+                    filteredData?.map(
+                      (item, index) =>
+                        index < 8 && (
+                          <SplideSlide key={item.id}>
+                            <Card
+                              id={item.id}
+                              key={item.id}
+                              name={item.name}
+                              price={item.price}
+                              rating={item.rating}
+                              showReview={false}
+                            />
+                          </SplideSlide>
+                        )
+                    )
+                  ) : (
+                    <li className={classes.noReturn}>
+                      <h2>Ops! No products found in this category.</h2>
+                      <IconShoppingBag
+                        width={"96"}
+                        height={"96"}
+                        color={"#BABABA"}
+                      />
+                    </li>
+                  )}
+                </SplideTrack>
               </Splide>
             )}
           </div>
