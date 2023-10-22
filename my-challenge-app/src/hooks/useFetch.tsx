@@ -2,11 +2,16 @@ import axios, { AxiosResponse } from "axios";
 import { useEffect, useState } from "react";
 
 export interface Data {
-  rating: number;
-  price: string; 
+  id: number;
   name: string; 
-  description: string;
+  price: string; 
+  description: {
+    title: string;
+    content: string[]
+  };
+  image: string;
   category: string;
+  rating: number;
   created_at: string;
   reviews: [
     {
@@ -16,7 +21,6 @@ export interface Data {
       rating: number,
     }
   ];
-  id: number;
 }
 
 export const useFetch = (url: string) => {

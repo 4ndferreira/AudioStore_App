@@ -1,7 +1,7 @@
 //React
-import { MouseEventHandler, useContext } from 'react'
+import { useContext } from 'react'
 //React Router Dom
-import { Link, To, useNavigate } from 'react-router-dom'
+import { To, useNavigate } from 'react-router-dom'
 //Context
 import { CartContext } from '../../store/CartContext'
 //Components
@@ -12,18 +12,20 @@ import IconShoppingCart from './IconShoppingCart'
 import classes from './NavBar.module.css'
 
 const NavBar = (props: {
-  link: To,
-  link2: To, 
-  onClick: MouseEventHandler<HTMLAnchorElement> | undefined
+  link: To, 
   title: string
   isShoppingCart: boolean
 }) => {
-  const { cartItemCount } = useContext(CartContext);
+  const { cartItemCount, clearCart } = useContext(CartContext);
   const isShoppingCart = props.isShoppingCart;
   const navigate = useNavigate()
 
   const GoToHome = () => {
     navigate(props.link, {state: {isPush: true}})
+  };
+
+  const GoForward = () => {
+    isShoppingCart ? clearCart() : navigate('/cart')
   };
 
   return (
@@ -32,10 +34,7 @@ const NavBar = (props: {
         <ChevronLeft />
       </button>
       <p className={classes.navTitle}>{props.title}</p>
-      <Link 
-        to={props.link2} 
-        onClick={props.onClick}
-      >
+      <button className={classes.buttonGoBack} onClick={GoForward}>
         {isShoppingCart ? 
         <IconTrash 
           iconWidth={'24'}
@@ -49,7 +48,7 @@ const NavBar = (props: {
             <p>{cartItemCount}</p>
           </div>}
         </div>}
-      </Link>
+      </button>
     </nav>
   );
 }

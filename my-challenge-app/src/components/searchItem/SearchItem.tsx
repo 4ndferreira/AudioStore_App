@@ -21,7 +21,8 @@ const SearchItem = (props: {
   return (
     <li className={classes.container}>
       <Link 
-        to={`/products/${props.itemId}`} 
+        to={`/products/${props.itemId}`}
+        state={props.isShoppingCart ? { isPush: true } : { isPush: false }}
         className={classes.itemImageContainer}
       >
         <img src={Image} alt="" height={"80px"} width={"68.81px"} loading="lazy" />
@@ -29,6 +30,7 @@ const SearchItem = (props: {
       <div className={classes.itemTextContainer}>
         <Link 
           to={`/products/${props.itemId}`} 
+          state={props.isShoppingCart ? { isPush: true } : { isPush: false }}
           className={classes.link}
         >
           <h4>{props.name}</h4>

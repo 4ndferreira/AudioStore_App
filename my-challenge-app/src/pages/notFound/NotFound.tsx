@@ -7,7 +7,7 @@ const NotFound = () => {
     <div className={classes.notFoundMessage}>
       <IconAlert width={"96"} height={"96"} />
       <h1 className={classes.notFoundText}>404 - Page Not Found</h1>
-      <Link to={"/"} className={classes.notFoundLink}>
+      <Link to={"/"} state={{ isPush: true }} className={classes.notFoundLink}>
         Get me out of here!
       </Link>
     </div>

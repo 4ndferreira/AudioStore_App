@@ -1,9 +1,8 @@
 //React
-import { Suspense, lazy, useEffect } from 'react'
+import { lazy, useEffect } from 'react'
 //React Router DOM
 import { BrowserRouter, Route, useLocation } from 'react-router-dom'
 //Components
-import Loader from './components/loader/Loader'
 import CartProvider from './store/CartProvider'
 import PrivateWrapper from './layouts/PrivateWrapper'
 //CSS
@@ -38,44 +37,42 @@ const App = () => {
   return (
     <BrowserRouter>
       <CartProvider>
-        <Suspense fallback={<Loader />}>
-          <ScrollToTop />
-          <ChangeOverFlow />
-          <AnimatedRoutes>
+        <ScrollToTop />
+        <ChangeOverFlow />
+        <AnimatedRoutes>
+          <Route 
+            path='/signin' 
+            element={<Login />} 
+          />
+          <Route 
+            element={<PrivateWrapper />}
+          >
             <Route 
-              path='/signin' 
-              element={<Login />} 
+              path='/'
+              element={<Home />} 
             />
             <Route 
-              element={<PrivateWrapper />}
-            >
-              <Route 
-                path='/'
-                element={<Home />} 
-              />
-              <Route 
-                path='/search' 
-                element={<Search />} 
-              />
-              <Route 
-                path='/products' 
-                element={<Products />} 
-              />
-              <Route 
-                path='/products/:id' 
-                element={<Product />} 
-              />
-              <Route 
-                path='/cart' 
-                element={<ShoppingCart />} 
-              />
-              <Route 
-                path='*' 
-                element={<NotFound />} 
-              />
-            </Route>
-          </AnimatedRoutes>
-        </Suspense>
+              path='/search' 
+              element={<Search />} 
+            />
+            <Route 
+              path='/products' 
+              element={<Products />} 
+            />
+            <Route 
+              path='/products/:id' 
+              element={<Product />} 
+            />
+            <Route 
+              path='/cart' 
+              element={<ShoppingCart />} 
+            />
+            <Route 
+              path='*' 
+              element={<NotFound />} 
+            />
+          </Route>
+        </AnimatedRoutes>
       </CartProvider>
     </BrowserRouter>
   )

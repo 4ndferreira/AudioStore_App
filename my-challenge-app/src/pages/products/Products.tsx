@@ -14,7 +14,6 @@ import IconSliders from '../../components/button/IconSliders'
 import IconClose from '../../components/navBar/IconClose'
 import IconShoppingBag from '../../components/iconShoppingBag/IconShoppingBag'
 import CardSkeleton from '../../components/cardSkeleton/CardSkeleton'
-import Page from '../../layouts/Page'
 //CSS
 import classes from './Products.module.css'
 import './style.css'
@@ -25,7 +24,7 @@ const Products = () => {
   const [ selectSortBy, setSelectSortBy] = useState ('')
   const [ sortedData, setSortedData] = useState<Data[] | undefined> (undefined)
 
-  const { data, loading } = useFetch('https://run.mocky.io/v3/534d1f3e-406e-4564-a506-7e2718fdb0bc');
+  const { data, loading } = useFetch('http://localhost:3000/products');
   
   const openFilter = () => {
     setOpen(!open)
@@ -88,14 +87,12 @@ const Products = () => {
   }
 
   return (
-    <Page>
+    <>
       <div className={classes.containerTop}>
         <NavBar
           link="/"
-          link2="/cart"
           title={""}
           isShoppingCart={false}
-          onClick={undefined}
         />
         <h2 className={classes.title}>
           <p className={classes.titleSmall}>Featured products</p>
@@ -176,7 +173,7 @@ const Products = () => {
           </Button>
         </form>
       </BottomSheet>
-    </Page>
+    </>
   );
 }
 

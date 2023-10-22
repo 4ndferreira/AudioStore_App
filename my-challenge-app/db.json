@@ -1,0 +1,958 @@
+{
+  "products": [
+    {
+      "id": 0,
+      "name": "ComfortMax Headband",
+      "price": "$69.99",
+      "description": {
+          "title": "Unparalleled Comfort and Sound",
+          "content": [
+            "Discover the ComfortMax Headband headphones, a pinnacle of comfort and exceptional audio quality. These adjustable headband headphones are designed to provide the ultimate listening experience without compromising on your well-being. They offer an affordable option for those seeking premium sound and comfort. The ComfortMax Headband headphones are equipped with cutting-edge technology and ergonomic design, ensuring a snug fit that will make your long listening sessions sheer pleasure.",
+            "The ComfortMax Headband headphones are not just about delivering outstanding sound; they're also about ensuring you can enjoy it for hours on end. The adjustable headband guarantees a personalized and secure fit, making them perfect for any head shape. So whether you're diving into your favorite music, binge-watching a series, or joining online meetings, the ComfortMax Headband headphones will elevate your experience to new heights of comfort and audio excellence."
+          ]
+        },
+      "image": "comfortmax.jpg",
+      "category": "Headband",
+      "rating": 4,
+      "created_at": "2021-05-23T09:24:37.123Z",
+      "reviews": [
+        {
+          "id": 0,
+          "user": "HeadbandLover",
+          "description": "Perfect fit and great sound quality.",
+          "rating": 4
+        },
+        {
+          "id": 1,
+          "user": "AudioComfortPro",
+          "description": "Excellent for extended listening sessions.",
+          "rating": 4
+        },
+        {
+          "id": 2,
+          "user": "MusicEnthusiast",
+          "description": "Good audio quality for the price.",
+          "rating": 3
+        },
+        {
+          "id": 3,
+          "user": "TechieListener",
+          "description": "These headphones offer a perfect balance of comfort and sound.",
+          "rating": 5
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "name": "Aurora HD Headphones",
+      "price": "$149.99",
+      "description": {
+          "title": "Immerse Yourself in Sound",
+          "content": [
+            "Introducing the Aurora HD Headphones, the epitome of audio excellence. These premium over-ear headphones are meticulously engineered to deliver an unparalleled listening experience. With a sleek design and cutting-edge technology, the Aurora HD headphones offer crystal clear sound that will transport you into your favorite music, movies, and podcasts like never before. The comfortable over-ear design and cushioned ear cups ensure hours of luxurious listening.",
+            "Immerse yourself in a world of pristine audio with the Aurora HD Headphones. Whether you're a music connoisseur, a movie buff, or simply seeking a break from the noise of the outside world, these headphones are your perfect companion. With premium materials and precision engineering, they not only deliver high-fidelity sound but also boast a modern, stylish look. The Aurora HD Headphones are more than just headphones; they're a ticket to audio nirvana. Get ready to elevate your listening experience and rediscover your favorite sounds with these exceptional over-ear headphones."
+          ]
+        },
+      "image": "aurora_hd.jpg",
+      "category": "Headphone",
+      "rating": 3,
+      "created_at": "2022-10-08T16:50:19.456Z",
+      "reviews": [
+        {
+          "id": 0,
+          "user": "JohnDoe123",
+          "description": "These headphones are amazing!",
+          "rating": 4
+        },
+        {
+          "id": 1,
+          "user": "MusicLover99",
+          "description": "Decent sound quality for the price.",
+          "rating": 2
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "SoundWave Headphones",
+      "price": "$129.99",
+      "description": {
+          "title": "Immerse in Your Music",
+          "content": [
+            "Introducing the SoundWave Headphones, a budget-friendly choice for discerning music enthusiasts. These on-ear headphones strike a perfect balance between quality and affordability, making them the ideal companion for your musical journey. They provide impressive sound quality and a comfortable fit for extended listening sessions.",
+            "The SoundWave Headphones are designed to deliver an immersive audio experience. Whether you're diving into the depths of your favorite songs, enjoying podcasts, or watching movies, these headphones won't disappoint. The on-ear design ensures a snug and comfortable fit. If you're in search of headphones that combine affordability and audio excellence, the SoundWave Headphones are your perfect choice."
+          ]
+        },
+      "image": "soundwave.jpg",
+      "category": "Headphone",
+      "rating": 5,
+      "created_at": "2022-04-15T11:05:32.789Z",
+      "reviews": [
+        {
+          "id": 0,
+          "user": "AudioFanatic",
+          "description": "Excellent value for money.",
+          "rating": 5
+        },
+        {
+          "id": 1,
+          "user": "SamanthaMusic",
+          "description": "Good sound, comfortable fit.",
+          "rating": 5
+        },
+        {
+          "id": 2,
+          "user": "MusicLover88",
+          "description": "Impressive sound quality for the price.",
+          "rating": 5
+        },
+        {
+          "id": 2,
+          "user": "SoundSavvy123",
+          "description": "Comfortable headphones for long listening sessions.",
+          "rating": 4
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "BassMaster Headband",
+      "price": "$79.99",
+      "description": {
+          "title": "Unleash the Power of Bass",
+          "content": [
+            "Discover the BassMaster Headband headphones, designed to deliver a powerful and immersive listening experience. These on-ear headphones are meticulously engineered to provide a unique blend of exceptional bass and high-quality sound. They offer affordability without compromising on audio excellence.",
+            "The BassMaster Headband headphones are your gateway to experiencing music in a whole new way. Designed for bass enthusiasts, they deliver a deep, resonant low end that adds depth and richness to your music. Whether you're into hip-hop, EDM, or any genre that thrives on powerful bass, these headphones will make your tracks come alive. These headphones have earned their place among budget-friendly options that don't skimp on sound quality. Elevate your audio experience with the BassMaster Headband headphones, where every beat and note is felt as much as heard."
+          ]
+        },
+      "image": "bassmaster.jpg",
+      "category": "Headband",
+      "rating": 5,
+      "created_at": "2022-07-30T08:30:45.321Z",
+      "reviews": [
+        {
+          "id": 0,
+          "user": "BassLover88",
+          "description": "Incredible bass quality!",
+          "rating": 5
+        },
+        {
+          "id": 1,
+          "user": "MusicBeats",
+          "description": "Comfortable for long listening sessions.",
+          "rating": 4
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "High-Def Audio Cable",
+      "price": "$14.99",
+      "description": {
+          "title": "Unleash Exceptional Sound",
+          "content": [
+            "Introducing the High-Def Audio Cable, the essential companion for audiophiles seeking uncompromising sound quality. This premium audio cable is meticulously engineered to enhance your listening experience, whether you're using headphones or speakers. It offers an affordable upgrade that transforms your audio setup into a high-fidelity powerhouse.",
+            "The High-Def Audio Cable is your ticket to unparalleled audio clarity and precision. It's designed to transmit every note, every beat, and every nuance of your music with pristine accuracy. This cable is perfect for those who demand the highest audio quality, whether you're a music producer, a home theater enthusiast, or a dedicated music listener. It's a trusted choice for those who seek to elevate their audio experience. Don't settle for less when you can unlock the full potential of your headphones or speakers with the High-Def Audio Cable."
+          ]
+        },
+      "image": "audio_cable.jpg",
+      "category": "Cable",
+      "rating": 2,
+      "created_at": "2023-01-19T15:12:54.654Z",
+      "reviews": [
+        {
+          "id": 0,
+          "user": "SoundExpert12",
+          "description": "Slight improvement in sound quality.",
+          "rating": 3
+        },
+        {
+          "id": 1,
+          "user": "MusicManiac",
+          "description": "Cable quality leaves much to be desired.",
+          "rating": 1
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Premium Earpads",
+      "price": "$19.99",
+      "description": {
+          "title": "Rediscover Comfort and Sound",
+          "content": [
+            "Upgrade your listening experience with our Premium Earpads, designed for the ultimate in comfort and sound quality. These replacement ear cushions are the perfect choice to breathe new life into your favorite headphones. They offer a cost-effective solution to refresh your audio gear and enjoy extended listening sessions in pure comfort.",
+            "The Premium Earpads are crafted with a focus on luxury and durability. These ear cushions provide a plush and snug fit that surrounds your ears, isolating you from the outside world and enhancing your audio experience. Say goodbye to worn-out or uncomfortable earpads, and say hello to hours of indulgent listening. These earpads have earned their reputation for providing exceptional quality and comfort. Elevate your headphone experience to new heights with the Premium Earpads, where every note and every sound detail come alive."
+          ]
+      },
+      "image": "earpads.jpg",
+      "category": "Earpads",
+      "rating": 4,
+      "created_at": "2022-11-03T20:43:28.987Z",
+      "reviews": [
+        {
+          "id": 0,
+          "user": "TechGeek21",
+          "description": "These earpads are so comfortable!",
+          "rating": 4
+        },
+        {
+          "id": 1,
+          "user": "AudioJunkie",
+          "description": "Great quality and easy to install.",
+          "rating": 4
+        },
+        {
+          "id": 5,
+          "user": "AudioEnthusiast",
+          "description": "High-quality replacement ear cushions that exceeded my expectations.",
+          "rating": 4
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Gamer's Headset Pro",
+      "price": "$89.99",
+      "description": {
+        "title": "Elevate Your Gaming Experience",
+        "content": [
+          "Introducing the Gamer's Headset Pro, a specialized gaming headset engineered to take your gaming experience to the next level. With a built-in high-performance microphone and a focus on exceptional sound quality, this gaming headset is designed to help you immerse yourself fully in the world of gaming. It offers a cost-effective solution for gamers seeking professional-grade audio and communication.",
+          "The Gamer's Headset Pro is more than just a headset; it's your key to a world of gaming excellence. Whether you're an esports enthusiast, a competitive gamer, or simply enjoy playing with friends, this headset is equipped to deliver crystal clear communication and immersive sound. The comfortable over-ear design ensures hours of uninterrupted gameplay. Get ready to dominate the gaming arena with the Gamer's Headset Pro, where every sound and command is delivered with precision and clarity."
+        ]
+      },
+      "image": "gaming_headset.jpg",
+      "category": "Headset",
+      "rating": 3,
+      "created_at": "2023-09-12T03:18:47.876Z",
+      "reviews": [
+        {
+          "id": 0,
+          "user": "GameMasterX",
+          "description": "Reliable communication during games.",
+          "rating": 3
+        },
+        {
+          "id": 1,
+          "user": "GamerGirl21",
+          "description": "Suitable for extended gaming sessions.",
+          "rating": 3
+        },
+        {
+          "id": 2,
+          "user": "ProGamerX",
+          "description": "Decent gaming headset with clear audio.",
+          "rating": 3
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "ComfortFit Earpads",
+      "price": "$14.99",
+      "description": {
+        "title": "Exceptional Comfort for Extended Listening",
+        "content": [
+          "Indulge in the epitome of listening comfort with our ComfortFit Earpads, expertly designed to enhance your audio experience. These soft earpads are the perfect solution for extended listening sessions, ensuring that your headphones feel as comfortable as they sound. They offer an affordable upgrade to elevate your audio gear for hours of luxurious listening.",
+          "The ComfortFit Earpads are engineered with your listening pleasure in mind. These plush ear cushions envelop your ears with a soft, velvety touch, providing unmatched comfort even during prolonged use. Say goodbye to discomfort, irritation, and pressure points, and say hello to an audio experience that's as comfortable as it is enjoyable. Elevate your headphone comfort to a new level with the ComfortFit Earpads, where every note and every sound is complemented by blissful, extended comfort."
+        ]
+      },
+      "image": "comfortfit_earpads.jpg",
+      "category": "Earpads",
+      "rating": 5,
+      "created_at": "2022-03-27T18:07:39.543Z",
+      "reviews": [
+        {
+          "id": 0,
+          "user": "Audiophile77",
+          "description": "These earpads make a big difference.",
+          "rating": 5
+        },
+        {
+          "id": 1,
+          "user": "MusicLover88",
+          "description": "Excellent for long listening sessions.",
+          "rating": 5
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Innovative Audio Cable",
+      "price": "$12.99",
+      "description": {
+        "title": "Unleash Unrivaled Audio Precision",
+        "content": [
+          "Introducing the Innovative Audio Cable, a cutting-edge solution for those who demand the highest quality sound. This advanced audio cable is designed to transform your audio setup, providing a conduit for exceptional sound quality that brings your music to life. It offers an affordable yet effective upgrade for audiophiles and music enthusiasts.",
+          "The Innovative Audio Cable is more than just a cable; it's a gateway to a world of audio excellence. Engineered with precision and attention to detail, this cable is your ticket to experiencing your favorite music and media as it was meant to be heard. Whether you're a music professional or a dedicated listener, this cable will enhance your audio setup to new heights. Elevate your sound experience and unlock the full potential of your audio equipment with the Innovative Audio Cable."
+        ]
+      },
+      "image": "innovative_cable.jpg",
+      "category": "Cable",
+      "rating": 2,
+      "created_at": "2022-12-07T14:59:26.210Z",
+      "reviews": [
+        {
+          "id": 0,
+          "user": "TechEnthusiast",
+          "description": "Good sound quality with this cable, but there's room for improvement.",
+          "rating": 3
+        },
+        {
+          "id": 1,
+          "user": "AudioProX",
+          "description": "Decent cable choice for audiophiles, but not exceptional.",
+          "rating": 2
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Pro Gaming Headset",
+      "price": "$99.99",
+      "description": {
+        "title": "Dominate Your Gaming Arena",
+        "content": [
+          "Elevate your gaming experience with the Pro Gaming Headset, a high-performance gaming headset engineered for the most demanding players. With immersive surround sound, crystal clear communication, and precision audio, this headset is designed to provide a competitive edge in the world of gaming. It offers a professional-grade solution for gamers who seek excellence in sound and performance.",
+          "The Pro Gaming Headset is your path to gaming supremacy. It delivers an audio experience that immerses you in the heart of the action, allowing you to hear every subtle detail and movement. The surround sound capabilities make you feel like you're right in the game, while the high-quality microphone ensures clear communication with your teammates. Step into a new level of gaming with the Pro Gaming Headset, where victory and excellence in audio come together."
+        ]
+      },
+      "image": "pro_gaming_headset.jpg",
+      "category": "Headset",
+      "rating": 4,
+      "created_at": "2021-09-14T22:33:17.765Z",
+      "reviews": [
+        {
+          "id": 0,
+          "user": "GamerProX",
+          "description": "Top-notch audio for competitive gaming.",
+          "rating": 4
+        },
+        {
+          "id": 1,
+          "user": "EsportsChampion",
+          "description": "The best headset for esports!",
+          "rating": 4
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Elite Gamer's Headset",
+      "price": "$119.99",
+      "description": {
+        "title": "Gaming Excellence Redefined",
+        "content": [
+          "Introducing the Elite Gamer's Headset, a high-performance gaming headset designed to redefine your gaming experience. With advanced surround sound, clear communication, and precise audio, this headset is engineered to give you the competitive edge you need. It's the ultimate choice for gamers who demand excellence in sound and performance.",
+          "The Elite Gamer's Headset transports you into the heart of the gaming action, allowing you to hear every detail and movement. Its surround sound technology creates an immersive gaming environment, and the high-quality microphone ensures flawless communication with your teammates."
+        ]
+      },
+      "image": "elite_gamers_headset.jpg",
+      "category": "Headset",
+      "rating": 3,
+      "created_at": "2021-12-28T10:28:58.432Z",
+      "reviews": [
+        {
+          "id": 0,
+          "user": "ProGamerX",
+          "description": "A headset for the pros!",
+          "rating": 5
+        },
+        {
+          "id": 1,
+          "user": "CompetitiveChamp",
+          "description": "Good sound quality for esports, but not unmatched.",
+          "rating": 2
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Ultimate eSports Headset",
+      "price": "$129.99",
+      "description": {
+        "title": "For the True eSports Champion",
+        "content": [
+          "The Ultimate eSports Headset is crafted for those who aim to become true eSports champions. This high-performance gaming headset is equipped with advanced features, including immersive surround sound, crystal clear communication, and precision audio. It's the go-to choice for gamers seeking the pinnacle of sound quality and performance.",
+          "Step into the gaming world like never before with the Ultimate eSports Headset. Its surround sound technology transports you into the heart of the action, providing unparalleled audio quality. The high-quality microphone ensures seamless communication with your teammates."
+        ]
+      },
+      "image": "ultimate_esports_headset.jpg",
+      "category": "Headset",
+      "rating": 5,
+      "created_at": "2022-05-02T06:40:05.199Z",
+      "reviews": [
+        {
+          "id": 0,
+          "user": "EsportsMaster",
+          "description": "Perfect for competitive gaming.",
+          "rating": 5
+        },
+        {
+          "id": 1,
+          "user": "ChampionGamerX",
+          "description": "The ultimate headset for eSports professionals!",
+          "rating": 5
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Pro Audio-Elite Headset",
+      "price": "$139.99",
+      "description": {
+        "title": "Unleash Your Gaming Potential",
+        "content": [
+          "Unleash your gaming potential with the Pro Audio-Elite Headset, a high-performance gaming headset designed for serious gamers. Equipped with immersive surround sound, crystal clear communication, and precision audio, this headset is your key to gaming excellence. It's the ultimate choice for those who demand the very best in sound quality and performance.",
+          "With the Pro Audio-Elite Headset, you'll experience gaming like never before. Its surround sound technology places you in the midst of the action, ensuring you hear every detail and movement. The high-quality microphone ensures seamless communication with your gaming allies."
+        ]
+      },
+      "image": "pro_audio_elite_headset.jpg",
+      "category": "Headset",
+      "rating": 5,
+      "created_at": "2022-08-21T13:04:14.567Z",
+      "reviews": [
+        {
+          "id": 0,
+          "user": "EliteGamerPro",
+          "description": "Exceptional sound quality for professional gaming.",
+          "rating": 5
+        },
+        {
+          "id": 1,
+          "user": "ProAudioChamp",
+          "description": "The ultimate headset for audio enthusiasts!",
+          "rating": 5
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "name": "Precision Gaming Headset",
+      "price": "$109.99",
+      "description": {
+        "title": "Experience Gaming with Precision",
+        "content": [
+          "Experience gaming with precision using the Precision Gaming Headset. This high-performance gaming headset is engineered to provide immersive surround sound, crystal clear communication, and precision audio, giving you the edge in the gaming world. It's the ideal choice for gamers who seek top-tier sound quality and performance.",
+          "The Precision Gaming Headset transports you into the heart of the action, delivering every detail and movement with unmatched clarity. Its surround sound technology creates an immersive gaming environment, and the high-quality microphone ensures effective communication with your teammates."
+        ]
+      },
+      "image": "precision_gaming_headset.jpg",
+      "category": "Headset",
+      "rating": 4,
+      "created_at": "2023-03-11T07:15:20.876Z",
+      "reviews": [
+        {
+          "id": 0,
+          "user": "GamingProX",
+          "description": "Top-notch audio for competitive gaming.",
+          "rating": 5
+        },
+        {
+          "id": 1,
+          "user": "EsportsElite",
+          "description": "Precision and performance for professional gamers!",
+          "rating": 4
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "name": "UltraShield Audio Cable",
+      "price": "$18.99",
+      "description": {
+        "title": "Unleash Pristine Sound",
+        "content": [
+          "Unleash pristine sound with the UltraShield Audio Cable, a high-quality audio cable designed to deliver uncompromised sound quality. This advanced cable is perfect for audiophiles and music enthusiasts seeking top-tier audio clarity and precision.",
+          "The UltraShield Audio Cable ensures that every note and nuance of your music is transmitted with the highest fidelity. Its precision engineering and high-quality materials guarantee an exceptional listening experience."
+        ]
+      },
+      "image": "ultrashield_audio_cable.jpg",
+      "category": "Cable",
+      "rating": 4,
+      "created_at": "2021-08-10T19:27:31.234Z",
+      "reviews": [
+        {
+          "id": 0,
+          "user": "AudiophilePro",
+          "description": "The ultimate cable for audiophiles!",
+          "rating": 5
+        },
+        {
+          "id": 1,
+          "user": "SoundEnthusiast",
+          "description": "Very good sound quality with the UltraShield cable.",
+          "rating": 3
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "name": "CrystalClear Audio Cable",
+      "price": "$14.99",
+      "description": {
+        "title": "Clarity Beyond Compare",
+        "content": [
+          "Experience clarity beyond compare with the CrystalClear Audio Cable, an advanced cable designed for audiophiles and music enthusiasts. This cable ensures that every musical detail is transmitted with unmatched precision and sound quality.",
+          "The CrystalClear Audio Cable is engineered for excellence, with high-quality materials and precision engineering that guarantees a listening experience like no other."
+        ]
+      },
+      "image": "crystalclear_audio_cable.jpg",
+      "category": "Cable",
+      "rating": 3,
+      "created_at": "2023-06-06T12:53:49.543Z",
+      "reviews": [
+        {
+          "id": 0,
+          "user": "MusicLoverPro",
+          "description": "Sound quality is decent but not exceptional.",
+          "rating": 2
+        },
+        {
+          "id": 1,
+          "user": "AudiophileChamp",
+          "description": "Exceptional sound quality for music enthusiasts.",
+          "rating": 4
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "name": "PrecisionPro Audio Cable",
+      "price": "$16.99",
+      "description": {
+        "title": "Unrivaled Sound Clarity",
+        "content": [
+          "Experience unrivaled sound clarity with the PrecisionPro Audio Cable, designed to elevate your audio setup. This advanced cable guarantees that every note and detail in your music is delivered with precision and exceptional sound quality.",
+          "The PrecisionPro Audio Cable is a testament to top-tier quality, crafted with high-quality materials and precision engineering. It ensures that your music comes to life like never before."
+        ]
+      },
+      "image": "precisionpro_audio_cable.jpg",
+      "category": "Cable",
+      "rating": 2,
+      "created_at": "2022-02-24T17:36:06.123Z",
+      "reviews": [
+        {
+          "id": 0,
+          "user": "AudioEnthusiastX",
+          "description": "Audio quality falls short of expectations.",
+          "rating": 1
+        },
+        {
+          "id": 1,
+          "user": "SoundMasterPro",
+          "description": "A decent cable for audiophiles.",
+          "rating": 3
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "name": "SoundEnhance Audio Cable",
+      "price": "$17.99",
+      "description": {
+        "title": "Enhance Your Sound Experience",
+        "content": [
+          "Enhance your sound experience with the SoundEnhance Audio Cable, designed for those who appreciate high-quality audio. This cable delivers a listening experience that's enriched with precision, clarity, and exceptional sound quality.",
+          "The SoundEnhance Audio Cable is engineered to ensure that every detail in your music shines through. Its high-quality construction and precision engineering make it a trusted choice for audiophiles."
+        ]
+      },
+      "image": "soundenhance_audio_cable.jpg",
+      "category": "Cable",
+      "rating": 5,
+      "created_at": "2021-10-16T04:44:37.876Z",
+      "reviews": [
+        {
+          "id": 0,
+          "user": "AudiophileElite",
+          "description": "Enhanced sound quality at its finest!",
+          "rating": 5
+        },
+        {
+          "id": 1,
+          "user": "SoundMasterX",
+          "description": "Unmatched precision and clarity with the SoundEnhance cable.",
+          "rating": 5
+        },
+        {
+          "id": 2,
+          "user": "AudioEnthusiast88",
+          "description": "The SoundEnhance Audio Cable takes my music to a whole new level. Crystal-clear sound and unmatched quality.",
+          "rating": 5
+        },
+        {
+          "id": 3,
+          "user": "SoundGuru123",
+          "description": "I'm amazed by the audio improvement I've experienced with the SoundEnhance cable. It's a game-changer for any music lover.",
+          "rating": 5
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "name": "Ultimate Comfort Earpads",
+      "price": "$24.99",
+      "description": {
+        "title": "Unparalleled Comfort for Extended Listening",
+        "content": [
+          "Experience unparalleled comfort for extended listening with the Ultimate Comfort Earpads. These premium ear cushions provide a luxurious and ergonomic fit, ensuring that you can enjoy your favorite music or podcasts for hours without discomfort.",
+          "Crafted with high-quality materials and a focus on long-lasting comfort, the Ultimate Comfort Earpads are designed to envelop your ears in bliss."
+        ]
+      },
+      "image": "ultimate_comfort_earpads.jpg",
+      "category": "Earpads",
+      "rating": 2,
+      "created_at": "2023-05-29T21:21:09.765Z",
+      "reviews": [
+        {
+          "id": 0,
+          "user": "ComfortListener",
+          "description": "Unmatched comfort for long listening sessions.",
+          "rating": 4
+        },
+        {
+          "id": 1,
+          "user": "EarpadEnthusiast",
+          "description": "Earpads do not meet comfort expectations.",
+          "rating": 1
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "name": "PlushFit Earpads",
+      "price": "$19.99",
+      "description": {
+        "title": "Plush and Luxurious Comfort",
+        "content": [
+          "Indulge in plush and luxurious comfort with the PlushFit Earpads. These premium ear cushions are designed to provide a cozy and soft fit, ensuring that you can listen to your favorite music or audio content in style and comfort.",
+          "The PlushFit Earpads are crafted with a focus on providing a premium listening experience. Their velvety texture and ergonomic design make them a favorite among those who appreciate extended comfort."
+        ]
+      },
+      "image": "plushfit_earpads.jpg",
+      "category": "Earpads",
+      "rating": 3,
+      "created_at": "2022-06-18T08:10:58.432Z",
+      "reviews": [
+        {
+          "id": 0,
+          "user": "LuxuryListener",
+          "description": "Luxury and comfort combined in these earpads!",
+          "rating": 5
+        },
+        {
+          "id": 1,
+          "user": "EarpadEnthusiastX",
+          "description": "Comfortable, but not as long-lasting as expected.",
+          "rating": 1
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "name": "MemoryFoam Earpads",
+      "price": "$22.99",
+      "description": {
+        "title": "Customized Comfort with Memory Foam",
+        "content": [
+          "Enjoy customized comfort with MemoryFoam Earpads, designed to provide a tailored fit for your ears. These premium ear cushions are crafted with memory foam to ensure an ergonomic and long-lasting listening experience.",
+          "The MemoryFoam Earpads mold to the shape of your ears, delivering unparalleled comfort and support. Whether you're into music, podcasts, or gaming, these earpads are designed to enhance your audio experience."
+        ]
+      },
+      "image": "memoryfoam_earpads.jpg",
+      "category": "Earpads",
+      "rating": 5,
+      "created_at": "2022-09-04T15:48:42.199Z",
+      "reviews": [
+        {
+          "id": 0,
+          "user": "FoamComfortPro",
+          "description": "Customized comfort like never before with MemoryFoam!",
+          "rating": 5
+        },
+        {
+          "id": 1,
+          "user": "AudioLoverX",
+          "description": "Unmatched comfort and support for extended listening pleasure.",
+          "rating": 5
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "name": "VelvetTouch Earpads",
+      "price": "$16.99",
+      "description": {
+        "title": "Embrace Velvet-Like Comfort",
+        "content": [
+          "Embrace velvet-like comfort with VelvetTouch Earpads, crafted to provide a luxurious and soft fit. These premium ear cushions are designed for those who appreciate superior comfort during extended listening sessions.",
+          "The VelvetTouch Earpads are made with a velvety, soft texture that feels gentle against your ears. They are perfect for enhancing your listening experience, whether it's music, podcasts, or gaming."
+        ]
+      },
+      "image": "velvettouch_earpads.jpg",
+      "category": "Earpads",
+      "rating": 5,
+      "created_at": "2021-07-12T09:05:33.654Z",
+      "reviews": [
+        {
+          "id": 0,
+          "user": "VelvetComfortPro",
+          "description": "Velvet-like comfort for extended listening sessions!",
+          "rating": 5
+        },
+        {
+          "id": 1,
+          "user": "AudioLuxuryX",
+          "description": "Soft and gentle on the ears - a true listening pleasure!",
+          "rating": 5
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "name": "DeluxeSoft Headband",
+      "price": "$79.99",
+      "description": {
+        "title": "Unmatched Comfort and Style",
+        "content": [
+          "Experience unmatched comfort and style with the DeluxeSoft Headband. This adjustable headband is designed to provide a luxurious and ergonomic fit, ensuring you can enjoy your music and audio in style and comfort.",
+          "Crafted with high-quality materials and a focus on long-lasting comfort, the DeluxeSoft Headband is your go-to choice for a perfect fit."
+        ]
+      },
+      "image": "deluxesoft_headband.jpg",
+      "category": "Headband",
+      "rating": 3,
+      "created_at": "2023-04-23T23:50:28.321Z",
+      "reviews": [
+        {
+          "id": 0,
+          "user": "LuxuryListenerX",
+          "description": "A stylish and comfortable headband!",
+          "rating": 4
+        },
+        {
+          "id": 1,
+          "user": "HeadbandEnthusiast",
+          "description": "Decent fit and style with the DeluxeSoft headband.",
+          "rating": 2
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "name": "ProFlex Headband",
+      "price": "$89.99",
+      "description": {
+        "title": "Flexibility and Comfort Combined",
+        "content": [
+          "The ProFlex Headband offers a perfect combination of flexibility and comfort. This adjustable headband is designed to provide a secure fit with the flexibility you need for a comfortable listening experience.",
+          "The ProFlex Headband is crafted with high-quality materials and a focus on adaptability, making it a favorite among those who appreciate comfort and style."
+        ]
+      },
+      "image": "proflex_headband.jpg",
+      "category": "Headband",
+      "rating": 1,
+      "created_at": "2022-01-31T14:14:50.765Z",
+      "reviews": [
+        {
+          "id": 0,
+          "user": "FlexibilityPro",
+          "description": "The ProFlex headband, while flexible, lacks the expected comfort.",
+          "rating": 1
+        },
+        {
+          "id": 1,
+          "user": "StyleEnthusiastX",
+          "description": "The headband's style doesn't translate to extended comfort as expected.",
+          "rating": 1
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "name": "ErgoFit Headband",
+      "price": "$69.99",
+      "description": {
+        "title": "Ergonomic Comfort for Extended Listening",
+        "content": [
+          "Experience ergonomic comfort for extended listening with the ErgoFit Headband. This adjustable headband is designed to provide a perfect fit that feels great even during extended audio sessions.",
+          "The ErgoFit Headband is crafted with high-quality materials and a focus on ergonomics, ensuring that your comfort is a top priority."
+        ]
+      },
+      "image": "ergofit_headband.jpg",
+      "category": "Headband",
+      "rating": 4,
+      "created_at": "2021-11-20T06:29:37.987Z",
+      "reviews": [
+        {
+          "id": 0,
+          "user": "ErgoComfortPro",
+          "description": "Unmatched ergonomic comfort with the ErgoFit headband!",
+          "rating": 4
+        },
+        {
+          "id": 1,
+          "user": "AudioComfortChamp",
+          "description": "Ergonomic design for extended comfort during audio sessions.",
+          "rating": 4
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "name": "StyleSense Headband",
+      "price": "$99.99",
+      "description": {
+        "title": "Elevate Your Style with Comfort",
+        "content": [
+          "Elevate your style with the StyleSense Headband. This adjustable headband offers a blend of style and comfort, ensuring you can enjoy your music or audio in both fashion and luxury.",
+          "Crafted with high-quality materials and a focus on style, the StyleSense Headband is perfect for those who appreciate both fashion and comfort."
+        ]
+      },
+      "image": "stylesense_headband.jpg",
+      "category": "Headband",
+      "rating": 3,
+      "created_at": "2022-03-01T16:17:18.432Z",
+      "reviews": [
+        {
+          "id": 0,
+          "user": "FashionProX",
+          "description": "A stylish headband that offers both fashion and comfort!",
+          "rating": 4
+        },
+        {
+          "id": 1,
+          "user": "LuxuryStyleEnthusiast",
+          "description": "The StyleSense headband offers some style, but falls short in terms of comfort.",
+          "rating": 2
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "name": "ProBeat Headphones",
+      "price": "$129.99",
+      "description": {
+        "title": "Experience Pro-Level Sound",
+        "content": [
+          "Elevate your audio experience with ProBeat Headphones, designed for audiophiles and music enthusiasts. These headphones offer pro-level sound quality, delivering every note and detail with precision.",
+          "The ProBeat Headphones are crafted with high-quality materials and a focus on audio excellence. They provide an immersive listening experience that brings your music to life."
+        ]
+      },
+      "image": "probeat_headphones.jpg",
+      "category": "Headphone",
+      "rating": 2,
+      "created_at": "2023-08-17T10:01:54.654Z",
+      "reviews": [
+        {
+          "id": 0,
+          "user": "AudioProX",
+          "description": "Decent sound quality, but falls short of high expectations with ProBeat headphones.",
+          "rating": 2
+        },
+        {
+          "id": 1,
+          "user": "MusicMasterX",
+          "description": "Satisfactory audio quality, but not quite the audiophile's dream with the ProBeat headphones.",
+          "rating": 2
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "name": "CrystalClear Headphones",
+      "price": "$139.99",
+      "description": {
+        "title": "Clarity Beyond Compare",
+        "content": [
+          "Experience clarity beyond compare with CrystalClear Headphones, designed for those who demand uncompromised sound quality. These headphones deliver crystal-clear audio with precision and detail.",
+          "The CrystalClear Headphones are crafted with high-quality materials and a focus on audio excellence. They ensure that every musical detail is presented with pristine clarity."
+        ]
+      },
+      "image": "crystalclear_headphones.jpg",
+      "category": "Headphone",
+      "rating": 5,
+      "created_at": "2021-06-25T20:59:12.210Z",
+      "reviews": [
+        {
+          "id": 0,
+          "user": "SoundEnthusiastX",
+          "description": "Unmatched sound clarity with CrystalClear headphones!",
+          "rating": 5
+        },
+        {
+          "id": 1,
+          "user": "AudiophileChampX",
+          "description": "Crystal-clear audio for the true audiophile!",
+          "rating": 5
+        },
+        {
+          "id": 3,
+          "user": "MusicLover77",
+          "description": "CrystalClear Headphones are a revelation for music enthusiasts. The level of detail and clarity in the sound is truly remarkable.",
+          "rating": 5
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "name": "PureTune Headphones",
+      "price": "$119.99",
+      "description": {
+        "title": "Tune into Pure Sound",
+        "content": [
+          "Tune into pure sound with PureTune Headphones, designed for music enthusiasts and audio connoisseurs. These headphones provide a pure and unadulterated audio experience, ensuring you hear every note as intended.",
+          "The PureTune Headphones are crafted with high-quality materials and a focus on unaltered audio delivery. They offer an authentic and pure listening experience for music lovers. These headphones reflect their top-tier quality and pure audio performance."
+        ]
+      },
+      "image": "puretune_headphones.jpg",
+      "category": "Headphone",
+      "rating": 4,
+      "created_at": "2022-12-29T11:37:00.543Z",
+      "reviews": [
+        {
+          "id": 0,
+          "user": "PureAudioPro",
+          "description": "Pure sound at its finest with PureTune headphones!",
+          "rating": 4
+        },
+        {
+          "id": 1,
+          "user": "MusicConnoisseurX",
+          "description": "Unaltered audio for the true music connoisseur!",
+          "rating": 4
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "name": "EliteSound Headphones",
+      "price": "$149.99",
+      "description": {
+        "title": "Experience Elite Audio",
+        "content": [
+          "Experience elite audio quality with EliteSound Headphones, designed for those who demand the best in sound. These headphones deliver elite-level audio that captures every nuance and detail.",
+          "The EliteSound Headphones are crafted with high-quality materials and a focus on audio excellence. They provide a listening experience that's on par with the very best."
+        ]
+      },
+      "image": "elitesound_headphones.jpg",
+      "category": "Headphone",
+      "rating": 3,
+      "created_at": "2023-07-05T07:24:25.123Z",
+      "reviews": [
+        {
+          "id": 0,
+          "user": "SoundMasterProX",
+          "description": "Solid audio quality with EliteSound headphones.",
+          "rating": 3
+        },
+        {
+          "id": 1,
+          "user": "AudiophileEliteX",
+          "description": "EliteSound headphones excel in delivering top-notch sound quality.",
+          "rating": 3
+        }
+      ]
+    }       
+  ]
+}

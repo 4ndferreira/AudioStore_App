@@ -60,13 +60,11 @@ const ShoppingCart = () => {
   console.log(isOpen)
 
   return (
-    <Page>
+    <>
       <div className={classes.container}>
         <NavBar
           link={"/products"}
-          link2={""}
           title={"Shopping Cart"}
-          onClick={() => clearCart()}
           isShoppingCart={true}
         />
         {isOpen && 
@@ -98,7 +96,7 @@ const ShoppingCart = () => {
                 color={"#0ACF83"} 
               />
               <p>Your Cart is Empty</p>
-              <Link to={"/products"}>Shop Now</Link>
+              <Link to={"/products"} state={{ isPush: true }} >Shop Now</Link>
             </li>
           )}
         </ul>
@@ -115,7 +113,7 @@ const ShoppingCart = () => {
           </Button>
         </div>
       </div>
-    </Page>
+    </>
   );
 };
 

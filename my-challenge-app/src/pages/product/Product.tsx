@@ -16,21 +16,24 @@ import Card from "../../components/card/Card";
 import Button from "../../components/button/Button";
 import { CartContext } from "../../store/CartContext";
 import ReviewSkeleton from "../../components/reviewSkeleton/ReviewSkeleton";
-import Page from "../../layouts/Page";
-const NotFound = lazy(()=> import('../notFound/NotFound'))
+import ContainerButton from "../../components/containerButton/ContainerButton";
+import CardSkeleton from "../../components/cardSkeleton/CardSkeleton";
+import NotFound from "../notFound/NotFound";
 //Image
 import Image from '/img/image6.png'
 //CSS
 import classes from './Product.module.css'
 import '../../../node_modules/@splidejs/react-splide/dist/css/splide.min.css'
 import 'react-loading-skeleton/dist/skeleton.css'
-import CardSkeleton from "../../components/cardSkeleton/CardSkeleton";
-import Loader from "../../components/loader/Loader";
 
 const Product = () => {
-  const { data, loading } = useFetch(
-    "https://run.mocky.io/v3/534d1f3e-406e-4564-a506-7e2718fdb0bc"
+  // const { data, loading, error } = useFetch(
+  //   "https://run.mocky.io/v3/534d1f3e-406e-4564-a506-7e2718fdb0bc"
+  // );
+  const { data, loading, error } = useFetch(
+    "http://localhost:3000/products"
   );
+
   const [detailsToggle, setDetailsToggle] = useState("Overview");
 
   const { id } = useParams();
@@ -51,30 +54,18 @@ const Product = () => {
     navigate("/cart");
   };
 
-  if(!data) {
-    return <Loader />
-  }
+  // if(!data) {
+  //   return <Loader />
+  // }
 
   if(!loading && !item) {
-    return (
-      <Page>
-        <Suspense fallback={<Loader />}>
-          <NotFound />
-        </Suspense>
-      </Page>
-    )
+    return <NotFound />
   }
 
   return (
     <>
       <div className={classes.containerHeader}>
-        <NavBar
-          link="/"
-          link2="/cart"
-          title={""}
-          isShoppingCart={false}
-          onClick={undefined}
-        />
+        <NavBar link="/" title={" "} isShoppingCart={false} />
         {loading ? (
           <SkeletonTheme
             baseColor="#eeeded"
@@ -132,7 +123,7 @@ const Product = () => {
             <div className={classes.anotherProduct}>
               <div className={classes.textLink}>
                 <h4>Another Product</h4>
-                <Link to="/products">See All</Link>
+                <Link to="/products" state={{ isPush: true }}>See All</Link>
               </div>
               {loading ? (
                 <div className={classes.containerSkeleton}>
@@ -169,13 +160,26 @@ const Product = () => {
           </section>
         </div>
       ) : (
-        <p className={classes.textDescription}>{item?.description}</p>
-      )}
-      <div className={classes.positionButton}>
-        <div className={classes.wrapperButton}>
-          <Button type={"button"} onClick={handleClick}>Add To Cart</Button>
+        <div className={classes.textDescription}>
+          <h4 className={classes.textDescriptionTitle}>
+            {item?.description.title}
+          </h4>
+          {item?.description.content.map((paragraph, index) => (
+            <p className={classes.textDescriptionParagraph} key={index}>
+              {paragraph}
+            </p>
+          ))}
         </div>
-      </div>
+      )}
+      <ContainerButton>
+        <div className={classes.positionButton}>
+          <div className={classes.wrapperButton}>
+            <Button type={"button"} onClick={handleClick}>
+              Add To Cart
+            </Button>
+          </div>
+        </div>
+      </ContainerButton>
     </>
   );
 }

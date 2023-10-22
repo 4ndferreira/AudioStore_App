@@ -1,17 +1,21 @@
+import { Suspense } from 'react'
 import { AnimatePresence } from 'framer-motion'
-import { Routes, useLocation, useNavigate } from 'react-router-dom'
+import { Routes, useLocation } from 'react-router-dom'
+import Loader from '../components/loader/Loader'
+import Page from './Page'
 
-const AnimatedRoutes = (props: { children: React.ReactNode }) => {
+export default function AnimatedRoutes(props: { children: React.ReactNode }) {
   const location = useLocation()
-  const navigate = useNavigate()
 
   return (
     <AnimatePresence initial={false}>
-      <Routes location={location} key={location.pathname}>
-        {props.children}
-      </Routes>
+      <Page key={location.key}>
+        <Suspense fallback={<Loader />}>
+          <Routes location={location} key={location.pathname}>
+            {props.children}
+          </Routes>
+        </Suspense>
+      </Page>
     </AnimatePresence>
   )
 }
-
-export default AnimatedRoutes
