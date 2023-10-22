@@ -18,20 +18,23 @@ const menuVariants = {
   open: {
     x: 0,
     transition: {
-      type: "tween"
+      type: "tween",
+      duration: 0.2
     }
   },
   closed: {
     x: "-70vw",
     transition: {
-      type: "tween"
+      type: "tween", 
+      duration: 0.1
     }
   }
 };
 
 const SideBar = (props: {
   menuRef: Ref<HTMLDivElement>;
-  onClick: MouseEventHandler<HTMLButtonElement> 
+  logout: MouseEventHandler<HTMLButtonElement> 
+  closeSidebar: MouseEventHandler<HTMLAnchorElement>
 }) => {
   const { cartItemCount } = useContext(CartContext);
   return (
@@ -48,6 +51,7 @@ const SideBar = (props: {
             <NavLink 
               className={classes.menuLink} 
               to={"/search"}
+              onClick={props.closeSidebar}
             >
               <SearchIcon size={"25"} color={"black"} />
               <span>Search</span>
@@ -57,6 +61,7 @@ const SideBar = (props: {
             <NavLink 
               className={classes.menuLink} 
               to={"/products"}
+              onClick={props.closeSidebar}
             >
               <GridIcon />
               <span>Products</span>
@@ -66,6 +71,7 @@ const SideBar = (props: {
             <NavLink 
               className={classes.menuLink} 
               to={"/cart"}
+              onClick={props.closeSidebar}
             >
               <span className={classes.iconCart}>
                 <IconShoppingCart />
@@ -79,7 +85,7 @@ const SideBar = (props: {
         </ul>
         <button 
           className={classes.buttonLogout} 
-          onClick={props.onClick}
+          onClick={props.logout}
         >
           <IconLogout />
           <span>Logout</span>

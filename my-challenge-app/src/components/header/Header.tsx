@@ -56,7 +56,13 @@ const Header = (props: {
         </div>
       </div>
       <AnimatePresence>
-        {showMenu && <SideBar onClick={props.onClick} menuRef={menuRef}/> }
+        {showMenu && (
+          <SideBar
+            logout={props.onClick}
+            closeSidebar={() => setShowMenu(false)}
+            menuRef={menuRef}
+          />
+        )}
       </AnimatePresence>
     </header>
   );
