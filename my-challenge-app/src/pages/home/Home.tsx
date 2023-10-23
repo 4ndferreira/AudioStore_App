@@ -24,8 +24,7 @@ import '../../../node_modules/@splidejs/react-splide/dist/css/splide.min.css'
 import classes from './Home.module.css'
 
 const Home = () => {
-  // const { data, loading } = useFetch('https://run.mocky.io/v3/534d1f3e-406e-4564-a506-7e2718fdb0bc');
-  const { data, loading } = useFetch('http://localhost:3000/products');
+  const { data, loading } = useFetch();
   const [filterCategory, setFilterCategory] = useState('')
   const navigate = useNavigate()
 

@@ -1,5 +1,5 @@
 //React
-import { ChangeEvent, Suspense, lazy, useContext, useState } from "react";
+import { ChangeEvent, useContext, useState } from "react";
 //React Router Dom
 import { Link, useNavigate, useParams } from "react-router-dom";
 //Hooks
@@ -27,12 +27,7 @@ import '../../../node_modules/@splidejs/react-splide/dist/css/splide.min.css'
 import 'react-loading-skeleton/dist/skeleton.css'
 
 const Product = () => {
-  // const { data, loading, error } = useFetch(
-  //   "https://run.mocky.io/v3/534d1f3e-406e-4564-a506-7e2718fdb0bc"
-  // );
-  const { data, loading, error } = useFetch(
-    "http://localhost:3000/products"
-  );
+  const { data, loading, error } = useFetch();
 
   const [detailsToggle, setDetailsToggle] = useState("Overview");
 

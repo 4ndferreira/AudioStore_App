@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom";
 //Framer-motion
 import { MotionStyle, Variants, motion } from "framer-motion";
 
-const transition = { duration: 0.2, type: "tween" };
+const transition = { duration: 0.3, type: "tween" };
 
 export default function Page (props: { children: ReactNode }) {
   const location = useLocation();

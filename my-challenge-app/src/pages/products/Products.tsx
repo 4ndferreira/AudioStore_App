@@ -24,7 +24,7 @@ const Products = () => {
   const [ selectSortBy, setSelectSortBy] = useState ('')
   const [ sortedData, setSortedData] = useState<Data[] | undefined> (undefined)
 
-  const { data, loading } = useFetch('http://localhost:3000/products');
+  const { data, loading } = useFetch();
   
   const openFilter = () => {
     setOpen(!open)

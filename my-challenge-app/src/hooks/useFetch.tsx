@@ -1,5 +1,6 @@
-import axios, { AxiosResponse } from "axios";
 import { useEffect, useState } from "react";
+import axios, { AxiosResponse } from "axios";
+import { auth } from "../firebase/Config";
 
 export interface Data {
   id: number;
@@ -23,7 +24,7 @@ export interface Data {
   ];
 }
 
-export const useFetch = (url: string) => {
+export const useFetch = () => {
   const [data, setData] = useState<Data[] | undefined>(undefined);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
@@ -31,21 +32,28 @@ export const useFetch = (url: string) => {
 
   useEffect(() => {
     const fetchData = () => {
-      setLoading(true);
-      axios
-        .get(url)
-        .then((res: AxiosResponse<Data[]>) => isMounted && setData(res.data))
-        .catch((err) => {
-          setError("An error occurred. Awkward...");
-          console.error("error fetching API data", err);
+      auth.currentUser
+        ?.getIdToken(true)
+        .then((idToken) => {
+          const url = `https://my-project-pb-challenge-default-rtdb.firebaseio.com/products.json?auth=${idToken}`;
+          setLoading(true);
+          axios
+            .get(url)
+            .then((res: AxiosResponse<Data[]>) => isMounted && setData(res.data))
+            .catch((err) => {
+              setError("An error occurred. Awkward...");
+              console.error(error, err);
+            })
+            .finally(() => setLoading(false));
         })
-        .finally(() => setLoading(false));
+        .catch((error) => {
+          console.error("Error obtaining authentication token: ", error);
+        });
     };
     fetchData();
     return () => {
       setIsMounted(false);
     };
-  }, [isMounted, url]);
-
+  }, [error, isMounted]);
   return { data, loading, error };
 };
