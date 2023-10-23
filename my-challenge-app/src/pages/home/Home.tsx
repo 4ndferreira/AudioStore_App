@@ -24,7 +24,7 @@ import '../../../node_modules/@splidejs/react-splide/dist/css/splide.min.css'
 import classes from './Home.module.css'
 
 const Home = () => {
-  const { data, loading } = useFetch();
+  const { data, loading, error } = useFetch();
   const [filterCategory, setFilterCategory] = useState('')
   const navigate = useNavigate()
 
@@ -50,10 +50,7 @@ const Home = () => {
     <>
       <div className={classes.container}>
         <div className={classes.headerContainer}>
-          <Header 
-            image={auth.currentUser?.photoURL} 
-            onClick={handleSignOut} 
-          />
+          <Header image={auth.currentUser?.photoURL} onClick={handleSignOut} />
           <h3 className={classes.welcomeText}>
             <small className={classes.welcomeTextSmall}>
               Hi,{" "}
@@ -81,8 +78,10 @@ const Home = () => {
               filterSelected={filterCategory}
               onChange={handleSelectChange}
             />
-            {loading ? (
+            {!data || loading ? (
               <BannerSkeleton />
+            ) : error ? (
+              <p>{error}</p>
             ) : (
               <Splide
                 hasTrack={false}
@@ -91,7 +90,7 @@ const Home = () => {
                   autoWidth: true,
                   arrows: false,
                   pagination: false,
-                  gap: "0.94rem"
+                  gap: "0.94rem",
                 }}
               >
                 <SplideTrack className={classes.splideTrack}>
@@ -125,10 +124,12 @@ const Home = () => {
               <h4>Featured Products</h4>
               <Link to="/products">See All</Link>
             </div>
-            {loading ? (
+            {!data || loading ? (
               <div className={classes.containerSkeleton}>
                 <CardSkeleton cards={2} />
               </div>
+            ) : error ? (
+              <p>{error}</p>
             ) : (
               <Splide
                 hasTrack={false}

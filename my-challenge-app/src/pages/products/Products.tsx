@@ -24,7 +24,7 @@ const Products = () => {
   const [ selectSortBy, setSelectSortBy] = useState ('')
   const [ sortedData, setSortedData] = useState<Data[] | undefined> (undefined)
 
-  const { data, loading } = useFetch();
+  const { data, loading, error } = useFetch();
   
   const openFilter = () => {
     setOpen(!open)
@@ -106,9 +106,11 @@ const Products = () => {
       </div>
       <section className={classes.showcase}>
         <div className={classes.itemsContainer}>
-          {loading ? (
+          {!data || loading ? (
             <CardSkeleton cards={6} />
-          ) : sortedData ? (
+            ) : error ? (
+              <p>{error}</p>
+            ) : sortedData ? (
             sortedData.length !== 0 ? (
               sortedData.map((item) => (
                 <Card
