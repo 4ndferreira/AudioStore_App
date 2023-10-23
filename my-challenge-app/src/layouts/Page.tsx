@@ -18,8 +18,7 @@ export default function Page (props: { children: ReactNode }) {
     flexDirection: "column",
     width: "100vw",
     height: "100vh",
-    backgroundColor: "white",
-    overflow: "hidden"
+    backgroundColor: "white"
   };
 
   const variants: Variants = {
@@ -43,8 +42,7 @@ export default function Page (props: { children: ReactNode }) {
         transitionEnd: {
           height: "auto",
           position: "absolute",
-          overflow: "auto",
-          boxShadow: "none",
+          boxShadow: "none"
         }
       }
     },
