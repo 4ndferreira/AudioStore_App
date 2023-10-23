@@ -14,8 +14,7 @@ import classes from "./Search.module.css"
 
 const Search = () => {
   const [value, setValue ] = useState ('')
-  // const { data } = useFetch('https://run.mocky.io/v3/534d1f3e-406e-4564-a506-7e2718fdb0bc');
-  const { data } = useFetch('http://localhost:3000/products');
+  const { data } = useFetch();
 
   const filteredData = data?.filter((item) => 
     item.name.toLowerCase().includes(value.toLowerCase())
