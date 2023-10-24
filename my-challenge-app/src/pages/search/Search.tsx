@@ -6,8 +6,8 @@ import { useFetch } from "../../hooks/useFetch";
 import NavBar from "../../components/navBar/NavBar";
 import SearchItem from "../../components/searchItem/SearchItem"
 import Input from "../../components/input/Input";
-import SearchIcon from "../../components/labelInput/SearchIcon";
-import IconShoppingBag from "../../components/iconShoppingBag/IconShoppingBag";
+import SearchIcon from "../../components/icons/SearchIcon";
+import IconShoppingBag from "../../components/icons/IconShoppingBag";
 import Page from "../../layouts/Page";
 //CSS
 import classes from "./Search.module.css"

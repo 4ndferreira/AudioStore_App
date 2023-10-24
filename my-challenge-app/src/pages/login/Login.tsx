@@ -16,10 +16,10 @@ import {
 } from "firebase/auth";
 import { auth } from "../../firebase/Config";
 //Icons
-import EmailIcon from '../../components/labelInput/EmailIcon';
-import LockIcon from '../../components/labelInput/LockIcon';
-import FacebookIcon from '../../components/loginButtonWithProvider/FacebookIcon';
-import GoogleIcon from '../../components/loginButtonWithProvider/GoogleIcon';
+import EmailIcon from '../../components/icons/EmailIcon';
+import LockIcon from '../../components/icons/LockIcon';
+import FacebookIcon from '../../components/icons/FacebookIcon';
+import GoogleIcon from '../../components/icons/GoogleIcon';
 //Components
 import Input from '../../components/input/Input';
 import Button from '../../components/button/Button';

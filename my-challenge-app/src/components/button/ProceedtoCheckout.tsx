@@ -1,4 +1,4 @@
-import IconcChevronRight from "./IconcChevronRight"
+import IconcChevronRight from "../icons/IconcChevronRight"
 
 const ProceedtoCheckout = () => {
   return (

@@ -5,8 +5,8 @@ import { useContext } from "react";
 import { CartContext } from "../../store/CartContext";
 //Components
 import Button from "../button/Button";
-import { CheckIcon } from "./CheckIcon";
-import IconClose from "../navBar/IconClose";
+import { CheckIcon } from "../icons/CheckIcon";
+import IconClose from "../icons/IconClose";
 //CSS
 import classes from "./DeletionDialogBox.module.css"
 

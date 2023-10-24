@@ -3,10 +3,10 @@ import { MouseEventHandler, useEffect, useRef, useState } from "react";
 //Framer motion
 import { AnimatePresence } from "framer-motion";
 //Components
-import IconUser from "../review/IconUser";
-import IconLogo from "./IconLogo";
-import IconMenu from "./IconMenu";
-import IconClose from "../navBar/IconClose";
+import IconUser from "../icons/IconUser";
+import IconLogo from "../icons/IconLogo";
+import IconMenu from "../icons/IconMenu";
+import IconClose from "../icons/IconClose";
 import SideBar from "../sidebar/SideBar";
 //CSS
 import classes from "./Header.module.css";

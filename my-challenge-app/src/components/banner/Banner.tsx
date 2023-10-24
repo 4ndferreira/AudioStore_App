@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import ArrowRight from './ArrowRight';
+import ArrowRight from '../icons/ArrowRight';
 //CSS
 import classes from './Banner.module.css'
 //Image

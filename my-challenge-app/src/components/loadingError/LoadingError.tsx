@@ -1,5 +1,6 @@
+import Button from "../button/Button";
 import Modal from "../modal/Modal";
-import { XCircle } from "./XCircle";
+import { XCircle } from "../icons/XCircle";
 
 export default function LoadingError(props: { error: string | null }) {
   return (
@@ -15,9 +16,9 @@ export default function LoadingError(props: { error: string | null }) {
       </div>
       <h3>Loading Error</h3>
       <p>Unable to fetch data. Try again later...</p>
-      <button onClick={() => window.location.reload()}>
+      <Button type={"button"} onClick={() => window.location.reload()}>
         Reload
-      </button>
+      </Button>
     </Modal>
   );
 }

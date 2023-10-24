@@ -14,7 +14,7 @@ import Button from "../../components/button/Button";
 import ProceedtoCheckout from "../../components/button/ProceedtoCheckout";
 import NavBar from "../../components/navBar/NavBar";
 import SearchItem from "../../components/searchItem/SearchItem";
-import IconShoppingBag from "../../components/iconShoppingBag/IconShoppingBag";
+import IconShoppingBag from "../../components/icons/IconShoppingBag";
 import Page from "../../layouts/Page";
 //CSS
 import classes from './ShoppingCart.module.css'

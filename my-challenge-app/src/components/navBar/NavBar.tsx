@@ -5,9 +5,9 @@ import { To, useNavigate } from 'react-router-dom'
 //Context
 import { CartContext } from '../../store/CartContext'
 //Components
-import ChevronLeft from './ChevronLeft'
-import IconTrash from './IconTrash'
-import IconShoppingCart from './IconShoppingCart'
+import ChevronLeft from '../icons/ChevronLeft'
+import IconTrash from '../icons/IconTrash'
+import IconShoppingCart from '../icons/IconShoppingCart'
 //CSS
 import classes from './NavBar.module.css'
 

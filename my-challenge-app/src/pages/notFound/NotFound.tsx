@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import IconAlert from '../../components/iconAlert/IconAlert';
+import IconAlert from '../../components/icons/IconAlert';
 import classes from './NotFound.module.css'
 
 const NotFound = () => {
