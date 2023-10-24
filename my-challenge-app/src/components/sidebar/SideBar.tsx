@@ -48,8 +48,8 @@ const SideBar = (props: {
       >
         <ul className={classes.menuList}>
           <li>
-            <NavLink 
-              className={classes.menuLink} 
+            <NavLink
+              className={classes.menuLink}
               to={"/search"}
               onClick={props.closeSidebar}
             >
@@ -58,8 +58,8 @@ const SideBar = (props: {
             </NavLink>
           </li>
           <li>
-            <NavLink 
-              className={classes.menuLink} 
+            <NavLink
+              className={classes.menuLink}
               to={"/products"}
               onClick={props.closeSidebar}
             >
@@ -68,28 +68,27 @@ const SideBar = (props: {
             </NavLink>
           </li>
           <li>
-            <NavLink 
-              className={classes.menuLink} 
+            <NavLink
+              className={classes.menuLink}
               to={"/cart"}
               onClick={props.closeSidebar}
             >
               <span className={classes.iconCart}>
                 <IconShoppingCart />
-                <div className={classes.cartControl}>
-                  <p>{cartItemCount}</p>
-                </div>
+                {cartItemCount > 0 && (
+                  <div className={classes.cartControl}>
+                    <p>{cartItemCount}</p>
+                  </div>
+                )}
               </span>
               <span>Cart</span>
             </NavLink>
           </li>
         </ul>
-        <button 
-          className={classes.buttonLogout} 
-          onClick={props.logout}
-        >
+        <button className={classes.buttonLogout} onClick={props.logout}>
           <IconLogout />
           <span>Logout</span>
-        </button>      
+        </button>
       </motion.nav>
       <motion.div
         initial={{ opacity: 0 }}
