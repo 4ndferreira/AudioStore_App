@@ -1,0 +1,14 @@
+.icon {
+  margin: auto;
+}
+
+.errorText p {
+  margin: 0;
+}
+
+.customButton button {
+  background-color: var(--colorsGrey);
+  color: black;
+  width: 8rem;
+  margin: auto;
+}

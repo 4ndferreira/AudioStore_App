@@ -1,6 +1,11 @@
-import Button from "../button/Button";
+//Components
 import Modal from "../modal/Modal";
+import Button from "../button/Button";
+//Icons
 import { XCircle } from "../icons/XCircle";
+import { IconRefresh } from "../icons/IconRefresh";
+//CSS
+import classes from "./LoadingError.module.css"
 
 export default function LoadingError(props: { error: string | null }) {
   return (
@@ -8,17 +13,20 @@ export default function LoadingError(props: { error: string | null }) {
       onClose={() => undefined} 
       isOpen={props.error ? true : false}
     >
-      <div 
-        style={{display: "flex", 
-        justifyContent: "center"
-      }}>
+      <div className={classes.icon}>
         <XCircle />
       </div>
       <h3>Loading Error</h3>
-      <p>Unable to fetch data. Try again later...</p>
-      <Button type={"button"} onClick={() => window.location.reload()}>
-        Reload
-      </Button>
+      <div className={classes.errorText}>
+        <p>Unable to fetch data.</p>
+        <p>Try again later...</p>
+      </div>
+      <div className={classes.customButton}>
+        <Button type={"button"} onClick={() => window.location.reload()}>
+          <IconRefresh />
+          <span>Reload</span>
+        </Button>
+      </div>
     </Modal>
   );
 }
