@@ -18,8 +18,7 @@ import ContainerButton from "../../components/containerButton/ContainerButton";
 import ProductSkeleton from "../../components/productSkeleton/ProductSkeleton";
 import NotFound from "../notFound/NotFound";
 import LoadingError from "../../components/loadingError/LoadingError";
-//Image
-import Image from '/img/image6.png'
+import GetImage from "../../components/getImage/GetImage";
 //CSS
 import classes from './Product.module.css'
 import '../../../node_modules/@splidejs/react-splide/dist/css/splide.min.css'
@@ -77,7 +76,7 @@ const Product = () => {
             <div>
               <section className={classes.productOverview}>
                 <div className={classes.imageWrapper}>
-                  <img src={Image} alt="" placeholder="" height={"333.47px"} />
+                  <img src={GetImage(item.category, true)} alt="" placeholder="" />
                 </div>
 
                 <h4 className={classes.textTitleReviews}>
@@ -123,6 +122,7 @@ const Product = () => {
                                 name={item.name}
                                 price={item.price}
                                 rating={item.rating}
+                                category={item.category}
                                 showReview={false}
                               />
                             </SplideSlide>

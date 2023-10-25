@@ -15,7 +15,6 @@ import ProceedtoCheckout from "../../components/button/ProceedtoCheckout";
 import NavBar from "../../components/navBar/NavBar";
 import SearchItem from "../../components/searchItem/SearchItem";
 import IconShoppingBag from "../../components/icons/IconShoppingBag";
-import Page from "../../layouts/Page";
 //CSS
 import classes from './ShoppingCart.module.css'
 import DeletionDialogBox from "../../components/deletionDialogBox/DeletionDialogBox";
@@ -80,6 +79,7 @@ const ShoppingCart = () => {
                 key={item.id}
                 name={item.name}
                 price={item.price}
+                category={item.category}
                 rating={0}
                 isShoppingCart={true}
                 itemId={item.id}

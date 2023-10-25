@@ -8,7 +8,6 @@ import SearchItem from "../../components/searchItem/SearchItem"
 import Input from "../../components/input/Input";
 import SearchIcon from "../../components/icons/SearchIcon";
 import IconShoppingBag from "../../components/icons/IconShoppingBag";
-import Page from "../../layouts/Page";
 //CSS
 import classes from "./Search.module.css"
 
@@ -56,6 +55,7 @@ const Search = () => {
                   name={item.name}
                   price={item.price}
                   rating={item.rating}
+                  category={item.category}
                   isShoppingCart={false}
                   itemId={item.id}
                   count={0} 
@@ -83,31 +83,34 @@ const Search = () => {
             name={"TMA-2 Comfort Wireless"}
             price={"270"}
             rating={4.6}
-            isShoppingCart={false} 
-            itemId={999} 
+            category={""}          
+            isShoppingCart={false}
+            itemId={999}
             count={0}
-            showModal={() => null} 
-            onItemDelete={() => null}        
+            showModal={() => null}
+            onItemDelete={() => null} 
           />
           <SearchItem
             name={"TMA-2 DJ"}
             price={"270"}
             rating={4.6}
-            isShoppingCart={false} 
-            itemId={999} 
+            category={""}          
+            isShoppingCart={false}
+            itemId={999}
             count={0}
-            showModal={() => null} 
-            onItemDelete={() => null}        
+            showModal={() => null}
+            onItemDelete={() => null} 
           />
           <SearchItem
             name={"TMA-2 Move Wireless"}
             price={"270"}
             rating={4.6}
-            isShoppingCart={false} 
-            itemId={999} 
+            category={""}          
+            isShoppingCart={false}
+            itemId={999}
             count={0}
-            showModal={() => null} 
-            onItemDelete={() => null}        
+            showModal={() => null}
+            onItemDelete={() => null} 
           />
         </ul>
       </div>

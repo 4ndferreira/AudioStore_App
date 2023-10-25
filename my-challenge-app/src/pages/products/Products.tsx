@@ -119,7 +119,8 @@ const Products = () => {
                   name={item.name}
                   price={item.price}
                   rating={item.rating}
-                  showReview={true}
+                  showReview={true} 
+                  category={item.category}                
                 />
               ))
             ) : (
@@ -140,6 +141,7 @@ const Products = () => {
                 price={item.price}
                 rating={item.rating}
                 showReview={true}
+                category={item.category}
               />
             ))
           )}

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import ArrowRight from '../icons/ArrowRight';
+import GetImage from '../getImage/GetImage';
 //CSS
 import classes from './Banner.module.css'
 //Image
@@ -7,7 +8,8 @@ import Image from '/img/image5.png'
 
 const Banner = (props: {
   id: number; 
-  title: string 
+  title: string;
+  category: string
 }) => {
   return (
     <div className={classes.bannerContainer}>
@@ -23,7 +25,7 @@ const Banner = (props: {
           <ArrowRight />
         </Link>
       </div>
-      <img src={Image} alt="" height={"144.63px"} width={"124.41px"} />
+      <img src={GetImage(props.category, false)} alt="" height={"144.63px"} width={"124.41px"} />
     </div>
   );
 }

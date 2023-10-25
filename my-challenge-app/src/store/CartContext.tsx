@@ -6,6 +6,7 @@ export interface Item {
   name: string,
   price: string,
   count: number;
+  category: string
 }
 
 interface CartContextValue {

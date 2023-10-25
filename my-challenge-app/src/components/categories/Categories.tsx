@@ -48,7 +48,7 @@ const Categories = (props: {
           pagination: false,
           gap: '0.69rem',
         }}>
-        <SplideTrack style={{ overflow: "visible" }}>
+        <SplideTrack className={classes.splideTrack}>
           {categories.map((label) => (   
             <SplideSlide key={label.id}>
               <div className={classes.card}>

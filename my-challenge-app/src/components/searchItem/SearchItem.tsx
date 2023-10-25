@@ -3,10 +3,9 @@ import { Link } from 'react-router-dom';
 //Components
 import LinkViewMore from '../card/LinkViewMore';
 import Counter from '../counter/Counter';
+import GetImage from '../getImage/GetImage';
 //CSS
 import classes from './SearchItem.module.css'
-//Image
-import Image from '/img/image5.png'
 
 const SearchItem = (props: {
   itemId: number;
@@ -14,36 +13,42 @@ const SearchItem = (props: {
   name: string;
   price: string;
   rating: number;
+  category: string;
   isShoppingCart: boolean
   showModal: () => void;
   onItemDelete: (itemId: number) => void;
 }) => {
   return (
     <li className={classes.container}>
-      <Link 
+      <Link
         to={`/products/${props.itemId}`}
         state={props.isShoppingCart ? { isPush: true } : { isPush: false }}
         className={classes.itemImageContainer}
+        style={
+          props.isShoppingCart
+            ? { height: "5.4375rem", width: "5.4375rem" }
+            : { height: "4.6875rem", width: "4.6875rem" }
+        }
       >
-        <img src={Image} alt="" height={"80px"} width={"68.81px"} loading="lazy" />
+        <img src={GetImage(props.category, false)} alt="" loading="lazy" />
       </Link>
       <div className={classes.itemTextContainer}>
-        <Link 
-          to={`/products/${props.itemId}`} 
+        <Link
+          to={`/products/${props.itemId}`}
           state={props.isShoppingCart ? { isPush: true } : { isPush: false }}
           className={classes.link}
         >
           <h4>{props.name}</h4>
         </Link>
         <ul>
-          <li>USD {props.price.replace('$','')}</li>
+          <li>USD {props.price.replace("$", "")}</li>
           {props.isShoppingCart ? (
             <li>
-              <Counter 
+              <Counter
                 itemId={props.itemId}
                 showModal={props.showModal}
-                onItemDelete={props.onItemDelete} 
-                count={props.count}              
+                onItemDelete={props.onItemDelete}
+                count={props.count}
               />
             </li>
           ) : (

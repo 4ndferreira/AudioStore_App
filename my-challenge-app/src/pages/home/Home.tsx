@@ -103,6 +103,7 @@ const Home = () => {
                               key={item.id}
                               title={item.name}
                               id={item.id}
+                              category={item.category}
                             />
                           </SplideSlide>
                         )
@@ -154,6 +155,7 @@ const Home = () => {
                               price={item.price}
                               rating={item.rating}
                               showReview={false}
+                              category={item.category}
                             />
                           </SplideSlide>
                         )
