@@ -10,15 +10,16 @@ import NavBar from '../../components/navBar/NavBar'
 import Card from '../../components/card/Card'
 import Categories from '../../components/categories/Categories'
 import SortBy from '../../components/sortBy/SortBy'
+import CardSkeleton from '../../components/cardSkeleton/CardSkeleton'
+//Icons
 import IconSliders from '../../components/icons/IconSliders'
 import IconClose from '../../components/icons/IconClose'
 import IconShoppingBag from '../../components/icons/IconShoppingBag'
-import CardSkeleton from '../../components/cardSkeleton/CardSkeleton'
 //CSS
 import classes from './Products.module.css'
 import './style.css'
 
-const Products = () => { 
+export default function Products() { 
   const [open, setOpen] = useState(false) 
   const [ filterCategory, setFilterCategory] = useState ('')
   const [ selectSortBy, setSelectSortBy] = useState ('')
@@ -90,7 +91,7 @@ const Products = () => {
     <>
       <div className={classes.containerTop}>
         <NavBar
-          link="/"
+          link="/home"
           title={""}
           isShoppingCart={false}
         />
@@ -180,5 +181,3 @@ const Products = () => {
     </>
   );
 }
-
-export default Products
