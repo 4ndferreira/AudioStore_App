@@ -34,7 +34,7 @@ const menuVariants = {
 const SideBar = (props: {
   menuRef: Ref<HTMLDivElement>;
   logout: MouseEventHandler<HTMLButtonElement> 
-  closeSidebar: MouseEventHandler<HTMLAnchorElement>
+  closeSidebar: MouseEventHandler<HTMLAnchorElement | HTMLButtonElement>
 }) => {
   const { cartItemCount } = useContext(CartContext);
   return (
@@ -85,7 +85,11 @@ const SideBar = (props: {
             </NavLink>
           </li>
         </ul>
-        <button className={classes.buttonLogout} onClick={props.logout}>
+        <button 
+          className={classes.buttonLogout} 
+          onClick={props.logout} 
+          onMouseDown={props.closeSidebar}
+        >
           <IconLogout />
           <span>Logout</span>
         </button>
