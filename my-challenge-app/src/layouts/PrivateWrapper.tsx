@@ -1,40 +1,22 @@
 //React
-import { useEffect, useState } from "react";
-//Firebase
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../firebase/Config";
+import { useEffect } from "react";
 //React Router Dom
-import { Navigate, Outlet, useLocation } from "react-router-dom";
-//Components
+import { Outlet, useNavigate } from "react-router-dom";
+//Firebase
+import { auth } from "../firebase/Config";
+//Component
 import Loader from "../components/loader/Loader";
 
-const PrivateWrapper = () => {
-  const location = useLocation();
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null)
+export default function PrivateWrapper() {
+  const navigate = useNavigate();
+  const user = auth.currentUser;
+  const isLoginPage = location.pathname === "/";
 
-  useEffect(()=>{
-    const unsubscribe = onAuthStateChanged(auth, (user)=> {
-      if(user) {
-        const uid = user.uid;
-        console.log('uid', uid)
-        setIsAuthenticated(true)
-      }else{
-        setIsAuthenticated(false)
-        console.log('user is logged out')
-      }
-    })
-    return ()=> unsubscribe();
-  }, [])
+  useEffect(() => {
+    if (!user) {
+      !isLoginPage && navigate("/", { state: { isPush: true } });
+    }
+  }, [isLoginPage, navigate, user]);
 
-  if(isAuthenticated === null) {
-    return <Loader />
-  }
-
-  return isAuthenticated ? (
-    <Outlet />
-  ) : (
-    <Navigate to="/signin" state={{ from: location }} replace />
-  );
-};
-
-export default PrivateWrapper;
+  return user || isLoginPage ? <Outlet /> : <Loader />
+}
