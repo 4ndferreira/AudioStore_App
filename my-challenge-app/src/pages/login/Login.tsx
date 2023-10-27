@@ -11,8 +11,8 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   sendPasswordResetEmail,
-  onAuthStateChanged,
   AuthProvider,
+  onAuthStateChanged,
 } from "firebase/auth";
 import { auth } from "../../firebase/Config";
 //Icons
@@ -25,10 +25,12 @@ import Input from '../../components/input/Input';
 import Button from '../../components/button/Button';
 import LoginButtonWithProvider from '../../components/loginButtonWithProvider/LoginButtonWithProvider';
 import Sending from '../../components/submitting/Submitting';
+//Hook
+import { useMediaQuery } from '../../hooks/useMediaQuery';
 //CSS
 import classes from './Login.module.css'
 
-const Login = () => {
+export default function Login() {
   //State of inputs
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -43,12 +45,13 @@ const Login = () => {
   //Password reset
   const [submitted, setSubmitted] = useState('')
   
+  const isDesktop = useMediaQuery();
+  
   const navigate = useNavigate();
-  //Authentication state observer
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        navigate("/");
+        navigate("/home");
       }
     });
     return () => unsubscribe();
@@ -70,9 +73,10 @@ const Login = () => {
     )
     await handleEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        console.log(userCredential.user)
-        setSubmitting(false)
-        setEmail('')
+        const userID = userCredential.user.uid;
+        console.log("user: ", userID);
+        setSubmitting(false);
+        setEmail('');
         setPassword('')
       })
       .catch((error: {
@@ -109,7 +113,8 @@ const Login = () => {
   const handleLoginWithProvider = async (provider: AuthProvider) => {
     await signInWithPopup(auth, provider)
       .then((result) => {
-        console.log(result.user);
+        const userID = result.user.uid;
+        console.log("user: ", userID);
       })
       .catch((error: FirebaseError) => {
         console.error(error.code);
@@ -159,15 +164,17 @@ const Login = () => {
 
   return (
     <div className={classes.container}>
-      <picture className={classes.picture}>
-        <source type="image/webp" srcSet="/img/image10.webp" />
-        <source type="image/png" srcSet="/img/image10.png" />
-        <img src="/img/image10.png" alt="" />
-      </picture>
-      <h1 className={classes.titleWrapper}>
-        Audio
-        <small>It's modular and designed to last</small>
-      </h1>
+      {!isDesktop && <>
+        <picture className={classes.picture}>
+          <source type="image/webp" srcSet="/img/image10.webp" />
+          <source type="image/png" srcSet="/img/image10.png" />
+          <img src="/img/image10.png" alt="" />
+        </picture>
+        <h1 className={classes.titleWrapper}>
+          Audio
+          <small>It's modular and designed to last</small>
+        </h1>
+      </>}
       <p className={classes.resetPasswordText}>{submitted}</p>
       <form className={classes.form}>
         <div
@@ -275,5 +282,3 @@ const Login = () => {
     </div>
   );
 }
-
-export default Login
