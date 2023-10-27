@@ -23,7 +23,7 @@ import GetImage from "../../components/getImage/GetImage";
 import classes from './Product.module.css'
 import '../../../node_modules/@splidejs/react-splide/dist/css/splide.min.css'
 
-const Product = () => {
+export default function Product() {
   const { data, loading, error } = useFetch();
 
   const [detailsToggle, setDetailsToggle] = useState("Overview");
@@ -58,7 +58,7 @@ const Product = () => {
       ) : (
         <>
           <div className={classes.containerHeader}>
-            <NavBar link="/" title={" "} isShoppingCart={false} />
+            <NavBar link="/home" title={" "} isShoppingCart={false} />
 
             <div className={classes.textWrapper}>
               <p className={classes.textPrice}>
@@ -159,5 +159,3 @@ const Product = () => {
     </>
   );
 }
-
-export default Product
