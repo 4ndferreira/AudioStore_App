@@ -6,12 +6,13 @@ import { useFetch } from "../../hooks/useFetch";
 import NavBar from "../../components/navBar/NavBar";
 import SearchItem from "../../components/searchItem/SearchItem"
 import Input from "../../components/input/Input";
+//Icons
 import SearchIcon from "../../components/icons/SearchIcon";
 import IconShoppingBag from "../../components/icons/IconShoppingBag";
 //CSS
 import classes from "./Search.module.css"
 
-const Search = () => {
+export default function Search() {
   const [value, setValue ] = useState ('')
   const { data } = useFetch();
 
@@ -30,9 +31,9 @@ const Search = () => {
     <>
       <div className={classes.container}>
         <NavBar 
-          link='/'
-          title={'Search'}
-          isShoppingCart={false}    
+          link="/home" 
+          title={"Search"} 
+          isShoppingCart={false} 
         />
         <div className={classes.wrapper}>
           <Input
@@ -41,14 +42,13 @@ const Search = () => {
             name={"Search headphone"}
             element={<SearchIcon size={"20"} color={"#BABABA"} />}
             value={value}
-            onInput={handleOnInput} 
-            onFocus={undefined}        
+            onInput={handleOnInput}
+            onFocus={undefined}
           />
         </div>
-        {value && (
+        {value ? (
           <ul className={classes.listItems}>
-            {filteredData && 
-            filteredData.length > 0 ? (
+            {filteredData && filteredData.length > 0 ? (
               filteredData.map((item) => (
                 <SearchItem
                   key={item.id}
@@ -58,8 +58,8 @@ const Search = () => {
                   category={item.category}
                   isShoppingCart={false}
                   itemId={item.id}
-                  count={0} 
-                  showModal={() => null} 
+                  count={0}
+                  showModal={() => null}
                   onItemDelete={() => null}
                 />
               ))
@@ -68,54 +68,39 @@ const Search = () => {
                 <IconShoppingBag 
                   width={"72"} 
                   height={"72"} 
-                  color={"#BABABA"}
+                  color={"#BABABA"} 
                 />
-                <p className={classes.text}>
-                  Sorry, No Products Found
-                </p>
+                <p className={classes.text}>Sorry, No Products Found</p>
               </div>
             )}
           </ul>
+        ) : (
+          <>
+            <h2 className={classes.text}>Popular Product</h2>
+            <ul className={classes.listItems}>
+              {filteredData
+                ?.sort((a, b) => b.reviews.length - a.reviews.length)
+                .map(
+                  (item, index) =>
+                    index < 5 && (
+                      <SearchItem
+                        key={item.id}
+                        name={item.name}
+                        price={item.price}
+                        rating={item.rating}
+                        category={item.category}
+                        isShoppingCart={false}
+                        itemId={item.id}
+                        count={0}
+                        showModal={() => null}
+                        onItemDelete={() => null}
+                      />
+                    )
+                )}
+            </ul>
+          </>
         )}
-        <h2 className={classes.text}>Popular Product</h2>
-        <ul className={classes.listItems}>
-          <SearchItem
-            name={"TMA-2 Comfort Wireless"}
-            price={"270"}
-            rating={4.6}
-            category={""}          
-            isShoppingCart={false}
-            itemId={999}
-            count={0}
-            showModal={() => null}
-            onItemDelete={() => null} 
-          />
-          <SearchItem
-            name={"TMA-2 DJ"}
-            price={"270"}
-            rating={4.6}
-            category={""}          
-            isShoppingCart={false}
-            itemId={999}
-            count={0}
-            showModal={() => null}
-            onItemDelete={() => null} 
-          />
-          <SearchItem
-            name={"TMA-2 Move Wireless"}
-            price={"270"}
-            rating={4.6}
-            category={""}          
-            isShoppingCart={false}
-            itemId={999}
-            count={0}
-            showModal={() => null}
-            onItemDelete={() => null} 
-          />
-        </ul>
       </div>
     </>
   );
 }
-
-export default Search
