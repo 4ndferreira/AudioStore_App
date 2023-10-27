@@ -9,6 +9,7 @@
   border-radius: 0.625rem;
   background: var(--colorsPrimary);
   color: white;
+  cursor: pointer;
 
   font-family: DM Sans;
   font-size: 1rem;
