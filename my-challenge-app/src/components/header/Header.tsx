@@ -3,18 +3,19 @@ import { MouseEventHandler, useEffect, useRef, useState } from "react";
 //Framer motion
 import { AnimatePresence } from "framer-motion";
 //Components
+import SideBar from "../sidebar/SideBar";
+//Icons
 import IconUser from "../icons/IconUser";
 import IconLogo from "../icons/IconLogo";
 import IconMenu from "../icons/IconMenu";
 import IconClose from "../icons/IconClose";
-import SideBar from "../sidebar/SideBar";
 //CSS
 import classes from "./Header.module.css";
 
-const Header = (props: {
+export default function Header(props: {
   image: string | null | undefined;
   onClick: MouseEventHandler<HTMLButtonElement>;
-}) => {
+}) {
   const [showMenu, setShowMenu] = useState(false);
   const menuRef = useRef<HTMLDivElement | null>(null)
 
@@ -48,7 +49,7 @@ const Header = (props: {
           {showMenu ? <IconClose color={"black"} /> : <IconMenu />}
         </div>
         <div className={classes.logo}>
-          <IconLogo />
+          <IconLogo dimension={"22"} />
           <h2>Audio</h2>
         </div>
         <div className={classes.userImg}>
@@ -66,6 +67,4 @@ const Header = (props: {
       </AnimatePresence>
     </header>
   );
-};
-
-export default Header;
+}

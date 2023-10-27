@@ -1,8 +1,8 @@
-const IconLogo = () => {
+export default function IconLogo(props: { dimension: string }) {
   return (
     <svg
-      width="22"
-      height="22"
+      width={props.dimension}
+      height={props.dimension}
       viewBox="0 0 22 22"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -16,6 +16,8 @@ const IconLogo = () => {
           height="20.2381"
           rx="5.95238"
           fill="#0ACF83"
+          stroke="white"
+          strokeWidth="2"
         />
         <g id="Mask Group">
           <mask
@@ -56,5 +58,3 @@ const IconLogo = () => {
     </svg>
   );
 }
-
-export default IconLogo
