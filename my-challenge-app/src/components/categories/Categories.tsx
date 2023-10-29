@@ -1,18 +1,34 @@
-
 //React
-import { ChangeEventHandler } from 'react'
+import { ChangeEventHandler, useRef } from 'react'
 //Splide
-import { Splide, SplideSlide, SplideTrack } from '../../../node_modules/@splidejs/react-splide'
+import Splide from '@splidejs/splide'
+//hook
+import { useMediaQuery } from '../../hooks/useMediaQuery'
 //Components
 import SelectorLabel from '../selectorLabel/SelectorLabel'
 //CSS
-import classes from './Categories.module.css'
-import '../../../node_modules/@splidejs/react-splide/dist/css/splide.min.css'
+import './Categories.css'
+import '@splidejs/splide/css'
 
-const Categories = (props: { 
+export default function Categories(props: { 
   filterSelected: string; 
   onChange: ChangeEventHandler<HTMLInputElement> 
-}) => {
+}) {
+  const isDesktop = useMediaQuery();
+  const splideRef = useRef<HTMLDivElement | null>(null);
+
+  const splide =
+    splideRef.current &&
+    new Splide(splideRef.current, {
+      width: "100%",
+      autoWidth: true,
+      arrows: false,
+      pagination: false,
+      gap: "0.69rem"
+    });
+
+  splide?.mount();
+
   const categories = [
     { 
       id: 'headphone', 
@@ -34,38 +50,25 @@ const Categories = (props: {
       id: 'headset', 
       label: 'Headset' 
     },
-  ]
-
+  ];
 
   return (
-    <>
-      <Splide 
-        hasTrack={ false }
-        options={{
-          width: '100%',
-          autoWidth: true,
-          arrows: false, 
-          pagination: false,
-          gap: '0.69rem',
-        }}>
-        <SplideTrack className={classes.splideTrack}>
-          {categories.map((label) => (   
-            <SplideSlide key={label.id}>
-              <div className={classes.card}>
-                <SelectorLabel 
-                  id={label.id}
-                  name={label.label}
-                  group={'category'} 
-                  checked={props.filterSelected === label.label} 
-                  onChange={props.onChange}              
-                />
-              </div>
-            </SplideSlide>
+    <nav className="splide" ref={splideRef}>
+      <div className="splide__track" style={{overflow: isDesktop ? 'hidden' : 'visible'}}>
+        <ul className="splide__list">
+          {categories.map((label) => (
+            <li className="splide__slide" key={label.id}>
+              <SelectorLabel
+                id={label.id}
+                name={label.label}
+                group={"category"}
+                checked={props.filterSelected === label.label}
+                onChange={props.onChange}
+              />
+            </li>
           ))}
-        </SplideTrack>
-      </Splide>
-    </>
-  )
+        </ul>
+      </div>
+    </nav>
+  );
 }
-
-export default Categories
