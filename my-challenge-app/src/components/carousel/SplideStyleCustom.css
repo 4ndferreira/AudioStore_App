@@ -1,0 +1,20 @@
+.splide__arrow--prev {
+  left: -2.4rem;
+}
+
+.splide__arrow--next {
+  right: -2.4rem;
+}
+
+.splide__pagination__page {
+  width: 7px;
+  height: 7px;
+}
+
+.splide__pagination__page:hover {
+  background-color: var(--colorsPrimary);
+}
+
+.splide__pagination__page.is-active {
+  background-color: var(--colorsPrimary);
+}
