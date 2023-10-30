@@ -67,26 +67,3 @@
   line-height: 1.25rem;
   letter-spacing: 0.0125rem;
 }
-
-.sectionBackground {
-  background: var(--colorsGreyLight1);
-  width: 100%;
-  min-height: 19.9375rem;
-  overflow-x: hidden;
-  margin-bottom: 7.69rem
-}
-
-.anotherProduct {
-  display: flex;
-  flex-direction: column;
-  width: 20.375rem;
-  padding: 1.75rem 1.5rem 2.37rem 1.5rem;
-  margin: 0 auto;
-  gap: 1.25rem
-}
-
-.containerSkeleton {
-  display: flex;
-  justify-content: space-between;
-  width: 100%
-}

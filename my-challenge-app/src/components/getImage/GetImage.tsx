@@ -9,7 +9,7 @@ import Image7 from "/img/earpadSmall.png";
 import Image8 from "/img/earpadBig.png";
 import Image9 from "/img/cable.png";
 
-export default function GetImage(category: string, isBig: boolean ) {
+export default function GetImage(category: string | undefined, isBig: boolean ) {
   switch (category) {
     case "Headphone":
       return isBig ? Image2 : Image1;

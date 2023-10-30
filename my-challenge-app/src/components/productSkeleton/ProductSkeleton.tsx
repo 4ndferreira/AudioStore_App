@@ -1,15 +1,12 @@
-//React Router Dom
-import { Link } from "react-router-dom";
 //React loading Skeleton
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 //Components
 import ReviewSkeleton from "../reviewSkeleton/ReviewSkeleton";
-import CardSkeleton from "../cardSkeleton/CardSkeleton";
 //CSS
-import classes from './ProductSkeleton.module.css'
-import 'react-loading-skeleton/dist/skeleton.css'
+import classes from "./ProductSkeleton.module.css";
+import "react-loading-skeleton/dist/skeleton.css";
 
-const ProductSkeleton = () => {
+export default function ProductSkeleton() {
   return (
     <>
       <div className={classes.container}>
@@ -29,22 +26,9 @@ const ProductSkeleton = () => {
           <Skeleton className={classes.reviewTextSkeleton} />
         </SkeletonTheme>
         <div className={classes.listReviews}>
-          <ReviewSkeleton cards={2} />   
+          <ReviewSkeleton cards={2} />
         </div>
       </div>
-      <section className={classes.sectionBackground}>
-        <div className={classes.anotherProduct}>
-          <div className={classes.textLink}>
-            <h4>Another Product</h4>
-            <Link to="/products" state={{ isPush: true }}>See All</Link>
-          </div>
-          <div className={classes.containerSkeleton}>
-            <CardSkeleton cards={2} />
-          </div>        
-        </div>
-      </section>
     </>
   );
 }
-
-export default ProductSkeleton
