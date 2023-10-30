@@ -1,31 +1,39 @@
+//React Hooks
+import { useEffect, useState } from 'react';
 //React Router DOM
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 //Components
 import LinkViewMore from '../card/LinkViewMore';
 import Counter from '../counter/Counter';
 import GetImage from '../getImage/GetImage';
 //CSS
-import classes from './SearchItem.module.css'
+import classes from './CardForCartItemsOrSearchItems.module.css'
 
-const SearchItem = (props: {
+export default function CardForCartItemsOrSearchItems(props: {
   itemId: number;
   count: number;
   name: string;
   price: string;
   rating: number;
   category: string;
-  isShoppingCart: boolean
   showModal: () => void;
   onItemDelete: (itemId: number) => void;
-}) => {
+}) {
+  const [ isShoppingCart, setIsShoppingCart ] = useState(false)
+  const { pathname } = useLocation()
+
+  useEffect(()=>{
+    setIsShoppingCart(pathname === "/cart")
+  },[pathname])
+
   return (
     <li className={classes.container}>
       <Link
         to={`/products/${props.itemId}`}
-        state={props.isShoppingCart ? { isPush: true } : { isPush: false }}
+        state={isShoppingCart ? { isPush: true } : { isPush: false }}
         className={classes.itemImageContainer}
         style={
-          props.isShoppingCart
+          isShoppingCart
             ? { height: "5.4375rem", width: "5.4375rem" }
             : { height: "4.6875rem", width: "4.6875rem" }
         }
@@ -35,14 +43,14 @@ const SearchItem = (props: {
       <div className={classes.itemTextContainer}>
         <Link
           to={`/products/${props.itemId}`}
-          state={props.isShoppingCart ? { isPush: true } : { isPush: false }}
+          state={isShoppingCart ? { isPush: true } : { isPush: false }}
           className={classes.link}
         >
           <h4>{props.name}</h4>
         </Link>
         <ul>
           <li>USD {props.price.replace("$", "")}</li>
-          {props.isShoppingCart ? (
+          {isShoppingCart ? (
             <li>
               <Counter
                 itemId={props.itemId}
@@ -61,5 +69,3 @@ const SearchItem = (props: {
     </li>
   );
 }
-
-export default SearchItem
