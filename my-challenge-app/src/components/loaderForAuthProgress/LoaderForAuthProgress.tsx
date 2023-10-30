@@ -1,11 +1,9 @@
-import classes from './Submitting.module.css'
+import classes from './LoaderForAuthProgress.module.css'
 
-const Sending = () => {
+export default function LoaderForAuthProgress() {
   return (
     <div className={classes.wrapper}>
       <span className={classes.loader}></span>
     </div>
   );
 }
-
-export default Sending
