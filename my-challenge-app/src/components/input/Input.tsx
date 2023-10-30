@@ -1,42 +1,38 @@
-import { ChangeEvent, FocusEventHandler, FormEventHandler } from 'react';
-import classes from './Input.module.css'
+import { ChangeEvent, FocusEventHandler, useState } from "react";
+import classes from "./Input.module.css";
 
-const Input = (props: {
-  id: string
+export default function Input(props: {
+  id: string;
   type: string;
-  element: JSX.Element; 
-  name: string; 
-  value: string
-  onInput: FormEventHandler<HTMLInputElement> | undefined;
+  children: JSX.Element;
+  name: string;
+  onFieldChange: (newValue: string) => void;
   onFocus: FocusEventHandler<HTMLInputElement> | undefined;
-}) => {
+}) {
+  const [value, setValue] = useState<string | undefined>(undefined);
 
-  const handleOnChange = (
-    e: ChangeEvent<HTMLInputElement>
-  ) => {
+  const handlerValue = (e: ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
+    setValue(newValue);
+    props.onFieldChange(newValue);
   };
 
   return (
-    <>  
+    <>
       <input
         className={classes.input}
         id={props.id}
         type={props.type}
-        value={props.value}
-        onChange={handleOnChange}
-        onInput={props.onInput}
+        value={value}
+        {...(props.type === "text"
+          ? { onInput: handlerValue }
+          : { onChange: handlerValue })}
         onFocus={props.onFocus}
         placeholder={props.name}
       />
-      <label 
-        className={classes.label} 
-        htmlFor={props.id}
-      >
-        {props.element}
+      <label className={classes.label} htmlFor={props.id}>
+        {props.children}
       </label>
     </>
   );
 }
-
-export default Input
