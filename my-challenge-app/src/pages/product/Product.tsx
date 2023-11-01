@@ -7,7 +7,7 @@ import { useFetch } from "../../hooks/useFetch";
 //Context
 import { CartContext } from "../../store/CartContext";
 //Components
-import NavBar from "../../components/navBar/NavBar";
+import HeaderMobileWhileBrowsing from "../../components/headerMobileWhileBrowsing/HeaderMobileWhileBrowsing";
 import DetailsToggle from "../../components/detailsToggle/DetailsToggle";
 import Review from "../../components/review/Review";
 import Button from "../../components/button/Button";
@@ -19,7 +19,7 @@ import GetImage from "../../components/getImage/GetImage";
 import Showcase from "../../components/showcase/Showcase";
 //CSS
 import classes from './Product.module.css'
-import '../../../node_modules/@splidejs/react-splide/dist/css/splide.min.css'
+import '../../splide-skyblue.min__custom.css'
 
 export default function Product() {
   const { data, loading, error } = useFetch();
@@ -53,14 +53,11 @@ export default function Product() {
       ) : (
         <>
           {!data || loading ? (
-            <>
-              <ProductSkeleton />
-            </>
+            <ProductSkeleton />
           ) : (
             <>
+              <HeaderMobileWhileBrowsing />
               <div className={classes.containerHeader}>
-                <NavBar link="/home" title={" "} isShoppingCart={false} />
-
                 <div className={classes.textWrapper}>
                   <p className={classes.textPrice}>
                     USD {item?.price.replace("$", "")}
@@ -69,7 +66,6 @@ export default function Product() {
                     {item?.name.toUpperCase()}
                   </h2>
                 </div>
-
                 <DetailsToggle
                   selected={detailsToggle}
                   onChange={handleSelectChange}
@@ -85,7 +81,6 @@ export default function Product() {
                         placeholder=""
                       />
                     </div>
-
                     <h4 className={classes.textTitleReviews}>
                       Reviews ({item ? item.reviews.length : 0})
                     </h4>
