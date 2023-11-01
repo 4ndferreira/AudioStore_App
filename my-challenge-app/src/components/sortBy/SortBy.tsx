@@ -1,11 +1,15 @@
+//Type
 import { ChangeEventHandler } from 'react';
+//Component
 import SelectorLabel from '../selectorLabel/SelectorLabel'
+//CSS
 import classes from './SortBy.module.css'
 
-const SortBy = (props: {
+export default function SortBy(props: {
   filterSelected: string; 
   onChange: ChangeEventHandler<HTMLInputElement>; 
-}) => {
+}) {
+  const labels = ['Popularity', 'Newest', 'Newest', 'High Price', 'Low Price', 'Review']
   return (
     <div className={classes.container}>
       <SelectorLabel 
@@ -24,7 +28,7 @@ const SortBy = (props: {
       />
       <SelectorLabel 
         id={'oldest'}
-        name={'Oldest'}
+        name={'Newest'}
         group={'sortby'} 
         checked={props.filterSelected === 'Oldest'} 
         onChange={props.onChange}      
@@ -53,5 +57,3 @@ const SortBy = (props: {
     </div>
   );
 }
-
-export default SortBy
