@@ -5,7 +5,7 @@ import SelectorLabel from "../selectorLabel/SelectorLabel";
 //CSS
 import classes from "./Categories.module.css";
 
-export default function Categories(props: {
+export default function ListOfSelectorLabels(props: {
   filterSelected: string;
   group: string;
   onChange: ChangeEventHandler<HTMLInputElement>;
