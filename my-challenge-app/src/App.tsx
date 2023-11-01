@@ -1,25 +1,27 @@
 //React
-import { lazy, useEffect } from 'react'
+import { ReactNode, lazy, useEffect, useState } from "react";
 //React Router DOM
-import { BrowserRouter, Route, useLocation } from 'react-router-dom'
+import { BrowserRouter, Navigate, Route, useLocation } from "react-router-dom";
+//Firebase
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "./firebase/Config";
 //Hook
-import { useMediaQuery } from './hooks/useMediaQuery'
+import { useMediaQuery } from "./hooks/useMediaQuery";
 //Components
-import CartProvider from './store/CartProvider'
-import PrivateWrapper from './layouts/PrivateWrapper'
-import MobileExclusiveRoutes from './layouts/MobileExclusiveRoutes'
-import AnimatedRoutes from './layouts/AnimatedRoutes'
+import CartProvider from "./store/CartProvider";
+import MobileExclusiveRoutes from "./layouts/MobileExclusiveRoutes";
+import AnimatedRoutes from "./layouts/AnimatedRoutes";
 //Lazy Components
-const Welcome = lazy(() => import('./pages/welcome/Welcome'))
-const Login = lazy(() => import('./pages/login/Login'))
-const Home = lazy(() => import('./pages/home/Home'))
-const Search = lazy(() => import('./pages/search/Search'))
-const Products = lazy(() => import('./pages/products/Products'))
-const Product = lazy(() => import('./pages/product/Product'))
-const ShoppingCart = lazy(() => import('./pages/shoppingCart/ShoppingCart'))
-const NotFound = lazy(()=> import('./pages/notFound/NotFound'))
+const Welcome = lazy(() => import("./pages/welcome/Welcome"));
+const Login = lazy(() => import("./pages/login/Login"));
+const Home = lazy(() => import("./pages/home/Home"));
+const Search = lazy(() => import("./pages/search/Search"));
+const Products = lazy(() => import("./pages/products/Products"));
+const Product = lazy(() => import("./pages/product/Product"));
+const ShoppingCart = lazy(() => import("./pages/shoppingCart/ShoppingCart"));
+const NotFound = lazy(() => import("./pages/notFound/NotFound"));
 //CSS
-import './App.css'
+import "./App.css";
 
 export const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -38,24 +40,35 @@ export const ChangeOverFlow = () => {
 };
 
 export default function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
   const isDesktop = useMediaQuery();
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) =>
+      setIsAuthenticated(user ? true : false)
+    );
+    return () => unsubscribe();
+  }, []);
+
+  const PrivateRoute = (page: ReactNode) => {
+    return isAuthenticated ? page : <Navigate to="/login" />;
+  };
+
   return (
     <BrowserRouter>
       <ScrollToTop />
       <ChangeOverFlow />
       <CartProvider>
         <AnimatedRoutes>
-          <Route element={<PrivateWrapper />}>
-            <Route path="/" element={isDesktop ? <Welcome /> : <Login />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/products" element={<Products />} />
-            <Route element={<MobileExclusiveRoutes />}>
-              <Route path="/search" element={<Search />} />
-              <Route path="/products/:id" element={<Product />} />
-              <Route path="/cart" element={<ShoppingCart />} />
-            </Route>
-            <Route path="*" element={<NotFound />} />
+          <Route path="/login" element={isDesktop ? <Welcome /> : <Login />} />
+          <Route path="/" element={PrivateRoute(<Home />)} />
+          <Route path="/products" element={PrivateRoute(<Products />)} />
+          <Route element={<MobileExclusiveRoutes />}>
+            <Route path="/search" element={PrivateRoute(<Search />)} />
+            <Route path="/products/:id" element={PrivateRoute(<Product />)} />
+            <Route path="/cart" element={PrivateRoute(<ShoppingCart />)} />
           </Route>
+          <Route path="*" element={<NotFound />} />
         </AnimatedRoutes>
       </CartProvider>
     </BrowserRouter>
