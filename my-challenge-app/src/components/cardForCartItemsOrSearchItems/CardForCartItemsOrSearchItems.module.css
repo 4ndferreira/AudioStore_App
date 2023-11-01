@@ -8,8 +8,8 @@
 .itemImageContainer {
   display: flex;
   justify-content: center;
-  height: 5rem;
   padding: 0.625rem;
+  box-sizing: border-box;
 
   border-radius: 0.625rem;
   background: var(--colorsGreyLight1);
