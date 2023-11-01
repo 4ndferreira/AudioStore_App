@@ -1,9 +1,9 @@
 //Icon
 import IconShoppingBag from "../icons/IconShoppingBag";
 //CSS
-import classes from "./NoProduct.module.css";
+import classes from "./CardForNoProductFound.module.css";
 
-export default function NoProduct(props: { isBanner: boolean }) {
+export default function CardForNoProductFound(props: { isBanner: boolean }) {
   return (
     <li className={props.isBanner ? classes.banner : classes.card}>
       {props.isBanner ? (
