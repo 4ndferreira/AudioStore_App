@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom";
 //Framer-motion
 import { MotionStyle, Variants, motion } from "framer-motion";
 
-const transition = { duration: 0.3, type: "tween" };
+const transition = { duration: 0.2, type: "tween" };
 
 export default function Page (props: { children: ReactNode }) {
   const location = useLocation();
@@ -61,32 +61,30 @@ export default function Page (props: { children: ReactNode }) {
     }
   };
 
-  console.log(isInView)
-
   return (
-      <>
-        <motion.div
-          initial="initial"
-          animate="enter"
-          exit="exit"
-          transition={transition}
-          variants={variants}
-          style={container}
-          onAnimationComplete={() => {console.log("Fim da animação"), setIsInView(true)}}
-        >
-          {!isInView && 
+    <>
+      <motion.div
+        initial="initial"
+        animate="enter"
+        exit="exit"
+        transition={transition}
+        variants={variants}
+        style={container}
+        onAnimationComplete={() => { setIsInView(true) }}
+      >
+        {!isInView &&
           <div
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100vw",
-            height: "100vh",
-            background: "rgba(0,0,0,0.1)",
-            zIndex: 1
-          }}/>}
-          {props.children}
-        </motion.div>
-      </>
-    );
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100vw",
+              height: "100vh",
+              background: "rgba(0,0,0,0.1)",
+              zIndex: 1
+            }} />}
+        {props.children}
+      </motion.div>
+    </>
+  );
 }
