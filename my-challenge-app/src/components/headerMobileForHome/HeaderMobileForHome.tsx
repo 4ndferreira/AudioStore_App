@@ -10,9 +10,9 @@ import IconLogo from "../icons/IconLogo";
 import IconMenu from "../icons/IconMenu";
 import IconClose from "../icons/IconClose";
 //CSS
-import classes from "./Header.module.css";
+import classes from "./HeaderMobileForHome.module.css";
 
-export default function Header(props: {
+export default function HeaderMobileForHome(props: {
   image: string | null | undefined;
   onClick: MouseEventHandler<HTMLButtonElement>;
 }) {
@@ -40,22 +40,24 @@ export default function Header(props: {
   },[showMenu]);
 
   return (
-    <header className={classes.wrapper}>
-      <div className={classes.container}>
-        <div
-          className={classes.iconMenu}
-          onClick={() => setShowMenu(!showMenu)}
-        >
-          {showMenu ? <IconClose color={"black"} /> : <IconMenu />}
-        </div>
-        <div className={classes.logo}>
+    <>
+      <header className={classes.wrapper}>
+        <h2 className={classes.logo}>
           <IconLogo dimension={"22"} />
-          <h2>Audio</h2>
-        </div>
-        <div className={classes.userImg}>
-          {props.image ? <img src={props.image} alt="" /> : <IconUser />}
-        </div>
-      </div>
+          <span>Audio</span>
+        </h2>
+        <nav className={classes.container}>
+          <button
+            className={classes.buttonBurgerMenu}
+            onClick={() => setShowMenu(!showMenu)}
+          >
+            {showMenu ? <IconClose color={"black"} /> : <IconMenu />}
+          </button>
+          <button className={classes.buttonUser}>
+            {props.image ? <img src={props.image} alt="" /> : <IconUser />}
+          </button>
+        </nav>
+      </header>
       <AnimatePresence>
         {showMenu && (
           <SideBar
@@ -65,6 +67,6 @@ export default function Header(props: {
           />
         )}
       </AnimatePresence>
-    </header>
+    </>
   );
 }
