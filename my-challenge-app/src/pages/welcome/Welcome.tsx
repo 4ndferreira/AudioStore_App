@@ -1,15 +1,30 @@
-import { useState } from "react";
-import Button from "../../components/button/Button";
-import IconLogo from "../../components/icons/IconLogo";
-import classes from "./Welcome.module.css";
-import Modal from "../../components/modal/Modal";
+//React Hooks
+import { useEffect, useState } from "react";
+// React Router
+import { useNavigate } from "react-router-dom";
+//Firebase
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../../firebase/Config";
+//Components
 import Login from "../login/Login";
+import Button from "../../components/button/Button";
+import Modal from "../../components/modal/Modal";
+//Icons
+import IconLogo from "../../components/icons/IconLogo";
+//CSS
+import classes from "./Welcome.module.css";
 
 export default function Welcome() {
   const [ isOpen, setIsOpen ] = useState(false)
+  const navigate = useNavigate()
+  
   const handleModal = () => {
     setIsOpen(true)
   }
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => user && navigate("/"));
+    return () => unsubscribe();
+  }, [navigate]);
   return (
     <div className={classes.container}>
       <div className={classes.wrapperLogo}>
