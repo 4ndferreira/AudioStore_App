@@ -1,5 +1,5 @@
 //React
-import { ChangeEvent, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 //React Router Dom
 import { useNavigate } from 'react-router-dom';
 //Firebase
@@ -24,7 +24,7 @@ import GoogleIcon from '../../components/icons/GoogleIcon';
 import Input from '../../components/input/Input';
 import Button from '../../components/button/Button';
 import LoginButtonWithProvider from '../../components/loginButtonWithProvider/LoginButtonWithProvider';
-import Sending from '../../components/submitting/Submitting';
+import LoaderForAuthProgress from '../../components/loaderForAuthProgress/LoaderForAuthProgress';
 //Hook
 import { useMediaQuery } from '../../hooks/useMediaQuery';
 //CSS
@@ -41,19 +41,46 @@ export default function Login() {
   const [errorCode, setErrorCode] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
   //Show sending bar
-  const [submitting, setSubmitting] = useState(false)
+  const [submittingAuth, setSubmittingAuth] = useState(false)
   //Password reset
   const [submitted, setSubmitted] = useState('')
   
   const isDesktop = useMediaQuery();
   
   const navigate = useNavigate();
+
+  const handleOnEmail = (newValue: string) => setEmail(newValue);
+
+  const handleOnPassword = (newValue: string) => setPassword(newValue);
+
+  const isAnEmailError = (errorCode === "auth/user-not-found" || errorCode === "auth/invalid-email" || errorCode === "auth/email-already-in-use");
+
+  const isAnPasswordError = (errorCode === "auth/weak-password" || errorCode === "auth/wrong-password");
+
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        navigate("/home");
-      }
-    });
+    switch (errorCode) {
+      case 'auth/user-not-found':
+        setErrorMessage('User not found!');
+        break;
+      case 'auth/invalid-email':
+        setErrorMessage('Invalid email');
+        break;
+      case 'auth/email-already-in-use':
+        setErrorMessage('Email already in use!');
+        break;
+      case 'auth/wrong-password':
+        setErrorMessage('Wrong password!');
+        break;
+      case 'auth/weak-password':
+        setErrorMessage('Password should be at least 6 characters!');
+        break;
+      default:
+        setErrorMessage('An error occurred!');
+    }
+  },[errorCode]);
+  //Authentication state observer
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => user && navigate("/"));
     return () => unsubscribe();
   }, [navigate]);
   //Control login screen to be displayed
@@ -65,7 +92,7 @@ export default function Login() {
   //Login with Email
   const handleLoginWithEmail = async (e: { preventDefault: () => void; }) => {
     e.preventDefault()
-    setSubmitting(true)
+    setSubmittingAuth(true)
     const handleEmailAndPassword = (
       (newUser)
       ? createUserWithEmailAndPassword
@@ -75,7 +102,7 @@ export default function Login() {
       .then((userCredential) => {
         const userID = userCredential.user.uid;
         console.log("user: ", userID);
-        setSubmitting(false);
+        setSubmittingAuth(false);
         setEmail('');
         setPassword('')
       })
@@ -84,27 +111,8 @@ export default function Login() {
         message: string; 
       }) => {
         setErrorCode(error.code)
-        switch (error.code) {
-          case 'auth/user-not-found':
-            setErrorMessage('User not found!');
-            break;
-          case 'auth/invalid-email':
-            setErrorMessage('Invalid email');
-            break;
-          case 'auth/email-already-in-use':
-            setErrorMessage('Email already in use!');
-            break;
-          case 'auth/wrong-password':
-            setErrorMessage('Wrong password!');
-            break;
-          case 'auth/weak-password':
-            setErrorMessage('Password should be at least 6 characters!');
-            break;
-          default:
-            setErrorMessage('An error occurred!');
-        }
         console.error(error.message);
-        setSubmitting(false)
+        setSubmittingAuth(false)
     });
   }
   //Login with Provider
@@ -132,11 +140,11 @@ export default function Login() {
   //Reset password
   const handlePasswordReset = (e: { preventDefault: () => void; }) => {
     e.preventDefault()
-    setSubmitting(true)
+    setSubmittingAuth(true)
     sendPasswordResetEmail(auth, email)
       .then(() => {
         console.log('Password reset email sent!')
-        setSubmitting(false)
+        setSubmittingAuth(false)
         setSubmitted('We have e-mailed your password reset link')
         setForgotPassword(false)
         setEmail('')
@@ -147,18 +155,8 @@ export default function Login() {
         message: string; 
       }) => {
         setErrorCode(error.code)
-        switch (error.code) {
-          case 'auth/user-not-found':
-            setErrorMessage('User not found!');
-            break;
-          case 'auth/invalid-email':
-            setErrorMessage('Invalid email');
-            break;
-          default:
-            setErrorMessage('An error occurred!');
-        }
         console.error(error.message)
-        setSubmitting(false)
+        setSubmittingAuth(false)
       })
   }
 
@@ -179,7 +177,7 @@ export default function Login() {
       <form className={classes.form}>
         <div
           className={
-            errorCode 
+            isAnEmailError 
               ? `${classes.wrapper} ${classes.error}` 
               : classes.wrapper
           }
@@ -188,25 +186,19 @@ export default function Login() {
             id={"email"}
             type={"email"}
             name={"Email"}
-            element={<EmailIcon />}
-            value={email}
-            onInput={(e: ChangeEvent<HTMLInputElement>) => {
-              setEmail(e.target.value);
-              setSubmitted("");
-            }}
             onFocus={()=>setErrorCode("")}
-          />
+            onFieldChange={handleOnEmail}
+          >
+            <EmailIcon />
+          </Input>
           <p className={classes.errorText}>
-            {(errorCode === "auth/user-not-found" ||
-              errorCode === "auth/invalid-email" ||
-              errorCode === "auth/email-already-in-use") &&
-              errorMessage}
+            {isAnEmailError && errorMessage}
           </p>
         </div>
         {(newUser || !forgotPassword) && (
           <div
             className={
-              errorCode
+              isAnPasswordError
                 ? `${classes.wrapper} ${classes.error}`
                 : classes.wrapper
             }
@@ -215,17 +207,13 @@ export default function Login() {
               id={"password"}
               type={"password"}
               name={"Password"}
-              element={<LockIcon />}
-              value={password}
-              onInput={(e: ChangeEvent<HTMLInputElement>) =>
-                setPassword(e.target.value)
-              }
               onFocus={()=>setErrorCode("")}
-            />
+              onFieldChange={handleOnPassword}
+            >
+              <LockIcon />
+            </Input>
             <p className={classes.errorText}>
-              {(errorCode === "auth/weak-password" ||
-                errorCode === "auth/wrong-password") &&
-                errorMessage}
+              {isAnPasswordError && errorMessage}
             </p>
           </div>
         )}
@@ -249,7 +237,7 @@ export default function Login() {
           >
             {newUser ? "Sign Up" : !forgotPassword ? "Sign In" : "Send Email"}
           </Button>
-          {submitting && <Sending />}
+          {submittingAuth && <LoaderForAuthProgress />}
         </div>
         <div className={classes.wrapperButtons}>
           <LoginButtonWithProvider
