@@ -3,7 +3,7 @@ import { ChangeEventHandler } from "react";
 //Components
 import SelectorLabel from "../selectorLabel/SelectorLabel";
 //CSS
-import classes from "./Categories.module.css";
+import classes from "./ListOfSelectorLabels.module.css";
 
 export default function ListOfSelectorLabels(props: {
   filterSelected: string;
