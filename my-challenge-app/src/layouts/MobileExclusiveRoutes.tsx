@@ -3,5 +3,5 @@ import { Navigate, Outlet } from 'react-router-dom';
 
 export default function MobileExclusiveRoutes() {
   const isDesktop = useMediaQuery();
-  return isDesktop ? <Navigate to={"/home"}/> : <Outlet/>
+  return isDesktop ? <Navigate to={"/"}/> : <Outlet/>
 }
