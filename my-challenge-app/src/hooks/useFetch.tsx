@@ -33,8 +33,8 @@ export const useFetch = () => {
   useEffect(() => {
     const fetchData = () => {
       auth.currentUser
-        ?.getIdToken(true)
-        .then((idToken) => {
+      ?.getIdToken(true)
+      .then((idToken) => {
           const url = `https://my-project-pb-challenge-default-rtdb.firebaseio.com/products.json?auth=${idToken}`;
           setLoading(true);
           axios
@@ -49,7 +49,19 @@ export const useFetch = () => {
         .catch((error) => {
           console.error("Error obtaining authentication token: ", error);
         });
+
+      // const url = "http://localhost:3000/products";
+      // setLoading(true);
+      // axios
+      //   .get(url)
+      //   .then((res: AxiosResponse<Data[]>) => isMounted && setData(res.data))
+      //   .catch((err) => {
+      //     setError("An error occurred. Awkward...");
+      //     console.error(error, err);
+      //   })
+      //   .finally(() => setLoading(false));
     };
+    
     fetchData();
     return () => {
       setIsMounted(false);
