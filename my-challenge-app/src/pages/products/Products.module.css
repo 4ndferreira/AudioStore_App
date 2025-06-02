@@ -1,13 +1,12 @@
-
-.containerTop {
+.wrapperHeader {
   width: 20.375rem;
   margin: 0 auto;
 }
 
 .wrapper {
   width: 20.375rem;
-  padding-bottom: 2.31rem;
   margin: 0 auto;
+  padding-bottom: 2.31rem;
 }
 
 .wrapper button {
@@ -61,38 +60,6 @@
   gap: 0.94rem;
 }
 
-.filterContainer {
-  display: flex;
-  flex-direction: column;
-  width: 20.375rem;
-  padding: 1.5rem 0;
-  margin: 0 auto;
-  gap: 2.19rem;
-}
-
-.filterContainer h2 {
-  font-family: Montserrat;
-  letter-spacing: 0.0125rem;
-  margin: 0;
-}
-
-.filterContainer h4 {
-  margin-bottom: 0.62rem
-}
-
-.filterTitle{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.closeButton {
-  display: flex;
-  align-items: center;
-  border: none;
-  background-color: transparent;
-}
-
 .noReturn {
   display: flex;
   flex-direction: column;
@@ -105,4 +72,65 @@
 .noReturn h2 {
   color: var(--colorsGrey);
   text-align: center;
+}
+
+@media (min-width: 1224px) {
+  .container {
+    display: grid;
+    grid-template-columns: auto 63rem auto;
+    grid-template-rows: auto auto auto auto;
+    height: 100vh;
+  }
+
+  .showcase {
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+  }
+
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    flex-flow: nowrap;
+    width: 100%;
+    padding: 0;
+    margin-bottom: 1.25rem;
+    grid-column: 2 / 3;
+    grid-row: 2 / 3
+  }
+
+  .wrapper button {
+    width: 10rem;
+  }
+
+  .title {
+    flex-grow: 2;
+    margin: 0;
+  }
+
+  .titleBig {
+    font-size: 2.4rem;
+    line-height: normal
+  }
+
+  .titleSmall {
+    font-size: 1.2rem;
+  }
+
+  .showcase {
+    border-radius: 1.5rem;
+  }
+
+  .containerSkeleton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .wrapperModal dialog {
+    max-width: fit-content;
+    height: fit-content;
+  }
 }

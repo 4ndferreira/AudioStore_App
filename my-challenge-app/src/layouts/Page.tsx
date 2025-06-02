@@ -18,8 +18,7 @@ export default function Page (props: { children: ReactNode }) {
     flexDirection: "column",
     width: "100vw",
     height: "100vh",
-    backgroundColor: "white",
-    overflow: "hidden"
+    backgroundColor: "white"
   };
 
   const variants: Variants = {
@@ -43,8 +42,7 @@ export default function Page (props: { children: ReactNode }) {
         transitionEnd: {
           height: "auto",
           position: "absolute",
-          overflow: "auto",
-          boxShadow: "none",
+          boxShadow: "none"
         }
       }
     },
@@ -63,32 +61,30 @@ export default function Page (props: { children: ReactNode }) {
     }
   };
 
-  console.log(isInView)
-
   return (
-      <>
-        <motion.div
-          initial="initial"
-          animate="enter"
-          exit="exit"
-          transition={transition}
-          variants={variants}
-          style={container}
-          onAnimationComplete={() => {console.log("Fim da animação"), setIsInView(true)}}
-        >
-          {!isInView && 
+    <>
+      <motion.div
+        initial="initial"
+        animate="enter"
+        exit="exit"
+        transition={transition}
+        variants={variants}
+        style={container}
+        onAnimationComplete={() => { setIsInView(true) }}
+      >
+        {!isInView &&
           <div
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100vw",
-            height: "100vh",
-            background: "rgba(0,0,0,0.1)",
-            zIndex: 1
-          }}/>}
-          {props.children}
-        </motion.div>
-      </>
-    );
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100vw",
+              height: "100vh",
+              background: "rgba(0,0,0,0.1)",
+              zIndex: 1
+            }} />}
+        {props.children}
+      </motion.div>
+    </>
+  );
 }

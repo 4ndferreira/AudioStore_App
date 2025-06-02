@@ -1,0 +1,68 @@
+.wrapper {
+  position: relative;
+  width: 20.375rem;
+  height: 3.4375rem;
+  margin: 0 auto;
+}
+
+.wrapperNav {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.title {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.25rem;
+  letter-spacing: 0.0125rem;
+}
+
+.wrapper a {
+  display: flex;
+  align-items: center;
+}
+
+.iconCart {
+  display: inherit;
+  position: relative;
+}
+
+.cartControl {
+  background-color: var(--colorsPrimary);
+  position: absolute;
+  top: -25%;
+  right: -35%;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cartControl p {
+  font-size: 0.75rem;
+  line-height: normal;
+  color: white;
+  margin: 0;
+}
+
+.buttonToNavigate {
+  display: flex;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+}

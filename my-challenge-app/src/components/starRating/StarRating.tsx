@@ -1,5 +1,5 @@
-import IconStarFilled from "./IconStarFilled";
-import IconStarOutlined from "./IconStarOutlined";
+import IconStarFilled from "../icons/IconStarFilled";
+import IconStarOutlined from "../icons/IconStarOutlined";
 import classes from './StarRating.module.css'
 
 const StarRating = (props: { rating: number; }) => {

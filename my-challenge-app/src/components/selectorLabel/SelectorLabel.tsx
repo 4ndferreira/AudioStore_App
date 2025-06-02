@@ -1,19 +1,12 @@
 import { ChangeEventHandler } from 'react'
 
-interface Label {
-  id: string,
-  name: string
-  group: string
-}
-
-const SelectorLabel = (props: {
+export default function SelectorLabel (props: {
   id: string; 
   checked: boolean;
   name: string; 
   group: string; 
   onChange: ChangeEventHandler<HTMLInputElement>; 
-}) => {
-
+}) {
   return (
     <>
       <input 
@@ -33,5 +26,3 @@ const SelectorLabel = (props: {
     </>
   )
 }
-
-export default SelectorLabel

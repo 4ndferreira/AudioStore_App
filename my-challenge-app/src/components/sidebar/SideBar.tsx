@@ -7,10 +7,10 @@ import { CartContext } from "../../store/CartContext";
 //Router
 import { NavLink } from "react-router-dom";
 //Icons
-import IconLogout from "../header/IconLogout";
-import IconShoppingCart from "../navBar/IconShoppingCart";
-import GridIcon from "./GridIcon";
-import SearchIcon from "../labelInput/SearchIcon";
+import IconLogout from "../icons/IconLogout";
+import IconShoppingCart from "../icons/IconShoppingCart";
+import GridIcon from "../icons/GridIcon";
+import SearchIcon from "../icons/SearchIcon";
 //CSS
 import classes from "./Sidebar.module.css";
 
@@ -18,20 +18,23 @@ const menuVariants = {
   open: {
     x: 0,
     transition: {
-      type: "tween"
+      type: "tween",
+      duration: 0.2
     }
   },
   closed: {
     x: "-70vw",
     transition: {
-      type: "tween"
+      type: "tween", 
+      duration: 0.1
     }
   }
 };
 
 const SideBar = (props: {
   menuRef: Ref<HTMLDivElement>;
-  onClick: MouseEventHandler<HTMLButtonElement> 
+  logout: MouseEventHandler<HTMLButtonElement> 
+  closeSidebar: MouseEventHandler<HTMLAnchorElement | HTMLButtonElement>
 }) => {
   const { cartItemCount } = useContext(CartContext);
   return (
@@ -45,33 +48,38 @@ const SideBar = (props: {
       >
         <ul className={classes.menuList}>
           <li>
-            <NavLink 
-              className={classes.menuLink} 
+            <NavLink
+              className={classes.menuLink}
               to={"/search"}
+              onClick={props.closeSidebar}
             >
               <SearchIcon size={"25"} color={"black"} />
               <span>Search</span>
             </NavLink>
           </li>
           <li>
-            <NavLink 
-              className={classes.menuLink} 
+            <NavLink
+              className={classes.menuLink}
               to={"/products"}
+              onClick={props.closeSidebar}
             >
               <GridIcon />
               <span>Products</span>
             </NavLink>
           </li>
           <li>
-            <NavLink 
-              className={classes.menuLink} 
+            <NavLink
+              className={classes.menuLink}
               to={"/cart"}
+              onClick={props.closeSidebar}
             >
               <span className={classes.iconCart}>
                 <IconShoppingCart />
-                <div className={classes.cartControl}>
-                  <p>{cartItemCount}</p>
-                </div>
+                {cartItemCount > 0 && (
+                  <div className={classes.cartControl}>
+                    <p>{cartItemCount}</p>
+                  </div>
+                )}
               </span>
               <span>Cart</span>
             </NavLink>
@@ -79,11 +87,12 @@ const SideBar = (props: {
         </ul>
         <button 
           className={classes.buttonLogout} 
-          onClick={props.onClick}
+          onClick={props.logout} 
+          onMouseDown={props.closeSidebar}
         >
           <IconLogout />
           <span>Logout</span>
-        </button>      
+        </button>
       </motion.nav>
       <motion.div
         initial={{ opacity: 0 }}

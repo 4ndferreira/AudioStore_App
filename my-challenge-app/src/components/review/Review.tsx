@@ -1,5 +1,5 @@
 import StarRating from '../starRating/StarRating'
-import IconUser from './IconUser';
+import IconUser from '../icons/IconUser';
 import classes from './Review.module.css'
 
 const Review = (props: {

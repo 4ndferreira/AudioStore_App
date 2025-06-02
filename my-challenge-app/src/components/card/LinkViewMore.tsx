@@ -1,5 +1,5 @@
-import IconStarFilled from "../starRating/IconStarFilled";
-import IconMoreVertical from "./IconMoreVertical";
+import IconStarFilled from "../icons/IconStarFilled";
+import IconMoreVertical from "../icons/IconMoreVertical";
 
 const LinkViewMore = (props: { rating: number }) => {
   return (

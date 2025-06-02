@@ -12,6 +12,7 @@
 
 .bannerContainer img {
   height: 100%;
+  width: auto
 }
 
 .bannerText {
@@ -41,4 +42,15 @@
 
 .bannerLink p {
   margin: 0;
+}
+
+@media (min-width: 1224px) {
+  .bannerContainer {
+    width: 25.6rem;
+    height: 14.5rem;
+    padding: 1.75rem 2rem
+  }
+  .bannerText h3 {
+    font-size: 1.65rem;
+  }
 }

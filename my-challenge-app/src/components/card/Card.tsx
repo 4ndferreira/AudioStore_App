@@ -2,16 +2,16 @@
 import { Link } from 'react-router-dom'
 //Component
 import LinkViewMore from './LinkViewMore'
-//Image
-import Image from '/img/image5.png'
 //CSS
 import classes from './Card.module.css'
+import GetImage from '../getImage/GetImage'
 
 const Card = (props: {
   id: number,
   name: string,
   price: string,
   rating: number,
+  category: string,
   showReview: boolean 
 }) => {
   return (
@@ -22,7 +22,7 @@ const Card = (props: {
       <div className={classes.cardContainer}>
         <div className={classes.cardImage}>
           <img 
-            src={Image} 
+            src={GetImage(props.category, false)} 
             alt="" 
             height={"100%"} 
             loading="lazy" 

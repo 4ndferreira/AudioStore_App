@@ -1,31 +1,31 @@
-import { Link } from 'react-router-dom';
-import ArrowRight from './ArrowRight';
+//React Router
+import { Link } from "react-router-dom";
+//Components
+import ArrowRight from "../icons/ArrowRight";
+import GetImage from "../getImage/GetImage";
 //CSS
-import classes from './Banner.module.css'
-//Image
-import Image from '/img/image5.png'
+import classes from "./Banner.module.css";
 
-const Banner = (props: {
-  id: number; 
-  title: string 
-}) => {
+export default function Banner(props: {
+  id: number;
+  title: string;
+  category: string;
+}) {
   return (
     <div className={classes.bannerContainer}>
       <div className={classes.bannerText}>
-        <h3>
-          {props.title}
-        </h3>
-        <Link 
-          to={`/products/${props.id}`} 
-          className={classes.bannerLink}
-        >
+        <h3>{props.title}</h3>
+        <Link to={`/products/${props.id}`} className={classes.bannerLink}>
           <p>Shop now</p>
           <ArrowRight />
         </Link>
       </div>
-      <img src={Image} alt="" height={"144.63px"} width={"124.41px"} />
+      <img
+        src={GetImage(props.category, false)}
+        alt=""
+        height={"144.63px"}
+        width={"124.41px"}
+      />
     </div>
   );
 }
-
-export default Banner

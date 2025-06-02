@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  height: fit-content;
+  width: 100%;
+  gap: 0.9375rem
+}
+
+.containerTextSkeleton {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%
+}
+
+.containerText {
+  display: flex;
+  width: 100%;
+  gap: 0.31rem
+}

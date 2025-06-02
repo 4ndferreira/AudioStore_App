@@ -1,9 +1,9 @@
 //Hooks
 import { useContext, useRef } from "react";
 //Components
-import IconMinus from "./IconMinus";
-import IconPlus from "./IconPlus";
-import IconTrash from "../navBar/IconTrash";
+import IconMinus from "../icons/IconMinus";
+import IconPlus from "../icons/IconPlus";
+import IconTrash from "../icons/IconTrash";
 import { CartContext } from "../../store/CartContext";
 //CSS
 import classes from './Counter.module.css'

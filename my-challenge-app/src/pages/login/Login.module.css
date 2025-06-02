@@ -57,6 +57,7 @@
   letter-spacing: 0.0125rem;
   margin-top: 0;
   margin-bottom: 0.75rem;
+  cursor: pointer;
 }
 
 .textFooter {
@@ -108,4 +109,12 @@
   font-weight: 700;
   line-height: 1.25rem;
   letter-spacing: 0.0125rem;
+}
+
+@media (min-width: 1224px) {
+  .container {
+    height: fit-content;
+    padding: 2rem 0;
+    color: var(--colorsDefault)
+  }
 }

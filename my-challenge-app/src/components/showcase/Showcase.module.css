@@ -1,0 +1,25 @@
+.containerSkeleton {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.showcaseText {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.showcaseText a {
+  color: var(--colorsGreyDark1);
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  letter-spacing: 0.0125rem;
+}
+
+@media (min-width: 1224px) {
+  .containerSkeleton {
+    width: 92%;
+  }
+}

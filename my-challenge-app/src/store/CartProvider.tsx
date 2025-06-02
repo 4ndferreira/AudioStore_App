@@ -35,6 +35,7 @@ const CartProvider = (props: { children: ReactNode }) => {
         id: item.id,
         name: item.name,
         price: item.price,
+        category: item.category,
         count: 1,
       };
       setCartItems([...cartItems, newItem]);
