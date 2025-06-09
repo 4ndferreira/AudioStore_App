@@ -10,14 +10,6 @@
   --colorsGreyLight1: #F6F6F6;
   --colorsWhite: #FFFF;
 
-  --rsbs-backdrop-bg: rgba(0, 0, 0, 0.6);
-  --rsbs-bg: #fff;
-  --rsbs-handle-bg: hsla(0, 0%, 0%, 0.14);
-  --rsbs-max-w: auto;
-  --rsbs-ml: env(safe-area-inset-left);
-  --rsbs-mr: env(safe-area-inset-right);
-  --rsbs-overlay-rounded: 1.88rem;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;

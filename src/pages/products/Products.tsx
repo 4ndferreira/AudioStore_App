@@ -3,8 +3,6 @@ import { ChangeEvent, useState } from "react";
 //Hook
 import { Data, useFetch } from "../../hooks/useFetch";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
-//React Spring Bottom Sheet
-import { BottomSheet } from "react-spring-bottom-sheet-updated";
 //Components
 import Button from "../../components/button/Button";
 import HeaderMobileWhileBrowsing from "../../components/headerMobileWhileBrowsing/HeaderMobileWhileBrowsing";
@@ -20,6 +18,7 @@ import ShowAllCardsOfProducts from "../../components/showAllCardsOfProducts/Show
 import PagesWithAllProducts from "../../components/pagesWithAllProducts/PagesWithAllProducts";
 import AllFilteringOptions from "../../components/allFilteringOptions/AllFilteringOptions";
 import Modal from "../../components/modal/Modal";
+import { BottomSheet } from "../../components/bottomSheet/BottomSheet";
 
 export default function Products() {
   const [open, setOpen] = useState(false);
@@ -161,7 +160,7 @@ export default function Products() {
               </div>
             )
           ) : (
-            <BottomSheet open={open}>
+            <BottomSheet open={open} onClose={handleCloseFilter}>
               <AllFilteringOptions
                 handleCloseFilter={handleCloseFilter}
                 filterCategory={filterCategory}
