@@ -1,38 +1,52 @@
-import { ChangeEvent, FocusEventHandler, useState } from "react";
-import classes from "./Input.module.css";
+import { ChangeEvent, FocusEventHandler, JSX, useState } from "react";
+import styles from "./Input.module.scss";
 
-export default function Input(props: {
+interface InputProps {
   id: string;
   type: string;
   children: JSX.Element;
   name: string;
   onFieldChange: (newValue: string) => void;
-  onFocus: FocusEventHandler<HTMLInputElement> | undefined;
-}) {
-  const [value, setValue] = useState<string | undefined>(undefined);
+  onFocus: FocusEventHandler<HTMLInputElement>;
+  error?: boolean;
+  errorMessage?: string
+}
+
+export default function Input({
+  id,
+  type,
+  children,
+  name,
+  onFieldChange,
+  onFocus,
+  error = false,
+  errorMessage
+}: InputProps) {
+  const [value, setValue] = useState<string>("");
 
   const handlerValue = (e: ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
     setValue(newValue);
-    props.onFieldChange(newValue);
+    onFieldChange(newValue);
   };
 
   return (
-    <>
+    <div className={styles.wrapper}>
       <input
-        className={classes.input}
-        id={props.id}
-        type={props.type}
+        className={error && errorMessage ? `${styles.input} ${styles.error}` : styles.input}
+        id={id}
+        type={type}
         value={value}
-        {...(props.type === "text"
+        {...(type === "text"
           ? { onInput: handlerValue }
           : { onChange: handlerValue })}
-        onFocus={props.onFocus}
-        placeholder={props.name}
+        onFocus={onFocus}
+        placeholder={name}
       />
-      <label className={classes.label} htmlFor={props.id}>
-        {props.children}
+      <label className={styles.label} htmlFor={id}>
+        {children}
       </label>
-    </>
+      {error && errorMessage && <p className={styles.errorText}>{errorMessage}</p>}
+    </div>
   );
 }

@@ -1,20 +1,18 @@
-import { MouseEventHandler } from 'react';
-import classes from './Button.module.css'
+import { ButtonHTMLAttributes, DetailedHTMLProps } from "react";
+import styles from "./Button.module.css";
 
-const Button = (props: {
-  type: 'button' | 'submit';
-  onClick: MouseEventHandler<HTMLButtonElement>;
-  children: string | React.ReactNode
-}) => {
+interface ButtonProps
+  extends DetailedHTMLProps<
+    ButtonHTMLAttributes<HTMLButtonElement>,
+    HTMLButtonElement
+  > {
+  children: string | React.ReactNode;
+}
+
+export default function Button({ children, ...props }: ButtonProps) {
   return (
-    <button 
-      className={classes.button}
-      type={props.type} 
-      onClick={props.onClick}
-    >
-      {props.children}
+    <button className={styles.button} {...props}>
+      {children}
     </button>
   );
-};
-
-export default Button;
+}

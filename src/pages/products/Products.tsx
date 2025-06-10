@@ -97,13 +97,17 @@ export default function Products() {
         <LoadingError />
       ) : (
         <div className={classes.container}>
-          {!isDesktop && <HeaderMobileWhileBrowsing/>}
+          {!isDesktop && <HeaderMobileWhileBrowsing />}
           <section className={classes.wrapper}>
             <div className={classes.title}>
               <h3 className={classes.titleSmall}>Featured products</h3>
               <h2 className={classes.titleBig}>See all Products</h2>
             </div>
-            <Button type="button" onClick={openFilter}>
+            <Button
+              type="button"
+              className={classes.button}
+              onClick={openFilter}
+            >
               <IconSliders />
             </Button>
           </section>
@@ -145,20 +149,16 @@ export default function Products() {
             )}
           </section>
           {isDesktop ? (
-            open && (
-              <div className={classes.wrapperModal}>
-                <Modal onClose={() => setOpen(false)} isOpen={open}>
-                  <AllFilteringOptions
-                    handleCloseFilter={handleCloseFilter}
-                    filterCategory={filterCategory}
-                    handleSelectCategory={handleSelectCategory}
-                    selectSortBy={selectSortBy}
-                    handleSelectSortBy={handleSelectSortBy}
-                    handleSortBy={handleSortBy}
-                  />
-                </Modal>
-              </div>
-            )
+            <Modal isOpen={open} onClose={handleCloseFilter}>
+              <AllFilteringOptions
+                handleCloseFilter={handleCloseFilter}
+                filterCategory={filterCategory}
+                handleSelectCategory={handleSelectCategory}
+                selectSortBy={selectSortBy}
+                handleSelectSortBy={handleSelectSortBy}
+                handleSortBy={handleSortBy}
+              />
+            </Modal>
           ) : (
             <BottomSheet open={open} onClose={handleCloseFilter}>
               <AllFilteringOptions
