@@ -1,0 +1,45 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20.375rem;
+  margin: 0 auto;
+  gap: 1.56rem;
+}
+
+.text {
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.25rem;
+  letter-spacing: 0.0125rem;
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  cursor: pointer;
+}
+
+.wrapperSendButton {
+  width: 100%;
+  position: relative;
+}
+
+.textFooter {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  letter-spacing: 0.0125rem;
+  margin: 0;
+
+  a {
+    color: var(--colorsPrimary);
+    text-decoration-line: underline;
+  }
+}
+
+.resetPasswordText {
+  width: 80%;
+  color: var(--colorsPrimary);
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.25rem;
+  letter-spacing: 0.0125rem;
+}
