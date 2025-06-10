@@ -8,6 +8,7 @@ import Button from "../../components/button/Button";
 import HeaderMobileWhileBrowsing from "../../components/headerMobileWhileBrowsing/HeaderMobileWhileBrowsing";
 import CardSkeleton from "../../components/cardSkeleton/CardSkeleton";
 import LoadingError from "../../components/loadingError/LoadingError";
+import BottomSheet from "../../components/bottomSheet/BottomSheet";
 //Icons
 import IconSliders from "../../components/icons/IconSliders";
 import IconShoppingBag from "../../components/icons/IconShoppingBag";
@@ -18,7 +19,6 @@ import ShowAllCardsOfProducts from "../../components/showAllCardsOfProducts/Show
 import PagesWithAllProducts from "../../components/pagesWithAllProducts/PagesWithAllProducts";
 import AllFilteringOptions from "../../components/allFilteringOptions/AllFilteringOptions";
 import Modal from "../../components/modal/Modal";
-import { BottomSheet } from "../../components/bottomSheet/BottomSheet";
 
 export default function Products() {
   const [open, setOpen] = useState(false);

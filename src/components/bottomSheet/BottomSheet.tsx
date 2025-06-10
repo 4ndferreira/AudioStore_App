@@ -7,7 +7,7 @@ type BottomSheetProps = {
   children: React.ReactNode;
 };
 
-export function BottomSheet({ open, onClose, children }: BottomSheetProps) {
+export default function BottomSheet({ open, onClose, children }: BottomSheetProps) {
   return (
     <AnimatePresence>
       {open && (
