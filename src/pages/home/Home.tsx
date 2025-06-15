@@ -2,9 +2,6 @@
 import { ChangeEvent, useState } from "react";
 //React Router Dom
 import { useNavigate } from "react-router-dom";
-//Firebase
-import { signOut } from "firebase/auth";
-import { auth } from "../../firebase/Config";
 //Hook
 import { useFetch } from "../../hooks/useFetch";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
@@ -19,23 +16,14 @@ import SearchIcon from "../../components/icons/SearchIcon";
 import LoadingError from "../../components/loadingError/LoadingError";
 // CSS
 import classes from "./Home.module.css";
+import { useAuth } from "../../hooks/useAuth";
 
 export default function Home() {
   const { data, loading, error } = useFetch();
+  const { handleSignOut, user } = useAuth();
   const [filterCategory, setFilterCategory] = useState("");
   const navigate = useNavigate();
   const isDesktop = useMediaQuery();
-
-  const handleSignOut = () => {
-    signOut(auth)
-      .then(() => {
-        console.log("Sign-out successful.");
-        navigate("/login", { state: { isPush: true } });
-      })
-      .catch((error) => {
-        console.error(error.code);
-      });
-  };
 
   const handleSelectChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
@@ -53,16 +41,16 @@ export default function Home() {
       ) : (
         <div className={classes.container}>
           <HeaderMobileForHome
-            image={auth.currentUser?.photoURL}
+            image={user!.photoURL}
             onClick={handleSignOut}
           />
           <section className={classes.headerContainer}>
             <h3 className={classes.welcomeText}>
               <small className={classes.welcomeTextSmall}>
                 Hi,{" "}
-                {auth.currentUser?.displayName
-                  ? auth.currentUser?.displayName.split(" ")[0]
-                  : auth.currentUser?.email?.split("@")[0]}
+                {user!.displayName
+                  ? user!.displayName.split(" ")[0]
+                  : user!.email?.split("@")[0]}
               </small>
               What are you looking for today?
             </h3>
