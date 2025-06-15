@@ -1,19 +1,14 @@
 //React
-import { ReactNode, lazy, useEffect, useState } from "react";
+import { lazy, useEffect } from "react";
 //React Router DOM
-import { BrowserRouter, Navigate, Route, useLocation } from "react-router-dom";
-//Firebase
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "./firebase/Config";
-//Hook
-import { useMediaQuery } from "./hooks/useMediaQuery";
+import { BrowserRouter, Route, useLocation } from "react-router-dom";
 //Components
 import CartProvider from "./store/CartProvider";
-import MobileExclusiveRoutes from "./layouts/MobileExclusiveRoutes";
-import AnimatedRoutes from "./layouts/AnimatedRoutes";
+import MobileExclusiveRoutes from "./layouts/mobileExclusiveRoutes/MobileExclusiveRoutes";
+import AnimatedRoutes from "./layouts/animatedRoutes/AnimatedRoutes";
 //Lazy Components
-const Welcome = lazy(() => import("./pages/welcome/Welcome"));
-const Login = lazy(() => import("./pages/login/Login"));
+import PrivateRoutes from "./layouts/privateRoutes/PrivateRoutes";
+import LoginRoutes from "./layouts/loginRoutes/LoginRoutes";
 const Home = lazy(() => import("./pages/home/Home"));
 const Search = lazy(() => import("./pages/search/Search"));
 const Products = lazy(() => import("./pages/products/Products"));
@@ -40,19 +35,6 @@ export const ChangeOverFlow = () => {
 };
 
 export default function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
-  const isDesktop = useMediaQuery();
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) =>
-      setIsAuthenticated(user ? true : false)
-    );
-    return () => unsubscribe();
-  }, []);
-
-  const PrivateRoute = (page: ReactNode) => {
-    return isAuthenticated ? page : <Navigate to="/login" />;
-  };
 
   return (
     <BrowserRouter>
@@ -60,13 +42,13 @@ export default function App() {
       <ChangeOverFlow />
       <CartProvider>
         <AnimatedRoutes>
-          <Route path="/login" element={isDesktop ? <Welcome /> : <Login />} />
-          <Route path="/" element={PrivateRoute(<Home />)} />
-          <Route path="/products" element={PrivateRoute(<Products />)} />
+          <Route path="/login" element={<LoginRoutes/>} />
+          <Route path="/" element={PrivateRoutes(<Home />)} />
+          <Route path="/products" element={PrivateRoutes(<Products />)} />
           <Route element={<MobileExclusiveRoutes />}>
-            <Route path="/search" element={PrivateRoute(<Search />)} />
-            <Route path="/products/:id" element={PrivateRoute(<Product />)} />
-            <Route path="/cart" element={PrivateRoute(<ShoppingCart />)} />
+            <Route path="/search" element={PrivateRoutes(<Search />)} />
+            <Route path="/products/:id" element={PrivateRoutes(<Product />)} />
+            <Route path="/cart" element={PrivateRoutes(<ShoppingCart />)} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </AnimatedRoutes>
