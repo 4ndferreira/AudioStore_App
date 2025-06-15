@@ -55,3 +55,12 @@ div {
   --rsbs-overlay-rounded: 1.88rem;
   --rsbs-max-w: 100vw;
 }
+
+button {
+  cursor: pointer;
+  
+  font-family: DM Sans;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.0125rem;
+}

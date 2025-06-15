@@ -8,7 +8,7 @@ import LoginWithProviders from "../loginWithProviders";
 import styles from "./LoginForm.module.scss";
 
 interface LoginFormProps {
-  submitted: string;
+  sendPasswordReset: boolean;
   errorCode: string;
   isSubmittingAuth: boolean;
   handleOnEmail: (newValue: string) => void;
@@ -21,7 +21,7 @@ interface LoginFormProps {
 }
 
 export default function LoginForm({
-  submitted,
+  sendPasswordReset,
   errorCode,
   isSubmittingAuth,
   handleOnEmail,
@@ -74,7 +74,9 @@ export default function LoginForm({
 
   return (
     <form className={styles.form} autoComplete="off">
-      <p className={styles.resetPasswordText}>{submitted}</p>
+      {forgotPassword 
+        && sendPasswordReset 
+        && <p className={styles.resetPasswordText}>We have e-mailed your password reset link</p>}
       <Input
         id={"email"}
         type={"email"}

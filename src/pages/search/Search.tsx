@@ -32,7 +32,6 @@ export default function Search() {
             id={"searchBar"}
             type={"text"}
             name={"Search headphone"}
-            onFocus={undefined}
             onFieldChange={handleOnSearch}
           >
             <SearchIcon size={"20"} color={"#BABABA"} />

@@ -41,16 +41,16 @@ export default function Home() {
       ) : (
         <div className={classes.container}>
           <HeaderMobileForHome
-            image={user!.photoURL}
+            image={user?.photoURL}
             onClick={handleSignOut}
           />
           <section className={classes.headerContainer}>
             <h3 className={classes.welcomeText}>
               <small className={classes.welcomeTextSmall}>
                 Hi,{" "}
-                {user!.displayName
-                  ? user!.displayName.split(" ")[0]
-                  : user!.email?.split("@")[0]}
+                {user?.displayName
+                  ? user?.displayName.split(" ")[0]
+                  : user?.email?.split("@")[0]}
               </small>
               What are you looking for today?
             </h3>

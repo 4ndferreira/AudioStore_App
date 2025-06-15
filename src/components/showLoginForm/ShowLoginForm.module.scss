@@ -1,0 +1,13 @@
+.button {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  width: 7.5rem;
+  height: 3.125rem;
+  z-index: 2;
+
+  border: 2px solid var(--colorsPrimary);
+  border-radius: 0.625rem;
+  background-color: transparent;
+  color: var(--colorsPrimary);
+}

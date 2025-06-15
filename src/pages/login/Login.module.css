@@ -8,19 +8,6 @@
   color: var(--colorsWhite);
 }
 
-.titleWrapper {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  margin: 0;
-}
-
-.titleWrapper small{
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  letter-spacing: 0.0125rem;
-}
-
 .wrapperButtons {
   display: flex;
   gap: 0.94rem;
@@ -28,26 +15,18 @@
   margin-bottom: 1.5rem;
 }
 
-.picture {
+.wrapperLogo {
   position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  z-index: -1;
-}
-
-.picture img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  top: 1rem;
+  left: 1rem;
+  z-index: 2;
 }
 
 @media (min-width: 1224px) {
   .container {
-    height: fit-content;
-    padding: 2rem 0;
-    color: var(--colorsDefault)
+    justify-content: center;
+    height: 100vh;
+    padding: 0;
+    color: var(--colorsDefault);
   }
 }

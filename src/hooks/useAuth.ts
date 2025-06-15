@@ -4,7 +4,7 @@ import {
   GoogleAuthProvider,
   User
 } from "firebase/auth";
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { authService } from "../services/authService";
 import { FirebaseError } from "firebase/app";
 
@@ -13,10 +13,9 @@ export const useAuth = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorCode, setErrorCode] = useState("");
-  const [submittingAuth, setSubmittingAuth] = useState(false);
-  const [submitted, setSubmitted] = useState("");
+  const [isSubmittingAuth, setIsSubmittingAuth] = useState(false);
+  const [sendPasswordReset, setSendPasswordReset] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
-  //const navigate = useNavigate();
 
   const handleOnEmail = (newValue: string) => setEmail(newValue);
 
@@ -30,10 +29,9 @@ export const useAuth = () => {
       });
       return () => unsubscribe();
     }, []);
-  //Login with Email
   const handleLoginWithEmail = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    setSubmittingAuth(true);
+    setIsSubmittingAuth(true);
     await authService
       .login(email, password)
       .then(() => {
@@ -46,13 +44,13 @@ export const useAuth = () => {
         console.error(error.message);
       })
       .finally(() => {
-        setSubmittingAuth(false);
+        setIsSubmittingAuth(false);
       });
   };
   //Create user with Email
   const handleCreateUser = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    setSubmittingAuth(true);
+    setIsSubmittingAuth(true);
     await authService
       .register(email, password)
       .then(() => {
@@ -65,7 +63,7 @@ export const useAuth = () => {
         console.error(error.message);
       })
       .finally(() => {
-        setSubmittingAuth(false);
+        setIsSubmittingAuth(false);
       });
   };
   //Login with Provider
@@ -90,12 +88,11 @@ export const useAuth = () => {
   //Reset password
   const handlePasswordReset = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    setSubmittingAuth(true);
+    setIsSubmittingAuth(true);
     authService
       .passwordReset(email)
       .then(() => {
-        setSubmitted("We have e-mailed your password reset link");
-        //setForgotPassword(false);
+        setSendPasswordReset(true);
         setEmail("");
         setErrorCode("");
       })
@@ -104,7 +101,7 @@ export const useAuth = () => {
         console.error(error.message);
       })
       .finally(() => {
-        setSubmittingAuth(false);
+        setIsSubmittingAuth(false);
       });
   };
 
@@ -122,8 +119,8 @@ export const useAuth = () => {
     user,
     isAuthenticated,
     errorCode,
-    submitted,
-    submittingAuth,
+    sendPasswordReset,
+    isSubmittingAuth,
     handleOnEmail,
     handleOnPassword,
     handleLoginWithEmail,

@@ -1,0 +1,30 @@
+.title {
+  text-align: center;
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  letter-spacing: 0.0125rem;
+}
+
+@media (min-width: 1224px) {
+  .wrapperText {
+    position: absolute;
+    color: var(--colorsWhite);
+    z-index: 2;
+  }
+
+  .title {
+    text-align: center;
+    font-size: 7.5rem;
+    margin: 0;
+  }
+
+  .subtitle {
+    text-align: center;
+    font-size: 2rem;
+    margin: 0;
+  }
+}

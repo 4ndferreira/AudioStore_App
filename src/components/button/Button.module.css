@@ -9,10 +9,4 @@
   border-radius: 0.625rem;
   background: var(--colorsPrimary);
   color: var(--colorsWhite);
-  cursor: pointer;
-
-  font-family: DM Sans;
-  font-size: 1rem;
-  font-weight: 700;
-  letter-spacing: 0.0125rem;
 }

@@ -8,7 +8,7 @@ import MobileExclusiveRoutes from "./layouts/mobileExclusiveRoutes/MobileExclusi
 import AnimatedRoutes from "./layouts/animatedRoutes/AnimatedRoutes";
 //Lazy Components
 import PrivateRoutes from "./layouts/privateRoutes/PrivateRoutes";
-import LoginRoutes from "./layouts/loginRoutes/LoginRoutes";
+const Login = lazy(() => import("./pages/login/Login"));
 const Home = lazy(() => import("./pages/home/Home"));
 const Search = lazy(() => import("./pages/search/Search"));
 const Products = lazy(() => import("./pages/products/Products"));
@@ -42,7 +42,7 @@ export default function App() {
       <ChangeOverFlow />
       <CartProvider>
         <AnimatedRoutes>
-          <Route path="/login" element={<LoginRoutes/>} />
+          <Route path="/login" element={<Login/>} />
           <Route path="/" element={PrivateRoutes(<Home />)} />
           <Route path="/products" element={PrivateRoutes(<Products />)} />
           <Route element={<MobileExclusiveRoutes />}>

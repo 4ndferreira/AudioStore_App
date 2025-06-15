@@ -7,7 +7,7 @@ interface InputProps {
   children: JSX.Element;
   name: string;
   onFieldChange: (newValue: string) => void;
-  onFocus: FocusEventHandler<HTMLInputElement>;
+  onFocus?: FocusEventHandler<HTMLInputElement>;
   error?: boolean;
   errorMessage?: string
 }

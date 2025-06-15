@@ -1,11 +1,15 @@
 //Components
+import VideoBackground from "../../components/videoBackground/VideoBackground";
+import ImageBackground from "../../components/imageBackground/ImageBackground";
+import IconLogo from "../../components/icons/IconLogo";
+import ShowLoginForm from "../../components/showLoginForm/ShowLoginForm";
 import LoginForm from "../../components/loginForm/LoginForm";
+import Title from "../../components/title/Title";
 //Hook
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { useAuth } from "../../hooks/useAuth";
 //CSS
 import classes from "./Login.module.css";
-import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const auth = useAuth();
@@ -13,31 +17,20 @@ export default function Login() {
 
   return (
     <div className={classes.container}>
-      {!isDesktop && (
+      {isDesktop ? (
         <>
-          <picture className={classes.picture}>
-            <source type="image/webp" srcSet="/img/image10.webp" />
-            <source type="image/png" srcSet="/img/image10.png" />
-            <img src="/img/image10.png" alt="" />
-          </picture>
-          <h1 className={classes.titleWrapper}>
-            Audio
-            <small>It's modular and designed to last</small>
-          </h1>
+          <VideoBackground />
+          <div className={classes.wrapperLogo}>
+            <IconLogo dimension={"48"} />
+          </div>
         </>
+      ) : (
+        <ImageBackground />
       )}
-      <LoginForm
-        submitted={auth.submitted}
-        errorCode={auth.errorCode}
-        isSubmittingAuth={auth.submittingAuth}
-        handleOnEmail={auth.handleOnEmail}
-        handleOnPassword={auth.handleOnPassword}
-        handleLoginWithEmail={auth.handleLoginWithEmail}
-        handleCreateUser={auth.handleCreateUser}
-        handlePasswordReset={auth.handlePasswordReset}
-        handleLoginWithFacebook={auth.handleLoginWithFacebook}
-        handleLoginWithGoogle={auth.handleLoginWithGoogle}
-      />
+      <Title />
+      <ShowLoginForm isDesktop={isDesktop}>
+        <LoginForm {...auth} />
+      </ShowLoginForm>
     </div>
   );
 }
